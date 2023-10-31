@@ -29,8 +29,4 @@ module.exports = withNextra({
 
     return config
   },
-  async redirects() {
-    return [
-    ];
-  },
 })

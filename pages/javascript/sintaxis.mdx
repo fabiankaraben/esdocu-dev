@@ -25,51 +25,70 @@ Los números en JavaScript pueden ser números enteros o valores de punto flotan
 
 Ya usaste `console.log()` para mostrar tu nombre en la consola del navegador. `console.log()` también es un método, que explicaremos en detalle más adelante. Por ahora, puedes reconocer los métodos con el paréntesis `()` después de ellos. Representan un conjunto de instrucciones para la computadora.
 
-Introduzcamos otro método, `typeof()`. Usaremos esto para descubrir el tipo de cualquier valor que creemos en JavaScript. En la consola de tu navegador, escribe el siguiente código y presionar la tecla `Enter`, lo que debería mostrar el texto `number`:
+Introduzcamos otro método, `typeof()`. Usaremos esto para descubrir el tipo de cualquier valor que creemos en JavaScript. En la consola de tu navegador, escribe el siguiente código y presionar la tecla `Enter`, lo que debería mostrar el texto `'number'`:
 
 ```javascript filename="JavaScript"
 typeof(10)
 ```
 
-Es importante que practiques todo lo que aprendas para que sea más fácil comprenderlo y recordarlo. Intente utilizar el método tyepof() para averiguar el tipo de -10.
-Observe que aún recibe la respuesta "número". Esto se debe a que no existe diferencia entre números positivos y negativos. Los números positivos son números mayores que cero y los números negativos son menores que cero. Puede representar números positivos y negativos con la misma sintaxis en JavaScript.
+```plaintext filename="Salida"
+'number'
+```
 
-### Instrumentos de cuerda
+Es importante que practiques todo lo que aprendas para que sea más fácil comprenderlo y recordarlo. Intenta utilizar el método `tyepof()` para averiguar el tipo de `-10`.
+Observa que aún recibe la respuesta `'number'`. Esto se debe a que no existe diferencia entre números positivos y negativos. Los números positivos son números mayores que cero y los números negativos son menores que cero. Puedes representar números positivos y negativos con la misma sintaxis en JavaScript.
 
-En JavaScript, una cadena es un grupo de caracteres que se utiliza para almacenar texto. Las cadenas se utilizan comúnmente para almacenar palabras y oraciones. Para escribir una cadena, debe encerrarla entre comillas simples (“Esto es una cadena”) o comillas dobles (“Esto también es una cadena”). Ambos tipos de comillas se pueden utilizar para escribir cadenas, siempre que se utilicen de forma coherente. Entonces, si comienzas a escribir una cadena con comillas simples, debes terminarla con comillas simples.
+### Cadenas de texto
+
+En JavaScript, una cadena es un grupo de caracteres que se utiliza para almacenar texto. Las cadenas se utilizan comúnmente para almacenar palabras y oraciones. Para escribir una cadena, debes encerrarla entre comillas simples (`'Esto es una cadena'`) o comillas dobles (`“Esto también es una cadena”`). Ambos tipos de comillas se pueden utilizar para escribir cadenas, siempre que se utilicen de forma coherente. Entonces, si comienzas a escribir una cadena con comillas simples, debes terminarla con comillas simples.
+
 Una cadena puede ser una sola palabra, oración o varios párrafos y puede contener cualquier combinación de letras, números y espacios.
-El texto “Mi nombre es Ebenezer Don” en la declaración console.log() que usamos antes también es una cadena. Recuerde usar siempre su nombre dondequiera que vea “Ebenezer Don”.
-Imprimamos la cadena "Hola mundo" en la consola, usando comillas simples y dobles:
+El texto `“Mi nombre es Esdocu”` en la declaración `console.log()` que usamos antes también es una cadena.
+
+Imprimamos la cadena `"Hola mundo"` en la consola, usando comillas simples y dobles:
 
 ```javascript filename="JavaScript"
-console.log('This is really cool!')
-console.log('This is really cool!')
+console.log('¡Esto es realmente genial!')
+console.log("¡Esto es realmente genial!")
 ```
 
-Ahora, intenta usar el método tyepof() para averiguar el tipo de "Hola mundo". Recuerde prestar mucha atención a las mayúsculas y minúsculas de las palabras clave. Por ejemplo, no hay letras mayúsculas en el método typeof().
-La cadena es un tipo de datos importante en JavaScript. Puede usarlo para representar datos basados en texto como nombres, mensajes o direcciones.
-
-### booleanos
-
-Los booleanos representan valores verdaderos o falsos. A menudo se utilizan para hacer comparaciones y determinar si se debe ejecutar un conjunto de instrucciones. Cuando ejecuta el código tyepof(true) en la consola de su navegador, debería obtener la respuesta "booleano".
-Para realizar comparaciones de valores en JavaScript, puede utilizar los símbolos; > (mayor que), < (menor que), o === (es lo mismo que).
-Ahora, veamos si las cadenas "Oye" y "oye" son iguales en JavaScript. Ejecute la siguiente línea de código en la consola de su navegador:
+Ahora, intenta usar el método `tyepof()` para averiguar el tipo de `'Hola mundo'`. Recuerde prestar mucha atención a las mayúsculas y minúsculas de las palabras clave. Por ejemplo, no hay letras mayúsculas en el método `typeof()`.
 
 ```javascript filename="JavaScript"
-'hey' === 'HEY'
+typeof('Hola mundo')
 ```
 
-La ejecución del código anterior debería devolver falso, y eso se debe a que las cadenas distinguen entre mayúsculas y minúsculas en JavaScript.
+```plaintext filename="Salida"
+'string'
+```
 
-Los booleanos son un tipo de datos importante en JavaScript, ya que le permiten representar valores lógicos, hacer comparaciones y ejecutar código de forma condicional.
+La cadena de texto (string) es un tipo de datos importante en JavaScript. Puedes usarlo para representar datos basados en texto como nombres, mensajes o direcciones.
+
+### Booleanos
+
+Los booleanos representan valores verdaderos (`true`) o falsos (`false`). A menudo se utilizan para hacer comparaciones y determinar si se debe ejecutar un conjunto de instrucciones. Cuando ejecutas el código `typeof(true)` en la consola de tu navegador, deberías obtener la respuesta `'boolean`.
+
+Para realizar comparaciones de valores en JavaScript, puedes utilizar los símbolos; `>` (mayor que), `<` (menor que), o `===` (es lo mismo que).
+
+Ahora, veamos si las cadenas `'Oye'` y `'oye'` son iguales en JavaScript. Ejecute la siguiente línea de código en la consola de su navegador:
+
+```javascript filename="JavaScript"
+'Oye' === 'oye'
+```
+
+La ejecución del código anterior debería devolver `false`, y eso se debe a que las cadenas distinguen entre mayúsculas y minúsculas en JavaScript.
+
+Los booleanos son un tipo de datos importante en JavaScript, ya que te permiten representar valores lógicos, hacer comparaciones y ejecutar código de forma condicional.
 
 ## Comentarios en JavaScript
 
-En JavaScript, los comentarios son fragmentos de texto dentro del código que se ignoran cuando se ejecuta el código. Son útiles para agregar notas a su código o para deshabilitar temporalmente un fragmento de código sin tener que eliminarlo. Hay dos formas de escribir comentarios en JavaScript: comentarios de una sola línea y comentarios de varias líneas.
+En JavaScript, los comentarios son fragmentos de texto dentro del código que se ignoran cuando se ejecuta el código. 
+
+Son útiles para agregar notas a tu código o para deshabilitar temporalmente un fragmento de código sin tener que eliminarlo. Hay dos formas de escribir comentarios en JavaScript: comentarios de una sola línea y comentarios de varias líneas.
 
 ### Comentarios de una sola línea
 
-Los comentarios de una sola línea comienzan con dos barras diagonales (//) y continúan hasta el final de la línea. Por ejemplo:
+Los comentarios de una sola línea comienzan con dos barras diagonales (`//`) y continúan hasta el final de la línea. Por ejemplo:
 
 ```javascript filename="JavaScript"
 // Este es un comentario de una sola línea
@@ -77,7 +96,7 @@ Los comentarios de una sola línea comienzan con dos barras diagonales (//) y co
 
 ### Comentarios de varias líneas
 
-Los comentarios de varias líneas comienzan con una barra diagonal y un asterisco (/*) y terminan con un asterisco y una barra diagonal (*/). Pueden abarcar varias líneas y pueden usarse para deshabilitar bloques de código o para agregar notas y explicaciones más largas a su código. A continuación se muestra un ejemplo de un comentario de varias líneas:
+Los comentarios de varias líneas comienzan con una barra diagonal y un asterisco (`/*`) y terminan con un asterisco y una barra diagonal (`*/`). Pueden abarcar varias líneas y pueden usarse para deshabilitar bloques de código o para agregar notas y explicaciones más largas a tu código. A continuación se muestra un ejemplo de un comentario de varias líneas:
 
 ```javascript filename="JavaScript"
 /*
@@ -86,29 +105,33 @@ Los comentarios de varias líneas comienzan con una barra diagonal y un asterisc
 */
 ```
 
-Es una buena práctica hacer que el código sea lo suficientemente legible como para que no sea necesario agregar comentarios para explicar lo que hace. Sin embargo, los comentarios son útiles cuando quieres explicar por qué hiciste algo de cierta manera, o cuando crees que tu código podría resultar confuso para otra persona o incluso para tu yo futuro. El uso excesivo de comentarios puede hacer que su código esté desordenado y sea difícil de leer, por lo que es importante lograr un equilibrio entre escribir código legible y agregar comentarios cuando sea necesario.
+Es una buena práctica hacer que el código sea lo suficientemente legible como para que no sea necesario agregar comentarios para explicar lo que hace. Sin embargo, los comentarios son útiles cuando quieres explicar por qué hiciste algo de cierta manera, o cuando crees que tu código podría resultar confuso para otra persona o incluso para tu yo futuro.
 
-## Declaraciones condicionales básicas (if-else)
+El uso excesivo de comentarios puede hacer que tu código esté desordenado y sea difícil de leer, por lo que es importante lograr un equilibrio entre escribir código legible y agregar comentarios cuando sea necesario.
 
-En JavaScript, puede utilizar declaraciones condicionales para ejecutar diferentes bloques de código dependiendo de si se cumple o no una condición. Un bloque de código es un grupo de declaraciones encerradas entre llaves.
-Las declaraciones condicionales son un aspecto crucial de la programación, ya que le permiten controlar el flujo de su programa y hacer que se comporte de manera diferente en diversas situaciones.
-Hay dos tipos principales de declaraciones condicionales en JavaScript: declaraciones if y declaraciones switch. En esta sección, aprenderá sobre las declaraciones if y, más adelante, sobre las declaraciones switch.
+## Declaraciones condicionales básicas (`if`-`else`)
 
-### La declaración if
+En JavaScript, puedes utilizar declaraciones condicionales para ejecutar diferentes bloques de código dependiendo de si se cumple o no una condición. Un bloque de código es un grupo de declaraciones encerradas entre llaves.
 
-Una declaración if le permite ejecutar un bloque de código si una condición específica es verdadera. Esta es la sintaxis básica para una declaración if:
+Las declaraciones condicionales son un aspecto crucial de la programación, ya que te permiten controlar el flujo de tu programa y hacer que se comporte de manera diferente en diversas situaciones.
+
+Hay dos tipos principales de declaraciones condicionales en JavaScript: declaraciones `if` y declaraciones `switch`. En esta sección, aprenderás sobre las declaraciones `if` y, más adelante, sobre las declaraciones `switch`.
+
+### La declaración `if`
+
+Una declaración if te permite ejecutar un bloque de código si una condición específica es verdadera. Esta es la sintaxis básica para una declaración `if`:
 
 ```javascript filename="JavaScript"
-if (condición) {
-    // código a ejecutar si la condición es verdadera
+if (Condición) {
+    // Código a ejecutar si la condición es verdadera.
 }
 ```
 
-La condición es una expresión booleana que se evalúa como verdadera o falsa. Una expresión es una combinación de valores y operadores que se evalúa como un único valor. Por ejemplo, 10 > 5 es una expresión que se evalúa como verdadera y 10 < 5 es una expresión que se evalúa como falsa. Una expresión también puede ser un valor único, como un número, una cadena o un valor booleano.
+La condición es una expresión booleana que se evalúa como verdadera o falsa. Una expresión es una combinación de valores y operadores que se evalúa como un único valor. Por ejemplo, `10 > 5` es una expresión que se evalúa como verdadera (`true`) y `10 < 5` es una expresión que se evalúa como falsa (`false`). Una expresión también puede ser un valor único, como un número, una cadena o un valor booleano.
 
-Si la condición se evalúa como verdadera, se ejecuta el bloque de código dentro de la declaración if. Si la condición se evalúa como falsa, se omite el bloque de código. El bloque de código está encerrado entre llaves {}y se denomina cuerpo if.
+Si la condición se evalúa como verdadera, se ejecuta el bloque de código dentro de la declaración `if`. Si la condición se evalúa como falsa, se omite el bloque de código. El bloque de código está encerrado entre llaves `{}` y se denomina cuerpo de la sentencia `if`.
 
-Por ejemplo, ejecutar el siguiente código debería devolver la cadena "7 es mayor que 5":
+Por ejemplo, ejecutar el siguiente código debería devolver la cadena `'7 es mayor que 5'`:
 
 ```javascript filename="JavaScript"
 if (7 > 5) {
@@ -116,7 +139,7 @@ if (7 > 5) {
 }
 ```
 
-Dado que 7 es mayor que 5, se ejecutará la instrucción console.log() entre llaves. Del mismo modo, ejecutar el siguiente código no devolverá nada en tu consola:
+Dado que 7 es mayor que 5, se ejecutará la instrucción `console.log()` entre llaves. Del mismo modo, ejecutar el siguiente código no devolverá nada en tu consola:
 
 ```javascript filename="JavaScript"
 if (7 < 5) {
@@ -124,22 +147,23 @@ if (7 < 5) {
 }
 ```
 
-Observe que cambiamos el símbolo de comparación de > (mayor que) a < (menor que). Como 7 no es menor que 5, la computadora no ejecutará la instrucción console.log().
-También notarás que el bloque de código dentro de las llaves tiene dos espacios delante. Esto se llama sangría y hace que el código sea más fácil de leer y comprender. Sangramos el código para mostrar que está dentro de un bloque. Si no aplicamos sangría al código dentro de la declaración if, sería difícil saber si es parte de la declaración if o si es una declaración completamente separada. No se requiere sangría para ejecutar JavaScript, pero es necesaria para escribir código legible y Evitando errores. Puedes usar cualquier cantidad de espacios para la sangría, pero es común usar dos espacios. Encontrarás algunos desarrolladores que utilizan cuatro espacios o tabulaciones, pero es mejor ser coherente con el estilo que tú o tu equipo elijan.
+Observa que cambiamos el símbolo de comparación de `>` (mayor que) a `<` (menor que). Como 7 no es menor que 5, la computadora no ejecutará la instrucción `console.log().`
 
-### La cláusula else
+También notarás que el bloque de código dentro de las llaves tiene dos espacios delante. Esto se llama **sangría** y hace que el código sea más fácil de leer y comprender. Sangramos el código para mostrar que está dentro de un bloque. Si no aplicamos sangría al código dentro de la declaración `if`, sería difícil saber si es parte de la declaración `if` o si es una declaración completamente separada. No se requiere sangría para ejecutar JavaScript, pero es necesaria para escribir código legible y evitando errores. Puedes usar cualquier cantidad de espacios para la sangría, pero es común usar dos espacios. Encontrarás algunos desarrolladores que utilizan cuatro espacios o tabulaciones, pero es mejor ser coherente con el estilo que tú o tu equipo elijan.
 
-Puede agregar una cláusula else a una declaración if, que le permite especificar un bloque de código para ejecutar si la condición es falsa. Esta es la sintaxis básica para una declaración if-else:
+### La cláusula `else`
+
+Puedes agregar una cláusula `else` a una declaración `if`, que te permite especificar un bloque de código para ejecutar si la condición es falsa. Esta es la sintaxis básica para una declaración `if`-`else`:
 
 ```javascript filename="JavaScript"
-if (condición) {
-    // código a ejecutar si la condición es verdadera
-}demás{
-    // código a ejecutar si la condición es falsa
+if (Condición) {
+    // Código a ejecutar si la condición es verdadera.
+} else {
+    // Código a ejecutar si la condición es falsa.
 }
 ```
 
-Agreguemos una cláusula else a nuestra declaración condicional:
+Agreguemos una cláusula `else` a nuestra declaración condicional:
 
 ```javascript filename="JavaScript"
 if (7 < 5) {
@@ -149,6 +173,8 @@ if (7 < 5) {
 }
 ```
 
-Dado que 7 no es menor que 5, ejecutar el código anterior debería devolver la cadena "La condición es falsa".
+Dado que 7 no es menor que 5, ejecutar el código anterior debería devolver la cadena `'La condición es falsa'`.
 
-Las declaraciones condicionales son una herramienta esencial para crear programas que puedan adaptarse a diferentes circunstancias y tomar decisiones en función de los datos que reciben. Cubriremos declaraciones condicionales más complejas y otras formas en que podemos escribirlas a medida que avancemos.
+Las declaraciones condicionales son una herramienta esencial para crear programas que puedan adaptarse a diferentes circunstancias y tomar decisiones en función de los datos que reciben. 
+
+Cubriremos declaraciones condicionales más complejas y otras formas en que podemos escribirlas a medida que avancemos.

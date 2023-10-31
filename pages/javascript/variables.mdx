@@ -1,0 +1,172 @@
+# Variables en JavaScript
+
+## Introducción a las variables
+
+No es fácil escribir código JavaScript sin utilizar variables. Hasta ahora, hemos hecho un excelente trabajo evitandolas, pero es hora de que aprendas sobre uno de los conceptos más importantes de la programación.
+
+Una **variable** es una ubicación con nombre para almacenar datos en la memoria de la computadora. En palabras simples, es un contenedor en el que podemos almacenar todo tipo de datos, como números, texto, fragmentos de código e incluso otras variables. Entonces, piensa en una variable como un cuadro con una etiqueta. La etiqueta es el nombre de la variable y el contenido del cuadro es el valor de la variable.
+
+Aquí hay un ejemplo de una variable en JavaScript:
+
+```javascript filename="JavaScript"
+let myName = 'Esdocu';
+```
+
+En este ejemplo, creamos una variable llamada `myName` y almacenamos el valor de cadena `'Esdocu'` dentro de ella. Esto se llama declaración de variables. La declaración de variable se compone de cuatro partes: la palabra clave de declaración, el nombre de la variable, el símbolo de asignación (`=`) y el valor de la variable.
+
+### La palabra clave de declaración
+
+La palabra clave let es una de las formas en que puedes declarar una variable en JavaScript. Hay otras formas de declarar variables, pero `let` es la más común. Aprenderás sobre las otras palabras clave de declaración de variables a medida que avancemos.
+
+En JavaScript, una **palabra clave** es una palabra reservada con un propósito específico.
+
+### El nombre de la variable
+
+El nombre de la variable en este ejemplo es `myName`. Es una buena práctica utilizar nombres descriptivos para las variables porque cuando el nombre de la variable representa su valor, el código es más fácil de entender.
+
+### El símbolo de asignación (`=`)
+
+El símbolo de asignación (`=`) se utiliza para asignar un valor a una variable. También se llama operador de asignación y hay otros operadores en JavaScript, como el operador de suma (`+`), el operador de resta (`-`), el operador de multiplicación (`*`) y el operador de división (`/`). Aprenderás sobre ellos en la próxima lección.
+
+### El valor de la variable
+
+En nuestro ejemplo, el valor de la variable es la cadena `'Esdocu'`. El valor de una variable puede ser de cualquier tipo, incluidos números, cadenas, valores booleanos u otras variables.
+
+Podemos usar la función `console.log()` para imprimir el valor de la variable en la consola. Además del código anterior, ejecuta la siguiente instrucción `console.log` en la consola de tu navegador:
+
+```javascript filename="JavaScript"
+console.log(myName)
+```
+
+Esto imprimirá el valor de la variable `myName` en la consola.
+
+También podemos reasignar el valor de una variable usando el operador de asignación (`=`). Entonces, si queremos cambiar el valor de la variable `myName` a `'Juan Perez'`, podríamos hacerlo escribiendo esta línea de código:
+
+```javascript filename="JavaScript"
+myName = 'Juan Perez'
+```
+
+Ahora, si vuelves a ejecutar la instrucción `console.log`, obtendrás la cadena `'Juan Perez'` impresa en la consola.
+
+## Declaración y asignación de variables
+
+Hay varias formas de declarar una variable en JavaScript, cada una con su caso de uso.
+
+### La palabra clave `let`
+
+La palabra clave `let` es la forma más común de declarar una variable en JavaScript. Se utiliza para crear variables locales, que son variables a las que sólo se puede acceder dentro de un bloque de código particular.
+
+A continuación se muestra un ejemplo de una variable local con la palabra clave `let`:
+
+```javascript filename="JavaScript"
+if (true) {
+    let message = '¡JavaScript es increíble!'
+}
+
+console.log(message)
+```
+
+En este ejemplo, la variable de mensaje es local y solo se puede acceder a ella dentro del bloque de código encerrado entre llaves. Por lo tanto, recibirás un error si intentas acceder a ella fuera de este bloque, como lo hacemos en la declaración `console.log`.
+
+Las variables globales, por otro lado, son variables a las que se puedes acceder desde cualquier lugar del código. Si deseas crear una variable global con la palabra clave `let`, puedes hacerlo declarándola fuera de tus bloques de código.
+
+A continuación se muestra un ejemplo de una variable global con la palabra clave `let`:
+
+```javascript filename="JavaScript"
+let name = 'Juan'
+
+if (true) {
+    console.log(name)
+}
+```
+
+La ejecución de este código devolverá el valor de cadena `'Juan'` en la consola. Esto se debe a que la variable de nombre es global y se puede acceder a ella desde cualquier lugar del código.
+
+### La palabra clave `var`
+
+La palabra clave `var` es la forma más antigua de declarar una variable en JavaScript y se utiliza para crear variables globales. Entonces, si usáramos la palabra clave `var` en nuestro primer ejemplo para declarar la variable de mensaje, no obtendríamos un error.
+
+A continuación se muestra un ejemplo de una variable global con la palabra clave `var`:
+
+```javascript filename="JavaScript"
+if (true) {
+    var message = '¡JavaScript es increíble!'
+}
+
+console.log(message)
+```
+
+El código anterior no devolverá ningún error porque la variable del mensaje es global. Esto significa que es accesible desde cualquier parte del código, incluso fuera del bloque de código en el que fue declarado.
+
+Es importante tener cuidado al utilizar variables globales. Dado que se puede acceder a ellas desde cualquier lugar de su código, las variables globales pueden causar problemas. Por ejemplo, si declaras una variable global con el mismo nombre que una variable local en tu código, la variable global sobrescribirá la variable local. Esto puede provocar resultados inesperados y confusión en el código.
+
+### La palabra clave `const`
+
+Hasta ahora, hemos visto cómo crear variables locales y globales que se pueden reasignar. Pero la mayoría de las veces, es más seguro crear variables que no se puedan reasignar para no cambiar accidentalmente sus valores. La palabra clave `const` se utiliza para este propósito.
+
+A continuación se muestra un ejemplo de una variable `const`:
+
+```javascript filename="JavaScript"
+const age = 21;
+```
+
+Si intentamos reasignar el valor de la variable `age`, obtendremos un error:
+
+```javascript filename="JavaScript"
+age = 22
+
+// Uncaught TypeError: Assignment to constant variable.
+```
+
+Esto se debe a que la variable edad es una variable constante y no se puede reasignar. Usar la palabra clave `const` es mi forma preferida de declarar variables que no necesitan ser reasignadas.
+
+## Reglas y convenciones de nomenclatura de variables
+
+En programación, una convención es un conjunto de pautas que debes seguir para asegurarte de que tu código esté escrito con un estilo coherente y sea fácil de leer y comprender. Al nombrar tus variables, es esencial seguir las convenciones de nomenclatura de variables de JavaScript para garantizar que tu código se ejecute correctamente y evitar errores. Un **bug** es un error en tu código que hace que se ejecute incorrectamente o que no se ejecute en absoluto.
+
+Estas son las reglas y convenciones que se siguen comúnmente al nombrar variables en JavaScript. Comenzaremos con las cosas que debes evitar y luego pasaremos a lo que debes hacer al nombrar tus variables.
+
+### Evita el uso de números como primer carácter del nombre de una variable
+
+Los nombres de variables no pueden comenzar con un número, aunque pueden contener números. Por ejemplo, el nombre de la variable `persona1` es válido, pero si nombras tu variable `1persona`, obtendrás un error.
+
+### Evita el uso de caracteres especiales en nombres de variables
+
+En JavaScript, los caracteres especiales son caracteres que tienen un significado o uso específico en el lenguaje y no son letras, números ni símbolos.<br />
+Estos incluyen lo siguiente: `@ ! # $ % ^ & * ( ) _ + - = { } [] : ; “ ’ <> , . ? / \ | ‘ ~`
+
+Los nombres de las variables no pueden contener caracteres especiales, por lo que si intentas nombrar tu variable `nombre-de-persona` o `#nombre_de_persona`, obtendrás un error. El símbolo del dólar se utiliza a veces como prefijo para nombres de variables, pero esto no es un requisito y generalmente no se recomienda.
+
+Aunque en algunos ejemplos verás nombres de variables en español, es recomendable pero no un requisito escribir los nombres de variables en inglés. En la mayoría de los casos resulta en nombres más cortos y esto ayuda a la legibilidad del código. 
+
+### Evita el uso de espacios en nombres de variables
+
+Los nombres de las variables no pueden contener espacios. Entonces, nombrar tu variable `mi país` o `mi edad` resultará en un error.
+
+### Evita el uso de palabras reservadas en los nombres de tus variables
+
+JavaScript tienes una lista de palabras reservadas que no se pueden utilizar como nombres de variables. Estas incluyen palabras como `var`, `const` y `let`. El uso de una palabra reservada como nombre de variable generará un error. 
+
+Puedes consultar la lista completa de [palabras reservadas](https://developer.mozilla.org/es/docs/Web/JavaScript/Reference/Lexical_grammar#palabras_clave) de JavaScript en la documentación de Mozilla Developer Network (MDN).
+
+### Longitud máxima y mínima de un nombre de variable
+
+No existe una longitud máxima o mínima explícita para los nombres de variables en JavaScript. Sin embargo, algunas restricciones pueden afectar la longitud máxima del nombre de tu variable.
+
+Una de esas restricciones es la longitud máxima de una cadena en JavaScript, que es `2^53 - 1` (aproximadamente 9 mil billones de caracteres). Por lo tanto, no puedes tener un nombre de variable más largo que esto, pero es poco probable que necesite utilizar un nombre de variable tan largo en la práctica.
+
+### Utiliza camelCase para nombres de variables
+
+Al nombrar variables, una palabra puede no ser suficiente para describir lo que almacena la variable. Como no puedes utilizar espacios en los nombres de las variables, puedes utilizar camelCase para separar las palabras que componen el nombre de la variable.
+
+**CamelCase** es una convención de nomenclatura en la que la primera letra del nombre de una variable está en minúscula y la primera letra de cada palabra posterior está en mayúscula. Por ejemplo, si deseas nombrar una variable que almacena la edad de un estudiante, puedes escribirla como `studentAge` o `ageOfStudent`.
+
+En JavaScript, camelCase es la convención de nomenclatura más utilizada para variables. Entonces, al nombrar tus variables, comienza siempre con una letra minúscula y usa camelCase para separar las palabras.
+
+### Utiliza nombres de variables significativos
+
+Es importante utilizar nombres descriptivos y significativos para tus variables; esto hará que tu código sea más fácil de escribir, leer y comprender. Por ejemplo, si estás creando una variable para almacenar el nombre de un estudiante, debes escribir algo como `nameOfStudent` o `stuendentName` en lugar de `x` o `name`. 
+
+Los nombres de las variables siempre deben representar los datos que almacenan porque los nombres descriptivos de las variables facilitan la comprensión del propósito y la función de las variables. Esto te ayudará a evitar errores, mejorar la calidad de tu código y facilitar su mantenimiento.
+
+La forma en que nombres tus variables es muy importante y, si sigues las convenciones recomendadas, podrás escribir código que sea fácil de leer, comprender y mantener.

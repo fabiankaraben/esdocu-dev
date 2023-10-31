@@ -1,0 +1,12 @@
+{
+  "index": "¿Qué es Python?",
+  "instalar-python": "Instalación de Python",
+  "-- Parte 1": {
+    "title": "El lenguaje Python",
+    "type": "separator"
+  },
+  "conceptos": "Conceptos iniciales",
+  "primer-programa": "Nuestro primer programa",
+  "estructuras-de-control": "Estructuras de control",
+  "archivos": "Archivos"
+}

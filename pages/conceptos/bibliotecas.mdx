@@ -1,0 +1,44 @@
+# Bibliotecas, paquetes o módulos
+
+## ¿Qué son las bibliotecas?
+
+Las bibliotecas son paquetes de funcionalidades que separamos de nuestro código principal, o funcionalidades que directamente programamos de forma separada para que puedan ser reutilizadas por otros desarrollos.
+
+Dependiendo del lenguaje las *bibliotecas* también reciben el nombre de *paquetes*, *módulos* o *plugins*.
+
+## Bibliotecas integradas
+
+Normalmente los lenguajes de programación buscan ser lo más sencillos posible, definiendo componentes básicos y dejando las funcionalidades específicas en bibliotecas opcionales que se pueden añadir según la necesidad del código.
+
+Por ejemplo en el lenguaje *Dart*, podemos utilizar la biblioteca *math* para acceder a constantes y funciones matemáticas:
+
+```dart filename="Dart"
+// Importamos la biblioteca opcional 'math'
+import 'dart:math' as math;
+
+main(){
+    // Imprimir el valor de la constante PI.
+    print(math.pi);
+}
+```
+
+No se trata de un paquete externo, sino de una biblioteca incluída en el lenguaje pero que requiere importala manualmente cuando sea necesario.
+
+## Bibliotecas de la comunidad
+
+Sobre todo en lenguajes Open Source, la cantidad de recursos y funcionalidades que aporta la comunidad es enorme.
+
+Siguiendo con ejemplos del lenguaje *Dart*, cuando necesitamos una funcionalidad que no se encuentra en el propio lenguaje, podemos buscar un paquete externo en: 
+
+[pub.dev](https://pub.dev)
+
+y en caso de encontrarlo, simplemente lo agregamos a nuestro desarrollo, lo importamos y usamos como se muestra a continuación: 
+
+```dart filename="Dart"
+import 'package:http/http.dart' as http;
+
+main() {
+    // Ejemplo de consulta remota usando el paquete 'http'
+    print(await http.read('https://example.com/foobar.txt'));
+}
+```

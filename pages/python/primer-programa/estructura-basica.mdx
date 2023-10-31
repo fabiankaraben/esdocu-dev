@@ -1,0 +1,128 @@
+# Estructura básica de un programa en Python
+
+Para darte una idea del lenguaje Python, primero te brindaremos una descripción general de su sintaxis. La palabra **sintaxis** proviene del griego y significa "estructura de la oración". La sintaxis de un lenguaje de programación es la descripción completa de construcciones permitidas y prohibidas. La sintaxis está definida por una gramática que debe ser respetada por el programador. Si no lo haces, se activará el conocido error de sintaxis.
+
+Python le da al programador instrucciones muy precisas sobre cómo estructurar el código fuente. Aunque los programadores experimentados pueden ver esto como una limitación, esta característica beneficia especialmente a los programadores novatos, porque el código desestructurado y desordenado es una de las mayores fuentes de errores en la programación.
+
+Básicamente, un programa de Python consta de declaraciones individuales, que en el caso más simple ocupan exactamente una línea en el código fuente. Por ejemplo, la siguiente instrucción imprime texto en la pantalla:
+
+```python filename="Python"
+print("Hola Mundo")
+```
+
+Algunas declaraciones se pueden dividir en un **encabezado** de declaración y un **cuerpo** de declaración, donde el cuerpo puede contener más declaraciones:
+
+```python filename="Definición de sintaxis"
+Encabezado de declaración:
+    Declaración
+    ...
+    Declaración
+```
+
+En un programa real de Python, esto puede verse así:
+
+```python filename="Python"
+if x > 10:
+    print("x is greater than 10")
+    print("Second line!")
+```
+
+La afiliación del cuerpo al encabezado se especifica en Python mediante dos puntos al final del encabezado de la declaración y mediante una sangría más profunda del cuerpo de la declaración. La sangría se puede realizar utilizando tabulaciones y espacios, aunque se recomienda no mezclar ambos. Recomendamos una profundidad de sangría de cuatro espacios cada uno.
+
+Python se diferencia aquí de muchos lenguajes de programación comunes, donde la asignación del encabezado y el cuerpo de la declaración se logra mediante llaves o palabras clave como *begin* y *end*.
+
+> **Nota**
+> 
+> El compilador de Python puede compilar sin dificultad un programa en el que se hayan utilizado espacios y tabulaciones, ya que cada pestaña se reemplaza internamente por ocho espacios. Sin embargo, esto puede causar errores difíciles de encontrar porque muchos editores usan un ancho de tabulación de cuatro espacios por defecto. Esto hace que ciertas secciones del código fuente parezcan estar igualmente sangradas cuando en realidad no lo están.
+> 
+> Configura tu editor para reemplazar automáticamente cada tabulación con espacios, o usa solo espacios para sangrar tu código.
+
+Quizás te preguntes ahora cómo las declaraciones que se ejecutan en varias líneas son compatibles con el modo interactivo, en el que solo se puede editar una línea a la vez. Bueno, en general, intentaremos evitar el modo interactivo cuando una muestra de código tiene varias líneas. Sin embargo, la pregunta está justificada. La respuesta es que las sentencias se introducen de forma bastante intuitiva línea por línea. Cuando el intérprete detecta que una instrucción aún no está completa, cambia el indicador de `>>>` a `...`. Ingresemos el ejemplo anterior en el modo interactivo:
+
+```python-repl filename="Python (interactivo)"
+>>> x = 123
+>>> if x > 10:
+...     print("El intérprete está haciendo un buen trabajo")
+...     print("¡Segunda linea!")
+...
+El intérprete está haciendo un buen trabajo
+¡Segunda linea!
+```
+
+Ten en cuenta que debes considerar la profundidad de sangría actual, incluso si una línea comienza con `...`. Además, el intérprete no puede detectar automáticamente el final del cuerpo de la declaración, ya que puede contener cualquier cantidad de declaraciones. Por este motivo, el cuerpo de una declaración en modo interactivo debe finalizar presionando la tecla `ENTER`.
+
+## Envolviendo líneas largas
+
+Básicamente, las líneas del código fuente pueden tener cualquier longitud. Sin embargo, muchos programadores limitan la longitud de las líneas de su código fuente para que, por ejemplo, varios archivos de código fuente quepan uno al lado del otro en la pantalla o el código se pueda leer cómodamente en dispositivos con un ancho de línea fijo. La longitud máxima de línea común es de 80 o 120 caracteres. Entre paréntesis, puedes ajustar el código fuente como quieras:
+
+```python-repl filename="Python (interactivo)"
+>>> var = (
+... 10
+... +
+... 10
+... )
+>>> var
+20
+```
+
+Sin embargo, en muchos otros lugares donde no se permiten paréntesis, estarás sujeto a las estrictas reglas sintácticas de Python. Al utilizar la notación de barra invertida, es posible dividir el código fuente en una nueva línea en casi cualquier posición:
+
+```python-repl filename="Python (interactivo)"
+>>> var \
+... = \
+... 10
+>>> var
+10
+```
+
+En general, una barra invertida se puede colocar en cualquier lugar donde podría haber estado un espacio. Por lo tanto, también es posible una barra invertida dentro de una cadena:
+
+```python-repl filename="Python (interactivo)"
+>>> "Hola \
+... Mundo"
+'Hola Mundo'
+```
+
+Sin embargo, ten en cuenta que al sangrar la parte envuelta de la cadena se escribirán espacios en la cadena. Por este motivo, deberías preferir la siguiente variante de escribir una cadena en varias líneas:
+
+```python-repl filename="Python (interactivo)"
+>>> "Hola " \
+... "Mundo"
+'Hola Mundo'
+```
+
+## Unir varias líneas
+
+Así como divides una declaración de una sola línea en varias líneas usando la barra invertida, puedes combinar varias declaraciones de una sola línea en una sola línea. Para ello, las declaraciones están separadas entre sí por un punto y coma:
+
+```python-repl filename="Python (interactivo)"
+>>> print("Hola"); print("Mundo")
+Hola
+Mundo
+```
+
+Las declaraciones que constan de un encabezado y un cuerpo de declaración también se pueden colocar en una línea sin usar punto y coma, siempre que el cuerpo de la declaración en sí no conste de más de una línea:
+
+```python-repl filename="Python (interactivo)"
+>>> x = True
+>>> if x: print("Hola Mundo")
+...
+Hola Mundo
+```
+
+Si el cuerpo de la declaración tiene varias líneas, se pueden combinar con un punto y coma:
+
+```python-repl filename="Python (interactivo)"
+>>> x = True
+>>> if x: print("Hola"); print("Mundo")
+...
+Hola
+Mundo
+```
+
+Todas las declaraciones unidas por un punto y coma se tratan como si tuvieran la misma sangría. Los dos puntos por sí solos aumentan la profundidad de la sangría. Por esta razón, en el ejemplo anterior, no hay forma de escribir una declaración en la misma línea que ya no esté en el cuerpo de la declaración `if`.
+
+> **Nota**
+> 
+> El uso excesivo de la barra invertida y especialmente el punto y coma da como resultado rápidamente un código ilegible. Por lo tanto, debes utilizar ambas notaciones sólo si crees que favorecen la legibilidad y la claridad.
+

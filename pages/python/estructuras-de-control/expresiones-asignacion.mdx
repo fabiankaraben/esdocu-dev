@@ -1,0 +1,102 @@
+# Expresiones de asignación
+
+En Python 3.8, se introdujeron expresiones de asignación. Se entiende que son híbridos entre una asignación y una expresión que evalúa el valor de la asignación. 
+
+## Ejemplo de análisis
+
+En el siguiente ejemplo, determinaremos el cuadrado de un número entero en términos de una expresión aritmética simple:
+
+```python-repl filename="Python (Interactivo)"
+>>> y = 10
+>>> y * y
+100
+```
+
+Aquí, el modo interactivo nos ayuda a capturar el valor de la expresión `y * y`. Por ejemplo, una expresión de este tipo se puede utilizar en el contexto de una declaración condicional, donde su valor pasa a formar parte de una expresión lógica más amplia:
+
+```python-repl filename="Python (Interactivo)"
+>>> if y * y >= 100:
+... print("¡Sí!") ...
+¡Sí!
+```
+
+Una *asignación* asigna un nombre al valor de una expresión, que puede usarse para hacer referencia a ella más adelante en el programa. A diferencia de una expresión, una asignación en sí misma no tiene valor y, por lo tanto, no puede usarse en el contexto de una expresión aritmética o lógica:
+
+```python-repl filename="Python (Interactivo)"
+>>> z = y * y
+>>>
+```
+
+## El operador `:=`
+
+Una expresión de asignación es una combinación de una asignación y una expresión implementada por el operador `:=`:
+
+```python-repl filename="Python (Interactivo)"
+>>> (z := y * y)
+100
+```
+
+Por lo tanto, se puede utilizar una expresión de asignación, por ejemplo, dentro de la condición de una declaración `if` para acceder a un resultado intermedio de la condición más adelante en el programa:
+
+```python-repl filename="Python (Interactivo)"
+>>> if (z := y * y) >= 100:
+... print("¡Sí!")
+...
+¡Sí!
+>>> z
+100
+```
+
+> **Nota**
+> 
+> El operador `:=` es el operador de enlace más débil, razón por la cual las expresiones de asignación dentro de expresiones más complejas generalmente deben estar entre paréntesis.
+
+Para motivarnos, imaginemos un escenario de muestra en el que procesamos una lista de tamaño variable pero limitada por un máximo de 1000 elementos. Además, supongamos que si se excede el tamaño máximo imprimiremos un mensaje de error que especifique el tamaño exacto de la lista bajo consideración.
+
+La verificación del tamaño máximo en combinación con el mensaje de error requerido se puede realizar de la siguiente manera:
+
+```python filename="Python"
+if len(lst) > 1000:
+    print("Lista demasiado grande:", len(lst), "elementos")
+```
+
+El inconveniente de esta solución compacta es que la longitud `len(lst)` de la lista debe calcularse dos veces, primero para comprobar si la lista es demasiado larga y luego otra vez para compilar el mensaje de error. Un enfoque alternativo que evita la doble llamada de `len` es determinar la longitud de la lista por adelantado:
+
+```python filename="Python"
+length = len(lst)
+if length > 1000:
+    print("Lista demasiado grande:", len(lst), "elementos")
+```
+
+Esta también es una solución válida y evita el problema del doble cálculo agregando una línea adicional de código. Los críticos suelen quejarse de que este tipo de construcciones hacen que los programas Python sean innecesariamente grandes y difíciles de entender visualmente.
+
+Una expresión de asignación, utilizando el operador `:=` introducido en Python 3.8, permite expresar el ejemplo anterior de forma compacta y al mismo tiempo sin múltiples cálculos:
+
+```python filename="Python"
+if (length := len(lst)) > 1000:
+    print("Lista demasiado grande:", len(lst), "elementos")
+```
+
+Ten en cuenta que las expresiones de asignación pueden hacer que un programa sea más compacto, pero al mismo tiempo limitan su legibilidad. Por este motivo, siempre debes utilizar expresiones de asignación con moderación y precaución.
+
+> **Nota**
+> 
+> Además de la terminología utilizada aquí, también se utilizan habitualmente otros nombres para expresiones de asignación. Estos incluyen el término *expresiones nombradas* debido al hecho de que al valor de una expresión se le puede asignar un nombre al mismo tiempo, y el término irónico *operador morsa* debido a la apariencia del operador `:=`.
+
+## El juego de adivinar números con expresiones de asignación
+
+En lección [El primer programa](/python/primer-programa/primer-programa), consideramos un programa que lee sucesivamente la entrada del usuario y verifica la entrada para una determinada condición. Este programa se puede adaptar combinando la lectura de la entrada y la verificación en el encabezado del bucle usando una expresión de asignación:
+
+```python filename="Python"
+secret = 1337
+counter = 1
+while (attempt := int(input("Adivina: "))) != secret:
+    if attempt < secret:
+        print("Demasiado pequeño")
+    if attempt > secret:
+        print("Demasiado grande")
+    counter = counter + 1
+print("¡Genial, lo lograste en", counter, "intentos!")
+```
+
+El uso del operador `:=` en combinación con estructuras de control como bucles o condicionales es un caso de uso común que a menudo conduce a un código más compacto y menos redundante.

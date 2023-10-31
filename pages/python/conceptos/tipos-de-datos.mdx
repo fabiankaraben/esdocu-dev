@@ -1,0 +1,205 @@
+# Tipos de datos en Python
+
+En esta lección hablaremos brevemente de los tipos de datos básicos de Python, más adelante en el curso analizaremos en detalle cada uno de ellos como así también otros tipos de datos más complejos.
+
+## Números enteros
+
+Como primer y muy simple ejemplo, generaremos un número entero en modo interactivo. El intérprete responde emitiendo su valor:
+
+```python-repl filename="Python (Interactivo)"
+>>> -9
+-9
+>>> 1139
+1139
+>>> +12
+12
+```
+
+### Literales y operadores
+
+El literal de un número entero consta de los dígitos del `0` al `9`. Además, puedes anteponer un signo positivo o negativo. Siempre se supone que un número sin signo es positivo.
+
+Es posible combinar varios números enteros en una expresión aritmética utilizando operadores aritméticos como `+`, `-`, `*` o `/`. En este caso, el intérprete responde con el valor resultante de la expresión:
+
+```python-repl filename="Python (Interactivo)"
+>>> 5 + 9
+14
+```
+
+Como puedes ver, Python se puede usar de manera bastante intuitiva como una especie de calculadora. El siguiente ejemplo es un poco más complejo e incluye varias operaciones aritméticas interrelacionadas:
+
+```python-repl filename="Python (Interactivo)"
+>>> (21 - 3) * 9 + 6
+168
+```
+
+Aquí puedes ver que el intérprete aplica las leyes de cálculo matemático habituales y genera el resultado esperado. El resultado de la división de dos números enteros no es necesariamente un número entero, por lo que el operador de división siempre devuelve el resultado como un número de coma flotante:
+
+```python-repl filename="Python (Interactivo)"
+>>> 3/2
+1.5
+>>> 2/3
+0.6666666666666666
+>>> 4/4
+1.0
+```
+
+### División de números enteros
+
+Esta característica distingue a Python de muchos otros lenguajes de programación que realizan una división de enteros y devuelven un entero como resultado cuando se dividen dos enteros. Este es también el comportamiento predeterminado en Python 2.
+
+La división de enteros bien puede ser un comportamiento deseado, pero a menudo causa confusión, especialmente para los principiantes en programación y, por lo tanto, se eliminó en Python 3. Si deseas realizar la división de enteros en Python 3, debes usar el operador `//`:
+
+```python-repl filename="Python (Interactivo)"
+>>> 3//2
+1
+>>> 2//3
+0
+```
+
+## Números de coma flotante
+
+El literal de un número de coma flotante consta de una parte entera, un punto decimal y una parte fraccionaria. Al igual que con los números enteros, es posible especificar un signo:
+
+```python-repl filename="Python (Interactivo)"
+>>> 0.5
+0.5
+>>> -123.456
+-123.456
+>>> +1.337
+1.337
+```
+
+Ten en cuenta que el separador decimal debe ser un punto. No se permite la notación con coma. Los flotantes se pueden usar en términos tan intuitivos como los enteros:
+
+```python-repl filename="Python (Interactivo)"
+>>> 1.5 / 2.1
+0.7142857142857143
+```
+
+También es posible especificar un flotante en notación científica:
+
+```python-repl filename="Python (Interactivo)"
+>>> 12.345e3
+12345.0
+>>> 12.345E3
+12345.0
+```
+
+Una expresión como `XeY` representa el número `X` por `10` elevado a `Y`.
+
+Más adelante volveremos a estos tipos de datos básicos y los cubriremos con mayor detalle. A continuación, veremos otro tipo de datos importante: las cadenas de caracteres.
+
+## Cadenas de caracteres
+
+Además de los números, las cadenas de caracteres, también conocidas como *strings*, son extremadamente importantes en casi todos los programas del mundo real. Las cadenas permiten que el usuario lea, guarde, edite o genere texto.
+
+Para crear una cadena, el texto asociado se escribe entre comillas dobles:
+
+```python-repl filename="Python (Interactivo)"
+>>> "Hola Mundo"
+'Hola Mundo'
+>>> "abc123"
+'abc123'
+```
+
+Las comillas simples que usa el intérprete para generar el valor de una cadena son una notación equivalente a las comillas dobles que usamos y que también puedes usar:
+
+```python-repl filename="Python (Interactivo)"
+>>> 'Hola Mundo'
+'Hola Mundo'
+```
+
+De manera similar a los números enteros y flotantes, también puedes utilizar operadores para cadenas. Por ejemplo, el operador `+` une dos cadenas:
+
+```python-repl filename="Python (Interactivo)"
+>>> "Hola" + " " + "Mundo"
+'Hola Mundo'
+```
+
+Las dos notaciones diferentes para cadenas son útiles, por ejemplo, cuando se deben incluir comillas simples o dobles como caracteres en una cadena:
+
+```python-repl filename="Python (Interactivo)"
+>>> 'Él dijo "Hola"'
+'Él dijo "Hola"'
+>>> "Él dijo 'Hola'"
+"Él dijo 'Hola'"
+```
+
+## Listas
+
+Pasemos ahora a las listas. Una lista es una colección ordenada de elementos de cualquier tipo de datos. Para crear una lista, los literales de los valores que debe contener se escriben entre corchetes separados por comas:
+
+```python-repl filename="Python (Interactivo)"
+>>> [1, 2, 3]
+[1, 2, 3]
+>>> ["Esto", "es", "una", "lista"]
+['Esto', 'es', 'una', 'lista']
+```
+
+Además, los elementos de la lista se pueden definir en forma de expresiones:
+
+```python-repl filename="Python (Interactivo)"
+>>> [-7 / 4, 5 * 3]
+[-1.75, 15]
+```
+
+Los elementos de una lista no tienen que ser todos del mismo tipo y en particular pueden ser listas ellos mismos, como muestra el siguiente ejemplo:
+
+```python-repl filename="Python (Interactivo)"
+>>> ["Python", 1, 2, -7 / 4, [1, 2, 3]]
+['Python', 1, 2, -1.75, [1, 2, 3]]
+```
+
+De manera similar a las cadenas, las listas se pueden ampliar con nuevos elementos utilizando el operador `+`, el cual forma la concatenación de dos listas.
+
+```python-repl filename="Python (Interactivo)"
+>>> [1, 2, 3] + ["Python", "es", "genial"]
+[1, 2, 3, 'Python', 'es', 'genial']
+```
+
+Los elementos de la lista se numeran consecutivamente a partir de `0` y se puede acceder a ellos mediante el operador `[]`.
+
+```python-repl filename="Python (Interactivo)"
+>>> x = ["Python", "es", "genial"]
+>>> x[0]
+'Python'
+>>> x[1]
+'es'
+>>> x[2]
+'genial'
+```
+
+## Diccionarios
+
+El quinto y último tipo de datos que queremos presentar en este punto es el *diccionario*. Un diccionario almacena asignaciones de claves a valores. Para crear un diccionario, los pares clave-valor se escriben entre corchetes separados por comas. Hay dos puntos entre una clave y el valor correspondiente:
+
+```python-repl filename="Python (Interactivo)"
+>>> d = {"clave1": "valor1", "clave2": "valor2"}
+```
+
+Puedes acceder a un valor subyacente a través de una clave. Para este propósito, los corchetes se utilizan como en las listas:
+
+```python-repl filename="Python (Interactivo)"
+>>> d["clave1"]
+'valor1'
+>>> d["clave2"]
+'valor2'
+```
+
+También puedes usar esta operación de acceso para modificar valores o ingresar nuevos pares clave-valor en el diccionario:
+
+```python-repl filename="Python (Interactivo)"
+>>> d["clave2"] = "valor2.1"
+>>> d["clave2"]
+'valor2.1'
+>>> d["clave3"] = "valor3"
+>>> d["clave3"]
+'valor3'
+>>> d
+{'clave1': 'valor1', 'clave2': 'valor2.1', 'clave3': 'valor3'}
+```
+
+Tanto las claves como los valores pueden tener diferentes tipos de datos en lugar de los strings utilizados en este punto. Volveremos sobre eso a su debido tiempo.
+
+Basaremos nuestras descripciones posteriores en la presentación básica de los cinco tipos de datos presentados en las secciones anteriores (entero, flotante, cadena, lista y diccionario) hasta que lleguemos a siguientes capítulos, donde entraremos en mayor detalle, sobre todos los tipos de datos integrados en Python.

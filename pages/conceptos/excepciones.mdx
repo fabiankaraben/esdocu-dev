@@ -1,0 +1,65 @@
+# Excepciones en programación
+
+## ¿Qué es una excepción?
+
+Las *excepciones* son el mecanismo que utiliza la mayoría de lenguajes para permitirnos controlar eventualidades que se aparten del correcto funcionamiento de un programa.
+
+Por ejemplo al solicitar información de un recurso en Internet, puede ocurrir que temporalmente ese recurso no esté disponible. Estas son cuestiones que no podemos preveer en el momento de la programación y por tal motivo los lenguajes nos permiten escribir código para definir comportamientos que puedan controlar esas eventualidades, por ejemplo se puede cancelar una transacción o se puede mostrar un mensaje al usuario informando que el recurso no está disponible en ese momento.
+
+El ejemplo de solicitar información desde Internet es el más típico pero la captura y manejo de excepciones se utiliza en una gran variedad de casos.
+
+Veremos ejemplos de control de excepciones en la siguiente pantalla.
+
+## Try y catch
+
+Las funciones incluidas en los lenguajes, al producirse una irregularidad durante la ejecución del código, normalmente lanzarán una excepción que nosotros podemos capturar y manejar.
+
+Veamos un ejemplo en el lenguaje *Dart*:
+
+```dart filename="Dart"
+try {
+    // Ejemplo de consulta de contenido en Internet.
+    print(await http.read('https://example.com/foobar.txt'));
+} catch (e) {
+    // Notificar que algo salió mal y los detalles en 'e'.
+    print('Algo salió mal, detalles: $e');
+}
+```
+
+Prestemos atención a las líneas *try* y *catch*. Dentro del bloque *try* colocamos el código que podría lanzar una excepción, y dentro del bloque *catch* colocamos el código para controlar esa posible excepción.
+
+En este ejemplo si por alguna razón el recurso remoto no se encuentra disponible, se ejecutará la función *print* de la línea 6.
+
+## Throw
+
+La sentencia *throw* se utiliza para lanzar una excepción.
+
+Al igual que lo hacen las funciones integradas en los lenguajes, si escribimos una función que pueda encontrarse con una eventualidad problemática, podemos lanzar nuestra propia excepción personalizada para que el código que utilice esta función pueda capturarla.
+
+Veamos un ejemplo del lanzamiento de una excepción personalizada en *Dart*:
+
+```dart filename="Dart"
+if (algunProblema) {
+    throw 'Aquí describiremos el problema';
+}
+```
+
+También podemos utilizar las excepciones personalizadas para capturar un conjunto de excepciones con detalles técnicos y lanzar en su lugar nuestra propia versión de excepción con un mensaje más amigable que se pueda mostrar directamente al usuario final.
+
+## Lenguajes sin try y catch
+
+Algunos lenguajes no poseen las sentencias *try* y *catch*, en su lugar desarrollan otros métodos para controlar los errores.
+
+Por ejemplo en el lenguaje de programación *Go* el control de errores tiene la siguiente forma:
+
+```go filename="Go"
+val, err := unaFuncionCualquiera();
+
+if err != nil {
+	// handle error
+} else {
+	// success
+}
+```
+
+En *Go* una función puede devolver más de un valor, y por lo tanto normalmente las funciones devuelven un primer valor con el resultado de la operación, y devuelven un segundo valor que puede ser el detalle de un error producido o puede ser el valor *nil* el cual significa que no se produjo ningún error.

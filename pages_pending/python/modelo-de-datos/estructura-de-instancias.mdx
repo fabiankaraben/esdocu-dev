@@ -1,0 +1,116 @@
+# Estructura de instancias
+
+Cada instancia en Python incluye tres componentes: su tipo de datos, su valor y su identidad. Se podría pensar que nuestro ejemplo inicial tiene tres partes, como se muestra en la Figura 7.4.
+
+## Tipo de datos
+
+El tipo de datos sirve como modelo cuando se crea la instancia y define qué valores puede asumir la instancia. Por ejemplo, el tipo de datos int le permite almacenar un número entero. Las cadenas se pueden gestionar mediante el tipo de datos str. En el siguiente ejemplo, puede ver cómo identificar los tipos de datos de diferentes instancias usando el tipo:
+
+```python-repl filename="Python (Interactivo)"
+>>> type(1337)
+<class 'int'>
+>>> type("Hello World")
+<class 'str'>
+>>> v1 = 2674
+>>> type(v1)
+<class 'int'>
+```
+
+La función type es útil, entre otras cosas, cuando quieres comprobar si dos instancias tienen el mismo tipo o si una instancia tiene un tipo específico:
+
+```python-repl filename="Python (Interactivo)"
+>>> v1 = 1337
+>>> type(v1) == type(2674)
+True
+>>> type(v1) == int
+True
+>>> type(v1) == str
+False
+```
+
+Sin embargo, tenga en cuenta que un tipo se refiere sólo a instancias y no tiene nada que ver con las referencias vinculadas. Una referencia no tiene tipo y puede hacer referencia a instancias de cualquier tipo. Lo siguiente es absolutamente posible:
+
+```python-repl filename="Python (Interactivo)"
+>>> first_a_string = "I am a string"
+>>> type(first_a_string)
+<class 'str'>
+>>> first_a_string = 1789
+>>> type(first_a_string)
+<class 'int'>
+```
+
+Entonces está mal decir "first_a_string tiene tipo str". Lo correcto es decir "first_a_string actualmente hace referencia a una instancia de tipo str". Sin embargo, dado que la primera conduce en muchos casos a descripciones mucho más simples y comprensibles, esta formulación también se utiliza a menudo en el contexto de Python. En este libro también simplificamos muchas descripciones en aras de la legibilidad de esta manera.
+
+## Valor
+
+Lo que constituye específicamente el valor de una instancia depende de su tipo. Los tipos pueden ser, por ejemplo, números, cadenas o datos de otros tipos, que conocerá más adelante. En los ejemplos anteriores, eran 1337, 2674, 1798, "Hola mundo" y "Soy una cadena".
+Puede utilizar el operador == para comparar instancias con respecto a su valor:
+
+```python-repl filename="Python (Interactivo)"
+>>> v1 = 1337
+>>> v2 = 1337
+>>> v1 == v2
+True
+>>> v1 == 2674
+False
+```
+
+Con la ayuda de nuestro modelo gráfico (ver Figura 7.5), se puede ilustrar bien el funcionamiento del operador ==.
+
+La comparación de valores sólo es útil si se refiere a tipos de datos estructuralmente similares, como números enteros y flotantes:
+
+```python-repl filename="Python (Interactivo)"
+>>> number1 = 1987.0
+>>> type(number1)
+<class 'float'>
+>>> number2 = 1987
+>>> type(number2)
+<class 'int'>
+>>> number1 == number2
+True
+```
+
+Aunque número1 y número2 tienen tipos diferentes, compararlos mediante == devuelve el valor de verdad Verdadero.
+
+Estructuralmente, los números y las cadenas tienen poco en común ya que los números son valores únicos, mientras que las cadenas combinan varias letras en una sola unidad. Por esta razón, el operador == para la comparación entre cadenas y números siempre devuelve Falso, incluso si los valores parecen "iguales" para un humano:
+
+```python-repl filename="Python (Interactivo)"
+>>> string = "1234"
+>>> string == 1234
+False
+```
+
+## Identidad
+
+La identidad de una instancia sirve para distinguirla de todas las demás instancias. Esto se puede comparar con la huella digital individual de una persona, ya que es única para cada instancia dentro de un programa y no puede cambiar. Una identidad es un número entero y se puede determinar usando la función id:
+
+```python-repl filename="Python (Interactivo)"
+>>> id(1337)
+134537016
+>>> v1 = "Hello World"
+>>> id(v1)
+3082572528
+```
+
+Las identidades se vuelven importantes siempre que quieras verificar si una instancia es específica y no solo una con el mismo tipo y valor:
+
+```python-repl filename="Python (Interactivo)"
+>>> v1 = [1,2,3]
+>>> v2 = v1
+>>> v3 = [1,2,3]
+>>> type(v1) == type(v3)
+True
+>>> v1 == v3
+True
+>>> id(v1) == id(v3)
+False
+>>> id(v1) == id(v2)
+True
+```
+
+En este ejemplo, Python ha creado dos instancias diferentes con lista de tipos y valor [1,2,3], donde v1 y v2 hacen referencia a la misma instancia. La figura 7.6 ilustra esto gráficamente.
+
+La comparación sobre igualdad de identidades es tan importante en Python que se ha definido un operador separado para este propósito: is.
+La expresión id(referencia1) == id(referencia2) significa lo mismo que referencia1 es referencia2. La figura 7.7 ilustra esto.
+
+La comparación que se muestra en la Figura 7.7 arroja el valor de verdad Falso porque las identidades de las dos instancias difieren.

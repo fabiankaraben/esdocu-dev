@@ -1,0 +1,45 @@
+# Escribir datos en un archivo en Python
+
+En la sección anterior, nos centramos en la lectura de archivos. El hecho de que también funcione al revés es el tema de esta sección. Para abrir un archivo para escribir, también utilizamos la función incorporada `open`. Recordarás que esta función espera un modo como segundo parámetro, que tenía que ser `r` para lectura. De manera similar, se debe especificar `w` (write) si el archivo se va a abrir para escritura. Si el archivo deseado ya existe, se borrará. En cualquier caso se creará un nuevo archivo:
+
+```python filename="Python"
+file_object = open("salida.txt", "w")
+```
+
+Después de que se hayan escrito todos los datos en el archivo, el objeto del archivo debe cerrarse llamando al método close:
+
+```python filename="Python"
+file_object.close()
+```
+
+Además, al escribir un archivo, debes usar la instrucción `with` en lugar de usar explícitamente `open` y `close`:
+
+```python filename="Python"
+with open("salida.txt", "w") as file_object:
+    # Hacer algo con file_object
+    pass
+```
+
+Para escribir una cadena en el archivo abierto, puedes llamar al método `write` del objeto de archivo. El siguiente programa de ejemplo pretende ser una contraparte del ejemplo de la última lección. Suponemos que palabras hace referencia a un diccionario que contiene términos en inglés como claves y las traducciones en español como valores, por ejemplo:
+
+```python filename="Python"
+words = {
+    "Germany": "Alemania",
+    "Spain": "España",
+    "Greece": "Grecia"
+}
+```
+
+Entonces es un diccionario como el creado por el programa de ejemplo de la sección anterior:
+
+```python filename="Python"
+with open("salida.txt", "w") as file_object:
+    for word in words:
+        file_object.write(f"{word} {words[word]}\n")
+```
+
+Primero, abrimos un archivo llamado `salida.txt` para escribir y luego iteramos sobre todas las claves del diccionario de palabras. En cada iteración, se escribe una cadena con el formato correspondiente en el archivo mediante `file_object.write`. Ten en cuenta que al escribir un archivo, debes saltar explícitamente a una nueva línea agregando `\n`.
+
+Más adelante echaremos un vistazo más de cerca a la sintaxis de cadenas `f"..."` utilizadas para formatear cadenas de texto. En este punto, debería ser suficiente para nosotros saber que una cadena `f"..."` admite la definición de marcadores de posición en la cadena que se reemplazan por los valores de las expresiones dadas entre llaves.
+
+El archivo escrito en este ejemplo se puede volver a leer con el programa de ejemplo de la lección anterior [Leer datos de un archivo en Python](/python/archivos/leer-archivo).

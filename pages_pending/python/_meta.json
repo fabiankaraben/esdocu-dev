@@ -1,0 +1,69 @@
+{
+  "-- Introduccion": {
+    "title": "Introducción",
+    "type": "separator"
+  },
+  "index": "¿Qué es Python?",
+  "por-que-python": "¿Por qué Python?",
+  "-- Entorno": {
+    "title": "Entorno",
+    "type": "separator"
+  },
+  "elegir-version": "Versión de Python",
+  "python2-vs-python3": "Python 2 vs Python 3",
+  "-- Var y DT": {
+    "title": "Variales y Tipos de datos",
+    "type": "separator"
+  },
+  "b": "Versión de Python",
+  "-- Condicionales": {
+    "title": "Condicionales",
+    "type": "separator"
+  },
+  "c": "Versión de Python",
+  "-- Ciclos": {
+    "title": "Ciclos",
+    "type": "separator"
+  },
+  "d": "Versión de Python",
+  "-- Listas, tuplas y sets": {
+    "title": "Listas, tuplas y sets",
+    "type": "separator"
+  },
+  "e": "Versión de Python",
+  "-- Diccionarios": {
+    "title": "Diccionarios",
+    "type": "separator"
+  },
+  "f": "Versión de Python",
+  "-- Funciones": {
+    "title": "Funciones y módulos",
+    "type": "separator"
+  },
+  "g": "Versión de Python",
+  "-- POO": {
+    "title": "Programación Orientada a Objetos",
+    "type": "separator"
+  },
+  "h": "Versión de Python",
+  "-- Archivos": {
+    "title": "Archivos",
+    "type": "separator"
+  },
+  "i": "Versión de Python",
+  "-- Errors": {
+    "title": "Errors",
+    "type": "separator"
+  },
+  "j": "Versión de Python",
+  "-- Libs y Packs": {
+    "title": "Bibliotecas y paquetes",
+    "type": "separator"
+  },
+  "k": "Versión de Python",
+  "-- Avanzado": {
+    "title": "Avanzado",
+    "type": "separator"
+  },
+  "l": "Versión de Python"
+}

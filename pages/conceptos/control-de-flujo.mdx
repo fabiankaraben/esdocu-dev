@@ -1,0 +1,192 @@
+# Sentencias de control de flujos
+
+## Sentencia if...else
+
+Prácticamente todos los lenguajes basan su flujo de ejecución en el cumplimiento de un conjunto de condiciones.
+
+La sentencia más simple a la hora de establecer un condicional de ejecución es la sentencia if.
+
+Repasemos un ejemplo ya visto (en *Dart*):
+
+```dart filename="Dart"
+int unNumero = 5;
+
+// Condicional simple
+if (unNumero > 3) {
+    print("El número es mayor a 3");
+}
+```
+
+En este ejemplo la función *print* se ejecuta únicamente si se cumple la condición de la sentencia *if*, es decir, si el número es mayor a 3. Si la condición no se cumple, la ejecución simplemente ignora el contenido entre llaves (conocido como el *bloque* o *cuerpo* de la sentencia *if*).
+
+También se puede establecer un *bloque* de código para el caso en el que no se cumpla la condición, por ejemplo:
+
+```dart filename="Dart"
+int unNumero = 5;
+
+if (unNumero > 3) {
+    print("El número es mayor a 3");
+} else {
+    print("El número no es mayor a 3");
+}
+```
+
+E incluso es posible definir una o más condiciones adicionales, por ejemplo:
+
+```dart filename="Dart"
+int unNumero = 5;
+
+if (unNumero > 3) {
+    print("El número es mayor a 3");
+} else if (unNumero == 3){
+    print("El número es igual a 3");
+} else {
+    print("El número no es mayor o igual a 3");
+}
+```
+
+En este caso la segunda condición solo se evalúa si la primer condición no se cumplió, y el bloque *else* solo se ejecuta si las dos condiciones anteriores no se cumplieron.
+
+Hay que aclarar que cada lenguaje tiene su propia sintaxis y algunas pequeñas diferencias, pero este es el funcionamiento típico que encontraremos siempre.
+
+## Sentencia switch/case
+
+Cuando una sentencia *if* posee muchas condiciones adicionales *else if*, es posible que sea conveniente utilizar en su lugar una sentencias *switch/case*:
+
+```dart filename="Dart"
+var fruta = "Manzana";
+
+switch (fruta) {
+    case 'Pera':
+        print("Es una pera");
+        break;
+    case 'Manzana':
+        print("Es una manzana");
+        break;
+    case 'Ciruela':
+        print("Es una ciruela");
+        break;
+    default:
+        print("Es una fruta misteriosa");
+}
+```
+
+La sentencia *switch* en este ejemplo comparará la variable *fruta* con el valor definido para cada *case*, y en el caso de producirse una coincidencia ejecutará las lineas posteriores hasta encontrar una sentencia *break*. Si no se encuentra ninguna coincidencia *case*, se ejecutarán las lineas posteriores a *default*.
+
+Veremos la definición de la sentencia *break* pronto, por el momento en este ejemplo *break* produce que la ejecución salga completamente del bloque *switch* y continúe en la línea siguiente al mismo.
+
+## Bucles for
+
+Es normal encontrarnos en un escenario en el que necesitamos ejecutar repetidamente un bloque de código, si el número de repeticiones necesarias es conocido, podemos utilizar un bucle *for* como se muestra en el siguiente ejemplo:
+
+```dart filename="Dart"
+// Ejecutar este bloque desde i = 1 hasta i = 999 veces
+for (var i = 1; i < 1000; i++) {
+	print("Repetición número " + i);
+}
+```
+
+El resultado de este ejemplo será:
+
+```plaintext filename="Salida en consola"
+Repetición número 1
+Repetición número 2
+Repetición número 3
+...
+Repetición número 999
+```
+
+Esto nos evita escribir 999 veces la línea de la función *print*.
+
+El contenido entre paréntesis de la definición de este bucle *for* se divide en tres partes:
+
+- la primer parte **var i = 1** define una variable con un valor inicial de 1,
+- la segunda parte **i < 1000** es la condición que se evaluará antes de cada repetición, si esta condición es verdadera se ejecuta el código contenido en el bloque del bucle *for*.
+- la tercer parte **i++** aumenta en una unidad el valor de la variable *i* luego de cada ejecución del bloque del bucle.
+
+El bucle finaliza cuando la condición de la segunda parte no se cumpla.
+
+## Bucles while
+
+El bucle *while* es similar en funcionalidad al bucle *for*, pero es más cómodo de utilizar cuando no es necesario que el bucle defina su propia variable para manejar la condición de finalización del bucle, o cuando el número de repeticiones no se conoce.
+
+Veamos un ejemplo de bucle *while* en *Dart*:
+
+```dart filename="Dart"
+// Una lista o array de frutas
+List frutas = ['Manzana', 'Pera', 'Ciruela', 'Limón', 'Naranja'];
+
+// Indice necesario para recorrer la lista de frutas
+int indice = 0;
+
+// Repetir mientras la fruta no sea 'Limón'
+while(frutas[indice] != 'Limón') {
+    indice += 1;
+}
+
+// Registrar el resultado
+int cantidad = indice;
+
+// Imprimir el resultado
+print("Cantidad de frutas antes del Limón:");
+print(cantidad);
+```
+
+El bloque del bucle *while* se ejecutará repetidamente siempre que la condición entre paréntesis continúe siendo verdadera.
+
+En este caso es necesario aumentar en una unidad la variable *indice* dentro del cuerpo o bloque del bucle, si olvidaramos realizar esto, estaríamos frente a un *bucle infinito* lo cual suele provocar que el programa deje de responder mientras se ejecuta.
+
+## Break y continue
+
+Por último en esta lección vamos a ver el uso de las sentencias *break* y *continue*.
+
+Utilizaremos *break* para interrumpir completamente la ejecución de una sentencia *switch*, un bucle *for* o un bucle *while*, por ejemplo:
+
+```dart filename="Dart"
+for (var i = 0; i < 50; i++) {
+    // Evaluar si corresponde interrumpir
+    if (i == 5) {
+        // Interrumpir el bucle for
+        break;
+    }
+    print(i);
+}
+```
+
+La salida de este código será:
+
+```plaintext filename="Salida en consola"
+0
+1
+2
+3
+4
+```
+
+Al llegar al valor 5, el condicional *if* se cumple, se ejecuta la sentencia *break* y la ejecución del código continúa justo en la línea de código que exista luego de la llave de cierre del bucle *for*.
+
+Utilizaremos *continue* para saltar únicamente la repetición actual, por ejemplo:
+
+```dart filename="Dart"
+for (var i = 0; i < 5; i++) {
+    // Evaluar si corresponde realizar un salto
+    if (i == 3) {
+        // Saltar esta repetición
+        continue;
+    }
+    print(i);
+}
+```
+
+La salida de este ejemplo será:
+
+```plaintext filename="Salida en consola"
+0
+1
+2
+4
+```
+
+Cuando la variable *i* es igual a 3 la ejecución de esa repetición se interrumpe con la sentencia *continue* y por lo tanto no se ejecuta la función *print* para ese valor.
+
+Este es el comportamiento que encontraremos en la mayoría de lenguajes tanto para sentencias condicionales como para bucles, aunque la sintaxis será ligeramente diferente en cada caso.

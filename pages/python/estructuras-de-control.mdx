@@ -1,0 +1,21 @@
+# Estructuras de control
+
+Una estructura de control es una construcción para controlar el flujo del programa. Hay dos tipos de estructuras de control en Python: *bucles* y *condicionales*. Los **bucles** se utilizan para ejecutar un bloque de código varias veces. Los **condicionales**, por otro lado, vinculan un bloque de código a una condición. Python presenta dos subtipos de bucles y condicionales, que se describirán en las siguientes lecciones.
+Las estructuras de control pueden anidarse unas dentro de otras de cualquier forma. La profundidad de la sangría crece continuamente en el proceso.
+
+## La declaración `pass`
+
+Durante el desarrollo de un programa, puede suceder que en un momento determinado una estructura de control se implemente sólo parcialmente. El programador crea un encabezado de declaración pero no agrega un cuerpo de declaración porque es posible que quiera ocuparse primero de otras cosas más importantes. Sin embargo, un encabezado de declaración suspendido en el aire sin un cuerpo correspondiente es un error de sintaxis.
+
+Para ello, puedes utilizar la declaración `pass`, una declaración que no hace nada en absoluto. Se puede aplicar de la siguiente manera:
+
+```python filename="Python"
+if x == 1:
+    pass
+elif x == 2:
+    print("x tiene el valor 2")
+```
+
+En este caso, sólo se encuentra `pass` en el cuerpo de la declaración `if`. Por tanto, si `x` tiene el valor `1`, no sucederá nada.
+
+El propósito de la declaración `pass` es evitar errores de sintaxis en versiones preliminares del programa. Los programas terminados generalmente no contienen declaraciones `pass`.

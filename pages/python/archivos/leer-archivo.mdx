@@ -1,0 +1,148 @@
+# Leer datos de un archivo en Python
+
+Primero, describiremos cómo puedeS leer datos de un archivo. Para hacer esto, necesitamos acceder a ese archivo en modo de solo lectura. El archivo de prueba que usaremos en este ejemplo es un diccionario que contiene en cada línea una palabra en inglés y, separada por un espacio, su traducción al español. El archivo debe llamarse `diccionario.txt`:
+
+```plaintext filename=""
+Spain España
+Germany Alemania
+Sweden Suecia
+France Francia
+Italy Italia
+```
+
+En el programa, queremos preparar los datos de este archivo para poder acceder a ellos cómodamente más adelante en un diccionario. Como pequeño extra, ampliaremos el programa para permitir que el usuario solicite la traducción de un término en inglés.
+
+## Abrir y cerrar un archivo
+
+Primero, se debe abrir el archivo para su lectura. Para ello utilizamos la función incorporada `open`. Esta función devuelve el llamado *objeto de archivo*:
+
+```python filename="Python"
+file_object = open("diccionario.txt", "r")
+```
+
+Como primer parámetro de `open` pasamos una cadena que contiene la ruta al archivo. Ten en cuenta que aquí se permiten rutas relativas y absolutas. El segundo parámetro también es una cadena de caracteres y especifica el modo en el que se abrirá el archivo, donde `r` significa *lectura* y significa que el archivo se abre para lectura. Asociamos el objeto de archivo devuelto por la función con la referencia `file_object`. Si el archivo no existe, se genera un `FileNotFoundError`:
+
+```plaintext filename="Python"
+Traceback (most recent call last):
+  File "diccionario.py", line 1, in <module>
+    file_object = open("diccionario.txt", "r")
+FileNotFoundError: [Errno 2] No such file or directory: 'diccionario.txt'
+```
+
+Una vez que se llama a `open`, el objeto de archivo se puede usar para leer datos del archivo. Cuando el archivo ha sido leído, debe cerrarse explícitamente llamando al método `close`:
+
+```python filename="Python"
+file_object.close()
+```
+
+Después de llamar a este método, no se pueden leer más datos del objeto de archivo.
+
+## La declaración `with`
+
+En la sección anterior, vio cómo puede abrir un archivo usando la función abierta incorporada y cerrarlo después de usar el método de cierre del objeto de archivo abierto:
+
+```python filename="Python"
+file_object = open("diccionario.txt", "r")
+# Hacer algo con file_object
+file_object.close()
+```
+
+El uso de `open` y `close` es un patrón típico que encontrarás una y otra vez en diversas situaciones. Además de las operaciones con archivos, las conexiones de red, por ejemplo, también representan situaciones en las que primero se debe establecer una conexión, luego utilizarla y finalmente cerrarla.
+
+El uso explícito de `open` y `close`, como se muestra en el ejemplo anterior, conlleva el riesgo de que debido a un error de programación o debido a la omisión del manejo de errores, no se llame al método `close` y, por lo tanto, el objeto de archivo no se cierre. Para asegurarse de que no se produzcan tales errores, debes utilizar la instrucción `with` para abrir un archivo:
+
+```python filename="Python"
+with open("diccionario.txt", "r") as file_object:
+    # Hacer algo con file_object
+    pass
+```
+
+Tan pronto como el flujo de control abandona el bloque de instrucciones sangrado debajo de una instrucción `with`, el objeto de archivo abierto con la instrucción `with` se cierra automáticamente. En particular, esto también se aplica en caso de un error que no se haya solucionado.
+
+Los objetos como el objeto de archivo que se pueden utilizar junto con una declaración with también se denominan *administradores de contexto*. En este punto, es suficiente saber que la declaración with garantiza que el administrador de contexto se cierre correctamente en todos los casos.
+
+## Leer el contenido del archivo
+
+En el siguiente paso, queremos leer el archivo línea por línea. Esto es relativamente simple ya que el objeto de archivo se puede iterar línea por línea. Entonces podemos usar el viejo y familiar bucle `for`:
+
+```python filename="Python"
+with open("diccionario.txt", "r") as file_object:
+    for line in file_object:
+        print(line)
+```
+
+En el bucle `for`, iteramos sobre el objeto de archivo línea por línea, y `line` cada vez hace referencia al contenido de la línea actual. En este caso, cada línea del cuerpo del bucle simplemente se imprime. Sin embargo, queremos crear un diccionario en el programa que contenga los términos en inglés como claves y los respectivos términos en español como valores después de leer el archivo.
+
+Para hacer esto, primero creamos un diccionario vacío:
+
+```python filename="Python"
+words = {}
+```
+
+Luego, el archivo `diccionario.txt` se abre para leerlo y se itera en un bucle sobre todas las líneas del archivo:
+
+```python filename="Python"
+with open("diccionario.txt", "r") as file_object:
+    for line in file_object:
+        assignment = line.split(" ")
+        if len(assignment) == 2: # considerar solo líneas válidas
+            words[assignment[0]] = assignment[1]
+```
+
+En el cuerpo del bucle, ahora usamos el método `split` para dividir la línea leída actualmente en dos partes de una lista: la parte a la izquierda del espacio (es decir, la palabra en inglés) y la parte a la derecha de el espacio, es decir, la palabra en español. En la siguiente línea del cuerpo del bucle, se crea una nueva entrada en el diccionario, con la clave de `assignment[0]` (la palabra en inglés) y el valor de `assignment[1]` (la palabra en español). Finalmente, decidimos saltarnos tácitamente una línea si no pudimos extraer exactamente dos componentes de ella. Elegimos este tipo de manejo de errores por razones didácticas para mantener el programa lo más simple posible. En la práctica, deberías preguntarte si deberías mostrar las líneas problemáticas o incluso cerrar el programa con un mensaje de error.
+
+Ahora modifica el código anterior para que después de cerrar el objeto de archivo, el diccionario generado se imprima con la función `print`. La salida se verá así:
+
+```plaintext filename="Salida"
+{'Spain': 'España\n', 'Germany': 'Alemania\n', 'Sweden': 'Suecia\n', 'France': 'Francia\n', 'Italy': 'Italia\n'}
+```
+
+Puedes ver que después de cada valor hay un `\n`, que es la secuencia de escape para un salto de línea. Esto se debe a que un salto de línea en Python se considera un carácter y, por tanto, parte del contenido del archivo. De este modo, cada línea de un archivo se lee en su totalidad, incluido un posible salto de línea al final. Por supuesto, el salto de línea sólo se lee si realmente existe.
+
+No queremos volver a encontrar el salto de línea en el diccionario final. Por esta razón, llamamos al método `strip` de la cadena de texto `line` en cada iteración. Esto elimina todos los espacios en blanco, incluidos los saltos de línea, al principio y al final de la cadena:
+
+```python filename="Python"
+words = {}
+with open("diccionario.txt", "r") as file_object:
+    for line in file_object:
+        line = line.strip()
+        assignment = line.split(" ")
+        if len(assignment) == 2: # considerar solo líneas válidas
+            words[assignment[0]] = assignment[1]
+```
+
+De esta forma, el contenido del archivo se ha transferido completamente a un diccionario.
+
+Como pequeño extra, ahora queremos permitir que el usuario envíe solicitudes de traducción al programa. La secuencia de flujo, debería verse así:
+
+```plaintext filename="Terminal"
+Introduce una palabra: Germany
+La palabra en español es: Alemania
+Introduce una palabra: Italy
+La palabra en español es: Italia
+Introduce una palabra: Greece
+La palabra es unknown
+```
+
+En el programa leemos las solicitudes del usuario en un bucle infinito. El operador `in` nos permite comprobar si la palabra leída existe como clave en el diccionario. En caso afirmativo, se emitirá la correspondiente traducción al español. Si la palabra ingresada no existe, se mostrará un mensaje de error:
+
+```python filename="Python"
+words = {}
+with open("diccionario.txt", "r") as file_object:
+    for line in file_object:
+        line = line.strip()
+        assignment = line.split(" ")
+        if len(assignment) == 2: # considerar solo líneas válidas
+            words[assignment[0]] = assignment[1]
+while True:
+    word = input("Introduce una palabra: ")
+    if word in words:
+        print("La palabra en español es:", words[word])
+    else:
+        print("La palabra es unknown")
+```
+
+El programa de muestra presentado aquí está lejos de ser perfecto, pero muestra muy bien cómo los objetos de archivo y también los diccionarios se pueden usar de manera significativa.
+
+No dudes en ampliar el programa. Por ejemplo, podrías permitir al usuario salir del programa correctamente, ofrecer traducciones en ambas direcciones o permitir el uso de múltiples archivos fuente.
+

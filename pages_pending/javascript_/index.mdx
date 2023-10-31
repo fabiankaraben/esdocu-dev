@@ -1,0 +1,122 @@
+# Introducción a JavaScript
+
+Esta sección brindará una breve descripción general de JavaScript, pero sin entrar en detalles del lenguaje. Esencialmente, ofrecerá una breve descripción histórica del lenguaje e introducirá varias áreas de aplicación donde se usa JavaScript hoy en día.
+
+## Historia
+
+Las historias de los lenguajes de programación suelen ser bastante insulsas y rara vez muy interesantes. Por esta razón, mantendremos esta sección lo más breve posible y solo brindaremos los puntos más importantes sin entrar en detalles de la versión y similares.
+
+Al igual que los programas de software, los lenguajes de programación también se actualizan de vez en cuando. En ese caso, se agregan nuevas funciones al lenguaje de programación para facilitar el trabajo del desarrollador, mientras que se eliminan otras funciones que causaron problemas en el pasado o que simplemente rara vez se usaban. Así que en el pasado también hubo diferentes versiones de JavaScript.
+
+La historia de JavaScript comienza en 1995, cuando Brendan Eich diseñó el lenguaje para Netscape Navigator (un navegador ya obsoleto) en un tiempo récord de dos semanas. En un principio JavaScript no tenía su nombre actual; Inicialmente se llamó Mocha y LiveScript. Gracias a la cooperación entre Netscape y Sun (la empresa detrás del lenguaje de programación Java) y por motivos de marketing (el lenguaje de programación Java ya era bastante popular en aquella época), el lenguaje finalmente pasó a llamarse JavaScript. Sin embargo, la similitud del nombre con Java no debería llevarnos a sacar conclusiones precipitadas: aparte del nombre similar, los dos lenguajes tienen poco en común.
+
+Poco después del lanzamiento de JavaScript, Microsoft lanzó un lenguaje más o menos compatible (JScript) para Internet Explorer 3.0. Para reconciliar estos dos lenguajes similares, Netscape envió JavaScript a la Asociación Europea de Fabricantes de Computadoras (ECMA), con el objetivo de crear un estándar unificado para el lenguaje. Desde entonces, este estándar se ejecuta con el nombre ECMAScript, que se adoptó en la versión 6 en 2015 (ES6 o ES2015 para abreviar). Desde entonces, se han agregado nuevas características al estándar cada año, por lo que se acordó no utilizar un número de versión consecutivo separado, sino simplemente enumerar el año calendario respectivo en el número de versión (ver la siguiente tabla).
+
+Historial de versiones de JavaScript/ECMAScript:
+
+|Nombre de la versión|Año de publicación|
+|:---|:---|
+|ES1|1997|
+|ES2|1998|
+|ES3|1999|
+|ES4|No publicada|
+|ES5|2009|
+|ES6/ES2015|2015|
+|ES2016|2016|
+|ES2017|2017|
+|ES2018|2018|
+|ES2019|2019|
+|ES2020|2020|
+|ES2021|2021|
+
+> **Otras variantes de ECMAScript**
+> 
+> Por lo tanto, JavaScript es sólo una variante de este estándar (ejemplos de otras variantes son el conocido ActionScript de Flash y ExtendScript utilizado en numerosos productos de Adobe).
+
+## Campos de aplicación
+
+Hoy en día, JavaScript no sólo juega un papel destacado en el desarrollo de páginas web y aplicaciones web, sino que también es una buena opción para otros tipos de aplicaciones. Las áreas de aplicación más importantes se detallan más adelante.
+
+> **Definición de términos**
+> 
+> Dado que utilizamos los términos página web, sitio web y aplicación web repetidamente a lo largo del libro, los explicaremos brevemente aquí. Una página web es un documento HTML único al que se puede acceder desde una URL específica (por ejemplo, www.example.com/javascript_5554). Un sitio web es una colección de varias páginas web individuales (p. ej., www.example.com).
+> 
+> Sin embargo, una aplicación web es una página web que se parece más a una aplicación de escritorio que a una página web. Los ejemplos incluyen *Google Documents* y aplicaciones de software similares basadas en web.
+
+### Frontend de aplicación Web
+
+Al desarrollar sitios web y aplicaciones web, generalmente se distingue entre la parte que tiene lugar en el lado del cliente en el navegador (el llamado frontend) y la parte que tiene lugar en el lado del servidor (el llamado backend). JavaScript tiene sus raíces en el desarrollo frontend y durante mucho tiempo se utilizó principalmente para implementar la funcionalidad de la interfaz de una página web con efectos dinámicos.
+
+Un término relacionado acuñado en la década de 1990 es HTML dinámico (DHTML), que es la modificación dinámica del código HTML mediante JavaScript. DHTML ha sido olvidado hoy en día porque, desde el punto de vista actual, se basaba en un código JavaScript bastante feo y se caracterizaba más por malas prácticas que por buenas prácticas.
+
+> **Definición**
+> 
+> *DOM* significa *Document Object Model* y se refiere al modelo de objetos detrás de las páginas web. Este tema se discutirá en detalle en capítulos posteriores. Allí también explicaremos, en primer lugar, qué es un modelo de objetos.
+
+> **Definición**
+> 
+> En el contexto del desarrollo de software, las malas prácticas se refieren a técnicas de programación deficientes, mientras que las mejores prácticas se refieren a técnicas de programación particularmente buenas.
+
+En varios sitios web, probablemente hayas visto funciones para ordenar tablas y filtrar entradas de tablas según ciertos criterios. Ambos son casos de uso típicos de modificación dinámica de una página web y, por tanto, de uso de JavaScript.
+
+Un hito importante para JavaScript y la base para aplicaciones web más complejas fue la introducción del objeto `XMLHttpRequest` y el *Ajax* asociado (JavaScript asíncrono y XML), respectivamente, que permitió por primera vez enviar solicitudes asíncronas desde el navegador a un servidor. Por qué esto es tan especial, en qué casos puede ser útil y qué es este objeto `XMLHttpRequest` en primer lugar se explica en detalle en un capítulo posterior. Por ahora, ten en cuenta que generalmente mejora la usabilidad de una aplicación web, ayuda a evitar tiempos de carga y hace que una aplicación web parezca mucho más dinámica.
+
+Para un ejemplo de aplicación típica de recarga dinámica de contenido de una página web, piensa en los teletipos de noticias, que se actualizan solos en ciertos intervalos sin que el usuario tenga que recuperar la página web nuevamente. Lo que hoy se da por sentado, durante mucho tiempo no fue factible de esta forma.
+
+Otro caso de uso típico para usar JavaScript dentro de una página web es la validación de la entrada del formulario; por ejemplo, verificar la validez de la entrada del usuario para determinar si se ha ingresado una dirección de correo electrónico válida o un número de teléfono válido.
+
+Aunque HTML, el lenguaje de marcado de hipertexto para describir documentos web, ha dado un gran salto con el cambio de versión de HTML 4.01 a HTML5 y muchas entradas de formularios ahora también se pueden verificar directamente a través de HTML sin utilizar JavaScript, JavaScript sigue siendo mucho más flexible. En el capítulo correspondiente te mostraremos, entre otras cosas, cómo implementar dicha validación usando JavaScript.
+
+Si sabes un poco sobre HTML (lo cual suponemos que sabes), sabrás que HTML comprende una serie de componentes básicos para definir la interfaz de usuario (UI), incluidos campos de texto, botones de opción, casillas de verificación, tablas, listas, y más.
+
+Sin embargo, HTML no proporciona elementos de interfaz complejos ni componentes de interfaz de usuario, incluidas pestañas, áreas expandibles y contraíbles (acordeones), cuadros de diálogo personalizables, etc. Nuevamente, debes recurrir a JavaScript.
+
+> **Definición**
+> 
+> La interfaz de usuario es lo que permite a una persona interactuar con una computadora (o más generalmente, con una máquina).
+
+> **Definición**
+> 
+> El término biblioteca (library) o biblioteca de software en el contexto de la programación y el desarrollo de software se refiere a una colección de funcionalidades a las que se puede acceder. Para JavaScript, existe una cantidad extremadamente alta de bibliotecas para una amplia variedad de usos.
+
+### Backend de aplicación web
+
+Incluso si no lo notas directamente al interactuar con una aplicación web, una gran parte de la lógica de la aplicación tiene lugar en el lado del servidor, es decir, en el backend, especialmente en aplicaciones complejas. Imagina una función de búsqueda simple para un sitio web: después de haber ingresado los criterios de búsqueda en el formulario de búsqueda y de haber enviado el formulario de búsqueda, y antes de que se muestren los resultados de la búsqueda, la parte esencial, es decir, la búsqueda misma, se lleva a cabo en el servidor. Esto también debe programarse. Es posible que sea necesario consultar las bases de datos, poner los resultados en un formato específico y más.
+
+Hasta hace unos años JavaScript no se podía utilizar para este fin. El lado del servidor estaba reservado para lenguajes como Java o PHP. Pero la introducción de Node.js en particular, un entorno de ejecución que puede ejecutar JavaScript en la línea de comandos (y por lo tanto también en el lado del servidor), condujo a un auge continuo de las aplicaciones JavaScript del lado del servidor.
+
+### Aplicaciones móviles
+
+Las aplicaciones móviles se han vuelto casi más importantes que las aplicaciones web en los últimos años. 
+
+Básicamente, se pueden dividir en tres categorías:
+
+- **Aplicaciones nativas:** <br/>Las aplicaciones nativas son aquellas aplicaciones que han sido desarrolladas para un sistema operativo (móvil) específico, como iOS, Android o Windows Mobile. Las aplicaciones nativas se compilan para un sistema operativo específico: las aplicaciones para iOS se programan en Objective-C (o más recientemente en Swift), las aplicaciones para Android en Java y las aplicaciones para Windows Mobile en C#, por ejemplo. Las aplicaciones nativas tienden a funcionar mejor que las no nativas. Las aplicaciones nativas también ofrecen más opciones para acceder a determinadas funciones de un dispositivo móvil determinado.
+
+- **Aplicaciones HTML5:** <br/>Las aplicaciones HTML5 se desarrollan utilizando únicamente tecnologías estándar HTML5, CSS3 (hojas de estilo en cascada) y JavaScript. La ventaja es que, como no es necesario compilar dichas aplicaciones, no dependen del sistema operativo utilizado (siempre que haya un navegador instalado). Esto significa que una misma aplicación HTML5 puede ejecutarse en iOS, Android y Windows Mobile. Pero las aplicaciones HTML5 no suelen ofrecer el mismo rendimiento que las aplicaciones nativas. Además, no pueden acceder a la funcionalidad completa de un dispositivo móvil determinado.
+
+- **Aplicaciones híbridas:** <br/>Las aplicaciones híbridas son una combinación de aplicaciones nativas y HTML5. Se desarrollan completamente en HTML5, CSS3 y JavaScript, pero se ejecutan en un contenedor nativo especial, que también les permite acceder a funciones de dispositivos móviles ocultas de las aplicaciones solo HTML5, al igual que las aplicaciones nativas.
+
+### Aplicaciones de escritorio
+
+En combinación con HTML5 y CSS3, JavaScript ahora se utiliza no sólo en el navegador, sino también en las aplicaciones de escritorio. Por ejemplo, desde Windows 8 es posible crear aplicaciones nativas íntegramente en estas tecnologías. Los marcos NW.js (http://nwjs.io) y Electron (https://www.electronjs.org) permiten desarrollar aplicaciones de escritorio independientes del sistema operativo para Linux, Windows y Mac.
+
+### Sistemas embebidos
+
+Probablemente hayas escuchado el término Internet de las Cosas (IoT; también llamado Web de las Cosas). Se refiere a la interconexión de objetos (cosas) cotidianos a través de Internet.
+
+Un ejemplo clásico de esto es el frigorífico inteligente que detecta cuando ya no queda leche y actualiza automáticamente la lista de la compra en tu teléfono inteligente o, alternativamente, compra leche directamente a través de la tienda online correspondiente.
+
+IoT también incluye dispositivos portátiles, es decir, micro-computadoras portátiles que se usan (de manera invisible) en prendas de vestir o (visiblemente) directamente en el cuerpo en forma de dispositivos como, por ejemplo, relojes inteligentes. Muchos de estos dispositivos ya son programables desde el primer momento mediante JavaScript: por ejemplo, el reloj inteligente Bangle.js (www.banglejs.com) se puede programar mediante JavaScript, al igual que las luces LED inteligentes Philips Hue (www.philips-hue.com/en-us).
+
+Ejemplos de microcontroladores programables incluyen Tessel (https://tessel.io) y Espruino (www.espruino.com). Con la biblioteca Johnny Five (https://github.com/rwaldron/johnny-five), los micro-ordenadores Arduino también se pueden controlar de forma remota.
+
+Naturalmente, el dominio de IoT también produce muchos casos de uso diferentes para JavaScript. Desde leer sensores de temperatura hasta sistemas de vigilancia doméstica que reaccionan a los movimientos a través de cámaras e inician grabaciones de vídeo, ahora se pueden realizar muchas cosas diferentes con JavaScript. Encontrarás una introducción más detallada a este tema en un capítulo posterior.
+
+### Juegos y aplicaciones 3D
+
+Otros casos de uso de JavaScript incluyen juegos de navegador y aplicaciones 3D. Sin embargo, ambos temas son tan complejos que no los discutiremos en este curso.
+
+> **JavaScript: no es la mejor opción para todo**
+> 
+> Puede parecer que no necesitas ningún lenguaje de programación excepto JavaScript porque puedes hacer todo con él de todos modos, pero esto, por supuesto, no es cierto. En los últimos años se ha producido un tremendo auge en torno a JavaScript, pero esto también debería cuestionarse hasta cierto punto. Muchas cosas tampoco son tan fáciles de implementar en JavaScript, y para muchas otras cosas es más adecuado recurrir a otros lenguajes de programación. Por supuesto, se necesita experiencia para decidir qué lenguaje de programación es la mejor opción para un problema determinado.

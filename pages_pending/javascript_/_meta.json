@@ -1,0 +1,12 @@
+{
+  "index": "Introducción a JavaScript",
+  "-- Parte 1": {
+    "title": "El lenguaje JavaScript",
+    "type": "separator"
+  },
+  "iniciando": "Iniciando con JavaScript",
+  "-- Mas contenido": {
+    "title": "Más contenido cada día...",
+    "type": "separator"
+  }
+}

@@ -1,0 +1,166 @@
+# Condicionales
+
+En Python, hay dos tipos de condicionales: la clásica declaración `if` y las expresiones condicionales como una forma adicional de ejecutar código condicionalmente. Analizaremos ambos tipos de condicionales en detalle a continuación y los explicaremos con la ayuda de ejemplos. Comencemos con la declaración `if`.
+
+## La declaración `if`
+
+El tipo más simple de condicional es la declaración `if`. Una declaración `if` consta de un encabezado de declaración que contiene una condición y un bloque de código como cuerpo de la declaración.
+
+El bloque de código se ejecuta sólo si la condición resulta ser verdadera. La condición de una declaración `if` debe ser una expresión que pueda interpretarse como un valor de verdad (`True` o `False`):
+
+```python filename="Definición de sintaxis"
+if Condición:
+    Declaración
+    ...
+    Declaración
+```
+
+Como ejemplo, puedes considerar una declaración `if` que imprime el texto correspondiente solo si la variable `x` tiene el valor `1`:
+
+```python filename="Python"
+if x == 1:
+    print("x tiene el valor 1")
+```
+
+Por supuesto, también puedes usar otros operadores comparativos o una expresión lógica más compleja y escribir más de una declaración en el cuerpo:
+
+```python filename="Python"
+if x < 1 or x > 5:
+    print("x es menor que 1 ...")
+    print("... o mayor que 5")
+```
+
+En muchos casos, una sola declaración `if` no es suficiente y se necesita toda una cadena de condicionales mutuamente excluyentes. En el siguiente ejemplo, queremos imprimir dos cadenas diferentes dependiendo de si `x == 1` o `x == 2`. Para este propósito, podemos usar dos declaraciones `if` consecutivas:
+
+```python filename="Python"
+if x == 1:
+    print("x tiene el valor 1")
+if x == 2:
+    print("x tiene el valor 2")
+```
+
+Sin embargo, desde el punto de vista del intérprete, esta es una manera ineficiente de lograr el objetivo, ya que ambas condiciones se evalúan y verifican en cualquier caso. Pero el segundo condicional ya no tendría que considerarse si la condición del primero ya hubiera sido evaluada como `True`. La variable `x` no puede tener ambos valores `1` y `2` bajo ninguna circunstancia. Para que estos casos sean más eficientes desde la perspectiva del intérprete y más claros desde el punto de vista del programador, una declaración `if` puede extenderse por una o más ramas `elif`. La condición de dicha rama se evalúa sólo si todos los `if` anteriores o las condiciones `elif` han sido evaluadas como `False`.
+
+Puedes escribir el ejemplo anterior usando `elif` de la siguiente manera:
+
+```python filename="Python"
+if x == 1:
+    print("x tiene el valor 1")
+elif x == 2:
+    print("x tiene el valor 2")
+```
+
+Una declaración `if` se puede extender por cualquier número de ramas `elif`:
+
+```python filename="Definición de sintaxis"
+if Condición:
+    Declaración
+    ...
+    Declaración
+elif Condición:
+    Declaración
+    ...
+    Declaración
+elif Condición:
+    Declaración
+    ...
+    Declaración
+```
+
+En el código fuente, esto podría verse así:
+
+```python filename="Python"
+if x == 1:
+    print("x tiene el valor 1")
+elif x == 2:
+    print("x tiene el valor 2")
+elif x == 3:
+    print("x tiene el valor 3")
+```
+
+Como extensión final de la declaración `if`, es posible interceptar a la vez todos los casos no manejados previamente. Por ejemplo, imagina que queremos imprimir no solo una cadena correspondiente si se cumple que `x == 1` o `x == 2`, sino también un mensaje de error en todos los demás casos, como si se cumple que `x == 35`. Para este propósito, una declaración `if` puede ser extendida por una rama `else`. Si se va a utilizar esta rama, se debe escribir al final de la declaración `if`:
+
+```python filename="Definición de sintaxis"
+if Condición:
+    Declaración
+    ...
+    Declaración
+else:
+    Declaración
+    ...
+    Declaración
+```
+
+En el código fuente, esto puede verse de la siguiente manera:
+
+```python filename="Python"
+if x == 1:
+    print("x tiene el valor 1")
+elif x == 2:
+    print("x tiene el valor 2")
+else:
+    print("Error: El valor de x no es 1 ni 2")
+```
+
+El bloque de código subordinado a la rama `else` se ejecuta sólo si no se han cumplido todas las condiciones anteriores. Una declaración `if` sólo puede tener una rama `else`. En el ejemplo, se usó `else` en combinación con `elif`, lo cual es posible pero no obligatorio.
+
+El siguiente ejemplo proporciona una descripción general de la estructura de una declaración `if`, incluidos los posibles tipos de rama:
+
+```python filename="Definición de sintaxis"
+if Condición:
+    Declaración
+    Declaración
+elif Condición:
+    Declaración
+    Declaración
+else:
+    Declaración
+    Declaración
+```
+
+> **Nota**
+> 
+> Si ya conoces un lenguaje de programación como C o Java, puede que te interese saber que desde Python 3.10 existe una contraparte de la estructura de control de `switch`/`case` de estos lenguajes, es decir, la estructura de control de `match`/`case`, que lo describiremos en una lección futura. En las versiones de Python anteriores a la 3.10, puedes imitar el comportamiento de esta estructura de control utilizando una cascada de ramas `if`/`elif`/`else`.
+
+## Expresiones condicionales
+
+Con base en la sección anterior, considera el siguiente código:
+
+```python filename="Python"
+if x == 1:
+    var = 20
+else:
+    var = 30
+```
+
+Teniendo en cuenta que se trata sólo de una tarea condicional, el ejemplo es notablemente largo con cuatro líneas. Ahora te mostraremos que este código cabe en una línea usando una expresión condicional.
+
+Una expresión condicional de este tipo puede tener dos valores diferentes según la condición. Por ejemplo, puedes establecer el valor de `var` en la misma asignación en `20` o `30` dependiendo del valor de `x`:
+
+```python filename="Python"
+var = (20 if x == 1 else 30)
+```
+
+En este caso, los paréntesis encierran la expresión condicional. No son necesarios, pero aumentan el nivel de claridad. La estructura de una expresión condicional se basa en el idioma inglés y es la siguiente:
+
+```python filename="Definición de sintaxis"
+A if Condición else B
+```
+
+Toma el valor `A` si se cumple la `Condición` o, en caso contrario, el valor `B`. Así que podrías imaginar que la expresión condicional después del signo igual se reemplaza por `A` o `B`, es decir, `20` o `30` en el ejemplo anterior. Por tanto, después de evaluar la expresión condicional, el resultado vuelve a ser una asignación válida.
+
+Esta forma de vincular una declaración a una condición puede, por supuesto, aplicarse a algo más que asignaciones. En el siguiente ejemplo, la misma declaración `print` genera una cadena diferente según el valor de `x`:
+
+```python filename="Python"
+print("x tiene el valor 1" if x == 1 else "x es desigual a 1")
+```
+
+Ten en cuenta que la condición puede ser una expresión lógica y `A` y `B` pueden ser dos expresiones aritméticas cualesquiera. En consecuencia, una expresión condicional compleja también puede verse así:
+
+```python filename="Python"
+xyz = (a * 2 if (a > 10 and b < 5) else b * 2)
+```
+
+Cabe señalar que el orden de evaluación de las expresiones condicionales es diferente de las reglas de evaluación normales del código Python. La condición siempre se evalúa primero y sólo entonces, dependiendo del resultado, sigue a la parte izquierda o derecha de la expresión. Este procedimiento de evaluación se denomina evaluación diferida porque no se evalúan todos los componentes de la declaración.
+
+Las expresiones condicionales presentadas aquí se pueden utilizar en la práctica para acortar elegantemente código largo y complejo. Sin embargo, esto va en detrimento de la legibilidad y la claridad. Por lo tanto, en este curso sólo lo utilizaremos en casos excepcionales. Sin embargo, eres libre de utilizar expresiones condicionales en tus propios proyectos de la forma que más te convenga.

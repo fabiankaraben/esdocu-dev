@@ -1,0 +1,53 @@
+# Programación asíncrona
+
+## ¿Qué es la programación asíncrona?
+
+Programación asíncrona se refiere a aquellas operaciones que un desarrollo o aplicación realiza sin detener el funcionamiento de dicha aplicación.
+
+El ejemplo más sencillo de explicar es el de las consultas remotas, es decir, cuando una aplicación solicita información a un servidor remoto, la aplicación sigue su curso realizando otras tareas sin generar bloqueos, luego cuando los datos remotos llegan la aplicación realiza la tarea correspondiente para actualizar la interfaz con los nuevos datos.
+
+Aunque el ejemplo de los datos remotos es el más sencillo de graficar, una operación asíncrona también puede ser la lectura de un archivo local, la realización de un cálculo que pueda demorar algunos segundos en finalizar, entre muchos otros casos útiles.
+
+## Futures o Promises
+
+Hablando ahora de aspectos técnicos, la forma en la que los lenguajes de programación manejan las operaciones asíncronas es con la utilización de *Futures* (o *Promises* según el lenguaje).
+
+Cuando se inicia una operación asíncrona se obtiene un *Future* y la ejecución continúa con otras tareas, luego cuando ese *Future* recibe datos para mostrar, ya sea contenido o un mensaje de error, se inicia una acción de respuesta normalmente ubicada en el método *then*.
+
+Veamos un ejemplo en *Dart*:
+
+```dart filename="Dart"
+import 'package:http/http.dart' as http;
+
+main() {
+    // Ejemplo de consulta remota usando el paquete 'http'
+    http.read('https://example.com/foobar.txt').then((data){
+        print('Datos recibidos.');
+    });
+    print('Sin esperas.');
+}
+```
+
+Este código inicia una solicitud remota utilizando la función *read* del paquete *http*, función que devuelve un *Future*, e inmediatamente después y sin esperas se ejecuta la función *print* con el siguiente mensaje:
+
+```plaintext filename="Salida"
+Sin esperas
+```
+
+y luego de un tiempo (normalmente un segundo o menos), la petición remota finaliza devolviendo los datos obtenidos y entonces se ejecuta el contenido del método *then* con lo que en la consola veremos el mensaje:
+
+```plaintext filename="Salida"
+Datos recibidos.
+```
+
+Existe otro método más elegante para manejar *Futures* y consiste en utilizar *async* y *await*, pero el resultado es el mismo por lo que veremos esa metodología y todos sus detalles en el curso de *Dart* y en otros cursos de lenguajes que también funcionan de esa manera, como el lenguaje *JavaScript*.
+
+## Streams
+
+Los *Streams* son muy similares a los *Futures* con la diferencia de que un *Stream* establece un vinculo con la fuente por lo tanto si dicha fuente de datos es modificada, se envía una notificación al código que inició el Stream.
+
+Este vínculo permanece activo hasta que se lo cierre manualmente, por lo que la fuente de datos puede enviar múltiples notificaciones separadas en el tiempo.
+
+Un ejemplo típico de utilización de un *Stream* es el desarrollo de un chat en línea, para evitar realizar consultas repetitivas para conocer si existen nuevos mensajes, simplemente se establece un *Stream* y entonces es la fuente (en este ejemplo un servidor remoto) la que notificará a la aplicación que existen nuevos mensajes para visualizar.
+
+Por ahora es suficiente con entender este concepto, veremos ejemplos concretos para cada lenguaje en sus correpondientes cursos.

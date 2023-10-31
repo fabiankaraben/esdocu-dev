@@ -1,0 +1,47 @@
+# Funciones y Métodos
+
+En esta sección, proporcionaremos una descripción básica de las funciones y algunos conceptos de programación orientada a objetos. En este sentido, nos limitaremos a los aspectos necesarios en los siguientes capítulos.
+
+## Funciones
+
+En Python, partes de un programa pueden encapsularse en funciones y luego ejecutarse mediante una llamada de función. El objetivo de este enfoque es evitar la redundancia en el código fuente. La funcionalidad que se necesita con frecuencia siempre debe implementarse solo una vez como una función y luego usarse como tal en el programa restante. Además, el uso de funciones puede mejorar la legibilidad y el mantenimiento del código fuente, ya que las partes del código que van juntas se encapsulan en unidades.
+
+Python proporciona un conjunto de funciones integradas que un programador puede usar en cualquier momento. Como ejemplo, esta sección utiliza la función integrada `max`, que determina el elemento más grande de una lista:
+
+```python-repl filename="Python (Interactivo)"
+>>> max([1, 5, 2, 7, 9, 3])
+9
+```
+
+Una función se llama escribiendo el nombre de la función seguido de los parámetros de la función entre paréntesis. En el ejemplo, la función `max` espera exactamente un parámetro, a saber, una lista de valores a considerar. El resultado del cálculo se devuelve como el valor de retorno de la función. Puedes imaginar que la llamada de función en el código fuente se reemplaza por el valor de retorno.
+
+Hay una variante de la función `max` que determina el parámetro más grande que se le pasa en lugar del elemento más grande de una lista. Para pasar múltiples parámetros a una función, se escriben entre paréntesis y separados por comas cuando se llama a la función:
+
+```python-repl filename="Python (Interactivo)"
+>>> max(1, 5, 3)
+5
+```
+
+Por supuesto, puedes definir tus propias funciones en Python, pero en este punto es suficiente saber cómo usar las funciones ya existentes.
+
+## Métodos
+
+La creación de un valor de un tipo de datos en particular, como la creación de un número entero a través de su literal, se denomina creación de instancias y el valor resultante se denomina *instancia*. Por ejemplo, `2` es una instancia del tipo de dato entero, mientras que `[4, 5, 6]` es una instancia del tipo de datos de lista. El tipo de datos de una instancia determina qué datos se almacenan, así como un conjunto de operaciones que se pueden realizar con estos datos. Algunas de estas operaciones están representadas por operadores; por ejemplo, el tipo de datos *número flotante* proporciona el operador `+` para sumar dos números flotantes. Para los tipos de datos numéricos simples, unos pocos operadores son suficientes para trabajar con ellos. Con tipos de datos más complejos, como listas, es concebible toda una serie de operaciones que no pueden representarse solo con operadores. Para tales casos, los tipos de datos pueden definir **métodos**. Estas son funciones ejecutadas en el contexto de una instancia específica.
+
+El tipo de datos de lista, por ejemplo, proporciona un método `sort` que se puede utilizar para ordenar una lista. Para llamar a un método, se especifica una instancia, ya sea mediante un *literal* o una *referencia*, seguido de un punto y la llamada al método, que se estructura como una llamada a una función:
+
+```python-repl filename="Python (Interactivo)"
+>>> list = [2, 7, 3, 2, 7, 8, 4, 2 ,5]
+>>> list.sort()
+>>> list
+[2, 2, 2, 3, 4, 5, 7, 7, 8]
+```
+
+Otro ejemplo lo proporciona el método `count` del tipo de datos *cadena*, que cuenta la frecuencia con la que aparece un carácter en una cadena de texto:
+
+```python-repl filename="Python (Interactivo)"
+>>> "Hola Mundo".count("o")
+2
+```
+
+El conocimiento de las funciones y los métodos adquiridos aquí se profundizará en el transcurso de este curso. En las siguientes secciones, discutiremos la que probablemente es la función más importante integrada en Python: `print`.

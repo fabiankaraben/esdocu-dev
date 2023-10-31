@@ -1,0 +1,140 @@
+# Variables en programación
+
+## ¿Qué es una variable?
+
+Una variable es un espacio a nuestra disposición en la memoria RAM del dispositivo donde se ejecute nuestro código.
+
+Normalmente se utiliza una variable para almacenar un resultado temporal o valores que necesitaremos utilizar más adelante en ese mismo código. Un ejemplo en el lenguaje *JavaScript*:
+
+```javascript filename="JavaScript"
+// La siguiente línea define una variable que almacena un número entero.
+var primerNumero = 5;
+
+// La siguiente línea define una variable que almacena un texto.
+var primerTexto = "Hola mundo";
+
+// Segundo número para realizar la suma
+var segundoNumero = 7;
+
+/* Una suma utilizando las variables anteriores.
+ * La variable resultado almacena el valor 12.
+ */
+var resultado = primerNumero + segundoNumero;
+```
+
+## Nombres de variables
+
+El nombre que elijamos para nuestras variables tienen que seguir una serie de reglas que dependen del lenguaje utilizado pero lo típico es que:
+
+- deben iniciar con una letra
+- pueden contener números pero no al inicio
+- no pueden ser ninguna de las palabras clave que defina el lenguaje
+
+También es importante destacar que la mayoría de los lenguajes son sensibles a mayúsculas y minúsculas, por lo tanto:
+
+```javascript filename="JavaScript"
+/* En la mayoría de lenguajes las siguientes
+variables son distintas y cada una tiene
+su propio valor asignado */
+
+var texto1 = "Primer texto";
+var TEXTO1 = "Segundo texto";
+var Texto1 = "Tercer texto";
+```
+
+## Alcance de una variable
+
+Al programar normalmente dividiremos nuestro código en partes para organizarlo mejor y agrupar funcionalidades. Estas agrupaciones de código pueden ser en funciones, clases, módulos, etc. (términos que veremos en los siguientes capítulos).
+
+Las variables que definamos solo podrán ser utilizadas dentro de su ámbito, o lo que se conoce como el alcance de una variable. Por ejemplo en el lenguaje *Dart*:
+
+```dart filename="Dart"
+main(){
+    // Definimos una variable de ámbito global
+    var unaVariableGlobal = "Soy global";
+
+    // Definimos una función,
+    // la función llamada 'imprimirVariables'
+    imprimirVariables() {
+        // Definimos una variable local
+        // cuyo ámbito es la función 'imprimirVariables'.
+        var unaVariableLocal = "Soy local";
+
+        // Imprimir en consola
+        print(unaVariableGlobal);
+
+        // Imprimir en consola
+        print(unaVariableLocal);
+    }
+
+    // Esta línea imprimirá en consola 'Soy global'
+    print(unaVariableGlobal);
+
+    // Esta línea generará un error porque 'unaVariableLocal'
+    // solo es utilizable dentro de la función.
+    print(unaVariableLocal);
+
+    // Esta línea imprimirá 'Soy global' y luego 'Soy local'
+    // De esta forma se ejecuta el código dentro de la función.
+    imprimirVariables();
+}
+```
+
+## Variables por valor y por referencia
+
+Las variables pueden pasarse a una función *por valor* o *por referencia*.
+
+Cuando se pasa una variable *por valor* se realiza una copia de la misma, es decir que al modificar la variable en el interior de la función, esta modificación no va a afectar al valor original de la variable externa.
+
+Por el contrario, cuando se pasa una variable *por referencia*, al modificar el valor de la variable dentro de la función también se modifica el valor de la variable externa ya que en realidad la segunda es solo una referencia a la primera.
+
+Observemos este ejemplo en el lenguaje de programación *Dart*:
+
+```dart filename="Dart"
+main(){
+
+  // Definimos una variable que almacena un 5
+  int unNumero = 5;
+  
+  // Definimos una variable que almacena el texto 'Soy texto'
+  String unTexto = "Soy texto";
+
+  // Esta función NO va a modificar la variable 'unNumero',
+  // solo modifica una variable interna a la función.
+  // El parámetro 'elNumero' se pasa por valor.
+  modificarNumero(int elNumero){
+    elNumero = elNumero + 2;
+  }
+
+  // Esta función modifica la variable 'unTexto'.
+  // El parámetro 'elTexto' se pasa por referencia.
+  modificarTexto(var elTexto){
+    elTexto = elTexto + ' modificado';
+  }
+  
+  // Imprimir los números
+  print(unNumero);
+  modificarNumero(unNumero);
+  print(unNumero);
+  
+  // Imprimir los textos
+  print(unTexto);
+  modificarTexto(unTexto);
+  print(unTexto);
+}
+```
+
+En *Dart* los tipos de datos primitivos, como lo es el tipo *int*, se pasan siempre *por valor* por ese motivo la variable *unNumero* no se modifica. Por el contrario el tipo de dato *String* no es primitivo, se pasa por referencia y por lo tanto el valor de la variable *unTexto* sí se modifica al llamar a la función *modificarTexto*.
+
+El ejecutar este código se imprime en la consola de comandos:
+
+```plaintext filename="Salida en consola"
+5
+5
+Soy texto
+Soy texto modificado
+```
+
+Veremos la definición de 'tipo de dato' en el siguiente capítulo pero podemos adelantar que es el tipo del dato que almacena una variable.
+
+En otros lenguajes se puede especificar en cada caso si se desea pasar el parámetro *por valor* o *por referencia*, esto sucede por ejemplo en el lenguaje de programación *Go*.

@@ -1,0 +1,160 @@
+# Tipos de datos en programación
+
+## ¿Qué es un tipo de dato?
+
+En todos los lenguajes de programación las variables deben definir el tipo de los datos que almacenará. De esta forma es posible predecir su comportamiento, por ejemplo, en *JavaScript*:
+
+```javascript filename="JavaScript"
+// Esta variable almacenará el valor 12
+var unNumero = 5 + 7;
+// Esta variable almacenará el valor 15
+var otroNumero = unNumero + 3;
+
+// Esta variable almacenará el valor 'Un texto'
+var unTexto = "Un" + " texto";
+// Esta variable almacenará el valor 'Un texto completo'
+var otroTexto = unTexto + " completo";
+```
+
+Se puede ver que el operador `+` se comporta diferente cuando trabajamos con números y cuando trabajamos con textos.
+
+Existen tipos de datos simples y colecciones:
+
+- Simples: números, textos, verdadero, falso.
+- Colecciones: listas, sets, mapas.
+
+## Tipos de datos dinámicos
+
+Muchos lenguajes no requieren definir el tipo de datos de las variables (aunque estas adquieren un tipo de datos igualmente). Por ejemplo en el lenguaje de programación *PHP* podemos utilizar una variable asignando un valor numérico y luego podemos asignar un valor de texto a esa misma variable sin que se produzca ningún error. 
+
+Esto se conoce como *Tipado dinámico* y pareciera ser muy conveniete pero en la práctica no lo es, cuando la cantidad de líneas de código aumenta es mejor y muy útil dejar claro qué rol cumple una variable y qué tipo de dato va a manejar.
+
+Lenguajes como *Dart* son de *Tipado estático* lo que tampoco significa que sea necesario especificar el tipo de dato, por ejemplo:
+
+```dart filename="Dart"
+// La siguiente variable define explícitamente su tipo de dato.
+String unTexto = "Un texto";
+
+/* La siguiente variable recibe el tipo de dato String
+a partir del primer valor que asignemos */
+var unTextoInferido = "Un texto inferido";
+
+/* Las siguientes dos líneas generan un error a
+causa del Tipado estático (no pueden cambiar su
+tipo de dato) */
+unTexto = 5;
+unTextoInferido = 8;
+```
+
+En estos casos recibir un error de tipo de dato nos puede ayudar a detectar que algo no está funcionando como debería.
+
+## Números
+
+Normalmente los lenguajes cuentan con por lo menos dos tipos de datos para trabajar con valores numéricos, un tipo para números enteros y otro tipo para números decimales.
+
+Por ejemplo en el lenguaje *Dart*:
+
+```dart filename="Dart"
+// Una variable con un valor entero
+int cantidadDeElementos = 1;
+
+// Una variable con un valor decimal
+double precioTotal = 1.5;
+```
+
+De esta forma podemos elegir el tipo numérico dependiendo del propósito de la variable, lo que aporta comodidad y también mejora el rendimiento ya que trabajar con enteros consume menos recursos del sistema.
+
+## Cadenas de texto
+
+Los textos son manejados de forma ligeramente diferente en cada lenguaje de programación, pero normalmente se puede crear y almacenar un texto simplemente colocándolo entre comillas simples o comillas dobles.
+
+Veamos un ejemplo en *Dart*:
+
+```dart filename="Dart"
+// Dos variables almacenando textos
+String unTexto = "Solo un texto";
+String otroTexto = 'Texto entre comillas simples';
+```
+
+Cada lenguaje provee también métodos para manipular textos, como por ejemplo, convertir un texto a mayúsculas o minúsculas, extraer una parte de un texto, comprobar si un texto contiene a otro, etc.
+
+## Verdadero o Falso
+
+El tipo de dato booleano también está presente en todos los lenguajes de programación más utilizados. Este tipo sirve para establecer un valor de verdadero o falso.
+
+Un ejemplo en *Dart*:
+
+```dart filename="Dart"
+// Una variable booleana con valor verdadero
+bool primerBool = true;
+
+// Una variable booleana con valor falso
+bool segundoBool = false;
+```
+
+A simple vista no parece ser muy útil pero utilizaremos mucho valores booleanos para definir el flujo de ejecución del código utilizando también las sentencias condicionales que veremos en un capítulo posterior.
+
+## Listas o Arrays
+
+Iniciamos la lección de colecciones viendo las Listas (también conocidas como Arrays en algunos lenguajes).
+
+Las listas son un grupo ordenado de elementos, lo que significa que luego de crear la *Lista*  es posible acceder y modificar un elemento de dicha lista especificando un índice.
+
+Por ejemplo (en *Dart*):
+
+```dart filename="Dart"
+// Esta línea crea una Lista de Strings
+List unaListaDeTextos = ["uno", "dos", "tres"];
+
+// Esta línea crea una Lista de números enteros
+List unaListaDeEnteros = [1, 2, 3];
+
+/* Podemos acceder y modificar un valor en la lista 
+indicando su índice o posición (la cual inicia desde cero). */
+unaListaDeTextos[1] = "DOS";
+
+// La siguiente línea imprime 'DOS'
+print(unaListaDeTextos[1]);
+
+// La siguiente línea imprime ['uno', 'DOS', 'tres']
+print(unaListaDeTextos);
+```
+
+En la mayoría de lenguajes el índice o posición es un número entero e inicia desde cero, aunque algunos lenguajes como *PHP* unen los conceptos de *Lista* y *Mapas* (que veremos pronto) en uno y permiten que sus *Listas* o *Arrays* tengan índices de cualquier tipo.
+
+## Sets
+
+Los *Sets* son conjuntos de elementos sin un orden, es decir que a diferencia de las *Listas*, los *Sets* no tienen un índice.
+
+Los valores almacenados en un *Set* deben ser únicos ya que al no poseer un índice se utiliza al propio valor como identificador de un elemento dentro del *Set*.
+
+Veamos un ejemplo en *Dart*:
+
+```dart filename="Dart"
+// Esta línea crea un Set de Strings
+Set frutas = {'Manzana', 'Pera', 'Ciruela'};
+
+// Esta línea imprime 'Manzana'
+print(frutas.first);
+```
+
+Cada lenguaje define formas diferentes para agregar, modificar y eliminar elementos de un *Set*.
+
+## Mapas o Diccionarios
+
+Finalmente un *Mapa* es un grupo de asociaciones de tipo *clave* y *valor*. En otras palabras, un *Mapa* es similar a una *Lista* pero en este caso el *índice* se llama *clave* y esta *clave* puede ser de cualquier tipo de dato.
+
+Por ejemplo (en *Dart*):
+
+```dart filename="Dart"
+// Esta línea define un Mapa de clave String y valor entero.
+Map temperaturasMaximas = {
+    'verano': 32,
+    'invierno': 3,
+};
+
+// Podemos acceder a un valor del Mapa especificando la clave
+print(temperaturasMaximas['invierno']);
+```
+
+El valor de los elementos de un *Mapa* puede ser otro *Mapa* dando lugar a un *Mapa bidimensional*.

@@ -1,0 +1,80 @@
+# Modelo de datos en Python
+
+Este capítulo describe cómo Python gestiona los datos en tiempo de ejecución. En particular, discutiremos qué variables existen realmente en Python y explicaremos los términos relacionados objeto, instancia y referencia.
+
+En informática, las variables generalmente se entienden como ubicaciones de almacenamiento con nombre para datos de diferentes tipos, como números, listas u otras estructuras. Como ya sabes, en Python se puede crear una nueva variable denominada a de la siguiente manera:
+
+```python-repl filename="Python (Interactivo)"
+>>> a = 1337
+```
+
+Posteriormente, la variable a se puede utilizar como el valor numérico `1337`:
+
+```python-repl filename="Python (Interactivo)"
+>>> 2674 / a
+2.0
+```
+
+Para entender qué sucede internamente cuando creamos una nueva variable, es necesario distinguir dos conceptos: instancia y referencia. Una instancia es un objeto de datos concreto en la memoria creado según la plantilla de un determinado tipo de datos; por ejemplo, el número especial 1337 según la plantilla del tipo de datos int.
+
+En las siguientes secciones, solo veremos números enteros y cadenas por razones de simplicidad, pero el principio se aplica a cualquier tipo de objeto de datos.
+
+En el caso más simple, se puede crear una instancia de un número entero de la siguiente manera:
+
+```python-repl filename="Python (Interactivo)"
+>>> 12345
+12345
+```
+
+Para nosotros como programadores, sin embargo, esta instancia no es muy útil, porque aunque se genera después de su creación, ya no será accesible y, por lo tanto, no podremos seguir usando su valor.
+
+Aquí es donde entran en juego las referencias. Sólo las referencias nos permiten utilizar instancias porque nos permiten acceder a las instancias. Una referencia a menudo se denomina simplemente nombre en Python. Puede utilizar el operador de asignación = para crear una referencia a una instancia, con la referencia a la izquierda y la instancia a la derecha del operador:
+
+```python-repl filename="Python (Interactivo)"
+>>> a = 12345
+```
+
+Con esto, podemos describir nuestro ejemplo de la siguiente manera: Creamos una nueva instancia de un número entero con el valor 1337. También creamos una referencia a a esta instancia. Esto también se puede ilustrar gráficamente (ver Figura 7.1).
+
+Figure 7.1
+
+También es posible proporcionar instancias referenciadas anteriormente con referencias adicionales:
+
+```python-repl filename="Python (Interactivo)"
+>>> reference1 = 1337
+>>> reference2 = reference1
+```
+
+Ilustrado gráficamente, el resultado se parece a lo que se muestra en la Figura 7.2.
+
+Figure 7.2
+
+Es particularmente importante tener en cuenta que todavía hay solo una instancia con el valor 1337 en la memoria, aunque podemos acceder a ella con dos nombres diferentes: referencia1 y referencia2. Por lo tanto, al asignar referencia2 = referencia1, la instancia 1337 no se copió, sino que solo se hizo referencia una vez más.
+
+Tenga en cuenta que las referencias a la misma instancia son independientes entre sí y el valor al que hacen referencia las otras referencias no cambia cuando asignamos una nueva instancia a una de ellas:
+
+```python-repl filename="Python (Interactivo)"
+>>> reference1 = 1337
+>>> reference2 = reference1
+>>> reference1
+1337
+>>> reference2
+1337
+>>> reference1 = 2674
+>>> reference1
+2674
+>>> reference2
+1337
+```
+
+Hasta las dos primeras salidas, la situación se parece a la que se muestra en la Figura 7.2: las dos referencias, referencia1 y referencia2 apuntan a la misma instancia 1337. Luego creamos una nueva instancia 2674 y la asignamos a referencia1. El resultado muestra que la referencia2 todavía apunta a 1337 y no ha cambiado. Por lo tanto, la situación después de la tercera asignación es como se muestra en la Figura 7.3.
+
+Figure 7.3
+
+> **Nota**
+> 
+> Como has visto, la noción de una variable como una ubicación de memoria en Python es sólo parcialmente correcta ya que las variables en Python son referencias con nombres simbólicos. Por esta razón, frases de uso frecuente en programación, como almacenar en una variable, no son estrictamente aplicables. Más bien, sería correcto hablar de referencia mediante un nombre simbólico.
+> 
+> Según nuestra experiencia, es importante tener en cuenta esta visión correcta cuando se trabaja con Python. Sin embargo, cuando la formulación precisa se utiliza de manera consistente, otros aspectos quedan fácilmente eclipsados por la forma de expresión más complicada. Por lo tanto, hemos decidido presentarle los antecedentes exactos en este capítulo, pero utilizar formulaciones más imprecisas, como almacenar en una variable, en el resto del libro si creemos que esto mejorará la comprensibilidad.
+
+Ahora sabes que debes distinguir entre dos conceptos: referencias a instancias y las instancias mismas. En las siguientes secciones, veremos las propiedades de las instancias con más detalle.

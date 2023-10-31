@@ -1,0 +1,60 @@
+# Línea de comandos vs Intefaces gráficas
+
+## Línea de comandos
+
+Todos los sistemas operativos incluyen una herramienta para trabajar con comandos del sistema, esa herramienta es la *consola de comandos* o *terminal*.
+
+Normalmente cuando programamos necesitamos de la consola de comandos para ejecutar el programa (y también para compilarlo si el lenguaje es compilado).
+
+Por ejemplo, para ejecutar un archivo con código del lenguaje interpretado *Python* utilizaríamos el siguiente comando:
+
+```console filename="Terminal"
+python micodigo.py
+```
+
+En este ejemplo *python* es el intérprete y *micodigo.py* es el archivo con el código *Python*.
+
+Por el momento solo veremos este concepto, los comandos utilizados para cada lenguaje junto con los pasos para ingresar a la consola de comandos los veremos en el curso correspondiente a cada lenguaje.
+
+## Entrada y salida de datos
+
+Cuando un software está pensado para ser utilizado desde la consola de comandos, este normalmente puede recibir valores de entrada y exponer valores de salida.
+
+Incluso anque el software no esté pensado para recibir valores de entrada, podemos utilizar la salida a consola para imprimir valores de prueba de la misma forma en la que lo hicimos en gran parte de los ejemplos vistos en el curso cuando utilizamos la función *print()* del lenguaje *Dart*.
+
+Volviendo al ejemplo de la ejecución de un software en *Python*, si hablamos de un código que recibe un nombre e imprime un saludo, el comando en consola y su salida se verían como en el siguiente ejemplo:
+
+```console filename="Terminal"
+python saludo.py Juan
+```
+
+```plaintext filename="Terminal (Salida)"
+Hola Juan
+```
+
+La primer línea es el comando de ejecución y la segunda línea es la salida en consola que se produce.
+
+## UI web
+
+Una interfaz de usuario web permite a un usuario interactuar con el software utilizando un navegador web.
+
+Esta interfaz web estará construida con elementos HTML, con estilos CSS, y con funcionalidades en el lenguajes *JavaScript*. (Más información en el curso *HTML+CSS* y en el curso *JavaScript*).
+
+Hoy en día no es completamente necesario aprender HTML, CSS y JavaScript. Existen lenguajes como *TypeScript* o *Dart* que permiten convertir su código a *JavaScript* optimizado.
+
+También existen tecnologías como *Flutter*, la cual se encarga de todos los aspectos anteriormente mencionados, permite programar en un solo lenguaje (*Dart*) y compilar el código para múltiples plataformas, incluyendo la plataforma web.
+
+## UI de escritorio
+
+Existen muchas bibliotecas para desarrollar interfaces gráficas para software de escritorio, es decir, software que se puede instalar o directamente ejecutar en un sistema operativo Windows, Linux o macOS.
+
+Algunas de estas bibliotecas son específicas de un sistema operativo particular y otras son completamente multiplataforma.
+
+Algunos ejemplos son:
+
+- GTK+
+- Qt
+- Swing
+- Unity
+
+Veremos definiciones, ejemplos y codelabs de ellas en los cursos de cada lenguaje.

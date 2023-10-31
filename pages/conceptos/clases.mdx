@@ -1,0 +1,168 @@
+# Clases en programación
+
+## ¿Qué es una clase?
+
+Programar puramente con funciones puede presentar algunos problemas sobre todo si varias funciones comparten recursos como variables globales. Además, en estos casos, cuando un desarrollo crece el código tiende a volverse caótico. Para solucionar esta problemática surge el concepto de *Clases*.
+
+Las clases en programación son simplemente una forma de organizar el código en entidades que aportan aislamiento a su código interno, y proveen métodos y propiedades para comunicarse con el código externo a esa clase.
+
+Se suele ver a las clases como una analogía a objetos de la vida real. Si tomamos como ejemplo una puerta:
+
+- la clase se llamaría 'Puerta', 
+- sos *propiedades* serían: color, altura, grosor, ...
+- y sus *métodos* serían: cerrar pueta, abrir puerta, ...
+
+Los *métodos* no son más que funciones como las que ya conocemos pero en este caso son funciones que pertenecen a la clase, y las *propiedades* de una clase no son más que variables que pertenecen a la clase.
+
+Además, una clase puede configurar la privacidad de métodos y propiedades, es decir, permitir o no que el código externo a la clase pueda acceder a estos elementos.
+
+Para utilizar una clase se debe crear una o más instancias de la misma. La instancia de una clase se llama un *Objeto* de clase. Veremos un ejemplo en la siguiente pantalla.
+
+## Propiedades
+
+Las propiedades son variables pertenecientes a una clase. Veamos un ejemplo en *Dart*:
+
+```dart filename="Dart"
+// Definimos la clase 'Puerta'
+class Puerta {
+    // Definimos una propiedad para esta clase
+    String color;
+}
+
+// Creamos una instancia de la clase 'Puerta'
+var unaPuerta = Puerta();
+
+// Cambiamos el valor de la propiedad 'color'
+unaPuerta.color = 'rojo';
+```
+
+En este ejemplo *color* es una propiedad de la clase, a la cual podemos acceder utilizando la notación de punto luego de crear el objeto *unaPuerta* (instancia de la clase *Puerta*).
+
+## Métodos
+
+Los métodos son funciones pertenecientes a una clase. Veamos un ejemplo en *Dart*:
+
+```dart filename="Dart"
+// Definimos la clase 'Puerta'
+class Puerta {
+    // Definimos una propiedad para esta clase
+    String estado = 'cerrada';
+    
+    // Definimos un método para abrir la puerta
+    abrir(){
+        estado = 'abierta';
+    }
+    
+    // Definimos un método para cerrar la puerta
+    cerrar(){
+        estado = 'cerrada';
+    }
+}
+
+// Creamos una instancia de la clase 'Puerta'
+var unaPuerta = Puerta();
+
+// Cambiamos el estado de la puerta utilizando un método
+unaPuerta.abrir();
+```
+
+En este ejemplo *abrir* y *cerrar* son métodos de la clase, a los cuales podemos acceder utilizando la notación de punto luego de crear el objeto *unaPuerta* (instancia de la clase *Puerta*).
+
+Los lenguajes tienen diferentes formas de configurar una propiedad como *privada*, en este ejemplo lo ideal sería que la propiedad *estado* sea privada para que no se pueda modificar directamente desde fuera de la clase.
+
+Claro que este es un ejemplo muy sencillo en el que solo estamos cambiando el valor de una propiedad, aun así se puede observar la estructura básica de una clase y la utilización de propiedades y métodos.
+
+## Constructores
+
+El constructor de una clase es una función que se ejecutará justo en el momento en el que creamos una instancia de la clase. Normalmente no se lo utiliza para tareas complejas sino más bien para tareas sencillas como por ejemplo asignar valores por defecto a propiedades.
+
+Veamos un ejemplo en el lenguaje *Dart*:
+
+```dart filename="Dart"
+// Definimos la clase 'Puerta'
+class Puerta {
+    // Definimos una propiedad para esta clase
+    String estado;
+    
+    // Constructor de la clase
+    Puerta() {
+        estado = 'cerrada';
+    }
+}
+```
+
+En *Dart* el constructor de una clase es un método con el mismo nombre que la clase.
+
+## Clases abstractas
+
+Una clase abstracta solamente define propiedades y métodos sin especificar su implementación, es decir, se omite el cuerpo de los métodos.
+
+Esto es muy útil para definir una especie de "molde" a partir del cual se pueden construir otras clases específicas.
+
+Este concepto se entenderá mejor con un ejemplo en *Dart*:
+
+```dart filename="Dart"
+// Definición de una clase abstracta
+abstract class Animal {
+    // Un método abstracto no define el cuerpo.
+    correr();
+}
+
+// Definición de una clase que extiende una clase abstracta
+class Leon extends Animal {
+	correr(){
+        /* Aquí implementaríamos la manera en la que
+        corre un león */
+    }
+}
+
+// Definición de una clase que extiende una clase abstracta
+class Avestruz extends Animal {
+	correr(){
+        /* Aquí implementaríamos la manera en la que
+        corre un avestruz */
+    }    
+}
+
+// Creamos una instancia de la clase 'Leon'
+Animal unAnimal = Leon();
+
+// Creamos una instancia de la clase 'Avestruz'
+Animal otroAnimal = Avestruz();
+
+// Hacer correr al león
+unAnimal.correr();
+```
+
+De esta forma tanto la variable *unAnimal* como la variable *otroAnimal* son del tipo de dato *Animal* y como las clases *Leon* y *Avestruz* extienden a la clase *Animal* entonces ambas variables pueden almacenar un objeto de tipo *Leon* o de tipo *Avestruz*.
+
+Un ejemplo práctico para esto sería solicitar al usuario que seleccione un animal, para lo cual la misma variable podría almacenar a cualquier animal que el usuario elija sin necesidad de definir una variable para cada animal.
+
+## Extendiendo clase
+
+Acabamos de ver cómo extender una clase abstracta, pero también es posible extender una clase normal no abstracta, con lo cual la clase que extiende hereda todas las propiedades y métodos de la clase extendida.
+
+Veamos un ejemplo en *Dart*:
+
+```dart filename="Dart"
+// Definición una clase normal
+class Mueble {
+    String color;
+}
+
+// Definición una clase que extiende la clase anterior
+class Mesa extends Mueble {
+}
+
+// Creamos una instancia de la clase 'Mesa'
+var unaMesa = Mesa();
+
+// Asignamos un color al objeto 'unaMesa'
+unaMesa.color = 'negro';
+```
+
+De esta forma se puede reutilizar código ya que otras clases también pueden extender la clase *Mueble*, por ejemplo una clase *Silla*, la cual también tendrá una propiedad *color*. 
+
+Las clases que extienden también pueden definir sus propias propiedades y métodos.
+
+En los cursos de cada lenguaje veremos cómo cada uno de ellos define diferentes formas de sobreescribir propiedades y métodos de la clase extendida.

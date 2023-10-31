@@ -1,0 +1,95 @@
+# Otros conceptos en Python
+
+## Salidas en pantalla
+
+Aunque a menudo recurrimos al modo interactivo, nuestro objetivo es escribir programas Python reales lo más rápido posible. Es una característica especial del modo interactivo que el valor de una expresión ingresada se emite automáticamente. En un programa normal, por otro lado, las salidas de pantalla deben ser generadas por el programador explícitamente. Para generar el valor de una variable, Python usa la función `print`:
+
+```python-repl filename="Python (Interactivo)"
+>>> print(1.2)
+1.2
+```
+
+Ten en cuenta que mientras imprimes valores de salida, la salida automática del modo interactivo genera representaciones, es decir, predominantemente literales. Por ejemplo, la salida automática escribe el valor de una cadena entre comillas mientras que la función `print` no:
+
+```python-repl filename="Python (Interactivo)"
+>>> "Hola Mundo"
+'Hola Mundo'
+>>> print("Hola Mundo")
+Hola Mundo
+```
+
+Aquí también es posible utilizar un nombre de variable en lugar de un valor constante sin ningún problema:
+
+```python-repl filename="Python (Interactivo)"
+>>> var = 9
+>>> print(var)
+9
+```
+
+Alternativamente, puedes imprimir el resultado de una expresión directamente:
+
+```python-repl filename="Python (Interactivo)"
+>>> print(-3 * 4)
+-12
+```
+
+El uso de `print` también permite generar múltiples variables o constantes en una línea. Para ello, los valores se separan por comas. Cada coma se reemplaza por un carácter de espacio en la salida:
+
+```python-repl filename="Python (Interactivo)"
+>>> print(-3, 12, "Python rocks")
+-3 12 Python rocks
+```
+
+Esto es especialmente útil si no sólo deseas generar valores individuales, sino también un breve texto explicativo sobre ellos. Puedes lograr algo como esto de la siguiente manera:
+
+```python-repl filename="Python (Interactivo)"
+>>> var = 9
+>>> print("El número mágico es:", var)
+El número mágico es: 9
+```
+
+Finalmente, `print` imprime un avance de línea después de cada salida, por lo que las llamadas a `print` consecutivas dan como resultado múltiples líneas de salida.
+
+> **Nota**
+> 
+> En Python 2 las impresiones en pantalla se generan utilizando la palabra clave `print` en lugar de la función `print` utilizada actualmente en Python 3:
+> 
+> ```python-repl filename="Python (Interactivo)"
+> >>> print "Esto", "es", "Python", 2 
+> Esto es Python 2
+> ```
+> 
+> En la mayoría de los casos, los paréntesis que faltan son la única diferencia.
+
+## Módulos
+
+Una ventaja decisiva de Python, además del lenguaje de programación sencillo y flexible, es la gran cantidad de módulos incluidos, que en su totalidad forman la biblioteca estándar.
+
+Dichos módulos a menudo sirven como una colección útil de funcionalidad adicional. Existe, por ejemplo, el módulo `pprint` (un `print` visualmente más bonito), que proporciona la función `pprint`. Esta función te permite generar instancias de tipos de datos complejos claramente formateados en la pantalla. Por lo tanto, es una alternativa a la función `print` integrada cuando solo se va a generar una única instancia. Antes de que puedas usar un módulo, debes incluirlo usando la palabra clave `import`:
+
+```python-repl filename="Python (Interactivo)"
+>>> import pprint
+```
+
+Ahora las funciones y constantes disponibles en `pprint` se pueden utilizar en el programa siguiente. En este caso, llamamos a la función `pprint.pprint` para generar claramente un diccionario más extenso:
+
+```python-repl filename="Python (Interactivo)"
+>>> d = {"Python es": ["impresionante", "brillante", "mega genial", "simple y emocionante"], "Python tiene": ["muchos módulos", "siempre el argumento correcto", "una salida de pantalla bien formateada"]}
+>>> pprint.pprint(d)
+{'Python es': ['impresionante',
+               'brillante',
+               'mega genial',
+               'simple y emocionante'],
+ 'Python tiene': ['muchos módulos',
+                  'siempre el argumento correcto',
+                  'una salida de pantalla bien formateada']}
+```
+
+A modo de comparación, aquí está la salida sin formato usando la función `print` incorporada:
+
+```python-repl filename="Python (Interactivo)"
+>>> print(d)
+{'Python es': ['impresionante', 'brillante', 'mega genial', 'simple y emocionante'], 'Python tiene': ['muchos módulos', 'siempre el argumento correcto', 'una salida de pantalla bien formateada']}
+```
+
+Gran parte del curso también está dedicado a la biblioteca estándar, así como a módulos y bibliotecas de terceros que aumentan de manera útil el alcance del lenguaje Python.

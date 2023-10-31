@@ -1,0 +1,74 @@
+# Tipeado, compilación y testing
+
+Esta sección describe los flujos de trabajo necesarios para crear y ejecutar un programa Python. De manera más general, en gran parte del curso solo escribiremos aplicaciones de consola, por lo que te prepararemos para eso. Una aplicación de consola tiene una interfaz puramente de texto para el usuario y se ejecuta en la consola (o *shell*) del sistema operativo respectivo. Para la mayoría de los ejemplos y también para muchos casos de uso del mundo real, una interfaz basada en texto es suficiente.
+
+Básicamente, un programa Python consta de uno o varios archivos de programa. Estos archivos de programa utilizan la extensión de archivo `.py` y contienen el código fuente de Python. Los archivos son archivos de texto simple. En consecuencia, los archivos de programa se pueden editar con un editor de texto normal.
+
+Una vez escrito un archivo de programa, el siguiente paso es ejecutarlo. Si utilizas IDLE, el archivo del programa se puede ejecutar cómodamente a través del elemento de menú *Ejecutar > Ejecutar módulo*. Si usas un editor que no admite una funcionalidad similar, debes cambiar al directorio del archivo del programa en una línea de comandos y, según tu sistema operativo, ejecutar varios comandos.
+
+## Windows
+
+En Windows, debes ir al directorio donde se encuentra el archivo del programa e iniciar el intérprete de Python, usando el comando `python` seguido del nombre del archivo del programa a ejecutar.
+
+```console filename="Terminal"
+python program.py
+```
+
+Una salida del programa Python en el archivo `program.py` podría ser el texto `¡Hola mundo desde tu programa Python!`, que demuestra que el programa Python realmente se ejecutó.
+
+```plaintext filename="Terminal"
+C:\Proyecto> python program.py
+¡Hola mundo desde tu programa Python!
+```
+
+> **Nota**
+> 
+> En Windows, también es posible ejecutar un programa de Python haciendo doble clic en el archivo de programa respectivo. Pero el inconveniente de esto es que la ventana de la consola se cierra inmediatamente después de que finaliza el programa y no es posible ver la salida del programa.
+
+## Linux y macOS
+
+En sistemas operativos tipo Unix, como Linux o macOS, también debes ir al directorio donde se encuentra el archivo del programa y luego iniciar el intérprete de Python, usando el comando `python` seguido del nombre del archivo del programa que se ejecutará. En el siguiente ejemplo, el archivo de programa `program.py` se ejecuta en Linux, que se encuentra en el directorio `/home/user/folder`:
+
+```plaintext filename="Terminal"
+user@HOST ~ $ cd folder
+user@HOST ~/folder $ python program.py
+Esto es lo que te escribe tu programa Python
+```
+
+> **Nota**
+> 
+> El comando que utilizarás para iniciar Python puede diferir del comando de `python` que se muestra aquí, dependiendo de la distribución.
+
+## Línea mágica
+
+En un sistema operativo tipo Unix, como Linux, los archivos de programa Python se pueden hacer directamente ejecutables usando un shebang (`#!`), también conocido como línea mágica. Para este propósito, la primera línea del archivo del programa generalmente debe decir lo siguiente:
+
+```
+#!/usr/bin/python
+```
+
+En este caso, se recomienda que el sistema operativo ejecute siempre este archivo de programa utilizando el intérprete de Python. En otros sistemas operativos, como Windows, se ignora la línea shebang.
+
+Ten en cuenta que el intérprete de Python puede estar instalado en tu sistema en un directorio diferente al especificado aquí. En general, por lo tanto, la siguiente línea shebang es mejor ya que es independiente de la ubicación real de instalación de Python:
+
+```plaintext filename="Python"
+#!/usr/bin/env python
+```
+
+También ten en cuenta que el indicador ejecutable del archivo del programa debe establecerse antes de que el archivo sea realmente ejecutable. Esto se puede hacer usando el siguiente comando:
+
+```console filename="Terminal"
+chmod +x filename
+```
+
+Para mantener un alto grado de claridad, los ejemplos que se muestran en este libro no incluyen una línea de shebang. Sin embargo, esto no significa explícitamente que deba evitarse el uso de una línea shebang.
+
+## Procesos internos
+
+Hasta este punto, debes tener una idea aproximada de qué se trata Python y dónde se pueden encontrar las fortalezas de este lenguaje de programación. También proporcionamos los conocimientos básicos para crear y ejecutar un archivo de programa de Python. Pero en las secciones anteriores se han utilizado términos como compilador o intérprete sin mayor explicación. En esta sección, por lo tanto, veremos las operaciones internas que ocurren cuando se ejecuta un archivo de programa de Python.
+
+Cuando se ejecutas el archivo de programa `program.py`, como se describe al principio de esta lección, primero pasa por el **compilador**, un programa que traduce de un lenguaje formal a otro. En el caso de Python, el compilador traduce del lenguaje *Python* al **código de bytes**. El compilador es libre de mantener el código de bytes generado en la memoria o guardarlo como `programa.pyc` en el disco duro.
+
+Ten en cuenta que el código de bytes generado por el compilador no se puede ejecutar directamente en el procesador, a diferencia de las compilaciones de *C* o *C++*, por ejemplo. Para ejecutar el código de bytes, se necesita otra capa de abstracción, el intérprete. El **intérprete**, a menudo denominado máquina virtual, lee el código de bytes generado por el compilador y lo ejecuta.
+
+Este principio de un lenguaje de programación interpretado tiene varias ventajas. Por ejemplo, el mismo código Python se puede ejecutar sin modificaciones en todas las plataformas para las que esté disponible un intérprete de Python. Sin embargo, los programas de lenguajes de programación interpretados suelen funcionar más lentamente que un programa *C* análogo ejecutado directamente en el procesador debido al intérprete intermediario.

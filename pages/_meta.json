@@ -1,0 +1,67 @@
+{
+  "index": {
+    "title": "Inicio",
+    "type": "page",
+    "display": "hidden",
+    "theme": {
+      "layout": "raw"
+    }
+  },
+  "conceptos": {
+    "title": "Conceptos de programación",
+    "type": "page",
+    "display": "hidden"
+  },
+  "python": {
+    "title": "Curso de Python",
+    "type": "page",
+    "display": "hidden"
+  },
+  "javascript": {
+    "title": "Curso de JavaScript",
+    "type": "page",
+    "display": "hidden"
+  },
+  "cursos": {
+    "title": "Cursos",
+    "type": "menu",
+    "items": {
+      "conceptos": {
+        "title": "Conceptos de programación",
+        "type": "page",
+        "href": "/conceptos"
+      },
+      "python": {
+        "title": "Curso de Python",
+        "type": "page",
+        "href": "/python"
+      },
+      "javascript": {
+        "title": "Curso de JavaScript",
+        "type": "page",
+        "href": "/javascript"
+      }
+    }
+  },
+  "contacto": {
+    "title": "Contacto ↗",
+    "type": "page",
+    "href": "mailto:hola.esdocu@gmail.com",
+    "newWindow": true
+  },
+  "aviso-legal": {
+    "title": "Aviso legal",
+    "type": "page",
+    "display": "hidden"
+  },
+  "politica-de-cookies": {
+    "title": "Políticas de Cookies",
+    "type": "page",
+    "display": "hidden"
+  },
+  "politica-de-privacidad": {
+    "title": "Política de Privacidad",
+    "type": "page",
+    "display": "hidden"
+  }
+}

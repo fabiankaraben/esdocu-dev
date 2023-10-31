@@ -1,0 +1,297 @@
+# Bucles
+
+Un bucle te permite ejecutar un bloque de código, el cuerpo del bucle, varias veces seguidas. Python distingue entre dos tipos de bucles: el bucle **`while`** como una estructura de bucle simple y el bucle **`for`** para trabajar con tipos de datos más complejos.
+
+## El bucle `while`
+
+Ya usamos el bucle `while` en el juego de adivinar números. Se utiliza para ejecutar un bloque de código siempre que se cumpla una determinada condición. En nuestro [primer programa](/python/primer-programa/primer-programa), se usó un bucle `while` para leer un nuevo número del jugador hasta que el número ingresado coincidiera con el número que estábamos buscando.
+
+Básicamente, un bucle `while` consta de un encabezado de bucle que contiene la condición y un cuerpo de bucle correspondiente al bloque de código que se ejecutará (ten en cuenta que el bucle se ejecutará mientras se cumpla la condición, no hasta que se cumpla):
+
+```python filename="Definición de sintaxis"
+while Condición:
+    Declaración
+    ...
+    Declaración
+```
+
+El siguiente ejemplo es una variante algo abreviada del juego de adivinar números y pretende ilustrar el uso del bucle `while`:
+
+```python filename="Python"
+secret = 1337
+attempt = -1
+while attempt != secret:
+    attempt = int(input("Adivina: "))
+print("¡Lo hiciste!")
+```
+
+La palabra clave `while` introduce el encabezado del bucle, seguido de la condición deseada y dos puntos. En las líneas siguientes, sigue el cuerpo del bucle, sangrado un paso a la derecha. Allí, el usuario lee un número y le da el valor a `attempt`. Este proceso se ejecuta hasta que se cumpla la condición mencionada en el encabezado del bucle, es decir, hasta que la entrada (`attempt`) del usuario coincida con el número secreto (`secret`).
+
+## Terminación de un bucle
+
+Debido a que la variante del juego de adivinanzas de números presentada en la sección anterior no proporciona ninguna pista sobre el número que se busca, un juego puede llevar bastante tiempo en finalizar. Por lo tanto, en esta sección queremos permitir al usuario cancelar prematuramente el juego ingresando `0`. Esto se puede lograr modificando la condición del bucle a lo siguiente:
+
+```python filename="Python"
+attempt != secret and attempt != 0
+```
+
+Esta es una solución aceptable en este caso, pero si la condición del bucle es compleja en sí misma y se le agregan varias condiciones de terminación, la legibilidad del código fuente se verá afectada significativamente.
+Una solución alternativa la proporciona la palabra clave `break`, que se puede colocar en cualquier parte del cuerpo del bucle y rompe el bucle:
+
+```python filename="Python"
+secret = 1337
+attempt = -1
+while attempt != secret:
+    attempt = int(input("Adivina: "))
+    if attempt == 0:
+        print("El juego terminó.")
+        break
+print("¡Lo hiciste!")
+```
+
+Inmediatamente después de la entrada del usuario, se utiliza una instrucción `if` para comprobar si la entrada es `0`. Si este es el caso, se emite el mensaje correspondiente y el bucle `while` finaliza mediante la instrucción `break`.
+
+## Detectar una ruptura de bucle
+
+En la sección anterior, al usuario se le dio la opción de finalizar el juego de adivinanzas de números prematuramente ingresando `0`. Desafortunadamente, se muestra el mensaje de éxito, que supuestamente indica al jugador que ha adivinado el número buscado,en todos los casos una vez finalizado el bucle, incluso después de que el usuario haya cancelado el juego:
+
+```plaintext filename="Terminal"
+Adivina: 10
+Adivina: 20
+Adivina: 30
+Adivina: 0
+El juego terminó.
+¡Lo hiciste!
+```
+
+Entonces, en este punto, estamos buscando una manera de saber si el ciclo terminó debido a la condición del ciclo o debido a una declaración `break`. Para este propósito, de manera similar a una declaración `if`, un bucle `while` puede extenderse mediante una rama `else`. El bloque de código que pertenece a esta rama se ejecuta exactamente una vez: cuando el bucle se ha procesado por completo, es decir, cuando la condición devuelve `False` por primera vez. En particular, la rama `else` no se ejecuta si el bucle finalizó prematuramente mediante una instrucción `break`:
+
+```python filename="Definición de sintaxis"
+while Condición:
+    Declaración
+    ...
+    Declaración
+else:
+    Declaración
+    ...
+    Declaración
+```
+
+Veamos un ejemplo concreto:
+
+```python filename="Python"
+secret = 1337
+attempt = -1
+while attempt != secret:
+    attempt = int(input("Adivina: "))
+    if attempt == 0:
+        print("El juego terminó.")
+        break
+else:
+    print("¡Lo hiciste!")
+```
+
+Desde el punto de vista del usuario, esto significa que el mensaje de éxito se muestra cuando se ha adivinado el número correcto:
+
+```plaintext filename="Terminal"
+Adivina: 10
+Adivina: 1337
+¡Lo hiciste!
+```
+
+Por el contrario, si el usuario ingresa `0` para cancelar el juego, la rama `else` no se ejecutará y, por lo tanto, no se mostrará ningún mensaje de éxito:
+
+```plaintext filename="Terminal"
+Adivina: 10
+Adivina: 0
+El juego terminó.
+```
+
+## Saltarse la iteración actual
+
+Ya hemos presentado una forma de influir en el flujo de un bucle mediante `break`. Una segunda opción la proporciona la instrucción `continue` que, a diferencia de `break`, no finaliza todo el ciclo sino solo la iteración actual. Para ilustrar esto, consideremos el siguiente ejemplo, que hasta ahora no utiliza una declaración `continue`:
+
+```python filename="Python"
+while True:
+    number = int(input("Ingresa un número: "))
+    result = 1
+    while number > 0:
+        result = result * number
+        number = number - 1
+    print("Resultado: ", result)
+```
+
+En un bucle infinito, es decir, un bucle `while` cuya condición se cumple en todas las circunstancias, se lee un número y la variable `result` se inicializa con el valor `1`. En un bucle `while` posterior, `result` se multiplica por `number` hasta que la condición `number > 0` se cumple. Además, en cada pasada del bucle interno, el valor de `number` disminuye en `1`.
+
+Una vez pasado el bucle interno, se genera la variable `result`.
+
+Probablemente ya habrás notado que el programa anterior calcula el factorial del número ingresado:
+
+```plaintext filename="Terminal"
+Ingresa un número: 4
+Resultado:  24
+Ingresa un número: 5
+Resultado:  120
+Ingresa un número: 6
+Resultado:  720
+```
+
+Sin embargo, el código anterior también permite la siguiente entrada:
+
+```plaintext filename="Terminal"
+Ingresa un número: -10
+Resultado:  1
+```
+
+Al ingresar un número negativo, la condición del bucle interno es `False` desde el principio, por lo que el bucle no se ejecutará en absoluto. Por esta razón, el valor del resultado se genera inmediatamente, que en este caso es `1`.
+
+Esto no es lo que cabría esperar en este caso. Un número negativo es una entrada no válida. Idealmente, el programa debería cancelar el cálculo cuando se ingresa un número no válido y no mostrar ningún resultado.
+
+Este comportamiento se puede implementar mediante una declaración `continue`:
+
+```python filename="Python"
+while True:
+    number = int(input("Ingresa un número: "))
+    if number < 0:
+        print("No se permiten números negativos.")
+        continue
+    result = 1
+    while number > 0:
+        result = result * number
+        number = number - 1
+    print("Resultado: ", result)
+```
+
+Inmediatamente después de leer la entrada del usuario, una declaración `if` verifica si es un número negativo. Si es así, se genera el mensaje de error correspondiente y se cancela la iteración actual. Esto significa que el programa salta inmediatamente a la siguiente iteración, es decir, se verifica la condición del bucle y luego el usuario ingresa el siguiente número.
+
+Desde el punto de vista del usuario, esto significa que después de ingresar un número negativo, no se genera ningún resultado sino un mensaje de error y se le solicita al usuario que ingrese el siguiente número:
+
+```plaintext filename="Terminal"
+Ingresa un número: 4
+Resultado:  24
+Ingresa un número: 5
+Resultado:  120
+Ingresa un número: -10
+No se permiten números negativos.
+Ingresa un número: -100
+No se permiten números negativos.
+Ingresa un número: 6
+Resultado:  720
+```
+
+En retrospectiva, queremos explicar aquí una vez más la diferencia entre `break` y `continue`. Mientras que `break` finaliza el ciclo por completo, `continue` solo finaliza la iteración actual, el bucle en sí continúa ejecutándose:
+
+```python filename="Definición de sintaxis"
+while Condición:
+    ...
+    if Condición:
+        continue # Volver a la condición while:
+    ...
+    if Condición:
+        break # Saltar a la primera declaración después del bucle
+    ...
+# Primera declaración después del bucle
+...
+```
+
+## El bucle for
+
+Además del bucle `while` descrito en la sección anterior, hay otro bucle disponible en Python: el bucle `for`. Se utiliza un bucle `for` para pasar a través de un objeto iterable. Para este propósito, se escribe la palabra clave `for`, seguida de un identificador, la palabra clave `in` y el objeto iterable. Luego sigue el cuerpo del bucle, que tiene una sangría un nivel a la derecha:
+
+```python filename="Definición de sintaxis"
+for variable in object: 
+    Declaración
+    ...
+    Declaración
+```
+
+Se puede acceder al elemento actual del objeto iterable en el cuerpo del bucle a través del identificador seleccionado. Específicamente, un bucle `for` puede iterar *listas* o *cadenas*, por ejemplo:
+
+```python-repl filename="Python (Interactivo)"
+>>> for x in [1,2,3]:
+... print(x)
+...
+1
+2
+3
+>>> for c in "Python":
+... print(c)
+...
+P
+y
+t
+h
+o
+n
+```
+
+En el transcurso de este curso, conocerás algunos tipos de datos más que se pueden recorrer de esta manera utilizando un bucle `for`.
+
+> **Nota**
+> 
+> El bucle `for` tal como existe en Python no es una contraparte de la construcción de bucle del mismo nombre en *C* o *Java*. Es comparable al bucle `foreach` en *PHP* o *Perl* o al bucle `for` basado en rangos en *C++*.
+
+Las palabras clave `break` y `continue` discutidas en relación con el ciclo `while` para cancelar un ciclo completo o una sola iteración también se pueden usar con el bucle `for` y tienen el mismo significado. Además, un bucle `for` puede tener una rama `else` similar al bucle `while`, que se ejecuta exactamente cuando el bucle se ha ejecutado por completo y no ha finalizado prematuramente mediante una interrupción:
+
+```python filename="Definición de sintaxis"
+for variable in object:
+    Declaración
+    ...
+    Declaración
+else: 
+    Declaración
+    ...
+    Declaración
+```
+
+## El bucle `for` como bucle de conteo
+
+En relación con el bucle `for`, la función incorporada `range` es de particular interés. Crea un objeto iterable que produce todos los números enteros en un rango determinado:
+
+```python filename="Definición de sintaxis"
+range(stop)
+range(start, stop)
+range(start, stop, step)
+```
+
+El marcador de posición `start` representa el número con el que comenzar. El bucle finaliza en cuanto se alcanza el número `stop`. Debes saber que el contador de bucle nunca llega a el valor `stop`, ya que este valor es excluyente y el contador siempre permanece por debajo. En cada iteración, el contador del bucle se incrementa en la cantidad de unidades especificada en `step`. Tanto `start` como `stop`, así como `step`, deben ser números enteros. Una vez que se han especificado todos los valores, el bucle `for` se ve así:
+
+```python filename="Python"
+for i in range(1, 10, 2):
+    print(i)
+```
+
+La variable de conteo `i` ahora comienza con el valor `1`, el bucle se ejecuta siempre que `i` sea menor que `10`, y en cada iteración `i` se incrementa en `2`. Por lo tanto, el bucle genera los valores `1`, `3`, `5`, `7` y `9` en la pantalla.
+
+```plaintext filename="Salida"
+1
+3
+5
+7
+9
+```
+
+Un bucle `for` no solo se puede utilizar en dirección positiva, también es posible realizar una cuenta regresiva:
+
+```python filename="Python"
+for i in range(10, 1, -2):
+    print(i)
+```
+
+En este caso, `i` se establece en el valor `10` al comienzo del ciclo y se reduce en `2` en cada pasada. El bucle se ejecuta siempre que `i` sea mayor que `1` y genera los valores `10`, `8`, `6`, `4` y `2` en la pantalla.
+
+Esto hace que el bucle `for` sea una forma ideal de revisar el ejemplo de la última sección para calcular el factorial de un número. También es un ejemplo de cómo los bucles `while` y `for` se pueden anidar entre sí:
+
+```python filename="Python"
+while True:
+    number = int(input("Ingresa un número: "))
+    if number < 0:
+        print("No se permiten números negativos.")
+        continue
+    result = 1
+    for i in range(2, number + 1):
+        result = result * i
+    print("Resultado: ", result)
+```
+
+Después de que el usuario realiza una entrada y verifica su signo, se inicia un bucle `for`. El contador `i` del bucle comienza con el valor `2`. El bucle se ejecuta siempre que `i` sea menor que `number + 1`, por tanto, el valor más alto posible de `i` es un `number`. En cada iteración, la variable `result` se multiplica por `i`.

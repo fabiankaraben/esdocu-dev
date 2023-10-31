@@ -1,0 +1,19 @@
+# Archivos en Python
+
+Hasta ahora, hemos analizado cómo crear y trabajar con instancias de varios tipos de datos. Además, ya sabes cómo las estructuras de control pueden afectar el flujo del programa. Ahora es el momento de hacer un buen uso de este conocimiento y permitirte escribir programas más complejos. 
+
+Este capítulo está dedicado a las diversas opciones que tienes para la entrada o salida de datos. Esto se refiere en particular a la lectura y escritura de archivos, que forma parte del repertorio estándar de un programador.
+
+Antes de pasar específicamente a leer y escribir archivos en Python, la siguiente sección te presentará los conceptos básicos necesarios que te permitirán hacerlo.
+
+## Stream de datos
+
+Un flujo o stream de datos es una secuencia continua de datos. Distinguimos entre dos tipos de flujos de datos: los datos se pueden leer de los flujos de datos entrantes (*downstream*) y escribirse en los flujos de datos salientes (*upstream*). 
+
+La salida de pantalla, la entrada de teclado y los archivos y conexiones de red se consideran flujos de datos. Por ejemplo, puedes imaginar que el programa lee un archivo e imprime en la pantalla un de cada dos palabras contenidas en el archivo.
+
+Hay dos flujos de datos estándar que ya has utilizado sin saberlo: tanto la salida de una cadena a la pantalla como una entrada del usuario no son más que operaciones en los flujos de entrada y salida estándar, `stdin` y `stdout`, respectivamente. El flujo de salida estándar `stdout` puede ser escrito utilizando la función de `print` incorporada y leer desde el flujo de entrada estándar `stdin` usando la función `input`.
+
+Todos los principales sistemas operativos te permiten abrir flujos de datos en modo texto o binario. Si bien generalmente no existe una diferencia técnica entre secuencias de texto y secuencias binarias, es importante abrir una secuencia usando el modo apropiado. En modo texto, ciertos caracteres de control, como por ejemplo los caracteres de nueva línea o el carácter de fin de archivo (EOF), pueden interpretarse según su respectiva semántica. Además, Python intenta automáticamente decodificar el contenido de los flujos de texto en instancias `str` (tipo de dato de cadena de texto).
+
+Como distinción final, existen flujos de datos en los que puedes posicionarte a voluntad y otros en los que no. Por ejemplo, un archivo representa un flujo de datos en el que la posición de lectura/escritura se puede especificar según se desee. Ejemplos de flujos en los que esto no funciona incluyen el flujo de entrada estándar (`stdin`) y una conexión de red.

@@ -1,0 +1,63 @@
+# El primer programa
+
+Como introducción a la programación con Python, ahora crearemos un pequeño programa de muestra: el juego *Adivinando números*. La idea del juego es la siguiente: el jugador debe adivinar un número especificado en el programa. Para ello, pueden realizar tantos intentos como quieran. Después de cada intento, el programa les informa si el número adivinado era demasiado grande, demasiado pequeño o exactamente correcto. Una vez que el jugador adivina el número, el programa imprime el número de intentos y sale. Desde el punto de vista del jugador, todo debería verse así:
+
+```plaintext filename="Terminal"
+Adivina: 42
+Demasiado pequeño
+Adivina: 10000
+Demasiado grande
+Adivina: 999
+Demasiado pequeño
+Adivina: 1337
+¡Genial, solo te tomó 4 intentos!
+```
+
+Pasemos ahora del protocolo de flujo a la implementación real en Python.
+
+```python filename="Python" showLineNumbers
+secret = 1337
+attempt = -1
+counter = 0
+
+while attempt != secret:
+    attempt = int(input("Adivina: "))
+
+    if attempt < secret:
+        print("Demasiado pequeño")
+    
+    if attempt > secret:
+        print("Demasiado grande")
+
+    counter = counter + 1
+
+print("¡Genial, solo te tomó", counter, "intentos!")
+```
+
+Analicemos ahora en detalle cada parte de este programa.
+
+## Inicialización
+
+Durante la inicialización, se crean las variables necesarias para el juego. Python distingue entre diferentes tipos de datos, como cadenas, enteros o flotantes. El tipo de variable se determina en tiempo de ejecución del programa en función del valor que se le asigna, por lo que no es necesario especificar un tipo de datos explícitamente. Una variable puede cambiar de tipo en el transcurso del programa.
+
+En nuestro juego, se crean variables para el número buscado (`secret`), la entrada del usuario (`attempt`) y el contador de intentos (`counter`) y se les asignan valores iniciales. El hecho de que `attempt` y el `secret` tengan valores diferentes al comienzo del programa garantiza que el ciclo realmente comenzará.
+
+## Encabezado de bucle
+
+Se inicia un bucle `while`. Un bucle `while` se ejecuta siempre que se cumpla la condición nombrada en el encabezado del bucle (`attempt != secret`); en este caso, hasta que las variables `attempt` y `secret` tengan el mismo valor. Desde la perspectiva del usuario, esto significa que el bucle se ejecuta hasta que la entrada del usuario coincide con el número que se va a adivinar.
+
+El cuerpo del bucle que pertenece al encabezado del bucle se puede reconocer porque las líneas siguientes se han sangrado un paso más. Tan pronto como el sangrado se mueve nuevamente un paso hacia la izquierda, el cuerpo del bucle termina.
+
+## Cuerpo de bucle
+
+En la primera línea del cuerpo del bucle, se lee un número ingresado por el jugador y se almacena en la variable `attempt`. La entrada del usuario se lee usando `input("Adivina: ")` y se convierte a un número entero con `int()`. Esta conversión es importante porque la entrada del usuario generalmente se lee como una cadena. En nuestro caso, sin embargo, queremos seguir usando la entrada como un número. La cadena `"Adivina: "` se muestra antes de la entrada y se utiliza para solicitar al usuario que ingrese el número.
+
+Después de la lectura, se comprueba individualmente si el número ingresado `attempt` es mayor o menor que el número secreto buscado `secret` y se imprime el mensaje correspondiente. Finalmente, el contador de intentos `counter` se incrementa en uno.
+
+Una vez que se incrementa el contador de intentos, el cuerpo del bucle finaliza porque la siguiente línea ya no tiene sangría debajo del encabezado del bucle.
+
+## Salida en pantalla
+
+La última línea del programa no forma parte del cuerpo del bucle. Esto significa que no se ejecuta hasta que el ciclo se ejecuta por completo, es decir, hasta que se gana el juego. En este caso, se muestra un mensaje de éxito y el número de intentos necesarios. El juego ha terminado.
+
+Ahora crea tu primer programa Python escribiendo el código del programa en un archivo llamado `game.py` y ejecutándolo. Cambia el valor inicial de `secret` y juega.

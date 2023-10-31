@@ -1,0 +1,73 @@
+# Expresiones Lógicas
+
+Además de los operadores aritméticos, existe un segundo conjunto de operadores que permiten comparar valores como números:
+
+```python-repl filename="Python (Interactivo)"
+>>> 3 < 4
+True
+```
+
+Aquí probamos si `3` es menor que `4`. El intérprete responde a tales comparaciones con un valor de verdad, es decir, `True` o `False`. La comparación se realiza mediante el llamado operador relacional, en este caso `<`.
+
+## Operadores relacionales
+
+La siguiente tabla contiene una lista de los operadores relacionales.
+
+Ten en cuenta que el doble signo igual es de comparación y no de asignación.
+
+| Comparación | Significado  |
+|:---|:---|
+|`3==4`|¿`3` es igual a `4`?|
+|`3!=4`|¿`3` es diferente de `4`?|
+|`3<4`|¿`3` es menor que `4`?|
+|`3>4`|¿`3` es mayor que `4`?|
+|`3<=4`|¿Es `3` menor o igual que `4`?|
+|`3>=4`|¿Es `3` mayor o igual que `4`?|
+
+En general, se puede usar cualquier expresión aritmética para `3` y `4`. Cuando combinas dos expresiones aritméticas usando uno de los operadores que acabamos de describir, creas una expresión lógica:
+
+```python filename="Python"
+(a - 7) < (b * b + 6.5)
+```
+
+## Operadores lógicos
+
+Además de los operadores aritméticos ya introducidos, existen tres operadores lógicos que puedes utilizar para cambiar el resultado de una expresión lógica o para vincular dos expresiones lógicas.
+El operador `not` invierte el resultado de una comparación, convirtiendo `True` en `False` y `False` en `True`. En consecuencia, la expresión `not (3 < 4)` es lo mismo que `3 >= 4`:
+
+```python-repl filename="Python (Interactivo)"
+>>> not (3 < 4) 
+False
+>>> 3 >= 4 
+False
+>>> not (4 < 3) 
+True
+>>> 4 >= 3 
+True
+```
+
+El operador `and` toma dos expresiones lógicas como operandos y se evalúa como `True` si y sólo si tanto la primera como la segunda expresión se han evaluado como `True`. Corresponde pues a la palabra "**y**" (*and*) en el lenguaje natural que une dos partes de una oración. En el ejemplo, esto podría verse así:
+
+```python-repl filename="Python (Interactivo)"
+>>> (3 < 4) and (5 < 6) 
+True
+>>> (3 < 4) and (4 < 3) 
+False
+```
+
+El operador `or` toma dos expresiones lógicas como operandos y se evalúa como `False` solo si tanto la primera expresión como la segunda se evalúan como `False`. Así, el operador devuelve `True` si al menos uno de sus operandos ha devuelto `True`:
+
+```python-repl filename="Python (Interactivo)"
+>>> (3 < 4) or (5 < 6)
+True
+>>> (3 < 4) or (4 < 3)
+True
+>>> (5 > 6) or (4 < 3)
+False
+```
+
+En aras de la simplicidad, aquí solo hemos comparado cifras. Por supuesto, tal comparación solo tiene sentido cuando se comparan expresiones aritméticas más complejas. Con los operadores relacionales y los tres operadores booleanos, `not`, `and`, y `or`, ya puedes crear comparaciones muy complejas.
+
+> **Nota**
+> 
+> Ten en cuenta que se han añadido paréntesis a todos los ejemplos sólo para mayor claridad, ya que las reglas de prioridad entre los operadores hacen que los paréntesis sean superfluos. Esto significa que todos los ejemplos presentados aquí funcionarían como se esperaba incluso sin paréntesis. Sin embargo, tiene sentido, especialmente al principio, hacer que las afiliaciones sean visualmente inequívocas al colocar paréntesis alrededor de ellas.

@@ -1,0 +1,76 @@
+# Funciones en programación
+
+## ¿Qué es una función?
+
+Una función es un bloque reutilizable de código con un nombre como identificador, una serie de parámetros de entrada y un valor de salida o retorno.
+
+Una vez declarada una función podemos utilizar su nombre para invocarla y así ejecutar el código que contiene una o más veces a lo largo de la ejecución de todo el código.
+
+Un ejemplo de función en *Dart*:
+
+```dart filename="Dart"
+sumarNumeros(int primerNumero, int segundoNumero) {
+    return primerNumero + segundoNumero;
+}
+```
+
+La sintaxis dependerá del lenguaje utilizado pero normalmente el contenido de una función estará encerrado entre llaves, sus parámetros de entrada estarán entre paréntesis justo alado del nombre de la función, y se utilizará la palabra clave *return* para definir el valor de salida de la función, es decir, el valor que va a retornar al código que invoque a la función.
+
+## Parámetros de una función
+
+Otra forma de ver a las funciones es como una caja negra que recibe valores de entrada y devuelve un resultado.
+
+Esos valores de entrada son los *parámetros de la función* y pueden ser tantos como sean necesarios y de cualquier tipo de dato disponible.
+
+Veámos nuevamente el código del ejemplo anterior en donde la función define dos parámetros de tipo entero que son los número que luego son utilizados para realizar la suma antes de devolver el resultado:
+
+```dart filename="Dart"
+sumarNumeros(int primerNumero, int segundoNumero) {
+    return primerNumero + segundoNumero;
+}
+```
+
+Es posible también definir una función sin ningún parámetro de entrada.
+
+Algunos lenguajes permiten que la función tenga una cantidad indefinida de parámetros (en este ejemplo sería una cantidad indefinida de número para sumar), e incluso es posible definir dos o más funciones con el mismo nombre pero con diferente cantidad de parámetros de entrada, lo que diferenciará a una función de otra.
+
+## Alcance de una función
+
+De la misma forma que sucede con las variables, las funciones normalmente tienen un alcance definido, es decir que solo podrán ser utilizadas dentro del ámbito donde fueron declaradas. 
+
+En el caso de que la función sea pública y parte de una biblioteca externa, también podrá ser utilizada desde todo código que importe esa biblioteca.
+
+Si una función forma parte de una *clase*, recibe el nombre de *método de la clase* y podrá ser utilizada desde todo código que utilice esa clase.
+
+Veremos más adelante las explicaciones de los conceptos de *biblioteca* y *clase*.
+
+## Valor de retorno
+
+Como vimos en los ejemplos anteriores, las funciones normalmente utilizan la palabra clave *return* para definir el valor que van a devolver.
+
+Una función puede no tener ningún valor de retorno, en ese caso simplemente se omite el uso de la palabra clave *return*.
+
+Algunos lenguajes como por ejemplo *Go*, permiten retornar uno, dos o más valores a la vez, en los demás lenguajes si se necesita devolver más de un valor, se puede utilizar una *Lista* o un *Mapa* como valor de retorno.
+
+## Ejecutar una función
+
+Ahora que vimos cómo definir una función, veámos un ejemplo de invocación de una función lo cual toma los valores de entrada, los utiliza al ejecutar el contenido de la función y luego opcionalmente retorna un resultado.
+
+Ejemplo completo en *Dart*:
+
+```dart filename="Dart"
+main(){
+    // Definición de una función para sumar dos número enteros
+    sumarNumeros(int primerNumero, int segundoNumero) {
+        return primerNumero + segundoNumero;
+    }
+    
+    // Ejecuta la función y almacena el resultado en una variable
+    int resultado = sumarNumero(4, 5);
+    
+    // Imprime el resultado de sumar 4 + 5
+    print(resultado);
+}
+```
+
+En este ejemplo la función *main()* es simplemente un requerimiento particular del lenguaje *Dart* en el cual todo programa inicia su ejecución con una función con este nombre.

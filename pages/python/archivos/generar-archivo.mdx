@@ -1,0 +1,112 @@
+# Generar archivos en Python
+
+Como puedes ver en los ejemplos anteriores, se puede crear un objeto de archivo utilizando la función incorporada `open`. A esta función puedes pasarle otros parámetros además del nombre del archivo y el modo. Además, además de los modos `r` y `w` ya descritos, hay algunos otros que analizaremos más adelante. Finalmente, proporcionaremos una descripción general de los métodos del objeto de archivo resultante.
+
+> **Nota**
+> 
+> Esta sección contiene información detallada sobre los objetos de archivos y sirve principalmente como referencia, y por lo tanto, podrías saltártelos durante tu primera lectura.
+
+## La función incorporada `open`
+
+La función `open` abre un archivo y devuelve el objeto de archivo creado. Utilizando este objeto de archivo, posteriormente puedes realizar las operaciones necesarias en el archivo.
+
+```python filename="Definición de sintaxis"
+open(filename, [mode, buffering, encoding, errors, newline])
+```
+
+Ya hemos discutido los dos primeros parámetros en las secciones anteriores. Estos son el nombre del archivo o la ruta al archivo que se abrirá y el modo en el que se abrirá el archivo. Se debe pasar una cadena para el parámetro `mode`. Todos los valores válidos y sus significados se enumeran en la siguiente tabla.
+
+|Modo|Descripción|
+|:---|:---|
+|`r`|El archivo se abre para lectura únicamente.|
+|`w`|El archivo se abre sólo para escritura. Se sobrescribirá cualquier archivo existente con el mismo nombre.|
+|`a`|El archivo se abre sólo para escritura. Un archivo posiblemente existente con el mismo nombre no se sobrescribirá, sino que se ampliará.|
+|`x`|El archivo se abre sólo para escritura, si aún no existe. Si ya existe un archivo con el mismo nombre, se genera una excepción `FileExistsError`.|
+|`r+`, `w+`, `a+`, `x+`|El archivo se abre para lectura y escritura. Ten en cuenta que `w+` vaciará cualquier archivo existente con el mismo nombre.|
+|`rb`, `wb`, `ab`, `xb`, `r+b`, `w+b`, `a+b`, `x+b`|El archivo se abrirá en modo binario. Ten en cuenta que en este caso, se deben utilizar instancias `bytes` en lugar de cadenas, como veremos en lecciones posteriores.|
+
+El parámetro `mode` es opcional y se asigna el valor `r` si se omite.
+
+Los cuatro parámetros opcionales adicionales (`buffering`, `encoding`, `errors`, y `newline`) generalmente no son necesarios e ilustraremos su uso con varias interfaces similares a lo largo del curso. No obstante, queremos hacer un breve resumen de su significado llegados a este punto.
+
+El cuarto parámetro opcional, `encoding`, se puede utilizar para especificar la codificación en la que se leerá o escribirá el archivo. La codificación determina cómo se almacenan los caracteres especiales más allá del juego de caracteres ASCII. Especificar una codificación no tiene sentido al abrir un archivo en modo binario y debe omitirse en ese caso.
+
+El quinto parámetro, `errors`, determina cómo tratar los errores al codificar caracteres en la codificación especificada. Si se pasa el valor `ignore`, los errores se ignorarán. Se genera una excepción `ValueError` para un valor `strict`, lo que también ocurre si no especificas el parámetro.
+
+El parámetro `buffering` controla el tamaño del buffer interno y `newline` especifica los caracteres que se reconocerán o utilizarán como caracteres de nueva línea al leer o escribir el archivo.
+
+## Atributos y métodos de un objeto de archivo
+
+Los parámetros especificados al abrir se pueden leer nuevamente a través de los atributos `name`, `encoding`, `errors`, `mode`, y `newlines` del objeto de archivo resultante.
+
+La siguiente tabla resume brevemente los métodos más importantes de un objeto de archivo. Analizaremos los métodos `seek` y `tell` con más detalle en la siguiente sección.
+
+|Método|Descripción|
+|:---|:---|
+|`close()`|Cierra un objeto de archivo existente. Ten en cuenta que después de eso no se pueden realizar operaciones de lectura o escritura.|
+|`fileno()`|Devuelve el descriptor⁽¹⁾ del archivo abierto como un número entero.|
+|`flush()`|Limpia el buffer interno.⁽²⁾|
+|`isatty()`|`True` si el objeto de archivo se abrió en un stream de datos que no se puede escribir ni leer en ninguna posición.|
+|`next()`|Lee la siguiente línea del archivo y la devuelve como una cadena.|
+|`read([size])`|Lee `size` bytes del archivo. Si no se especifica el tamaño o el archivo es menor que los bytes de tamaño, el archivo se leerá en su totalidad. Los datos se devuelven como una cadena o una cadena de `bytes` según el modo de lectura.|
+|`readline([size])`|Lee una línea del archivo. El número de bytes que se leerán se puede limitar especificando `size`.|
+|`readlines([sizehint])`|Lee todas las líneas y las devuelve como una lista de cadenas. Si se especifica `sizehint`, el proceso de lectura se ejecuta hasta que se hayan leído aproximadamente los bytes de `sizehint`.⁽³⁾|
+|`seek(offset,[whence])`|Establece la posición actual de lectura/escritura en el archivo a `offset`.|
+|`tell()`|Devuelve la posición actual de lectura/escritura en el archivo.|
+|`truncate([size])`|Elimina todos los datos del archivo después de la posición actual de lectura/escritura o, si se especifica, todo excepto los primeros `size` bytes.|
+|`write(str)`|Escribe la cadena `str` en el archivo.|
+|`writelines(iterable)`|Escribe varias líneas en el archivo. El objeto iterable `iterable` debe pasar a través de cadenas de texto, como una lista de cadenas, por ejemplo.|
+
+***⁽¹⁾** Un descriptor de archivo es un número de identificación asignado por el sistema operativo para archivos abiertos. Los streams `stdin` y `stdout` predeterminados tienen descriptores `0` y `1`, respectivamente.*
+
+***⁽²⁾** El sistema operativo puede almacenar en buffer las operaciones de archivos pendientes para mayor eficiencia y ejecutarlas más adelante. Esta es la razón, por ejemplo, por la que no se deben extraer las memorias USB sin cerrar sesión en el sistema operativo.*
+
+***⁽³⁾** En este contexto, "aproximadamente" significa que el número de bytes a leer se puede redondear al tamaño del buffer interno.*
+
+## Cambiar la posición de escritura/lectura
+
+Los ejemplos anteriores han mostrado cómo se pueden leer o escribir archivos de forma secuencial. Debido a la naturaleza especial de los archivos, es posible cambiar la posición de escritura o lectura a voluntad. Para ello, puede utilizar los métodos `seek` y `tell` del objeto de archivo.
+
+```python filename="Definición de sintaxis"
+seek(offset, [whence])
+```
+
+El método `seek` de un objeto de archivo establece la posición de lectura/escritura dentro del archivo. Es la contraparte del método `tell`, que devuelve la posición actual de lectura/escritura.
+
+> **Nota**
+> 
+> El método `seek` no tiene ningún efecto en el modo `a`. En el modo `a+`, la posición de lectura/escritura se cambia para que pueda leerse en cualquier punto del archivo, pero se restablece antes de una operación de escritura.
+
+Si el archivo se abrió en modo binario, el parámetro `offset` se cuenta en bytes desde el principio del archivo. Esta interpretación de `offset` puede verse influenciada por el parámetro opcional `whence` (consulte la siguiente tabla).
+
+|Valor de `whence`|Interpretación de `offset`|
+|:---|:---|
+|`0`|Número de bytes relativos al comienzo del archivo.|
+|`1`|Número de bytes relativos a la posición actual de lectura/escritura|
+|`2`|Número de bytes relativos al final del archivo|
+
+No podrás utilizar el método `seek` con tanta libertad si el archivo se abre en modo texto. Aquí, sólo se deben utilizar como `offset` los valores de retorno del método `tell`. Los valores diferentes pueden provocar un comportamiento indefinido.
+
+En el siguiente ejemplo, el método `seek` se utiliza para determinar el ancho, el alto y la profundidad del color de un gráfico de mapa de bits:
+
+```python filename="Python"
+from struct import unpack
+with open("imagen.bmp", "rb") as f:
+    f.seek(18)
+    width, height = unpack("ii", f.read(8))
+    f.seek(2, 1)
+    bpp = unpack("H", f.read(2))[0]
+print("Ancho:", width, "px")
+print("Alto:", height, "px")
+print("Profundidad del color:", bpp, "bpp")
+```
+
+De la especificación del formato del archivo de mapa de bits, podemos ver que la información que estamos buscando se encuentra en los *offsets* `18`, `22` y `28`, en forma de dos valores consecutivos de cuatro bytes y un valor de dos bytes. Por lo tanto, abrimos el archivo `imagen.bmp` para leerlo en modo binario y omitimos los primeros `18` bytes usando el método `seek`. En este punto, podemos usar `read` para leer el ancho y alto del gráfico. Los valores leídos mediante `read` se devuelven como una cadena de bytes y, por lo tanto, deben convertirse para nuestros propósitos en números. Para hacer eso, usamos la función `unpack` del módulo `struct` de la biblioteca estándar. La declaración de formato `ii` requerida por `unpack` establece que la cadena de bytes pasada debe interpretarse como dos enteros consecutivos de 32 bits con signo.
+
+Después de leer el ancho y el alto, saltamos dos bytes más de la posición de lectura actual (el parámetro `whence` se establece en `1` en la llamada de `seek`) y luego podemos leer dos bytes que contienen la profundidad de color de la imagen. Finalmente, se imprime la información leída. La salida en pantalla del programa de gráficos debe verse similar a lo siguiente:
+
+```plaintext filename="Salida"
+Ancho: 800 px
+Alto: 600 px
+Profundidad del color: 24 bpp
+```

@@ -1,0 +1,42 @@
+# En caso de error
+
+Quizás ya hayas jugado con el programa de muestra de la lección anterior y te hayas encontrado con el siguiente resultado o uno similar del intérprete:
+
+```plaintext filename="Terminal"
+  File "hello_world.py", line 10
+    if attempt < secret
+                       ^
+SyntaxError: expected ':'
+```
+
+Este es un mensaje de error que indica un error de sintaxis en el programa.
+
+¿Puedes decir cuál es exactamente el error en este caso? Correcto: faltan los dos puntos al final de la línea.
+
+Python proporciona información importante al generar un mensaje de error, lo cual es útil para solucionar problemas:
+
+- La primera línea del mensaje de error indica en qué línea y dentro de qué archivo se produjo el error. En este caso, es la línea 8 del archivo `hello_world.py`.
+- La parte central muestra la sección afectada del código fuente, con la ubicación exacta a la que se refiere el mensaje marcada con una pequeña flecha. Es importante que este sea el lugar donde el intérprete pueda detectar el error por primera vez. Este no es necesariamente el mismo lugar donde se cometió el error.
+- La última línea especifica el tipo de mensaje de error (en este caso, `SyntaxError`). Estos son los mensajes de error más comunes. Indican que el compilador no pudo seguir compilando el programa debido a un error formal.
+
+Además del error de sintaxis, existen otros tipos de errores, que no se pueden analizar en detalle aquí. Sin embargo, nos gustaría resaltar el `IndentationError` porque los principiantes en Python lo encuentran a menudo. Para demostrar esto, intenta ejecutar el siguiente programa:
+
+```python filename="Python"
+i = 10
+if i == 10: print("Sangría incorrecta")
+```
+
+Puedes ver que la última línea debería tener una sangría un paso más a la derecha. Tal como está escrito el programa ahora, la declaración `if` no tiene cuerpo de declaración. Esto no está permitido y se produce un error de sangría `IndentationError`:
+
+```plaintext filename="Terminal"
+  File "indent.py", line 3
+    print("Sangría incorrecta")
+    ^
+IndentationError: expected an indented block after 'if' statement on line 2
+```
+
+Ahora que nos hemos familiarizado con estos conceptos básicos, podemos pasar a las estructuras de control que permiten a un programador controlar el flujo del programa.
+
+> **Nota**
+> 
+> Con Python 3.10 y 3.11, se han revisado muchos mensajes de error comunes, así como su formato general. Por lo tanto, si utilizas una versión anterior de Python, los resultados reales que veas pueden diferir de los impresos en este curso.

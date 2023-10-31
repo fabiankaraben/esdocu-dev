@@ -1,0 +1,144 @@
+# Operadores y expresiones en programación
+
+## Operadores aritméticos
+
+Todos los lenguajes poseen una lista de operadores para realizar operaciónes matemáticas:
+
+| Operador | Descripción    |
+| -------- | -------------- |
+| +        | Suma           |
+| -        | Resta          |
+| *        | Multiplicación |
+| /        | División       |
+
+También es normal contar con operadores para realizar divisiones enteras, así como cálculos del resto de una división, aunque estos operadores suelen diferir según el lenguaje.
+
+La utilización de estos operadores es tan sencilla como el siguiente ejemplo:
+
+```dart filename="Dart"
+// Ejemplos simples de operadores aritméticos
+var resultadoSuma = 3 + 2;
+var resultadoResta = 5 - 2;
+var resultadoMultiplicacion = 5 * 2;
+var resultadoDivision = 10 / 2;
+```
+
+Solo requiere que los operandos sean numericos, ya que por ejemplo el operador **+** suele tener otro comportamiento si se lo utiliza con cadenas de texto (Strings).
+
+## Operadores de equidad y relación
+
+Veremos las sentencias condicionales y los bucles en un capítulo posterior y solo entonces será evidente la utilidad de los operadores necesarios para realizar comparaciones, por el momento analizaremos un ejemplo sencillo para exponer el funcionamiento de estos operadores.
+
+Los operadores de equidad y relación nos permiten saber si dos valores son iguales, distintos, o poseen una de las relaciones en la siguiente tabla:
+
+| Operador | Descripción   |
+| -------- | ------------- |
+| ==       | Igualdad      |
+| !=       | Desigualdad   |
+| >        | Mayor         |
+| \<        | Menor         |
+| >=       | Mayor o igual |
+| \<=       | Menor o igual |
+
+Estos operadores son ampliamente utilizados para definir el flujo de ejecución de un programa, por ejemplo:
+
+```dart filename="Dart"
+int unNumero = 5;
+
+if (unNumero > 3) {
+	print("El número es mayor a 3");
+}
+```
+
+En este ejemplo la función *print()* solo se ejecuta si se cumple la condición de la sentencia *if*, es decir, si el número en la variable *unNumero* es mayor a 3.
+
+## Operadores de asignación
+
+Hemos utilizado un operador de asignación desde los primeros ejemplos, el operador **=** que usamos para asignar un valor a una variable.
+
+Normalmente los lenguajes incluyen otros operadores de asignación. Los siguiente son ejemplos típicos:
+
+| Operador | Ejemplo        | Expresión equivalente    |
+| -------- | -------------- | ------------------------ |
+| +=       | variable += 2; | variable = variable + 2; |
+| -=       | variable -= 2; | variable = variable - 2; |
+| *=       | variable *= 2; | variable = variable * 2; |
+| /=       | variable /= 2; | variable = variable / 2; |
+| ++       | variable++     | variable = variable + 1; |
+| --       | variable--     | variable = variable - 1; |
+
+## Operadores lógicos
+
+Los operadores lógicos son muy útiles para combinar dos o más comparaciones.
+
+Los operadores lógicos típicos son:
+
+| Operador | Descripción |
+| -------- | ----------- |
+| !        | Negación    |
+| &&       | AND         |
+| \|\|     | OR          |
+
+Veamos algunos ejemplos:
+
+```dart filename="Dart"
+int primerNumero = 5;
+int segundoNumero = 10;
+
+if (primerNumero == 5 && segundoNumero > 8) {
+    print("Se cumplen ambas condiciones");
+}
+```
+
+En este ejemplo la función *print()* se ejecuta únicamente si las dos condiciones en la sentencia *if* son verdaderas.
+
+```dart filename="Dart"
+int primerNumero = 5;
+int segundoNumero = 10;
+
+if (primerNumero == 5 || segundoNumero > 8) {
+    print("Se cumple una o ambas condiciones");
+}
+```
+
+En este ejemplo la función *print()* se ejecuta si se cumple la primera, la segunda o ambas condiciones en la sentencia *if*, es decir que únicamente se evita ejecutar la función *print()* si no se cumplen ambas condiciones.
+
+## Expresión condicional
+
+Muchos lenguajes incluyen una expresión condicional la cual permite optar por un valor u otro dependiendo del cumplimiento de una condición data, por ejemplo:
+
+```dart filename="Dart"
+var numeroComoTexto = "dos";
+
+// Expresión condicional
+var resultado = (numeroComoTexto == "dos") ? 2 : 0;
+```
+
+En este ejemplo si se cumple la condición entre paréntesis, la variable *resultado* recibe el valor *2*, caso contrario recibe el valor *0*.
+
+## Expresiones regulares
+
+Las expresiones regulares nos permiten evaluar una condición compleja de forma directa y rápida.
+
+La sintaxis de las expresiones regulares varía ligeramente de un lenguaje a otro, por lo que estudiaremos los detalles en su respectivos cursos, por el momento veamos un ejemplo de validación de email utilizando expresiones regulares en el lenguaje *Dart*:
+
+```dart filename="Dart"
+/* Una variable de tipo de dato 'RegExp' y nombre 'emailRegExp',
+almacenando la expresión regular que define la sintaxis de
+una dirección de email válida */
+var RegExp emailRegExp = RegExp(
+    r'^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$',
+);
+
+// Una dirección de email de ejemplo
+var unEmail = "name@company.com";
+
+/* La función 'hasMatch' de Dart comprueba que la dirección
+de email en 'unEmail' cumple los criterios de la expresión
+regular en la variable 'emailRegExp' */
+if(emailRegExp.hasMatch(unEmail)){
+    print("El email es válido.");
+}
+```
+
+En este ejemplo validar un email parte por parte requeriría muchas líneas de código, en cambio con expresiones regulares se puede realizar de forma directa y rápida, aunque a simple vista una expresión regular pueda ser intimidante, tiene un gran potencial que vale la pena aprovechar.

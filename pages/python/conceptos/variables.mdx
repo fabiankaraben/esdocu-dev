@@ -1,0 +1,67 @@
+# Variables
+
+En Python, puedes asignar un nombre a un valor como un número o una cadena de texto. Para ello, se escribe el nombre a la izquierda y el literal correspondiente a la derecha de un signo igual. Tal operación se conoce como una asignación.
+
+```python-repl filename="Python (Interactivo)"
+>>> name = 0.5
+>>> var123 = 12
+>>> string = "Hola Mundo!"
+>>> list = [1,2,3]
+```
+
+Los valores asociados con los nombres se pueden generar más tarde o usarse en cálculos ingresando el nombre en lugar del valor respectivo:
+
+```python-repl filename="Python (Interactivo)"
+>>> name
+0.5
+>>> 2 * name
+1.0
+>>> (var123 + var123) / 3
+8.0
+>>> var123 + name
+12.5
+```
+
+También es posible asignar un nombre al valor de cualquier expresión, por ejemplo al resultado de un cálculo:
+
+```python-repl filename="Python (Interactivo)"
+>>> a = 1 + 2
+>>> b = var123 / 4
+```
+
+La parte situada a la derecha del signo igual siempre se evalúa primero. Por ejemplo, la instrucción `a = 1 + 2` siempre determina el resultado de `1 + 2` antes de asignar a la variable el valor resultante.
+
+## El significado especial del guion bajo
+
+En modo interactivo, el guion bajo (`_`) siempre se puede utilizar para acceder al último valor generado. De esta manera, por ejemplo, se puede tomar un resultado intermedio previamente emitido y utilizarlo en otro cálculo:
+
+```python-repl filename="Python (Interactivo)"
+>>> 1 + 7
+8
+>>> _
+8
+>>> _ * 3
+24
+```
+
+Ten en cuenta que el guion bajo asume este rol especial exclusivamente en el modo interactivo y no en los programas regulares de Python, como describiremos más adelante.
+
+## Identificadores
+
+Un nombre de variable, también llamado *identificador*, puede constar de casi cualquier letra y el guion bajo. Después de al menos una letra inicial o un guion bajo, también se pueden usar dígitos.
+
+> **Nota**
+> 
+> Al usar variables, ten en cuenta que Python distingue entre mayúsculas y minúsculas. Esto significa que se hace una distinción entre mayúsculas y minúsculas. En la práctica, esto significa que los identificadores `mes` y `Mes` no son idénticos y, por lo tanto, pueden asociarse con dos valores diferentes.
+
+Ten en cuenta también que se permiten diéresis y caracteres de alfabetos internacionales, como muestra el siguiente ejemplo:
+
+```python-repl filename="Python (Interactivo)"
+>>> äöüßéè = 123
+>>> äöüßéè
+123
+```
+
+Ciertas palabras clave están reservadas en Python para el lenguaje mismo y no pueden usarse como identificadores. Esta es la lista de palabras reservadas en Python:
+
+`and`, `del`, `from`, `not`, `while`, `as`, `elif`, `global`, `or`, `with`, `assert`, `else`, `if`, `pass`, `yield`, `break`, `except`, `import`, `print`, `class `, `exec`, `in`, `raise`, `continue`, `finally`, `is`, `return`, `def`, `for`, `lambda`, `try`

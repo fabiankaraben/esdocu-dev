@@ -1,5 +1,38 @@
 # Funciones en JavaScript
 
-```javascript filename="JavaScript"
+En JavaScript, las funciones son una forma de agrupar código que se puede reutilizar o ejecutar tantas veces como sea necesario en un programa.
 
+Ya has usado el método `console.log()` para mostrar cosas en tu consola y el método `typeof()` para encontrar el tipo de valores. En JavaScript, las funciones integradas se denominan métodos.
+
+La declaración `console.log()` contiene varias líneas de código que no ves, y esto es lo que realmente le dice al motor de JavaScript que muestre el valor que pusiste entre paréntesis en la consola para que cuando ejecutes `console.log('¡Hola Mundo!')`, el motor de JavaScript mostrará el texto `¡Hola mundo!`
+
+Con las funciones de JavaScript, puedes ejecutar el mismo conjunto de declaraciones desde varios lugares de un programa sin tener que reescribirlo cada vez.
+
+## Cómo definir funciones en JavaScript
+
+JavaScript nos permite definir funciones de diferentes maneras. Una forma común de hacer esto es a través de la palabra clave `function`. 
+
+Escribamos una función que multiplique cualquier número por dos y devuelva el resultado:
+
+```javascript filename="JavaScript"
+function multiplyByTwo(value) {
+    const result = value * 2
+    return result
+}
 ```
+
+De nuestra función anterior:
+
+- El nombre de nuestra función es `multiplyByTwo`, que se proporciona justo después de la palabra clave `function`.
+- El paréntesis al lado del nombre de la función contiene los parámetros de la función.
+- Los parámetros son nombres utilizados para representar los valores que queremos usar en nuestras funciones.
+- El bloque de código después de la llave de apertura es el cuerpo de la función.
+- La palabra clave `return` se utiliza para finalizar la ejecución de una función mientras se devuelve un valor específico. Este valor se llama *valor de retorno*.
+
+### Parámetros de función
+
+Los parámetros de una función son nombres que se utilizan para representar valores reales que pretendemos proporcionar cuando llamamos a una función. En nuestro ejemplo anterior, nuestro parámetro de función es `value`. Cuando llamamos a la función `multiplyByTwo`, proporcionaremos el valor real de este parámetro.
+
+### ¿Qué es una llamada de función?
+
+Una llamada de función o invocación de función es una solicitud para ejecutar una función. Veremos cómo hacer esto cuando usemos la función `multiplyByTwo`.

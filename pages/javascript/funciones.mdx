@@ -36,3 +36,346 @@ Los parámetros de una función son nombres que se utilizan para representar val
 ### ¿Qué es una llamada de función?
 
 Una llamada de función o invocación de función es una solicitud para ejecutar una función. Veremos cómo hacer esto cuando usemos la función `multiplyByTwo`.
+
+## La palabra clave de `return`
+
+Usamos la palabra clave `return` para finalizar la ejecución de una función mientras proporcionamos un valor específico. En nuestro caso, la función `multiplyByTwo` devuelve el resultado del cálculo. 
+
+Veamos cómo usar la palabra clave `return` para finalizar la ejecución de nuestra función de forma condicional:
+
+```javascript filename="JavaScript"
+function multiplyByTwo(value) {
+    if (isNaN(value)) {
+        return 'Value debe ser un número'
+    }
+
+    const result = value * 2
+    return result
+}
+```
+
+En nuestra nueva función, agregamos una condición que verifica si el parámetro `value` es un número, usando la función `isNaN` incorporada de JavaScript. `isNaN` significa "no es un número" y devuelve verdadero si el valor proporcionado no es un número. En este caso, si el parámetro de valor no es un número, la primera declaración de devolución terminaría la función y devolvería la cadena `'Value debe ser un número'`.
+
+La sintaxis anterior que utilizamos para definir nuestra función JavaScript se llama *declaración de función*. Ahora, digamos a nuestra función que ejecute el código que contiene.
+
+Para invocar nuestra función JavaScript solo necesitamos escribir su nombre seguido de un paréntesis:
+
+```javascript filename="JavaScript"
+multiplyByTwo()
+```
+
+Recuerda que en nuestra definición de función, usamos el parámetro `value` para representar el valor real a multiplicar.
+
+Para proporcionar ese número a nuestra función, lo colocaremos dentro del paréntesis invocando nuestra función:
+
+```javascript filename="JavaScript"
+console.log(multiplyByTwo(35))
+```
+
+Esto es lo que veremos en nuestra consola cuando ejecutemos el código anterior:
+
+```plaintext filename="Salida en consola"
+70
+```
+
+Intentemos suministrarle a nuestra función un elemento que no sea un número:
+
+```javascript filename="JavaScript"
+console.log(multiplyByTwo('esto es una cadena'))
+// Salida: Value debe ser un número
+```
+
+## Parámetros de función frente a argumentos
+
+Al invocar nuestra función, los valores que le proporcionamos en lugar de sus parámetros se conocen como **argumentos**.
+Entonces, en nuestro caso, el número `35` y la cadena `'esto es una cadena'` son los argumentos de nuestra función.
+
+- Durante la definición de una función, los nombres que representan los valores que pretendemos proporcionar a la función se denominan **parámetros**.
+- Durante una llamada de función, lo real que proporcionamos a la función se conocen como **argumentos**.
+- Podemos utilizar hasta 255 parámetros en una definición de función.
+
+## Más sobre la declaración `return`
+
+Sin utilizar la declaración de retorno para decirle a nuestra función qué devolver, su valor predeterminado será `undefined`.
+
+Probemos esto creando una función sin una declaración `return` y luego invocándola:
+
+```javascript filename="JavaScript"
+function multiplyByTwo(value) {
+    const result = value * 2
+}
+
+console.log(multiplyByTwo(35))
+// Salida: undefined
+```
+
+La función también devuelve `undefined` de forma predeterminada cuando proporcionamos la palabra clave `return` sin un valor. Esto lo convierte en un **retorno vacío**:
+
+```javascript filename="JavaScript"
+function multiplyByTwo() {
+    const result = value * 2
+    return
+}
+
+console.log(multiplyByTwo(35))
+// Salida: undefined
+```
+
+## Funciones anónimas
+
+Has visto cómo usar declaraciones de funciones para definir funciones con nombre. También puedes utilizar declaraciones de funciones para definir funciones anónimas y expresiones de funciones invocadas inmediatamente (IIFE).
+
+Las funciones anónimas son funciones que no tienen nombre, de ahí la palabra *anónimo*.
+
+```javascript filename="JavaScript"
+function () {
+    return alert("¡Soy una función, y soy anónima!")
+}
+```
+
+Dado que no podemos hacer referencia a la función anterior por un nombre, no hay forma de llamarla en ningún otro lugar de nuestro código base. Cuando este es el caso, la función suele ser una **IIFE** (Expresión de función invocada inmediatamente), lo que significa que se invocará inmediatamente después de declararse. Para lograr esto, envolveremos la función entre paréntesis e inmediatamente la llamaremos con otro paréntesis de apertura y cierre justo después de su declaración:
+
+```javascript filename="JavaScript"
+(function () {
+    return alert("¡Soy una función, y soy anónima!")
+})()
+```
+
+Observa cómo declaramos nuestra función dentro del paréntesis antes de invocarla.
+
+### Expresión de función
+
+Para reutilizar una función anónima, tenemos que asignarla a una variable. De esta manera, podemos hacer referencia a ella por ese nombre de variable. Una forma de hacerlo es mediante la expresión de función. Asignemos nuestra función anónima a una variable:
+
+```javascript filename="JavaScript"
+const alertUser = function () {
+    return alert("Soy anónima, pero con un nombre!")
+}
+```
+
+Ahora, podemos invocar (o llamar) nuestra función de la misma manera que invocamos `multiplyByTwo()`. Como nuestra función no tiene parámetros, no será necesario proporcionar un argumento.
+
+```javascript filename="JavaScript"
+alertUser()
+```
+
+## Funciones de flecha
+
+Las **funciones de flecha** de JavaScript, también conocidas como **lambda**, son una forma abreviada de escribir expresiones de funciones en JavaScript. Se introdujeron en ES6 (la sexta versión principal de JavaScript) y se han vuelto populares en el desarrollo moderno de JavaScript.
+
+Una función de flecha se define utilizando la sintaxis de "flecha gruesa", que es un signo igual único seguido de un signo mayor que (`=>`). Por ejemplo, usemos la sintaxis de declaración de función que conoces para escribir una función que devuelva el cuadrado de un número, es decir, el número multiplicado por sí mismo:
+
+```javascript filename="JavaScript"
+const squareNumber = function (value) {
+    return value * value
+}
+
+console.log(squareNumber(5))
+// Salida: 25
+```
+
+La función de flecha equivalente se vería así:
+
+```javascript filename="JavaScript"
+const squareOfNumber = (value) => value * value
+```
+
+Esto es mucho más corto que la sintaxis de declaración de función. Primero, definimos una variable llamada `squareOfNumber`, luego escribimos nuestra función de flecha como su valor. La función de flecha toma un parámetro llamado `value` y devuelve su cuadrado. Dado que el cuerpo de la función es una expresión única, no necesitamos usar llaves. También podemos omitir la palabra clave `return` y, cuando lo hagamos, la función devolverá el valor de la expresión.
+
+Si una función de flecha tiene solo un parámetro, puedes omitir los paréntesis alrededor de la lista de parámetros:
+
+```javascript filename="JavaScript"
+const squareOfNumber = value => value * value
+```
+
+También puedes escribir funciones de flecha con llaves, pero en este caso, debes usar la palabra clave return:
+
+```javascript filename="JavaScript"
+const squareOfNumber = (value) => {
+    return value * value
+}
+```
+
+Uno de los principales beneficios de utilizar funciones de flecha es su concisión. Son especialmente útiles cuando necesitas escribir una función que toma otra función como parámetro. Cuando una función se utiliza como parámetro de otra función, se denomina **función callback** (de devolución de llamada). Y la función principal que toma la función de devolución de llamada como parámetro se denomina función de orden superior. 
+
+Aprenderemos más sobre estos conceptos a medida que avancemos.
+
+## Mejores prácticas de funciones
+
+El nombre de una función debe ser descriptivo, directo al grano y atemporal.
+
+Observa cómo llamamos a nuestra primera función `multiplyByTwo`. Esto se debe a que su trabajo es multiplicar un número por dos. Hacer esto ayudará a cualquiera a saber qué hace nuestra función mirando su nombre.
+
+La denominación de funciones es una parte esencial de la definición de funciones, y elegir ignorarla hará que tu código no sea legible ni mantenible y conducirá a una eficiencia reducida.
+
+Al nombrar tus funciones, es fundamental no utilizar jergas que sólo unas pocas personas entenderían o tendencias con las que la gente sólo pueda identificarse en un momento determinado.
+
+Deja que los nombres de tus funciones sean lo suficientemente descriptivos, directos al grano y atemporales.
+
+Una función debe tener una sola responsabilidad.
+
+Cuando definas tu función, déjale tener una responsabilidad y haz sólo lo que sugiere su nombre. Esto significa que, según nuestros ejemplos, elegir invertir una palabra y multiplicar un número en la misma función no sería una buena idea. Como hicimos nosotros, es mejor dividir las dos acciones en funciones separadas. Al hacerlo, no solo harás que tu código sea más legible, sino que también facilitarás tu testing y depuración.
+
+### Cosas a tener en cuenta
+
+- Una función es un conjunto de declaraciones diseñadas para realizar una tarea particular.
+- Durante la definición de una función, los nombres que representan los valores que pretendemos proporcionar a la función se denominan parámetros.
+- Durante una llamada a una función, los valores reales proporcionados a la función se denominan argumentos.
+- Podemos utilizar hasta 255 parámetros en una definición de función.
+- Una función anónima es una función que no tiene nombre y para reutilizar una función anónima tenemos que asignarla a una variable.
+- Una IIFE (Expresión de función invocada inmediatamente) es una función que se invoca inmediatamente después de ser declarada.
+- Una función debe tener una sola responsabilidad.
+- Los nombres de las funciones deben ser descriptivos, directos al grano y atemporales.
+
+## Métodos de string de JavaScript
+
+JavaScript tiene varios métodos integrados que podemos usar para manipular cadenas de texto. Echemos un vistazo a algunos de los más comunes.
+
+### toUpperCase()
+
+El método `toUpperCase()` se utiliza para convertir una cadena a mayúsculas. Podemos usar este método en cualquier cadena y devolverá una nueva cadena con todos los caracteres en mayúsculas de la cadena original. Veamos un ejemplo:
+
+```javascript filename="JavaScript"
+let message = 'Hola Mundo'
+
+console.log(message.toUpperCase())
+// Salida: HOLA MUNDO
+```
+
+El método `toUpperCase()` no cambia la cadena original. En cambio, devuelve una nueva cadena. Entonces la variable `message` seguirá siendo la misma:
+
+```javascript filename="JavaScript"
+console.log(message)
+// Salida: Hola Mundo
+```
+
+### toLowerCase()
+
+El método `toLowerCase()` convierte una cadena a minúsculas. Al igual que el método `toUpperCase()`, no cambia la cadena original. Probemos un ejemplo con la variable `message` que creamos arriba:
+
+```javascript filename="JavaScript"
+console.log(message.toLowerCase())
+// Salida: hola mundo
+```
+
+### trim()
+
+El método `trim()` elimina los espacios en blanco del principio y del final de una cadena:
+
+```javascript filename="JavaScript"
+let message = ' Hola Mundo '
+
+console.log(message.trim())
+// Salida: Hola Mundo
+```
+
+Un concepto importante que hay que entender es que estos métodos son encadenables, lo que significa que puedes llamar a un método tras otro en la misma cadena para realizar múltiples operaciones en una sola línea de código. Probemos con un ejemplo que demuestra el encadenamiento de múltiples métodos integrados para manipular una cadena:
+
+```javascript filename="JavaScript"
+let message = ' Hola Mundo '
+
+console.log(message.trim().toUpperCase())
+// Salida: HOLA MUNDO
+```
+
+En el ejemplo anterior, primero llamamos al método `trim()` en la variable `message` para eliminar el espacio en blanco del principio y del final de la cadena. Luego llamamos al método `toUpperCase()` sobre el resultado del método `trim()` para convertir la cadena a mayúsculas.
+
+Los métodos integrados en JavaScript proporcionan una gran cantidad de funciones para escribir código legible y conciso. Hay algunos otros métodos de cadenas útiles que cubriremos a medida que avancemos en este libro. Es importante comprender bien los métodos que hemos cubierto hasta ahora y cómo puede utilizarlos para escribir código eficiente.
+
+## Funciones matemáticas de JavaScript
+
+JavaScript tiene un objeto `Math` incorporado que tiene propiedades y métodos para operaciones y constantes matemáticas. Echemos un vistazo a algunos de los métodos más utilizados.
+
+### Math.round()
+
+El método `Math.round()` devuelve el valor de un número redondeado al entero más cercano. Veamos un ejemplo:
+
+```javascript filename="JavaScript"
+console.log(Math.round(4.7))
+// Salida: 5
+```
+
+### Math.ceil()
+
+El método `Math.ceil()` devuelve el valor de un número redondeado al entero más cercano. Si un número ya es un número entero, el método devolverá el mismo número:
+
+```javascript filename="JavaScript"
+console.log(Math.ceil(4.2))
+// Salida: 5
+
+console.log(Math.ceil(5))
+// Salida: 5
+```
+
+El "ceil" en el nombre del método significa "techo", que es un término matemático para redondear al número entero más cercano.
+
+### Math.floor()
+
+El método `Math.floor()` devuelve el valor de un número redondeado hacia abajo al entero más cercano. Al igual que el método `Math.ceil()`, si un número ya es un número entero, el método devolverá el mismo número:
+
+```javascript filename="JavaScript"
+console.log(Math.floor(4.7))
+// Salida: 4
+
+console.log(Math.floor(4))
+// Salida: 4
+```
+
+El "floor" en el nombre del método es lo opuesto a "techo".
+
+### Math.random()
+
+El método `Math.random()` devuelve un número aleatorio entre `0` (inclusive) y `1` (exclusivo):
+
+```javascript filename="JavaScript"
+console.log(Math.random())
+// Salida: 0.11343102773243907
+```
+
+El número generado será diferente cada vez que ejecutes el código y siempre será menor que `1`. 
+
+Si deseas generar un número aleatorio entre `0` y `10`, puede multiplicar el resultado de `Math.random()` por `10`:
+
+```javascript filename="JavaScript"
+console.log(Math.random() * 10)
+// Salida: 3.9059049840527904
+```
+
+### Math.max()
+
+El método `Math.max()` devuelve el valor más grande de un conjunto de números. El método espera que estos números se pasen como argumentos individuales. Veamos un ejemplo:
+
+```javascript filename="JavaScript"
+console.log(Math.max(1, 2, 3, 4, 5))
+// Salida: 5
+```
+
+Llamar a `Math.max()` sin argumentos devolverá `-Infinity`:
+
+```javascript filename="JavaScript"
+console.log(Math.max())
+// Salida: -Infinity
+```
+
+Si pasas un argumento que no es un número a `Math.max()`, devolverá `NaN` (no un número):
+
+```javascript filename="JavaScript"
+console.log(Math.max(1, 2, 3, 4, 5, 'a'))
+// Salida: NaN
+```
+
+### Math.min()
+
+El método `Math.min()` devuelve el valor más pequeño de un conjunto de números:
+
+```javascript filename="JavaScript"
+console.log(Math.min(1, 2, 3, 4, 5))
+// Salida: 1
+```
+
+Hay algunos otros métodos útiles en el objeto `Math`, pero estos son los más utilizados. Podemos utilizar estos métodos juntos para realizar operaciones matemáticas complejas. Por ejemplo, dado que `Math.random()` siempre devuelve un número decimal, podemos envolverlo en el método `Math.floor()` para redondearlo al entero más cercano para que nuestro número generado sea siempre un número entero:
+
+```javascript filename="JavaScript"
+console.log(Math.floor(Math.random() * 10))
+// Salida: 3
+```

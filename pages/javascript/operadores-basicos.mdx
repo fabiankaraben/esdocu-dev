@@ -1,0 +1,168 @@
+# Operadores básicos en JavaScript
+
+Los operadores son símbolos que realizan acciones sobre valores. Por ejemplo, cuando escribes `2+3` en tu calculadora, usas el operador `+` para sumar dos valores. Los valores `2` y `3` se denominan operandos, mientras que el símbolo más (`+`) es el operador. En este capítulo, exploraremos los diferentes tipos de operadores en JavaScript, incluidos:
+
+- Operadores aritméticos
+- Operadores de cadena
+- Operadores de asignación
+- Operadores de comparación
+- Operadores lógicos
+
+## Operadores aritméticos
+
+Usamos operadores aritméticos para realizar cálculos matemáticos como suma (`+`), resta (`-`), multiplicación (`*`) y división (`/`).
+
+A continuación se muestran ejemplos que puedes probar en la consola:
+
+```javascript filename="JavaScript"
+console.log(10 + 2) // Salida: 12
+console.log(10 - 2) // Salida: 8
+console.log(10 * 2) // Salida: 20
+console.log(10 / 2) // Salida: 5
+```
+
+También tenemos los operadores de incremento y decremento. El operador de incremento (`++`) aumenta el valor de una variable en `1`, mientras que el operador de decremento (`--`) disminuye el valor de una variable en `1`. Estos operadores se pueden colocar antes o después del operando.
+Cuando se colocan antes del operando, los operadores se denominan **operadores de prefijo**, lo que significa que la operación se aplica antes de que se devuelva el valor, dándonos un nuevo valor. 
+
+He aquí un ejemplo:
+
+```javascript filename="JavaScript"
+let firstValue = 3
+console.log(++value); // Salida: 4
+```
+
+Cuando se colocan después del operando, se denominan **operadores de sufijo**; la operación se aplica a la variable después de que se devuelve el valor actual.
+
+He aquí un ejemplo:
+
+```javascript filename="JavaScript"
+let secondValue = 5
+console.log(value++); // Salida: 5
+console.log(value); // Salida: 6
+```
+
+Observa que tenemos que registrar la variable por separado para obtener su nuevo valor. Esto se debe a que cuando se utiliza el operador de sufijo, primero se devuelve el valor y luego se aplica la operación.
+
+También es importante tener en cuenta que los operadores de incremento y decremento reasignan nuevos valores a las variables, por lo que solo puedes hacer esto con las variables que declaras usando la palabra clave `let`. Si intentas utilizar estos operadores en una variable que declaraste con la palabra clave `const`, obtendrás un error. 
+
+Hagamos un intento. Recuerda siempre ejecutar estos ejemplos tú mismo para ver los resultados:
+
+```javascript filename="JavaScript"
+const thirdValue = 7
+console.log(++value);
+```
+
+```plaintext filename="Salida"
+Uncaught ReferenceError: value is not defined
+```
+
+Hay otros dos operadores aritméticos que puedes usar en JavaScript: el operador de resto (`%`) y el operador de exponenciación (`**`).
+
+El **operador de resto** devuelve el valor restante cuando un operando se divide por otro. Entonces, si ejecutas `5 % 2` en tu consola, obtendrás `1` porque el resultado entero de `5` dividido `2` es `4` y deja `1` como resto.
+
+El **operador de exponenciación** eleva el primer operando a la potencia del segundo operando. Entonces, si ejecutas `2 ** 3` en tu consola, obtendrás `8` porque `2` elevado a `3` es `8`.
+
+## El operador de concatenación
+
+En JavaScript, utilizamos el operador de concatenación para concatenar cadenas. El símbolo más (`+`) sirve como operador de concatenación cuando uno o más operandos son cadenas. Entonces, si ejecutas `'Hola' + 'Mundo'` en tu consola, obtendrás `'HolaMundo'` como resultado. Además, si ejecutas `'Hola' + 1` en tu consola, obtendrás `'Hola1'` como resultado.
+
+Cuando utilizas el operador más con cadenas y números, los números se convertirán a su forma de cadena y luego se concatenarán.
+
+Probemos algunos ejemplos más:
+
+
+```javascript filename="JavaScript"
+console.log('Hola' + ' ' + 'a todos') // Salida: Hola a todos
+console.log('James ' + 'Bond ' + 007) // Salida: James Bond 007
+console.log(10 + 'años en el futuro') // Salida: 10 años en el futuro
+```
+
+Observa que usamos el carácter de espacio (`' '`) para separar las palabras en el primer ejemplo. Si no usáramos el carácter de espacio, obtendríamos `'Holaatodos'` como resultado.
+
+En el segundo ejemplo, agregamos el carácter de espacio en la misma cadena que la palabra `'James'`. Esta es otra forma de agregar espacios entre palabras al concatenar cadenas.
+
+## Operadores de asignación
+
+Usamos operadores de asignación para asignar un valor a una variable. Ya has visto el operador de asignación (`=`) en acción. También hay operadores de asignación compuestos en JavaScript, que incluyen: `+=`, `-=`, `*=`, `/=` y `%=`. Estos operadores compuestos realizan una operación con una variable y un operando y luego asignan el resultado a la variable. Por ejemplo, si tienes una variable llamada `age` con un valor de `10` y deseas incrementarla en `5`, puedes usar el operador `+=` de esta manera:
+
+```javascript filename="JavaScript"
+letage = 10
+age += 5 // Salida: 15
+```
+
+Usar el operador `+=` es lo mismo que escribir `age = age + 5`, lo que reasigna la variable `age` a `10 + 5`. 
+
+Probemos algunos ejemplos más con los otros operadores de asignación compuestos:
+
+```javascript filename="JavaScript"
+age = 10
+age *= 5 // Salida: 50
+age /= 5 // Salida: 10
+age -= 5 // Salida: 5
+age %= 5 // Salida: 0
+```
+
+Los operadores de asignación compuestos son una excelente manera de hacer que tu código sea menos repetitivo.
+
+## Operadores de comparación
+
+Usamos operadores de comparación para comparar dos valores y devolver un valor booleano (`true` o `false`) según el resultado de la comparación. 
+
+Aquí están los operadores de comparación y sus significados:
+
+- `==`: igual a
+- `!=`: no igual a
+- `>`: mayor que
+- `<`: menos que
+- `>=`: mayor o igual a
+- `<=`: menor o igual a
+- `===`: estricto igual a (compara tanto el valor como el tipo de los operandos)
+- `!==`: estricto distinto de (compara tanto el valor como el tipo de los operandos)
+
+Probemos algunos ejemplos:
+
+```javascript filename="JavaScript"
+console.log(10 == 10) // Salida: true
+console.log(10 == 5) // Salida: false
+console.log(10 != 5) // Salida: true
+console.log(10 > 5) // Salida: true
+console.log(10 < 5) // Salida: false
+console.log(10 >= 10) // Salida: true
+console.log(10 >= 11) // false: 10 no es ni mayor ni igual a 11
+console.log(10 <= 10) // true: 10 es igual a 10
+console.log(10 <= 9) // false: 10 no es ni menor ni igual a 9
+console.log(10 === 10) // true: 10 es igual a 10 y ambos son números
+console.log(10 === '10') // false: el número 10 no es lo mismo que la cadena 10
+console.log(10 !== 9) // true: 10 no es igual a 9
+console.log(10 !== '10') // true: el número 10 no es lo mismo que la cadena 10
+```
+
+## Operadores logicos
+
+En JavaScript, utilizamos operadores lógicos para realizar operaciones lógicas como **AND** (`&&`), **OR** (`||`) y **NOT** (`!`). 
+
+Aquí hay unos ejemplos:
+
+```javascript filename="JavaScript"
+console.log(true && true) // Salida: true
+console.log(true && false) // Salida: false
+console.log(false && true) // Salida: false
+console.log(false && false) // Salida: false
+
+console.log(true || true) // Salida: true
+console.log(true || false) // Salida: true
+console.log(false || true) // Salida: true
+console.log(false || false) // Salida: false
+
+console.log(!true) // Salida: false
+console.log(!false) // Salida: true
+```
+
+El operador **AND** devuelve verdadero si ambos operandos son verdaderos y falso si alguno de los operandos es falso.
+Entonces, si ejecutas `console.log(10 > 5 && 7 < 10)` en tu consola, obtendrás `true` como resultado porque `10` es mayor que `5` y `7` es menor que `10`. Pero si ejecutas `console.log( 10 > 5 && 7 > 10)` en tu consola, obtendrás `false` como resultado porque `10` es mayor que `5`, pero `7` no es menor que `10`. Al usar el operador AND, ambos operandos deben ser verdaderos para que el resultado ser cierto.
+
+El operador **OR** devuelve verdadero si alguno de los operandos es verdadero y falso si ambos operandos son falsos. Entonces, si ejecutas `console.log(10 > 5 || 7 > 10)` en tu consola, obtendrás `true` como resultado porque uno de los operandos es verdadero (`10` es mayor que `5`). Si ejecutas `console.log(10 < 5 || 7 > 10)` en tu consola, obtendrás `false` como resultado porque ambos operandos son falsos.
+
+El operador **NOT** devuelve verdadero si el operando es falso y falso si el operando es verdadero. Entonces puedes leer `!true` como "no verdadero" y `!false` como "no falso".
+
+Los operadores son una parte esencial de la programación y siempre los necesitarás al escribir código. Recuerda que debes practicar mucho para convertirte en un buen desarrollador de JavaScript. Así que repasa esta lección e intenta utilizar cada uno de los operadores con diferentes ejemplos. Los mejorarás con el tiempo.

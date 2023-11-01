@@ -2,5 +2,7 @@
   "index": "Historia de JavaScript",
   "como-escribir-y-ejecutar-codigo": "Escribir y ejecutar código",
   "sintaxis": "Sintaxis JavaScript",
-  "variables": "Variables"
+  "variables": "Variables",
+  "operadores-basicos": "Operadores básicos",
+  "funciones": "Funciones"
 }

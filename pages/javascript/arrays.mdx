@@ -1,0 +1,281 @@
+# Arrays en JavaScript
+
+En JavaScript, usamos arrays para almacenar múltiples valores en una sola variable. Estos valores pueden ser de cualquier tipo de datos, incluidos números, cadenas e incluso otros arrays. También puedes pensar en un array como una estructura de datos que almacena una lista de elementos. 
+
+Los arrays son un componente fundamental de muchos programas JavaScript. Se utilizan en diversos contextos, desde listas de datos simples hasta estructuras de datos más complejas. 
+
+Aprendamos a crear, acceder y manipular arrays en JavaScript.
+
+## Declaración e inicialización de arrays
+
+Puedes utilizar el constructor `Array` o la notación entre corchetes `[]` para crear un array vacío. En JavaScript, utilizamos constructores para crear estructuras de datos con un conjunto específico de propiedades. 
+
+Creemos un array vacío usando el constructor `Array`. Para utilizar un constructor, necesitamos la palabra clave `new`:
+
+```javascript filename="JavaScript"
+const myArray = new Array()
+```
+
+Para crear un array vacío usando la notación de corchetes, puedes escribir:
+
+```javascript filename="JavaScript"
+const myArray = []
+```
+
+Ambas declaraciones crean un array vacío al que puedes agregar elementos más adelante.
+
+También puedes inicializar un array con elementos pasándolos como argumentos al constructor del array o usando la notación de corchetes y separando los elementos con comas.
+
+```javascript filename="JavaScript"
+const favoriteFruits = new Array(
+    'manzana',
+    'banana',
+    'naranja'
+)
+```
+
+o bien
+
+```javascript filename="JavaScript"
+const favoriteFruits = ['apple', 'banana', 'naranja']
+```
+
+## Acceder y modificar elementos de un array
+
+Para acceder a elementos en un array, puedes utilizar la notación de corchetes, junto con el índice del elemento al que deseas acceder. El índice de un elemento es su posición en el array, y al localizarlo empezamos a contar desde `0`. Entonces, el primer elemento de un array tiene un índice de `0`, el segundo elemento un índice de `1`, el tercer elemento un índice de `2`, y así sucesivamente. 
+
+En nuestro array `favoriteFruits`, el primer elemento es `'manzana'` con un índice de `0`, el segundo elemento es `'banana'` con un índice de `1` y el tercer elemento es `'naranja'` con un índice de `2`. Usemos la notación de corchetes para acceder al primer elemento del array `favoriteFruits`:
+
+```javascript filename="JavaScript"
+favoriteFruits[0]
+```
+
+Esto devolverá la cadena `'manzana'` cuando lo imprimas en la consola:
+
+```javascript filename="JavaScript"
+console.log(favoriteFruits[0])
+// Salida: 'manzana'
+```
+
+Si queremos acceder al segundo elemento, podemos escribir:
+
+```javascript filename="JavaScript"
+favoriteFruits[1]
+// Salida: 'banana'
+```
+
+Puedes modificar los elementos de un array reasignando el valor de un índice específico. Cambiemos el valor del primer elemento en el array `favoriteFruits` a `'fresa'`:
+
+```javascript filename="JavaScript"
+favoriteFruits[0] = 'fresa'
+```
+
+Ahora, si imprimes el primer elemento del array `favoriteFruits` en la consola, obtendrás `'fresa'` en lugar de `'manzana'`:
+
+```javascript filename="JavaScript"
+favoriteFruits[0]
+// Salida: 'fresa'
+```
+
+Además, al imprimir todo el array en la consola se mostrará el valor actualizado:
+
+```javascript filename="JavaScript"
+console.log(favoriteFruits)
+// Salida: ['fresa', 'banana', 'naranja']
+```
+
+## Longitud del array
+
+La propiedad `length` de un array devuelve el número de elementos que contiene. 
+
+Obtengamos la longitud del array `favoriteFruits`:
+
+```javascript filename="JavaScript"
+console.log(favoriteFruits.length)
+// Salida: 3
+```
+
+A diferencia del índice del array, la longitud de un array no tiene base cero. Entonces, al contar el número de elementos en un array, comenzamos desde `1`. En nuestro array `favoriteFruits`, la longitud es `3`, lo que significa que tiene `3` elementos.
+
+## Métodos de arrays
+
+Los arrays tienen varios métodos que puedes utilizar para manipular e interactuar con los datos almacenados en ellos. Estos métodos son funciones integradas que están disponibles para cada array de JavaScript. Puedes usarlos para agregar, eliminar, reorganizar o buscar elementos en un array.
+
+Algunos de los métodos de array más comunes incluyen:
+
+- `push()`: agrega uno o más elementos al final de un array
+- `pop()`: elimina el último elemento de un array
+- `shift()`: elimina el primer elemento de un array
+- `unshift()`: agrega uno o más elementos al comienzo de un array
+- `indexOf()`: devuelve el índice de la primera aparición de un elemento en un array
+- `slice()`: devuelve una copia de una parte de un array en un nuevo objeto de array
+- `splice()`: cambia el contenido de un array eliminando o reemplazando elementos existentes y/o agregando nuevos elementos en su lugar
+- `join()`: une todos los elementos de un array en una cadena
+- `reverse()`: devuelve una copia del array con sus elementos en orden inverso
+
+Probemos algunos ejemplos.
+
+### push()
+
+El método `push()` agrega uno o más elementos al final de un array y devuelve la nueva longitud del array. Agreguemos dos frutas nuevas al final del array `favoriteFruits`:
+
+```javascript filename="JavaScript"
+favoriteFruits.push('mango', 'ananá')
+// Salida: 5
+```
+
+Al ejecutar el código anterior, se agregarán `'mango'` y `'ananá'` al final del array `favoriteFruits` y se devolverá su nueva longitud, que es `5`. Si imprimes el array `favoriteFruits` en la consola, verás los nuevos elementos que acabamos de agregar:
+
+```javascript filename="JavaScript"
+console.log(favoriteFruits)
+// Salida: ['fresa', 'banana', 'naranja', 'mango', 'ananá']
+```
+
+### pop()
+
+El método `pop()` elimina el último elemento de un array y devuelve ese elemento. Eliminemos el último elemento del array `favoriteFruits`:
+
+```javascript filename="JavaScript"
+favoriteFruits.pop()
+// Salida: 'ananá'
+```
+
+Si imprimes el array `favoriteFruits` en la consola, verás que `'ananá'` ya no está allí:
+
+```javascript filename="JavaScript"
+console.log(favoriteFruits)
+// Salida: ['fresa', 'banana', 'naranja', 'mango']
+```
+
+### shift()
+
+Este método elimina el primer elemento de un array y devuelve el elemento eliminado:
+
+```javascript filename="JavaScript"
+favoriteFruits.shift()
+// Salida: 'fresa'
+```
+
+### unshift()
+
+El método `unshift()` agrega uno o más elementos al inicio de un array y devuelve su nueva longitud:
+
+```javascript filename="JavaScript"
+favoriteFruits.unshift('limón', 'uva')
+// Salida: 5
+```
+
+Al imprimir el array `favoriteFruits` en la consola, se mostrarán los nuevos elementos que acabamos de agregar:
+
+```javascript filename="JavaScript"
+console.log(favoriteFruits)
+// Salida: ['limón', 'uva', 'banana', 'naranja', 'mango']
+```
+
+### indexOf()
+
+Puedes utilizar el método `indexOf()` para encontrar el índice de la primera aparición de un elemento en un array. Busquemos el índice de `'banana'` en el array `favoriteFruits`:
+
+```javascript filename="JavaScript"
+favoriteFruits.indexOf('banana')
+// Salida: 2
+```
+
+Esto devolverá `2` porque `'banana'` es el tercer elemento en el array `favoriteFruits`, lo que significa que tiene un índice de `2`. Recuerda que comenzamos a contar desde `0` al identificar el índice de un elemento del array. Si el elemento que estás buscando no está en el array, el método `indexOf()` devolverá `-1`:
+
+```javascript filename="JavaScript"
+favoriteFruits.indexOf('sandía')
+// Salida: -1
+```
+
+### slice()
+
+El método `slice()` se utiliza para extraer una parte de un array. El método toma dos argumentos: el índice inicial (inclusive) y el índice final (exclusivo) del segmento. El elemento del índice inicial se incluirá en el segmento, pero el elemento del índice final no. El método `slice()` no modifica el array original. En cambio, devuelve una nuevo array que contiene los elementos extraídos. Extraigamos los primeros tres elementos del array `favoriteFruits` y pongámoslos en una nuevo array llamada `topThreeFruits`:
+
+```javascript filename="JavaScript"
+const topThreeFruits = favoriteFruits.slice(0, 3)
+console.log(topThreeFruits)
+// Salida: ['limón', 'uva', 'banana']
+```
+
+Si no especificas el índice final, el segmento irá hasta el final del array:
+
+```javascript filename="JavaScript"
+const fruitsInTheBasket = favoriteFruits.slice(2)
+console.log(fruitsInTheBasket)
+// Salida: ['banana', 'naranja', 'mango']
+```
+
+Recuerda que el valor de `favoriteFruits` sigue siendo `['limón', 'uva', 'banana', 'naranja', 'mango']`. En el código anterior, nuestro segmento comenzó en el índice `2`, que es `'banana'`, y como no especificamos un índice final, el segmento llegó hasta el final del array, lo que nos dio `['banana', ' naranja', 'mango']`.
+
+El método `slice()` también puede tomar un índice negativo. Si pasas un índice negativo, el segmento comenzará desde el final del array. Entonces, para obtener el último elemento del array `favoriteFruits`, podemos escribir:
+
+```javascript filename="JavaScript"
+const lastFruit = favoriteFruits.slice(-1)
+console.log(lastFruit)
+```
+
+Si queremos obtener los dos últimos elementos del array, podemos escribir:
+
+```javascript filename="JavaScript"
+const lastTwoFruits = favoriteFruits.slice(-2)
+console.log(lastTwoFruits)
+// Salida: ['naranja', 'mango']
+```
+
+Cuando utilices un índice negativo, ten en cuenta que representa el elemento que cuenta desde el final de un array, por lo que puede resultar confuso si no estás familiarizado con la longitud del array.
+
+### splice()
+
+El método `splice()` cambia el contenido de un array eliminando o reemplazando elementos existentes. Pueden ser necesarios más de dos argumentos; el primero es el índice inicial, el segundo es el número de elementos a eliminar y el resto son los elementos a agregar a el array. A diferencia del método `slice()`, el método `splice()` modifica el array original. 
+
+Reemplacemos el primer y segundo elemento del array `favoriteFruits` con `'cereza'` y `'aguacate'`:
+
+```javascript filename="JavaScript"
+favoriteFruits.splice(0, 2, 'cereza', 'aguacate')
+console.log(favoriteFruits)
+// Salida: ['cereza', 'aguacate', 'banana', 'naranja', 'mango']
+```
+
+Si deseas eliminar elementos del array sin agregar ningún elemento nuevo, puedes omitir el tercer argumento:
+
+```javascript filename="JavaScript"
+favoriteFruits.splice(0, 2)
+console.log(favoriteFruits)
+// Salida: ['banana', 'naranja', 'mango']
+```
+
+### join()
+
+El método `join()` une todos los elementos de un array en una cadena. Se necesita un argumento opcional, que es el separador a utilizar entre los elementos. Si no especificas un separador, los elementos se unirán con una coma. El método `join()` no modifica el array original, por lo que si quieres unir los elementos de nuestro array `favoriteFruits` y almacenar el resultado en una nueva variable, puedes escribir:
+
+```javascript filename="JavaScript"
+const favoriteFruitsString = favoriteFruits.join()
+console.log(favoriteFruitsString)
+// Salida: 'banana,naranja,mango'
+```
+
+Puedes pasar un separador diferente como argumento:
+
+```javascript filename="JavaScript"
+const newFavoriteFruitsString = favoriteFruits.join(' y ')
+
+console.log(newFavoriteFruitsString)
+// Salida: 'banana y naranja y mango'
+```
+
+### reverse()
+
+El método `reverse()` invierte el orden de los elementos de un array. Invirtamos el orden de los elementos en el array `favoriteFruits`:
+
+```javascript filename="JavaScript"
+favoriteFruits.reverse()
+console.log(favoriteFruits)
+// Salida: ['mango', 'naranja', 'banana']
+```
+
+Existen otros métodos comúnmente utilizados que puedes utilizar para manipular arrays, incluidas las funciones de orden superior (HOF), que cubriremos en la siguiente sección.
+
+Los arrays son una de las estructuras de datos más importantes en JavaScript y comprender cómo trabajar con ellos es un aspecto esencial para convertirte en un desarrollador competente. 
+
+Recuerda que debes practicar mucho para sentirte cómodo con cualquier concepto de JavaScript, así que no dudes en probar nuevos ejemplos y experimentar con los métodos que hemos cubierto.

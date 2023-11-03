@@ -57,7 +57,7 @@ const footer = (
       <div>{` • `}</div>
       <div>{`© ${new Date().getFullYear()}`}</div>
       <div className="hidden sm:block">{` • `}</div>
-      <div className="hidden sm:block">Cursos y Documentaciones Open Source en Español</div>
+      <div className="hidden sm:block">Cursos y Tutoriales sobre Desarrollo de Software</div>
     </div>
   </div>
 );

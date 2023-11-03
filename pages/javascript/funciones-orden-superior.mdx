@@ -1,0 +1,439 @@
+# Funciones de orden superior (HOF) y Callbacks en JavaScript
+
+Hemos visto cómo crear funciones que toman cadenas y números como argumentos. A veces, necesitaremos crear funciones que tomen otras funciones como argumentos o las utilicen como valores de retorno. Éstas se denominan **funciones de orden superior**. Se usan comúnmente en JavaScript para manipular arrays y simplificar tareas complejas. 
+
+Cuando una función se pasa como argumento a otra función, se llama función **Callback** o función de devolución de llamada (que se invocará en un momento posterior). Una función callback se puede pasar a otra función como argumento, ser devuelta por otra función y asignarla como valor a una variable. Cuando trabajes con JavaScript, a menudo utilizarás funciones de orden superior y funciones callback para resolver diferentes tipos de tareas.
+
+Hay varias funciones integradas de orden superior que podemos usar para manipular arrays. Por ejemplo, cada array tiene una función `map()` que podemos usar para modificar cada elemento que contiene. La función `map()` es una función de orden superior que toma una función callback como argumento. La función callback se aplica a cada elemento del array, luego la función `map()` devuelve un nuevo array con los resultados de la función callback aplicada a cada elemento del array original. A continuación se muestra un ejemplo del uso de `map()` para elevar al cuadrado cada elemento de un array:
+
+```javascript filename="JavaScript"
+const numbers = [1, 2, 3, 4, 5]
+const squaredNumbers = numbers.map(
+    (number) => number * number
+)
+
+console.log(squaredNumbers)
+// Salida: [1, 4, 9, 16, 25]
+```
+
+En este ejemplo, la función anónima `(number => number * number)` se pasa como argumento a la función `map()`. En la función callback, el parámetro numérico representa cada elemento del array de números. Puede ser cualquier nombre que queramos, pero es común usar la forma singular del nombre del array.
+La función `map()` aplica la función callback a cada elemento del array y devuelve un nuevo array llamada `sauaredNumbers` con el cuadrado de cada elemento del array original.
+
+Probemos con otro ejemplo usando la función `map()` para poner en mayúscula cada elemento en un array de cadenas:
+
+```javascript filename="JavaScript"
+const words = ['este', 'es', 'un', 'gran', 'día']
+const capitalizedWords = words.map((word) =>
+    word.toUpperCase()
+)
+
+console.log(capitalizedWords)
+// Salida: ['ESTE', 'ES', 'UN', 'GRAN', 'DÍA']
+```
+
+En este ejemplo, usamos la función `map()` para poner en mayúscula cada elemento en el array de palabras. La función `map()` no modifica el array original, por lo que tenemos que asignar su valor de retorno a un nuevo array llamada `capitalizedWords`.
+
+## Crear funciones de orden superior
+
+Podemos crear nuestras funciones de orden superior nosotros mismos. Todo lo que necesitamos hacer es agregar un parámetro de función o devolver otra función cuando se llama. A continuación se muestra un ejemplo de una función de orden superior que toma una función callback como argumento:
+
+```javascript filename="JavaScript"
+const higherOrderFunction = (callback) => {
+    const string = '¡Las HOFs son realmente geniales!'
+    callback(string)
+}
+
+higherOrderFunction(console.log)
+// Salida: '¡Las HOFs son realmente geniales!'
+```
+
+Observa que nuestra función `higherOrderFunction()` toma una función callback como argumento y luego llama a esa función con la cadena `'¡Los HOFs son realmente geniales!'`. En este caso, al proporcionar `console.log()` como argumento para `higherOrderFunction()` se imprime la cadena en la consola.
+
+También podemos devolver una función desde otra función. A continuación se muestra un ejemplo de una función de orden superior que devuelve una función callback:
+
+```javascript filename="JavaScript"
+const callMeTwice = () => console.log
+
+callMeTwice()('¡Oye, esto funciona!')
+// Salida: '¡Oye, esto funciona!'
+```
+
+En este ejemplo, la función `callMeTwice()` devuelve la función `console.log()`. Entonces, cuando llamamos a `callMeTwice()`, lo que obtenemos es la función `console.log()`. Entonces, tendremos que llamar al resultado de `callMeTwice()` para usar la función `console.log()`. 
+
+Encadenar llamadas a funciones como esta se conoce como **currying**. En el currying, cada llamada a función devuelve otra función que se puede volver a llamar con un argumento diferente. El objetivo principal es simplificar el proceso de pasar argumentos a una función dividiéndola en una serie de llamadas a funciones, cada una de las cuales toma un único argumento.
+
+## HOF integradas y métodos de array
+
+Exploremos otras funciones integradas de orden superior que puedes utilizar para manipular arrays.
+
+### forEach()
+
+La función `forEach()` es un método de array que ejecuta una función callback en cada uno de sus elementos. A diferencia de la función `map()`, la función `forEach()` no devuelve un nuevo array y tampoco modifica el array original. En cambio, recorre los elementos de un array y realiza una operación en cada uno de ellos. 
+
+**Iterar** significa repetir una acción específica o un conjunto de acciones varias veces o hasta que se cumpla una condición.
+
+Podemos usar la función `forEach()` para imprimir cada elemento de un array en la consola o realizar una acción con cada uno de ellos y enviar los resultados a un nuevo array. Usemos la función `forEach()` para imprimir cada elemento de un array en la consola:
+
+```javascript filename="JavaScript"
+const namesOfPeople = ['miguel', 'alex', 'antonio', 'maria']
+
+namesOfPeople.forEach((name) => console.log(name))
+```
+
+Esto generará:
+
+```plaintext filename="Salida en consola"
+miguel
+alex
+antonio
+maria
+```
+
+Observa que los nombres de las personas en nuestro array comienzan con letras minúsculas. A continuación se explica cómo podemos colocar la primera letra en mayúsculas y el resto en minúsculas en cada elemento del array y enviar los resultados a un nuevo array.
+
+```javascript filename="JavaScript"
+const titleCasedNames = []
+namesOfPeople.forEach((name) => {
+    const titleCasedName = name[0].toUpperCase() + name.slice(1)
+    titleCasedNames.push(titleCasedName)
+})
+
+console.log(titleCasedNames)
+// Salida: ['Miguel', 'Alex', 'Antonio', 'Maria'
+```
+
+En este ejemplo, usamos la función `forEach()` para iterar a través del array `namesOfPeople`. Para cada cadena en el array, ponemos en mayúscula su primera letra usando la notación de corchetes y el método `toUpperCase()`. 
+
+Cuando trabajamos con cadenas, podemos acceder a cada carácter de la cadena utilizando la notación de corchetes y el índice del carácter. 
+
+El método `slice()` devuelve una nueva cadena con los caracteres desde el índice que especificamos hasta el final de la cadena. Luego insertamos el nombre en mayúsculas y minúsculas en el array `titleCasedNames`.
+
+### filter()
+
+La función `filter()` es otro método de array que podemos usar para filtrar elementos que cumplen una condición. Por ejemplo, si tenemos una serie de países, podemos usar la función `filter()` para filtrar los países que comienzan con la letra `'N'`:
+
+```javascript filename="JavaScript"
+const countries = [
+    'Australia',
+    'UK',
+    'Argentina',
+    'Canada',
+    'USA',
+    'Andorra',
+]
+
+const countriesThatStartWithN = countries.filter(
+    (country) => country.startsWith('A')
+)
+
+console.log(countriesThatStartWithN)
+// Salida: ['Australia', 'Argentina', 'Andorra']
+```
+
+En JavaScript, cada cadena tiene un método `startsWith()` que devuelve verdadero si la cadena comienza con el carácter que especificamos. En nuestro ejemplo, el método `filter()` toma una función callback con un parámetro llamado `country` que representa cada elemento en el array `countries`. La función callback devuelve verdadero si el país comienza con la letra `'A'` y la función `filter()` devuelve un nuevo array con los elementos que cumplen la condición.
+
+También podemos usar la notación entre corchetes o el método `charAt()` para comprobar si una cadena comienza con un carácter. El método `charAt()` devuelve el carácter en el índice especificado en una cadena:
+
+```javascript filename="JavaScript"
+const countriesThatStartWithU = countries.filter(
+    (country) => country.charAt(0) === 'U'
+)
+
+console.log(countriesThatStartWithU)
+// Salida: ['UK', 'USA']
+```
+
+Podemos usar la función `filter()` para filtrar elementos que no cumplen una condición. Filtremos los países que no comienzan con la letra `'A'`:
+
+```javascript filename="JavaScript"
+const countriesThatDontStartWithN = countries.filter(
+    (country) => !country.startsWith('A')
+)
+
+console.log(countriesThatDontStartWithN)
+// Salida: ['UK', 'Canada', 'USA']
+```
+
+En este ejemplo, utilizamos el operador lógico NOT (`!`) para negar la condición de modo que la función `filter()` devuelva un nuevo array con elementos que no cumplen la condición. Al utilizar el método `filter()`, es importante recordar que la función callback debe devolver un valor booleano.
+
+### sort()
+
+El método `sort()` se utiliza para ordenar los elementos de un array. El método `sort()` modifica el array original y devuelve el array ordenada. Por ejemplo, si queremos ordenar un array de números, podemos usar el método `sort()`. Por defecto, el método `sort()` ordena los elementos de un array en orden ascendente:
+
+```javascript filename="JavaScript"
+constnumbers=[7,4,3,1,5,2,8,6]
+
+numbers.sort()
+
+console.log(numbers)
+//Salida:[1,2,3,4,5,6,7,8]
+```
+
+También podemos ordenar una serie de cadenas:
+
+```javascript filename="JavaScript"
+const favoriteColors = [
+    'rojo',
+    'azul',
+    'verde',
+    'naranja',
+]
+
+favoriteColors.sort()
+
+console.log(favoriteColors)
+// Salida: ['azul', 'naranja', 'rojo', 'verde']
+```
+
+Observa que `'azul'` es lo primero porque comienza con la letra "a", que va antes de la letra "n" para el `'naranja'`, y así sucesivamente. 
+
+Si queremos ordenar los elementos de un array en orden descendente, podemos pasar una función callback al método `sort()` que toma dos parámetros que representan dos elementos del array. La función callback debe devolver un número negativo si el primer elemento debe ir antes del segundo elemento, un número positivo si el primer elemento debe ir después del segundo elemento, o `0` si el orden de los elementos no importa:
+
+```javascript filename="JavaScript"
+const famousBirthYears = [
+    1990, 2001, 1989, 2023, 2005, 1993, 2020,
+]
+
+famousBirthYears.sort((a, b) => b - a)
+console.log(famousBirthYears)
+// Salida: [2023, 2020, 2005, 2001, 1993, 1990, 1989]
+```
+
+En este ejemplo, ordenamos el array `famousBirthYears` en orden descendente. La función callback toma dos parámetros, `a` y `b`, que representan dos elementos del array. Como queremos ordenar el array en orden descendente, devolvemos `b - a` para que el segundo elemento esté antes del primer elemento (es decir, el número mayor viene antes que el número menor). Si quisiéramos ordenar el array en orden ascendente, devolveríamos `a - b` para que el primer elemento venga antes del segundo elemento (es decir, el número menor venga antes del número mayor):
+
+```javascript filename="JavaScript"
+famousBirthYears.sort((a, b) => a - b)
+
+console.log(famousBirthYears)
+// Salida: [1989, 1990, 1993, 2001, 2005, 2020, 2023]
+```
+
+### reverse()
+
+Podemos usar el método `reverse()` para invertir el orden de los elementos en un array. El método inverso modifica el array original. Veamos un ejemplo:
+
+```javascript filename="JavaScript"
+const agesOfStudents = [13, 10, 15, 12, 11, 14]
+
+agesOfStudents.reverse()
+
+console.log(agesOfStudents)
+// Salida: [14, 11, 12, 15, 10, 13]
+```
+
+Observa que el método `reverse()` no ordena los elementos de un array. En cambio, invierte el orden de los elementos del último al primero.
+
+### reduce()
+
+El método `reduce()` reduce un array a un solo valor. Itera a través de un array, realiza una acción en cada elemento y devuelve un valor único. Por ejemplo, si queremos sumar todos los elementos en un array de números, podemos hacerlo con el método `reduce()`:
+
+```javascript filename="JavaScript"
+const participantPoints = [10, 20, 30, 40, 50]
+
+const totalPoints = participantPoints.reduce(
+    (a, b) => a + b
+)
+
+console.log(totalPoints)
+// Salida: 150
+```
+
+El método `reduce()` toma una función callback con dos parámetros, `a` y `b`, que representan dos elementos del array. Luego, la función callback realiza una acción a partir del primer elemento del array. En nuestro ejemplo, sumamos el primer elemento al segundo elemento, luego sumamos el resultado al tercer elemento, y así sucesivamente, hasta obtener el total de puntos. Si queremos restar los elementos del array, devolveríamos colocar `a - b`:
+
+```javascript filename="JavaScript"
+const minusedPoints = participantPoints.reduce(
+    (a, b) => a - b
+)
+
+console.log(totalPoints)
+// Salida: -130
+```
+
+Nuestro ejemplo anterior realiza la acción; `10 - 20 - 30 - 40 - 50`. Podemos usar el mismo proceso para multiplicar los elementos del array:
+
+```javascript filename="JavaScript"
+const multipliedPoints = participantPoints.reduce(
+    (a, b) => a * b
+)
+
+console.log(multipliedPoints)
+// Salida: 12000000
+```
+
+Esta vez multiplicamos el primer elemento por el segundo elemento, luego multiplicamos el resultado por el tercer elemento y así sucesivamente. El método `reduce()` no modifica el array original.
+
+También podemos usar el método `reduce()` para concatenar los elementos en un array de cadenas:
+
+```javascript filename="JavaScript"
+const favoriteDishes = [
+    'pasta',
+    'hamburguesa',
+    'empanada',
+    'pastel de carne',
+    'pizza',
+]
+
+const favoriteDishesString = favoriteDishes.reduce(
+    (a, b) => a + ', ' + b
+)
+
+console.log(favoriteDishesString)
+// Salida: pasta, hamburguesa, empanada, pastel de carne, pizza
+```
+
+### every()
+
+El método `every()` comprueba si todos los elementos de un array cumplen una condición. Devuelve un valor booleano. Por ejemplo, si queremos comprobar si todos los elementos de un array de números son mayores que `5`, podemos hacerlo con el método `every()`:
+
+```javascript filename="JavaScript"
+const participantAges = [20, 25, 14, 29, 30, 17]
+
+const areAllParticipantsOlderThan18 = participantAges.every((age) => age > 18)
+
+console.log(areAllNumbersGreaterThan5)
+// Salida: false
+```
+
+Este ejemplo comprueba si todos los elementos del array `participantAges` son mayores que `18`. Dado que al menos un elemento es menor que `18`, el método `every()` devuelve `false`. Para que el método `every()` devuelva `true`, todos los elementos del array deben cumplir la condición. 
+
+Comprobemos si todos los elementos del array `participantAges` son mayores que `10`:
+
+```javascript filename="JavaScript"
+const areAllParticipantsOlderThan10 = participantAges.every((age) => age > 10)
+
+console.log(areAllParticipantsOlderThan10)
+// Salida: true
+```
+
+Esta vez, todos los elementos del array son mayores que `10`, por lo que el método `every()` devuelve verdadero.
+
+### some() e includes()
+
+El método `some()` es similar al método `every()`, pero a diferencia del método `every()`, comprueba si al menos un elemento de un array cumple una condición y luego devuelve un valor booleano. Comprobemos si al menos un elemento en un conjunto de ciudades tiene la letra `'e'`:
+
+```javascript filename="JavaScript"
+const cities = [
+    'Tokio',
+    'Boston',
+    'Buenos Aires',
+    'Nueva York',
+    'Londres',
+]
+
+const atLeastOneCityHasE = cities.some((city) =>
+    city.includes('e')
+)
+
+console.log(atLeastOneCityHasE)
+// Salida: true
+```
+
+En JavaScript, el método `include()` comprueba si una cadena contiene una subcadena específica o si un array contiene un elemento específico. En nuestro ejemplo, el método `some()` devuelve verdadero porque al menos un elemento en el array de ciudades tiene la letra `'e'`. Si usáramos el método `every()` en su lugar, devolvería falso porque no todos los elementos tienen la letra `'e'`.
+
+Usemos el método `include()` para verificar si el array de ciudades contiene la ciudad `'Boston'`:
+
+```javascript filename="JavaScript"
+console.log(cities.includes('Boston'))
+// Salida: true
+```
+
+### find()
+
+El método `find()` devuelve el primer elemento de un array que cumple una condición. Por ejemplo, si queremos encontrar el primer elemento en un array de cantidades mayor que `10`, podemos usar el método `find()` para hacerlo:
+
+```javascript filename="JavaScript"
+const quantities = [7, 3, 9, 13, 5, 11]
+
+const firstQuantityGreaterThan10 = quantities.find(
+    (quantity) => quantity > 10
+)
+
+console.log(firstQuantityGreaterThan10)
+// Salida: 13
+```
+
+Observa que aunque `11` también es mayor que `10`, el método `find()` solo devuelve `13` porque es el primer elemento que cumple la condición. Si ningún elemento del array cumple la condición, el método `find()` devuelve `undefined`.
+
+### findIndex()
+
+Podemos usar el método `findIndex()` para encontrar el índice del primer elemento de un array que cumple una condición. Encontremos el índice del primer elemento en una serie de metales preciosos que comienza con la letra "c":
+
+```javascript filename="JavaScript"
+const preciousMetals = ['aluminio', 'cobre', 'cobalto', 'niquel', 'zinc']
+
+const metalIndex = preciousMetals.findIndex(
+    (metal) => metal.startsWith('c')
+)
+
+console.log(metalIndex)
+// Salida: 1
+```
+
+El método `findIndex()` devuelve el índice del primer elemento que comienza con "c". Si ningún elemento del array cumple la condición, el método `findIndex()` devolverá `-1`.
+
+Los métodos de arrays de JavaScript son fundamentales para trabajar y manipular arrays. Sin ellos, tendríamos que escribir mucho código para realizar las mismas acciones. Es importante comprender cómo utilizar estos métodos de arrays para poder escribir código más eficiente que sea fácil de entender y mantener. Recuerda que para dominar JavaScript debes practicar y experimentar con muchos ejemplos.
+
+## Los métodos de tiempos de JavaScript
+
+Los métodos para el manejo de tiempos de JavaScript son funciones integradas de orden superior que nos permiten programar la ejecución de funciones en un momento posterior o en intervalos regulares. Echemos un vistazo a los métodos de tiempos más utilizados.
+
+### setTimeout()
+
+El método `setTimeout()` nos permite programar la ejecución de una función después de un número específico de milisegundos. Por ejemplo, si queremos mostrar un mensaje después de 5 segundos, podemos usar el método `setTimeout()` para hacerlo. El método `setTimeout()` toma dos argumentos: la función que se ejecutará y el número de milisegundos que se esperará antes de ejecutar la función. Mostremos un mensaje después de 5 segundos:
+
+```javascript filename="JavaScript"
+const displayMessage = () => {
+    console.log('¡Hola Mundo!')
+}
+
+setTimeout(displayMessage, 5000)
+// Salida: 2
+// Salida: ¡Hola Mundo!
+```
+
+1 segundo son mil milisegundos y 5 segundos son `5000` milisegundos. El método `setTimeout()` esperará 5 segundos antes de ejecutar la función `displayMessage()`. El método `setTimeout()` también devuelve un número que representa el ID del temporizador inmediatamente después de su llamada. Podemos usar esta ID para cancelar el temporizador. Primero, asignemos el método `setTimeout()` a una variable:
+
+```javascript filename="JavaScript"
+const displayMessage = () => {
+    console.log('¡Hola Mundo!')
+}
+
+const timerId = setTimeout(displayMessage, 5000)
+console.log(timerId)
+// Salida: 4 (puede ser cualquier número)
+// Salida: ¡Hola Mundo!
+```
+
+Esto seguirá mostrando el mensaje después de 5 segundos, pero ahora tenemos el ID del temporizador en la variable `timerId`. Usémoslo para cancelar el temporizador antes de que ejecute la función `displayMessage()`. Usaremos el método `clearTimeout()` para hacerlo. El método `clearTimeout()` toma el ID del temporizador como argumento y lo cancela:
+
+```javascript filename="JavaScript"
+const displayMessage = () => {
+    console.log('¡Hola Mundo!')
+}
+
+const timerId = setTimeout(displayMessage, 5000)
+
+clearTimeout(timerId)
+```
+
+El método `clearTimeout()` cancelará el temporizador antes de que se ejecute la función `displayMessage()`. Entonces, cuando ejecutes este código, la función `displayMessage()` no se ejecutará.
+
+### setInterval()
+
+El método `setInterval()` nos permite programar la ejecución de una función a intervalos regulares. Por ejemplo, si queremos mostrar nuestro mensaje cada 5 segundos, podemos usar el método `setInterval()` para hacerlo. El método `setInterval()` toma dos argumentos: la función que se ejecutará y el número de milisegundos que se esperará antes de ejecutar la función nuevamente. Podemos llamar directamente al método o asignarlo a una variable. Al igual que el método `setTimeout()`, el método `setInterval()` también devuelve un número que representa el ID del temporizador. Usemos el método `setInterval()` para ejecutar la función `displayMessage()` cada 1 segundo:
+
+```javascript filename="JavaScript"
+const displayMessage = () => {
+    console.log('¡Hola Mundo!')
+}
+
+const interVal = setInterval(displayMessage, 1000)
+```
+
+Esto mostrará el mensaje `'¡Hola mundo!'` cada 1 segundo. Podemos usar el método `clearInterval()` para cancelar el temporizador. El método `clearInterval()` toma el ID del temporizador como argumento y cancela el temporizador:
+
+```javascript filename="JavaScript"
+clearInterval(interVal)
+```
+
+La ejecución del método `clearInterval()` detendrá la ejecución de la función `displayMessage()` cada segundo.

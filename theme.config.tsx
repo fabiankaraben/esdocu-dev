@@ -65,12 +65,12 @@ const footer = (
 const config: DocsThemeConfig = {
   logo,
   project: {
-    link: 'https://github.com/esdocu/esdocu-site',
+    link: 'https://github.com/fabiankaraben/esdocu-dev',
   },
   // chat: {
   //   link: 'https://discord.com',
   // },
-  docsRepositoryBase: 'https://github.com/esdocu/esdocu-site',
+  docsRepositoryBase: 'https://github.com/fabiankaraben/esdocu-dev',
   useNextSeoProps() {
     const { route } = useRouter()
     let props = {}
@@ -78,7 +78,7 @@ const config: DocsThemeConfig = {
       props['titleTemplate'] = '%s – Esdocu'
       props['noindex'] = route === '/aviso-legal' || route === '/politica-de-cookies' || route === '/politica-de-privacidad'
     } else {
-      props['description'] = 'Un proyecto de cursos y traducciones al Español de la documentación de tecnologías Open Source.'
+      props['description'] = 'Un proyecto de cursos y tutoriales sobre desarrollo de software.'
     }
 
     return props
@@ -100,7 +100,7 @@ const config: DocsThemeConfig = {
 
         <meta
           name="og:description"
-          content="Un proyecto de cursos y traducciones al Español de la documentación de tecnologías Open Source."
+          content="Un proyecto de cursos y tutoriales sobre desarrollo de software."
         />
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:image" content={socialCard} />

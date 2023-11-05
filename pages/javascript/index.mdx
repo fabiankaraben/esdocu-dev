@@ -139,7 +139,7 @@ Iniciemos por el ejemplo más típico en todo lenguaje de programación, el famo
 Debido a la amplitud de contextos en los que se puede utilizar JavaScript, existen varias formas de realizar un ejemplo "Hola mundo", pero el más sencillo de ellos es simplemente la siguiente línea:
 
 ```javascript filename="JavaScript"
-console.log("¡Hola mundo!");
+console.log("¡Hola mundo!")
 ```
 
 Veremos en el primer *Codelab de JavaScript* cómo ejecutar esta línea directamente en la consola del navegador web, con lo que luego de ejecutarla veremos como salida en la misma consola el texto:
@@ -153,8 +153,8 @@ Veremos en el primer *Codelab de JavaScript* cómo ejecutar esta línea directam
 En JavaScript las variables son débilmente tipadas, lo que significa que pueden almacenar valores de cualquier tipo de dato en cualquier momento, es decir que las siguientes líneas son completamente válidas:
 
 ```javascript filename="JavaScript"
-var saludo = "Hola";
-saludo = 12;
+var saludo = "Hola"
+saludo = 12
 ```
 
 Normalmente no es recomendable utilizar variables de esta forma, es conveniente que una variable siempre trabaje con el mismo tipo de dato.
@@ -170,19 +170,19 @@ JavaScript define las sentencias de control de flujo típicas, veamos las mas ut
 ```javascript filename="JavaScript"
 // Sentencias condicional
 if (year >= 2001) {
-  console.log('21st century');
+  console.log('21st century')
 } else if (year >= 1901) {
-  console.log('20th century');
+  console.log('20th century')
 }
 
 // Sentencia de repetición
 for (month = 1; month <= 12; month++) {
-  console.log(month);
+  console.log(month)
 }
 
 // Otra forma de sentencia de repetición
 while (year < 2016) {
-  year += 1;
+  year += 1
 }
 ```
 
@@ -197,11 +197,11 @@ Las funciones en JavaScript son declaradas utilizando la palabra clave *function
 ```javascript filename="JavaScript"
 // Una función que recibe un parámetro
 function saludar(nombre) {
-  console.log("Hola " + nombre);
+  console.log("Hola " + nombre)
 }
 
 // Llamar a la función (ejecutarla)
-saludar("Ian");
+saludar("Ian")
 ```
 
 Este fragmento de código produce la siguiente salida en consola:
@@ -219,20 +219,20 @@ A partir de ECMAScript 6 trabajar con clases en JavaScript se vuelve más simple
 ```javascript filename="JavaScript"
 class Poligono {
   constructor (height, width) {
-    this.height = height;
-    this.width = width;
+    this.height = height
+    this.width = width
   }
   // Getter
   get area()   {
-     return this.calcularArea();
+     return this.calcularArea()
    }
   // Método
   calcularArea() {
-    return this.height * this.width ;
+    return this.height * this.width 
   }
 }
 
-const cuadrado = new Poligono (10, 10);
+const cuadrado = new Poligono (10, 10)
 
 console.log(cuadrado.area); // 100 
 ```

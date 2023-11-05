@@ -29,4 +29,13 @@ module.exports = withNextra({
 
     return config
   },
+  async redirects() {
+    return [
+      {
+        source: '/feed.xml',
+        destination: '/',
+        permanent: true,
+      },
+    ];
+  },
 })

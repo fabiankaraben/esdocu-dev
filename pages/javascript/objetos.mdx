@@ -1,6 +1,6 @@
 # Objetos en JavaScript
 
-Imagine que tiene un automóvil y desea realizar un seguimiento de su color, marca, modelo y kilometraje. Podrías crear una variable para cada una de estas propiedades:
+Imagina que tienes un automóvil y deseas realizar un seguimiento de su color, marca, modelo y kilometraje. Podrías crear una variable para cada una de estas propiedades:
 
 ```javascript filename="JavaScript"
 const carColor = 'rojo'
@@ -9,9 +9,9 @@ const carModel = 'Cybertruck'
 const carMileage = 30
 ```
 
-¿Pero qué pasaría si tuvieras 10 coches? Tendrías que crear 4 variables para cada coche, lo que te daría 40 variables en total. ¿Y si quisieras añadir una nueva propiedad? ¿Te gusta el tipo de combustible que utiliza el coche? Tendrías que crear diez nuevas variables. A medida que sigas creando variables, será más difícil saber cuáles están relacionadas entre sí o a qué coches pertenecen.
+¿Pero qué pasaría si tuvieras 10 coches? Tendrías que crear 4 variables para cada coche, lo que te daría 40 variables en total. ¿Y si quisieras añadir una nueva propiedad como el tipo de combustible que utiliza el coche? Tendrías que crear diez nuevas variables. A medida que sigas creando variables, será más difícil saber cuáles están relacionadas entre sí o a qué coches pertenecen.
 
-Con los objetos de JavaScript, puede agrupar datos relacionados en una sola variable. Entonces, en lugar de crear cuatro variables diferentes para su primer automóvil, puede crear una que almacene las cuatro propiedades. Y si desea agregar una nueva propiedad, puede hacerlo sin crear una nueva variable. Así es como se vería usar un objeto para almacenar los datos de su automóvil:
+Con los objetos de JavaScript, puedes agrupar datos relacionados en una sola variable. Entonces, en lugar de crear cuatro variables diferentes para tu primer automóvil, puedes crear una que almacene las cuatro propiedades. Y si deseas agregar una nueva propiedad, puedes hacerlo sin crear una nueva variable. Así es como se vería usar un objeto para almacenar los datos de tu automóvil:
 
 ```javascript filename="JavaScript"
 const myCar = {
@@ -22,13 +22,13 @@ const myCar = {
 }
 ```
 
-En el ejemplo anterior, creamos una variable llamada myCar y le asignamos un objeto. Reconocerá los objetos por las llaves que los rodean, seguidas de una lista de pares clave-valor. Cada par clave-valor es una propiedad del objeto. En nuestro ejemplo, la primera propiedad es el color del coche. Su clave es el color y el valor, "rojo". A diferencia de una declaración de variable, la clave y el valor están separados por dos puntos y una coma separa cada propiedad.
+En el ejemplo anterior, creamos una variable llamada `myCar` y le asignamos un objeto. Reconocerás los objetos por las llaves que los rodean, seguidas de una lista de pares clave-valor. Cada par clave-valor es una propiedad del objeto. En nuestro ejemplo, la primera propiedad es el color del coche. Su clave es el color y el valor, `'rojo'`. A diferencia de una declaración de variable, la clave y el valor están separados por dos puntos y una coma separa cada propiedad.
 
-Para acceder a una propiedad de un objeto, puede utilizar la notación de puntos o la notación de corchetes. La notación de puntos es la forma más común de acceder a las propiedades; Primero, escribe el nombre del objeto, seguido de un punto y luego el nombre de la propiedad. Así es como usarías la notación de puntos para acceder al valor de la propiedad de color:
+Para acceder a una propiedad de un objeto, puede utilizar la notación de puntos o la notación de corchetes. La notación de puntos es la forma más común de acceder a las propiedades. Primero, escribe el nombre del objeto, seguido de un punto y luego el nombre de la propiedad. Así es como usarías la notación de puntos para acceder al valor de la propiedad de color:
 
 ```javascript filename="JavaScript"
 console.log(myCar.color)
-// output: "rojo"
+// Salida: 'rojo'
 ```
 
 Y así es como usarías la notación entre corchetes:
@@ -37,159 +37,159 @@ Y así es como usarías la notación entre corchetes:
 console.log(myCar['color'])
 ```
 
-La notación entre corchetes es útil cuando desea acceder a una propiedad cuyo nombre está almacenado en una variable. Por ejemplo, creemos una variable llamada nombrePropiedad y le asignaremos la cadena "color":
+La notación entre corchetes es útil cuando deseas acceder a una propiedad cuyo nombre está almacenado en una variable. Por ejemplo, creemos una variable llamada `propertyName` y le asignaremos la cadena `'color'`:
 
 ```javascript filename="JavaScript"
 const propertyName = 'color'
 console.log(myCar[propertyName])
-// output: "rojo"
+// Salida: 'rojo'
 ```
 
-## Reglas y pautas para la creación de objetos.
+## Reglas y pautas para la creación de objetos
 
 Al crear objetos, hay algunas cosas a tener en cuenta:
 
-### Los nombres de propiedad de un objeto deben ser únicos.
+### Los nombres de propiedad de un objeto deben ser únicos
 
-Varias propiedades pueden tener el mismo valor, pero si intenta crear una propiedad con el mismo nombre que una propiedad existente, la nueva propiedad anulará la anterior. Además, si un objeto tiene varias propiedades con el mismo nombre, sólo se utilizará la última.
+Varias propiedades pueden tener el mismo valor, pero si intentas crear una propiedad con el mismo nombre que una propiedad existente, la nueva propiedad anulará la anterior. Además, si un objeto tiene varias propiedades con el mismo nombre, sólo se utilizará la última.
 
 ```javascript filename="JavaScript"
 const myFavoriteBook = {
-    title: 'The Hobbit',
-    title: 'The Lord of the Rings',
+    title: 'El Hobbit',
+    title: 'El Señor de los Anillos',
 }
 
 console.log(myFavoriteBook.title)
-// Output: "The Lord of the Rings"
+// Salida: 'El señor de los Anillos'
 ```
 
-### Los nombres de las propiedades deben ser cadenas.
+### Los nombres de las propiedades deben ser cadenas
 
-Cuando utiliza un nombre que no es una cadena como nombre de propiedad, se convertirá en una cadena. Por ejemplo, el siguiente código creará una propiedad denominada "1":
+Cuando utilizas un nombre que no es una cadena como nombre de propiedad, se convertirá en una cadena. Por ejemplo, el siguiente código creará una propiedad denominada `'1'`:
 
 ```javascript filename="JavaScript"
-const myFavoriteDress = {
-    1: "green"
+const myFavoriteColors = {
+    1: "violeta"
 }
 
-console.log(myFavoriteDress.1)
-// Output: SyntaxError
+console.log(myFavoriteColors.1)
+// Salida: SyntaxError
 ```
 
-Intentar acceder a la clave 1 usando la notación de puntos generará un error de sintaxis porque el número 1 no es una clave válida y se ha convertido a la cadena "1". En este caso, puedes utilizar la notación entre corchetes para acceder a él:
+Intentar acceder a la clave `1` usando la notación de puntos generará un error de sintaxis porque el número `1` no es una clave válida y se ha convertido a la cadena `'1'`. En este caso, puedes utilizar la notación entre corchetes para acceder:
 
 ```javascript filename="JavaScript"
-console.log(myFavoriteDress['1'])
-// Output: "value1"
+console.log(myFavoriteColors['1'])
+// Salida: 'violeta'
 ```
 
-### Los identificadores de JavaScript no válidos deben estar entre comillas.
+### Los identificadores de JavaScript no válidos deben estar entre comillas
 
 Las claves de objeto pueden ser cualquier cadena, incluida una cadena vacía. Sin embargo, si la clave es una cadena que no es un identificador de JavaScript válido, debe estar entre comillas. Por ejemplo, agregar espacios a una clave generará un error de sintaxis:
 
 ```javascript filename="JavaScript"
 const myFavoriteMeal = {
-    plate type: "ceramic"
+    plate type: "Cerámica"
 }
-// Output: SyntaxError
+// Salida: SyntaxError
 ```
 
 Pero encerrar la clave entre comillas la convertirá en un nombre de propiedad válido:
 
 ```javascript filename="JavaScript"
 const myFavoriteMeal = {
-    "plate type": "ceramic"
-    "": "valid but not recommended"
+    "plate type": "Cerámica"
+    "": "Válido pero no recomendado"
 }
 
 console.log(myFavoriteMeal["plate type"])
-// Output: "ceramic"
+// Salida: "Cerámica"
 
 console.log(myFavoriteMeal[""])
-// Output: "valid but not recommended"
+// Salida: "Válido pero no recomendado"
 ```
 
-Observe que utilizamos notación entre corchetes para acceder a la propiedad. No puedes usar la notación de puntos cuando la clave contiene espacios u otros caracteres no válidos:
+Observa que utilizamos notación entre corchetes para acceder a la propiedad. No puedes usar la notación de puntos cuando la clave contiene espacios u otros caracteres no válidos:
 
 ```javascript filename="JavaScript"
 const myFavoriteCar = {
-    'engine*type': 'electric',
+    'engine*type': 'Eléctrico',
 }
 
 console.log(myFavoriteCar.engine * type)
-// Output: NaN
+// Salida: NaN
 
 console.log(myFavoriteCar['engine*type'])
-// Output: "electric"
+// Salida: "Eléctrico"
 ```
 
 ### Los nombres de las propiedades distinguen entre mayúsculas y minúsculas
 
-Recuerde que JavaScript es un lenguaje que distingue entre mayúsculas y minúsculas. Esto también se aplica a las propiedades de los objetos. Por ejemplo, el siguiente código creará dos propiedades, una denominada "título" y otra llamada "Título":
+Recuerde que JavaScript es un lenguaje que distingue entre mayúsculas y minúsculas. Esto también se aplica a las propiedades de los objetos. Por ejemplo, el siguiente código creará dos propiedades, una denominada `'title'` y otra llamada `'Title'`:
 
 ```javascript filename="JavaScript"
 const myFavoriteMovie = {
     title: 'Titanic',
-    Title: 'The Lion King',
+    Title: 'El Rey León',
 }
 
 console.log(myFavoriteMovie.title)
-// Output: "Titanic"
+// Salida: "Titanic"
 
 console.log(myFavoriteMovie.Title)
-// Output: "The Lion King"
+// Salida: "El Rey León"
 ```
 
-Al igual que con las variables, es una buena práctica utilizar camelCase para los nombres de propiedades para que el estilo de su código sea consistente y fácil de leer.
+Al igual que con las variables, es una buena práctica utilizar camelCase para los nombres de propiedades para que el estilo de tu código sea consistente y fácil de leer.
 
-### Los valores de propiedad pueden ser cualquier expresión JavaScript válida.
+### Los valores de propiedad pueden ser cualquier expresión JavaScript válida
 
-El valor de una propiedad puede ser cualquier expresión JavaScript válida, incluida una función. Cuando una función se usa como valor de propiedad, se llama método, razón por la cual hemos estado usando el término "método" cuando nos referimos a funciones incorporadas de JavaScript como console.log(). Creemos un objeto con un método llamado sayHello:
+El valor de una propiedad puede ser cualquier expresión JavaScript válida, incluida una función. Cuando una función se usa como valor de propiedad, se llama método, razón por la cual hemos estado usando el término "método" cuando nos referimos a funciones incorporadas de JavaScript como `console.log()`. Creemos un objeto con un método llamado `sayHello`:
 
 ```javascript filename="JavaScript"
 const person = {
-    fullName: 'Victor Otedola',
+    name: 'Esdocu',
     sayHello: function () {
-        console.log('Hello! My name is ' + this.name)
+        console.log('¡Hola! Mi nombre es ' + this.name)
     },
 }
 
 person.sayHello()
-// Output: Hello! My name is Victor Otedola
+// Salida: ¡Hola! Mi nombre es Esdocu
 ```
 
-En el ejemplo anterior, creamos un objeto llamado persona con una propiedad nombre completo y un método llamado decir Hola. El método sayHello usa la palabra clave this para acceder a la propiedad de nombre del objeto. Cuando utiliza la palabra clave this dentro de un método, se refiere al objeto en el que se llama el método. En este caso, se refiere a la persona objeto.
+En el ejemplo anterior, creamos un objeto llamado `person` con una propiedad `name` y un método llamado `sayHello`. El método `sayHello` usa la palabra clave `this` para acceder a la propiedad `name` del objeto. Cuando utilizas la palabra clave `this` dentro de un método, se refiere al objeto en el que se llama el método. En este caso, se refiere al objeto `person`.
 
-También puedes usar una función de flecha como método, pero la palabra clave this no funcionará de la misma manera, sino que su valor estará determinado por el contexto en el que se llama al método:
+También puedes usar una función de flecha como método, pero la palabra clave `this` no funcionará de la misma manera, sino que su valor estará determinado por el contexto en el que se llama al método:
 
 ```javascript filename="JavaScript"
 const person2 = {
-    fullName: 'Linda Chima',
+    name: 'Linda Chima',
     sayHello: () => {
-        console.log('Hello! My name is ' + this.name)
+        console.log('¡Hola! Mi nombre es ' + this.name)
     },
 }
 
 person2.sayHello()
-// Output: Hello! My name is undefined
+// Salida: ¡Hola! Mi nombre es undefined
 ```
 
-La palabra clave this no funciona de la misma manera que el primer ejemplo porque se usa en una función de flecha. En este caso, esto se refiere al objeto global, que no tiene una propiedad de nombre. Esto puede resultar confuso, por lo que es mejor evitar usarlo en funciones de flecha.
+La palabra clave `this` no funciona de la misma manera que el primer ejemplo porque se usa en una función de flecha. En este caso, esto se refiere al objeto global, que no tiene una propiedad `name`. Esto puede resultar confuso, por lo que que estos casos es mejor evitar las funciones de flecha.
 
 ## Agregar, modificar y eliminar propiedades
 
-Puede agregar nuevas propiedades a un objeto usando notación de puntos o corchetes. Creemos un nuevo objeto llamado estudiante y agreguemos una nueva propiedad, género:
+Puedes agregar nuevas propiedades a un objeto usando notación de puntos o corchetes. Creemos un nuevo objeto llamado estudiante y agreguemos una nueva propiedad, `gender`:
 
 ```javascript filename="JavaScript"
 const student = {
-    name: 'Kachi',
+    name: 'Juan',
     age: 17,
 }
 
-student.gender = 'Male'
+student.gender = 'Masculino'
 
 console.log(student)
-// Output: { name: "Kachi", age: 17, gender: "Male" }
+// Salida: { name: "Juan", age: 17, gender: "Masculino" }
 ```
 
 A continuación se explica cómo utilizar la notación entre corchetes para agregar una nueva propiedad:
@@ -198,24 +198,24 @@ A continuación se explica cómo utilizar la notación entre corchetes para agre
 student['grade'] = 12
 
 console.log(student)
-// Output: { name: "Kachi", age: 17, gender: "Male", grade:12}
+// Salida: { name: "Juan", age: 17, gender: "Masculino", grade:12}
 ```
 
-También puede utilizar la notación de puntos y corchetes para modificar una propiedad existente:
+También puedes utilizar la notación de puntos y corchetes para modificar una propiedad existente:
 
 ```javascript filename="JavaScript"
 student.age = 18
 student['grade'] = 13
 
-console.log(student.age) // Output: 18
-console.log(student.grade) // Output: 13
+console.log(student.age) // Salida: 18
+console.log(student.grade) // Salida: 13
 ```
 
-JavaScript tiene un método Object.defineProperty() para agregar una nueva propiedad a un objeto. El método Object.defineProperty() es una forma de definir o modificar una propiedad en un objeto. Se utiliza para controlar el comportamiento de una propiedad y hacerla de solo lectura (no se puede modificar), no enumerable (no se puede iterar) o no configurable (no se puede eliminar ni modificar). A continuación se explica cómo usarlo para agregar una nueva propiedad a un objeto:
+JavaScript tiene un método `Object.defineProperty()` para agregar una nueva propiedad a un objeto. El método `Object.defineProperty()` es una forma de definir o modificar una propiedad en un objeto. Se utiliza para controlar el comportamiento de una propiedad y hacerla de solo lectura (no se puede modificar), no enumerable (no se puede iterar) o no configurable (no se puede eliminar ni modificar). A continuación se explica cómo usarlo para agregar una nueva propiedad a un objeto:
 
 ```javascript filename="JavaScript"
 Object.defineProperty(student, 'school', { 
-    value: 'University of Lagos',
+    value: 'Universidad Nacional',
     writable: false,
     enumerable: true,
     configurable: true,
@@ -226,56 +226,58 @@ console.log(student)
 
 Salida:
 
-```javascript filename="JavaScript"
+```plaintext filename="Salida en consola"
 {
-    name: "Kachi",
+    name: "Juan",
     age: 18,
-    gender: "Male",
+    gender: "Masculino",
     grade: 13,
-    school: "University of Lagos"
+    school: "Universidad Nacional"
 }
 ```
 
-El primer argumento es el objeto sobre el que agregar la propiedad. El segundo argumento es el nombre de la propiedad. El tercer argumento es un objeto que contiene los atributos de la propiedad. El atributo de valor es obligatorio y especifica el valor de la propiedad. Los atributos escribibles, enumerables y configurables son opcionales. Por defecto serán falsos si no los especificas. Observe que configuramos el atributo de escritura de la propiedad de la escuela en falso, por lo que cambiar su valor no funcionará:
+El primer argumento es el objeto sobre el que agregar la propiedad. El segundo argumento es el nombre de la propiedad. El tercer argumento es un objeto que contiene los atributos de la propiedad. El atributo `value` es obligatorio y especifica el valor de la propiedad. Los atributos `writable`, `enumerable` y `configurable` son opcionales. Por defecto serán `false` si no los especificas. Observa que configuramos el atributo `writable` de la propiedad en falso, por lo que cambiar su valor no funcionará:
 
 ```javascript filename="JavaScript"
 student.school = 'Havard University'
 
 console.log(student.school)
-// Output: "University of Lagos"
+// Salida: "Universidad Nacional"
 ```
 
-Para eliminar una propiedad, puede utilizar la palabra clave eliminar:
+Para eliminar una propiedad, puedes utilizar la palabra clave `delete`:
 
 ```javascript filename="JavaScript"
 delete student.school
 
 console.log(student.school)
-// Output: undefined
+// Salida: undefined
 ```
 
-Intentemos usar Object.defineProperty() para agregar una nueva propiedad al objeto de estudiante que no se puede eliminar:
+Intentemos usar `Object.defineProperty()` para agregar una nueva propiedad al objeto de estudiante que no se puede eliminar:
 
 ```javascript filename="JavaScript"
 Object.defineProperty(student, 'language', {
-    value: 'English',
+    value: 'Inglés',
     writable: true,
     enumerable: true,
     configurable: false,
 })
 
 console.log(student.language)
-// Output: "English"
+// Salida: "Inglés"
 
-delete student.language console.log(student.language)
-// Output: "English"
+delete student.language
+
+console.log(student.language)
+// Salida: "Inglés"
 ```
 
-El atributo configurable está establecido en falso, por lo que la propiedad de idioma no se puede eliminar.
+El atributo `configurable` está establecido en falso, por lo que la propiedad `language` no se puede eliminar.
 
 ## Object.prototype
 
-En JavaScript, cada objeto tiene un prototipo. Cuando creas un objeto, herojoa un prototipo, que es un objeto que contiene otras propiedades y métodos integrados que puedes usar en el objeto principal. Por ejemplo, cada objeto tiene un método toString() que devuelve una representación de cadena del objeto, aunque no lo agregue usted mismo:
+En JavaScript, cada objeto tiene un prototipo. Cuando creas un objeto, hereda un prototipo, que es un objeto que contiene otras propiedades y métodos integrados que puedes usar en el objeto principal. Por ejemplo, cada objeto tiene un método `toString()` que devuelve una representación de cadena del objeto, aunque no lo agregues tú mismo:
 
 ```javascript filename="JavaScript"
 const computerInfo = {
@@ -285,84 +287,83 @@ const computerInfo = {
 }
 
 console.log(computerInfo.toString())
-// Output: [object Object]
+// Salida: [object Object]
 ```
 
-La representación de cadena projoeterminada de un objeto es [objeto Objeto]. Si desea obtener una representación de cadena de un objeto que contiene las propiedades del objeto, puede utilizar el método integrado JSON.stringify():
+La representación de cadena de un objeto es `[object Object]`. Si deseas obtener una representación de cadena de un objeto que contiene las propiedades del objeto, puedes utilizar el método integrado `JSON.stringify()`:
 
 ```javascript filename="JavaScript"
 JSON.stringify(computerInfo)
-// Output: '{"brand":"Apple","model":"MacBook Pro",
-// "color":"Silver"}'
+// Salida: '{"brand":"Apple","model":"MacBook Pro", "color":"Silver"}'
 ```
 
-Para acceder a todas las propiedades y métodos del prototipo de un objeto, puede utilizar el método integrado Object.getPrototypeOf():
+Para acceder a todas las propiedades y métodos del prototipo de un objeto, puedes utilizar el método integrado `Object.getPrototypeOf()`:
 
 ```javascript filename="JavaScript"
 Object.getPrototypeOf(computerInfo)
 
-// Output: {propertyIsEnumerable: f, toString: f, ...}
+// Salida: {propertyIsEnumerable: f, toString: f, ...}
 ```
 
-El método Object.getPrototypeOf() devuelve un objeto que contiene todas las propiedades y métodos del prototipo del objeto. También puedes usarlo para agregar nuevas propiedades y métodos al prototipo de un objeto:
+El método `Object.getPrototypeOf()` devuelve un objeto que contiene todas las propiedades y métodos del prototipo del objeto. También puedes usarlo para agregar nuevas propiedades y métodos al prototipo de un objeto:
 
 ```javascript filename="JavaScript"
 Object.getPrototypeOf(computerInfo).isExpensive = true
 
 console.log(computerInfo.isExpensive)
-// Output: true
+// Salida: true
 ```
 
 ## Métodos de Object
 
-Hay otros métodos disponibles en el objeto Object integrado que puede utilizar para agregar, modificar y recuperar datos de cualquier objeto. Ya has visto el método Object.defineProperty(). Exploremos algunos otros métodos útiles.
+Hay otros métodos disponibles en el objeto `Object` integrado que puedes utilizar para agregar, modificar y recuperar datos de cualquier objeto. Ya has visto el método `Object.defineProperty()`. Exploremos algunos otros métodos útiles.
 
 ### Object.keys()
 
-El método Object.keys() devuelve una matriz de los nombres de propiedades enumerables de un objeto determinado. Consigamos las claves del objeto computerInfo:
+El método `Object.keys()` devuelve un array de los nombres de propiedades enumerables de un objeto determinado. Consigamos las claves del objeto `computerInfo`:
 
 ```javascript filename="JavaScript"
 Object.keys(computerInfo)
 
-// Output: ["brand", "model", "color"]
+// Salida: ["brand", "model", "color"]
 ```
 
 ### Object.values()
 
-El método Object.values() devuelve una matriz de los valores de propiedad enumerables de un objeto determinado:
+El método `Object.values()` devuelve un array de los valores de propiedad enumerables de un objeto determinado:
 
 ```javascript filename="JavaScript"
 Object.values(computerInfo)
 
-// Output: ["Apple", "MacBook Pro", "Silver"]
+// Salida: ["Apple", "MacBook Pro", "Silver"]
 ```
 
 ### Object.entries()
 
-El método Object.entries() devuelve una matriz de pares de propiedades enumerables [clave, valor] de un objeto determinado:
+El método `Object.entries()` devuelve un array de pares de propiedades enumerables [clave, valor] de un objeto determinado:
 
 ```javascript filename="JavaScript"
 Object.entries(computerInfo) 2
-// Output: [["brand", "Apple"], ["model", "MacBook Pro"],
+// Salida: [["brand", "Apple"], ["model", "MacBook Pro"],
 // ["color", "Silver"]]
 ```
 
-En el valor de retorno, cada elemento es una matriz que contiene el nombre y el valor de la propiedad.
+En el valor de retorno, cada elemento es un array que contiene el nombre y el valor de la propiedad.
 
 ### Object.assign()
 
-El método Object.assign() copia todas las propiedades propias enumerables de uno o más objetos de origen a un objeto de destino. Devuelve el objeto de destino modificado. Creemos un nuevo objeto llamado newComputerInfo y copiemos en él las propiedades del objeto computerInfo:
+El método `Object.assign()` copia todas las propiedades propias enumerables de uno o más objetos de origen a un objeto de destino. Devuelve el objeto de destino modificado. Creemos un nuevo objeto llamado `newComputerInfo` y copiemos en él las propiedades del objeto `computerInfo`:
 
 ```javascript filename="JavaScript"
 const newComputerInfo = Object.assign({}, computerInfo)
 
 console.log(newComputerInfo)
-// Output: {brand: "Apple", model: "MacBook Pro", color: "Silver"}
+// Salida: {brand: "Apple", model: "MacBook Pro", color: "Silver"}
 ```
 
 ### Object.freeze()
 
-El método Object.freeze() congela un objeto para que no pueda modificarse. Congelemos el objeto computerInfo e intentemos modificarlo:
+El método `Object.freeze()` congela un objeto para que no pueda modificarse. Congelemos el objeto `computerInfo` e intentemos modificarlo:
 
 ```javascript filename="JavaScript"
 Object.freeze(computerInfo)
@@ -370,58 +371,60 @@ Object.freeze(computerInfo)
 computerInfo.brand = 'Dell'
 
 console.log(computerInfo.brand)
-// Output: "Apple"
+// Salida: "Apple"
 ```
 
-La propiedad de marca del objeto computerInfo no se puede modificar porque está congelada.
+La propiedad `brand` del objeto `computerInfo` no se puede modificar porque está congelada.
 
 ### Object.seal()
 
-El método Object.seal() sella un objeto, evitando que se le agreguen nuevas propiedades y marcando todas las propiedades existentes como no configurables. Sellemos el objeto computerInfo e intentemos agregarle una nueva propiedad:
+El método `Object.seal()` sella un objeto, evitando que se le agreguen nuevas propiedades y marcando todas las propiedades existentes como no configurables. Sellemos el objeto `computerInfo` e intentemos agregarle una nueva propiedad:
 
 ```javascript filename="JavaScript"
 Object.seal(computerInfo)
 
-computerInfo.price = 200000 4
+computerInfo.price = 200000
 
 console.log(computerInfo.price)
-// Output: undefined
+// Salida: undefined
 ```
 
-Estos son los métodos más comunes en el objeto Object, pero puedes encontrar más en la documentación de MDN*.
+Estos son los métodos más comunes en el objeto `Object`, pero puedes encontrar más en la documentación de [MDN](https://developer.mozilla.org/es/docs/Web/JavaScript/Reference/Global_Objects/Object).
 
 Comprender cómo utilizar estos métodos es esencial para dominar los objetos en JavaScript. Así que asegúrate de seguir practicando hasta que te sientas cómodo con ellos.
 
-Te encontrarás usando mucho objetos. Son una parte importante de JavaScript y es casi imposible crear aplicaciones sin agrupar datos relacionados en objetos. Ayudan a que su código esté organizado, sea fácil de leer y mantenible.
+Te encontrarás usando mucho objetos. Son una parte importante de JavaScript y es casi imposible crear aplicaciones sin agrupar datos relacionados en objetos. Ayudan a que tu código esté organizado, sea fácil de leer y mantenible.
 
 ## Desestructuración de objetos
 
-La desestructuración de objetos es otra forma de acceder a las propiedades de un objeto. Con la desestructuración, podemos extraer valores de un objeto y asignarlos a variables con el mismo nombre que las propiedades del objeto. Se hace encerrando las propiedades entre llaves {} en el lado izquierdo del operador de asignación =. Veamos un ejemplo. Primero, crearemos un objeto que almacene información sobre un asistente a una conferencia:
+La desestructuración de objetos es otra forma de acceder a las propiedades de un objeto. Con la desestructuración, podemos extraer valores de un objeto y asignarlos a variables con el mismo nombre que las propiedades del objeto. Se hace encerrando las propiedades entre llaves `{}` en el lado izquierdo del operador de asignación `=`. 
+
+Veamos un ejemplo. Primero, crearemos un objeto que almacene información sobre un asistente a una conferencia:
 
 ```javascript filename="JavaScript"
 const attendee = {
-    name: 'Peter Okoye',
+    name: 'Juan Perez',
     age: 30,
-    email: 'peterokoye@nonexistentmail.com',
+    email: 'juanperez@example.com',
     ticketType: 'VIP',
 }
 ```
 
-Ahora, accedamos a las propiedades del objeto asistente usando la desestructuración:
+Ahora, accedamos a las propiedades del objeto `attendee` usando la desestructuración:
 
 ```javascript filename="JavaScript"
 const { name, age, email, ticketType } = attendee
 console.log(name)
-// Output: "Peter Okoye"
+// Salida: "Juan Perez"
 
 console.log(age)
-// Output: 30
+// Salida: 30
 
 console.log(email)
-// Output: "peterokoye@nonexistentmail.com"
+// Salida: "juanperez@example.com"
 
 console.log(ticketType)
-// Output: "VIP"
+// Salida: "VIP"
 ```
 
 No tenemos que desestructurar todas las propiedades del objeto a la vez. Podemos desestructurar solo las propiedades que necesitamos:
@@ -430,38 +433,38 @@ No tenemos que desestructurar todas las propiedades del objeto a la vez. Podemos
 const { name } = attendee
 ```
 
-También podemos asignar valores projoeterminados a las variables en caso de que el objeto no tenga la propiedad:
+También podemos asignar valores preterminados a las variables en caso de que el objeto no tenga la propiedad:
 
 ```javascript filename="JavaScript"
 const { name, isPaid = false } = attendee
 
 console.log(isPaid)
-// Output: false
+// Salida: false
 ```
 
-Podemos asignar un nombre diferente a la variable usando la columna: y el nuevo nombre después del nombre de la propiedad. Esto es útil cuando queremos evitar conflictos de nombres:
+Podemos asignar un nombre diferente a la variable usando dos puntos `:` y el nuevo nombre después del nombre de la propiedad. Esto es útil cuando queremos evitar conflictos de nombres:
 
 ```javascript filename="JavaScript"
 const { name: attendeeName } = attendee
 
 console.log(attendeeName)
-// Output: "Peter Okoye"
+// Salida: "Juan Perez"
 ```
 
-### Matrices de desestructuración
+### Arrays de desestructuración
 
-También podemos desestructurar matrices de manera similar. Creemos una matriz que almacene los nombres de los asistentes a una conferencia:
+También podemos desestructurar arrays de manera similar. Creemos un array que almacene los nombres de los asistentes a una conferencia:
 
 ```javascript filename="JavaScript"
 const attendeeNames = [
-    'Peter Okoye',
-    'Paul Okoye',
-    'Lynda Okoye',
-    'Rita Okoye',
+    'Juan Perez',
+    'Ramón Pereira',
+    'María Gutierrez',
+    'Rita Martinez',
 ]
 ```
 
-Para desestructurar la matriz, encerramos los elementos entre corchetes [] en el lado izquierdo del operador de asignación =. Dado que los elementos de una matriz no tienen nombre, solo podemos desestructurarlos en el orden en que aparecen en la matriz. Entonces el primer elemento de la matriz se asignará a la primera variable, el segundo elemento a la segunda variable, y así sucesivamente. Desestructuramos la matriz de nombres de asistentes:
+Para desestructurar el array, encerramos los elementos entre corchetes `[]` en el lado izquierdo del operador de asignación `=`. Dado que los elementos de un array no tienen nombre, solo podemos desestructurarlos en el orden en que aparecen en el array. Entonces el primer elemento de el array se asignará a la primera variable, el segundo elemento a la segunda variable, y así sucesivamente. Desestructuramos el array de nombres de asistentes:
 
 ```javascript filename="JavaScript"
 const [
@@ -472,16 +475,16 @@ const [
 ] = attendeeNames
 
 console.log(firstAttendee)
-// Output: "Peter Okoye"
+// Salida: "Juan Perez"
 
 console.log(thirdAttendee)
-// Output: "Lynda Okoye"
+// Salida: "María Gutierrez"
 ```
 
-También podemos desestructurar solo los elementos que necesitamos omitiendo los elementos que no necesitamos con comas. Saltemos el segundo elemento de la matriz:
+También podemos desestructurar solo los elementos que necesitamos omitiendo los elementos que no necesitamos con comas. Saltemos el segundo elemento de el array:
 
 ```javascript filename="JavaScript"
 const [firstAttendee, , thirdAttendee] = attendeeNames
 ```
 
-La desestructuración de objetos y matrices puede hacer que el código sea más legible y conciso al simplificar el proceso de extraer valores de objetos y matrices y asignarlos a variables. Dicho esto, el uso o no de la desestructuración de objetos y matrices depende del caso de uso específico y de las preferencias personales. En algunos casos, puede ser innecesario, pero en la mayoría de los casos en los que reutiliza propiedades de objetos o las asigna a variables, es una buena idea considerar la desestructuración.
+La desestructuración de objetos y arrays puede hacer que el código sea más legible y conciso al simplificar el proceso de extraer valores de objetos y arrays y asignarlos a variables. Dicho esto, el uso o no de la desestructuración de objetos y arrays depende del caso de uso específico y de las preferencias personales. En algunos casos, puede ser innecesario, pero en la mayoría de los casos en los que reutilizas propiedades de objetos o las asignas a variables, es una buena idea considerar la desestructuración.

@@ -4,19 +4,21 @@ title: Esdocu – Cursos y Tutoriales sobre Desarrollo de Software
 <div className="home-content">
     <section className="text-gray-600 dark:text-gray-400 body-font">
         <div className="container mx-auto flex px-5 py-24 items-center justify-center flex-col">
-            {/* <img className="lg:w-2/6 md:w-3/6 w-5/6 mb-10 object-cover object-center rounded" alt="hero" src="https://dummyimage.com/720x600"/> */}
+            <img className="lg:w-2/6 md:w-3/6 w-5/6 mb-10 object-cover object-center rounded" alt="hero" src="/assets/home/header-programmer.jpg"/>
             <div className="text-center lg:w-2/3 w-full">
-                <h1 className="title-font sm:text-4xl text-3xl mb-6 font-medium text-gray-900 dark:text-white">Cursos y Tutoriales sobre Desarrollo de Software</h1>
-                <h2 className="text-xs text-indigo-500 tracking-widest font-medium title-font mb-2">
-                    ¿QUÉ ES ESDOCU?
+                <h1 className="title-font sm:text-4xl text-3xl mb-8 font-medium text-gray-900 dark:text-white">Cursos y Tutoriales sobre Desarrollo de Software</h1>
+                <h2 className="text-xs text-indigo-500 tracking-widest font-medium title-font mb-3">
+                    ¿QUÉ ES ESDOCU.DEV?
                 </h2>
-                <p className="mb-8 leading-relaxed">Esdocu es un proyecto de cursos y tutoriales en español.</p>
+                <p className="mb-12 leading-relaxed">Claramente aprender inglés es la mejor opción, pero eso puede demorar años. Para trabajar necesitamos inmediatamente una plataforma gratuita de aprendizaje en español, esa plataforma es Esdocu.dev.</p>
                 <div className="flex justify-center">
                     <a href="/javascript" className="inline-flex text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded text-lg">
-                        Curso de JavaScript
+                        <span className="sm:hidden">JavaScript</span>
+                        <span className="hidden sm:block">Curso de JavaScript</span>
                     </a>
                     <a href="/python" className="ml-4 inline-flex text-gray-700 dark:text-gray-400 bg-gray-100 dark:bg-gray-800 border-0 py-2 px-6 focus:outline-none dark:hover:text-white hover:bg-gray-200 dark:hover:bg-gray-700 rounded text-lg">
-                        Curso de Python
+                        <span className="sm:hidden">Python</span>
+                        <span className="hidden sm:block">Curso de Python</span>
                     </a>
                 </div>
             </div>
@@ -24,114 +26,378 @@ title: Esdocu – Cursos y Tutoriales sobre Desarrollo de Software
     </section>
 
     {/* #
-    #######################
-    ### Curso de Python ###
-    #######################
+    #########################################
+    ### Traducciones siempre actualizadas ###
+    #########################################
     # */}
 
-    <section id="curso-python" className="text-gray-600 dark:text-gray-400 body-font">
-        <div className="container px-5 py-28 mx-auto">
-            <div className="flex flex-wrap w-full mb-20 flex-col items-center text-center">
-                <h2 className="sm:text-4xl text-3xl font-medium title-font mb-6 text-gray-900 dark:text-white">
-                    Curso de Python
-                </h2>
-                <p className="lg:w-1/2 w-full leading-relaxed text-gray-500 dark:text-white">Aprende a programar utilizando el lenguaje JavaScript, desde cero hasta avanzado. Aprende a tu propio ritmo.</p>
-            </div>
-            <div className="flex flex-wrap -m-4">
-                <div className="xl:w-1/3 md:w-1/2 p-4">
-                    <div className="border border-gray-200 dark:border-gray-700 dark:border-opacity-75 p-6 rounded-lg">
-                        <div className="w-10 h-10 inline-flex items-center justify-center rounded-full bg-indigo-100 text-indigo-500 dark:bg-gray-800 dark:text-indigo-400 mb-4">
-                            <svg fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round"
-                                strokeWidth="2" className="w-6 h-6" viewBox="0 0 24 24">
-                                <path d="M22 12h-4l-3 9L9 3l-3 9H2"></path>
-                            </svg>
-                        </div>
-                        <h3 className="text-lg text-gray-900 dark:text-white font-medium title-font mb-2">¿Qué es Python?</h3>
-                        <p className="leading-relaxed text-base">El lenguaje de programación Python fue desarrollado a principios de la década de 1990 por Guido van Rossum en Ámsterdam. Originalmente fue pensado como un...</p>
-                        <a href="/python" className="text-indigo-500 dark:text-indigo-400 inline-flex items-center mt-3">
-                            Ir a esta lección
-                            <svg fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" className="w-4 h-4 ml-2" viewBox="0 0 24 24">
-                                <path d="M5 12h14M12 5l7 7-7 7"></path>
-                            </svg>
-                        </a>
-                    </div>
-                </div>
-                <div className="xl:w-1/3 md:w-1/2 p-4">
-                    <div className="border border-gray-200 dark:border-gray-700 dark:border-opacity-75 p-6 rounded-lg">
-                        <div className="w-10 h-10 inline-flex items-center justify-center rounded-full bg-indigo-100 text-indigo-500 dark:bg-gray-800 dark:text-indigo-400 mb-4">
-                            <svg fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round"
-                                strokeWidth="2" className="w-6 h-6" viewBox="0 0 24 24">
-                                <circle cx="6" cy="6" r="3"></circle>
-                                <circle cx="6" cy="18" r="3"></circle>
-                                <path d="M20 4L8.12 15.88M14.47 14.48L20 20M8.12 8.12L12 12"></path>
-                            </svg>
-                        </div>
-                        <h3 className="text-lg text-gray-900 dark:text-white font-medium title-font mb-2">Instalación de Python</h3>
-                        <p className="leading-relaxed text-base">Puedes descargar e instalar la última versión de Python desde el sitio web oficial de Python, sin embargo, en muchos casos es más conveniente usar una distribución...</p>
-                        <a href="/python/instalar-python" className="text-indigo-500 dark:text-indigo-400 inline-flex items-center mt-3">
-                            Ir a esta lección
-                            <svg fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" className="w-4 h-4 ml-2" viewBox="0 0 24 24">
-                                <path d="M5 12h14M12 5l7 7-7 7"></path>
-                            </svg>
-                        </a>
-                    </div>
-                </div>
-                <div className="xl:w-1/3 md:w-1/2 p-4">
-                    <div className="border border-gray-200 dark:border-gray-700 dark:border-opacity-75 p-6 rounded-lg">
-                        <div className="w-10 h-10 inline-flex items-center justify-center rounded-full bg-indigo-100 text-indigo-500 dark:bg-gray-800 dark:text-indigo-400 mb-4">
-                            <svg fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round"
-                                strokeWidth="2" className="w-6 h-6" viewBox="0 0 24 24">
-                                <path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"></path>
-                                <circle cx="12" cy="7" r="4"></circle>
-                            </svg>
-                        </div>
-                        <h3 className="text-lg text-gray-900 dark:text-white font-medium title-font mb-2">Conceptos iniciales</h3>
-                        <p className="leading-relaxed text-base">Cuando inicias el intérprete de Python sin ningún argumento, ingresas al llamado modo interactivo. Este modo permite a los programadores enviar...</p>
-                        <a href="/python/conceptos" className="text-indigo-500 dark:text-indigo-400 inline-flex items-center mt-3">
-                            Ir a esta lección
-                            <svg fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" className="w-4 h-4 ml-2" viewBox="0 0 24 24">
-                                <path d="M5 12h14M12 5l7 7-7 7"></path>
-                            </svg>
-                        </a>
-                    </div>
-                </div>
-            </div>
-            <div className="flex justify-center">
-                <a href="/python" className="inline-flex items-center mx-auto mt-16 text-white bg-indigo-500 border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg">
-                    Ir al curso de Python
-                    <svg fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" className="w-4 h-4 ml-2" viewBox="0 0 24 24">
-                        <path d="M5 12h14M12 5l7 7-7 7"></path>
-                    </svg>
-                </a>
-            </div>
 
+    <section className="text-gray-600 dark:text-gray-400 body-font bg-gray-100 dark:nx-bg-neutral-900">
+        <div className="container px-5 py-28 mx-auto">
+            <h1 className="sm:text-3xl text-2xl font-medium title-font text-center text-gray-900 dark:text-white mb-10">
+                Comienza desde cero - Alcanza un nivel profesional
+            </h1>
+            <div className="flex flex-col text-center w-full mb-10">
+                <p className="lg:w-2/3 mx-auto leading-relaxed text-base">El desarrollo de software es un importante mercado en crecimiento que la comunidad hispanohablante debe aprovechar al máximo. Para desarrollar software de excelente calidad es necesario transitar varias etapas.</p>
+            </div>
+            <div className="flex flex-wrap sm:-m-4 -mx-4 -mb-10 -mt-4 md:space-y-0 space-y-6">
+                <div className="p-4 md:w-1/3 flex">
+                    <div className="w-12 h-12 inline-flex items-center justify-center rounded-full bg-indigo-100 text-indigo-500 mb-4 flex-shrink-0">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="w-6 h-6">
+                            <path strokeLinecap="round" strokeLinejoin="round" d="M2.25 18L9 11.25l4.306 4.307a11.95 11.95 0 015.814-5.519l2.74-1.22m0 0l-5.94-2.28m5.94 2.28l-2.28 5.941" />
+                        </svg>
+                    </div>
+                    <div className="flex-grow pl-6">
+                        <h2 className="text-gray-900 dark:text-white text-lg title-font font-medium mb-2">Conceptos básicos</h2>
+                        <p className="leading-relaxed text-base">Cada uno de nuestros cursos inicia desde los conceptos básicos, sin necesidad de conocimientos previos.</p>
+                        {/* <a className="mt-3 text-indigo-500 inline-flex items-center">
+                            Learn More
+                            <svg fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" className="w-4 h-4 ml-2" viewBox="0 0 24 24">
+                                <path d="M5 12h14M12 5l7 7-7 7"></path>
+                            </svg>
+                        </a> */}
+                    </div>
+                </div>
+                <div className="p-4 md:w-1/3 flex">
+                    <div className="w-12 h-12 inline-flex items-center justify-center rounded-full bg-indigo-100 text-indigo-500 mb-4 flex-shrink-0">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="w-6 h-6">
+                            <path strokeLinecap="round" strokeLinejoin="round" d="M15.362 5.214A8.252 8.252 0 0112 21 8.25 8.25 0 016.038 7.048 8.287 8.287 0 009 9.6a8.983 8.983 0 013.361-6.867 8.21 8.21 0 003 2.48z" />
+                            <path strokeLinecap="round" strokeLinejoin="round" d="M12 18a3.75 3.75 0 00.495-7.467 5.99 5.99 0 00-1.925 3.546 5.974 5.974 0 01-2.133-1A3.75 3.75 0 0012 18z" />
+                        </svg>
+                    </div>
+                    <div className="flex-grow pl-6">
+                        <h2 className="text-gray-900 dark:text-white text-lg title-font font-medium mb-2">Aprendizaje intermedio</h2>
+                        <p className="leading-relaxed text-base">En este punto serás capaz de desarrollar casi cualquier tipo de software típico, con su correspondiente testing.</p>
+                        {/* <a className="mt-3 text-indigo-500 inline-flex items-center">
+                            Learn More
+                            <svg fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" className="w-4 h-4 ml-2" viewBox="0 0 24 24">
+                                <path d="M5 12h14M12 5l7 7-7 7"></path>
+                            </svg>
+                        </a> */}
+                    </div>
+                </div>
+                <div className="p-4 md:w-1/3 flex">
+                    <div className="w-12 h-12 inline-flex items-center justify-center rounded-full bg-indigo-100 text-indigo-500 mb-4 flex-shrink-0">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="w-6 h-6">
+                            <path strokeLinecap="round" strokeLinejoin="round" d="M4.26 10.147a60.436 60.436 0 00-.491 6.347A48.627 48.627 0 0112 20.904a48.627 48.627 0 018.232-4.41 60.46 60.46 0 00-.491-6.347m-15.482 0a50.57 50.57 0 00-2.658-.813A59.905 59.905 0 0112 3.493a59.902 59.902 0 0110.399 5.84c-.896.248-1.783.52-2.658.814m-15.482 0A50.697 50.697 0 0112 13.489a50.702 50.702 0 017.74-3.342M6.75 15a.75.75 0 100-1.5.75.75 0 000 1.5zm0 0v-3.675A55.378 55.378 0 0112 8.443m-7.007 11.55A5.981 5.981 0 006.75 15.75v-1.5" />
+                        </svg>
+                    </div>
+                    <div className="flex-grow pl-6">
+                        <h2 className="text-gray-900 dark:text-white text-lg title-font font-medium mb-2">Tópicos avanzados</h2>
+                        <p className="leading-relaxed text-base">Desde saber reconocer el patrón de diseño correcto hasta el desarrollo de software complejo y correctamente optimizado.</p>
+                        {/* <a className="mt-3 text-indigo-500 inline-flex items-center">
+                            Learn More
+                            <svg fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" className="w-4 h-4 ml-2" viewBox="0 0 24 24">
+                                <path d="M5 12h14M12 5l7 7-7 7"></path>
+                            </svg>
+                        </a> */}
+                    </div>
+                </div>
+            </div>
         </div>
     </section>
 
-    {/* #
-    ###########################
-    ### Curso de JavaScript ###
-    ###########################
-    # */}
+    <div className="divide-y dark:divide-neutral-800">
 
-    {/* <section className="text-gray-600 dark:text-gray-400 body-font">
-        <div className="container px-5 pb-24 mx-auto flex flex-wrap">
-            <h2 className="sm:text-3xl text-2xl text-gray-900 dark:text-white font-medium title-font mb-2 md:w-2/5">
-                Curso de JavaScript
-            </h2>
-            <div className="md:w-3/5 md:pl-6">
-                <p className="leading-relaxed text-base">Aprende a programar utilizando el lenguaje JavaScript, desde cero hasta avanzado. Aprende a tu propio ritmo.</p>
-                <div className="flex md:mt-4 mt-6">
-                    <a href="/python" className="text-indigo-500 dark:text-indigo-400 inline-flex items-center">
+        {/* #
+        ###########################
+        ### Curso de JavaScript ###
+        ###########################
+        # */}
+
+        <section id="curso-python" className="text-gray-600 dark:text-gray-400 body-font">
+            <div className="container px-5 py-24 mx-auto">
+                <div className="flex flex-wrap w-full mb-20 flex-col items-center text-center">
+                    <h2 className="sm:text-4xl text-3xl font-medium title-font mb-6 text-gray-900 dark:text-white">
+                        Curso de JavaScript
+                    </h2>
+                    <p className="lg:w-4/5 xl:w-2/3 w-full leading-relaxed text-gray-500 dark:text-white">Aprende a programar utilizando JavaScript, un lenguaje de programación utilizado para desarrollar funcionalidades interactivas en el navegador web como animaciones, validación de formularios, comportamientos de botones, menús desplegables, entre muchas otras posibilidades.</p>
+                </div>
+                
+                <div className="flex flex-wrap -m-4">
+                    <div className="xl:w-1/3 md:w-1/2 p-4">
+                        <div className="border border-gray-200 dark:border-gray-700 dark:border-opacity-75 p-6 rounded-lg">
+                            <div className="w-10 h-10 inline-flex items-center justify-center rounded-full bg-indigo-100 text-indigo-500 mb-4">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="w-6 h-6">
+                                    <path strokeLinecap="round" strokeLinejoin="round" d="M9 17.25v1.007a3 3 0 01-.879 2.122L7.5 21h9l-.621-.621A3 3 0 0115 18.257V17.25m6-12V15a2.25 2.25 0 01-2.25 2.25H5.25A2.25 2.25 0 013 15V5.25m18 0A2.25 2.25 0 0018.75 3H5.25A2.25 2.25 0 003 5.25m18 0V12a2.25 2.25 0 01-2.25 2.25H5.25A2.25 2.25 0 013 12V5.25" />
+                                </svg>
+                            </div>
+                            <h3 className="text-lg text-gray-900 dark:text-white font-medium title-font mb-2">¿Qué es JavaScript?</h3>
+                            <p className="leading-relaxed text-base">En esta lección vemos la historia de JavaScript, y conocemos también las aplicaciones reales que se le da a este lenguaje, dónde es comunmente utilizado.</p>
+                            <a href="/javascript#qué-es-javascript" className="text-indigo-500 dark:text-indigo-400 inline-flex items-center mt-3">
+                                Ir a esta lección
+                                <svg fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" className="w-4 h-4 ml-2" viewBox="0 0 24 24">
+                                    <path d="M5 12h14M12 5l7 7-7 7"></path>
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+                    <div className="xl:w-1/3 md:w-1/2 p-4">
+                        <div className="border border-gray-200 dark:border-gray-700 dark:border-opacity-75 p-6 rounded-lg">
+                            <div className="w-10 h-10 inline-flex items-center justify-center rounded-full bg-indigo-100 text-indigo-500 mb-4">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="w-6 h-6">
+                                    <path strokeLinecap="round" strokeLinejoin="round" d="M6.75 7.5l3 2.25-3 2.25m4.5 0h3m-9 8.25h13.5A2.25 2.25 0 0021 18V6a2.25 2.25 0 00-2.25-2.25H5.25A2.25 2.25 0 003 6v12a2.25 2.25 0 002.25 2.25z" />
+                                </svg>
+                            </div>
+                            <h3 className="text-lg text-gray-900 dark:text-white font-medium title-font mb-2">Ejecutar código JavaScript</h3>
+                            <p className="leading-relaxed text-base">En esta lección vemos las diferentes formas y lugares donde podemos ejecutar el código JavaScript de nuestras prácticas, algunas requieren instalaciones y otras no.</p>
+                            <a href="/javascript/como-escribir-y-ejecutar-codigo" className="text-indigo-500 dark:text-indigo-400 inline-flex items-center mt-3">
+                                Ir a esta lección
+                                <svg fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" className="w-4 h-4 ml-2" viewBox="0 0 24 24">
+                                    <path d="M5 12h14M12 5l7 7-7 7"></path>
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+                    <div className="xl:w-1/3 md:w-1/2 p-4">
+                        <div className="border border-gray-200 dark:border-gray-700 dark:border-opacity-75 p-6 rounded-lg">
+                            <div className="w-10 h-10 inline-flex items-center justify-center rounded-full bg-indigo-100 text-indigo-500 mb-4">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="w-6 h-6">
+                                    <path strokeLinecap="round" strokeLinejoin="round" d="M4.745 3A23.933 23.933 0 003 12c0 3.183.62 6.22 1.745 9M19.5 3c.967 2.78 1.5 5.817 1.5 9s-.533 6.22-1.5 9M8.25 8.885l1.444-.89a.75.75 0 011.105.402l2.402 7.206a.75.75 0 001.104.401l1.445-.889m-8.25.75l.213.09a1.687 1.687 0 002.062-.617l4.45-6.676a1.688 1.688 0 012.062-.618l.213.09" />
+                                </svg>
+                            </div>
+                            <h3 className="text-lg text-gray-900 dark:text-white font-medium title-font mb-2">Variables en JavaScript</h3>
+                            <p className="leading-relaxed text-base">Las variables son uno de los elementos más importantes en programación, permitiéndonos almacenar valores. En esta lección vemos cómo usar variables en JavaScript.</p>
+                            <a href="/javascript/variables" className="text-indigo-500 dark:text-indigo-400 inline-flex items-center mt-3">
+                                Ir a esta lección
+                                <svg fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" className="w-4 h-4 ml-2" viewBox="0 0 24 24">
+                                    <path d="M5 12h14M12 5l7 7-7 7"></path>
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+                    <div className="xl:w-1/3 md:w-1/2 p-4">
+                        <div className="border border-gray-200 dark:border-gray-700 dark:border-opacity-75 p-6 rounded-lg">
+                            <div className="w-10 h-10 inline-flex items-center justify-center rounded-full bg-indigo-100 text-indigo-500 mb-4">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="w-6 h-6">
+                                    <path strokeLinecap="round" strokeLinejoin="round" d="M12 9v6m3-3H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                </svg>
+                            </div>
+                            <h3 className="text-lg text-gray-900 dark:text-white font-medium title-font mb-2">Operadores en JavaScript</h3>
+                            <p className="leading-relaxed text-base">En esta lección aprenderemos sobre los operadores, símbolos que podemos utilizar para realizar operaciones matemáticas, comparaciones lógicas y más.</p>
+                            <a href="/javascript/operadores-basicos" className="text-indigo-500 dark:text-indigo-400 inline-flex items-center mt-3">
+                                Ir a esta lección
+                                <svg fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" className="w-4 h-4 ml-2" viewBox="0 0 24 24">
+                                    <path d="M5 12h14M12 5l7 7-7 7"></path>
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+                    <div className="xl:w-1/3 md:w-1/2 p-4">
+                        <div className="border border-gray-200 dark:border-gray-700 dark:border-opacity-75 p-6 rounded-lg">
+                            <div className="w-10 h-10 inline-flex items-center justify-center rounded-full bg-indigo-100 text-indigo-500 mb-4">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
+                                    <path strokeLinecap="round" strokeLinejoin="round" d="M21 7.5l-2.25-1.313M21 7.5v2.25m0-2.25l-2.25 1.313M3 7.5l2.25-1.313M3 7.5l2.25 1.313M3 7.5v2.25m9 3l2.25-1.313M12 12.75l-2.25-1.313M12 12.75V15m0 6.75l2.25-1.313M12 21.75V19.5m0 2.25l-2.25-1.313m0-16.875L12 2.25l2.25 1.313M21 14.25v2.25l-2.25 1.313m-13.5 0L3 16.5v-2.25" />
+                                </svg>
+                            </div>
+                            <h3 className="text-lg text-gray-900 dark:text-white font-medium title-font mb-2">Funciones en JavaScript</h3>
+                            <p className="leading-relaxed text-base">Las funciones nos permiten agrupar y reutilizar funcionalidades. En esta lección aprendemos qué son las funciones y cómo utilizarlas para organizar nuestros desarrollos.</p>
+                            <a href="/javascript/funciones" className="text-indigo-500 dark:text-indigo-400 inline-flex items-center mt-3">
+                                Ir a esta lección
+                                <svg fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" className="w-4 h-4 ml-2" viewBox="0 0 24 24">
+                                    <path d="M5 12h14M12 5l7 7-7 7"></path>
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+                    <div className="xl:w-1/3 md:w-1/2 p-4">
+                        <div className="border border-gray-200 dark:border-gray-700 dark:border-opacity-75 p-6 rounded-lg">
+                            <div className="w-10 h-10 inline-flex items-center justify-center rounded-full bg-indigo-100 text-indigo-500 mb-4">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
+                                    <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 12h16.5m-16.5 3.75h16.5M3.75 19.5h16.5M5.625 4.5h12.75a1.875 1.875 0 010 3.75H5.625a1.875 1.875 0 010-3.75z" />
+                                </svg>
+                            </div>
+                            <h3 className="text-lg text-gray-900 dark:text-white font-medium title-font mb-2">Arrays en JavaScript</h3>
+                            <p className="leading-relaxed text-base">Los arrays o matrices son estructuras de datos en forma de listas que nos permiten organizar valores y evitar utilizar grandes cantidades de variables.</p>
+                            <a href="/javascript/arrays" className="text-indigo-500 dark:text-indigo-400 inline-flex items-center mt-3">
+                                Ir a esta lección
+                                <svg fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" className="w-4 h-4 ml-2" viewBox="0 0 24 24">
+                                    <path d="M5 12h14M12 5l7 7-7 7"></path>
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div className="flex flex-wrap w-full mt-10 flex-col items-center text-center">
+                    <p className="lg:w-4/5 xl:w-2/3 w-full leading-relaxed text-gray-500 dark:text-white">Estas son solo algunas de las lecciones del curso.</p>
+                </div>
+                <div className="flex justify-center">
+                    <a href="/javascript" className="inline-flex items-center mx-auto mt-12 text-white bg-indigo-500 border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg">
                         Ir al curso de JavaScript
                         <svg fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" className="w-4 h-4 ml-2" viewBox="0 0 24 24">
                             <path d="M5 12h14M12 5l7 7-7 7"></path>
                         </svg>
                     </a>
                 </div>
-            </div>
-        </div>
-    </section> */}
 
+            </div>
+        </section>
+
+        {/* #
+        #######################
+        ### Curso de Python ###
+        #######################
+        # */}
+
+        <section id="curso-python" className="text-gray-600 dark:text-gray-400 body-font">
+            <div className="container px-5 py-24 mx-auto">
+                <div className="flex flex-wrap w-full mb-20 flex-col items-center text-center">
+                    <h2 className="sm:text-4xl text-3xl font-medium title-font mb-6 text-gray-900 dark:text-white">
+                        Curso de Python
+                    </h2>
+                    <p className="lg:w-4/5 xl:w-2/3 w-full leading-relaxed text-gray-500 dark:text-white">Aprende a programar utilizando Python, un lenguaje de programación interpretado, orientado a objetos, de alto nivel y con semántica dinámica, cuya sintaxis es simple, fácil de aprender y enfatiza en la legibilidad reduciendo el costo del mantenimiento de los programas.</p>
+                </div>
+                <div className="flex flex-wrap -m-4">
+                    <div className="xl:w-1/3 md:w-1/2 p-4">
+                        <div className="border border-gray-200 dark:border-gray-700 dark:border-opacity-75 p-6 rounded-lg">
+                            <div className="w-10 h-10 inline-flex items-center justify-center rounded-full bg-indigo-100 text-indigo-500 mb-4">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
+                                    <path strokeLinecap="round" strokeLinejoin="round" d="M9 17.25v1.007a3 3 0 01-.879 2.122L7.5 21h9l-.621-.621A3 3 0 0115 18.257V17.25m6-12V15a2.25 2.25 0 01-2.25 2.25H5.25A2.25 2.25 0 013 15V5.25m18 0A2.25 2.25 0 0018.75 3H5.25A2.25 2.25 0 003 5.25m18 0V12a2.25 2.25 0 01-2.25 2.25H5.25A2.25 2.25 0 013 12V5.25" />
+                                </svg>
+                            </div>
+                            <h3 className="text-lg text-gray-900 dark:text-white font-medium title-font mb-2">¿Qué es Python?</h3>
+                            <p className="leading-relaxed text-base">El lenguaje de programación Python fue desarrollado a principios de la década de 1990 por Guido van Rossum en Ámsterdam. Originalmente fue pensado como un...</p>
+                            <a href="/python" className="text-indigo-500 dark:text-indigo-400 inline-flex items-center mt-3">
+                                Ir a esta lección
+                                <svg fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" className="w-4 h-4 ml-2" viewBox="0 0 24 24">
+                                    <path d="M5 12h14M12 5l7 7-7 7"></path>
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+                    <div className="xl:w-1/3 md:w-1/2 p-4">
+                        <div className="border border-gray-200 dark:border-gray-700 dark:border-opacity-75 p-6 rounded-lg">
+                            <div className="w-10 h-10 inline-flex items-center justify-center rounded-full bg-indigo-100 text-indigo-500 mb-4">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
+                                    <path strokeLinecap="round" strokeLinejoin="round" d="M9 3.75H6.912a2.25 2.25 0 00-2.15 1.588L2.35 13.177a2.25 2.25 0 00-.1.661V18a2.25 2.25 0 002.25 2.25h15A2.25 2.25 0 0021.75 18v-4.162c0-.224-.034-.447-.1-.661L19.24 5.338a2.25 2.25 0 00-2.15-1.588H15M2.25 13.5h3.86a2.25 2.25 0 012.012 1.244l.256.512a2.25 2.25 0 002.013 1.244h3.218a2.25 2.25 0 002.013-1.244l.256-.512a2.25 2.25 0 012.013-1.244h3.859M12 3v8.25m0 0l-3-3m3 3l3-3" />
+                                </svg>
+                            </div>
+                            <h3 className="text-lg text-gray-900 dark:text-white font-medium title-font mb-2">Instalación de Python</h3>
+                            <p className="leading-relaxed text-base">Puedes descargar e instalar la última versión de Python desde el sitio web oficial de Python, sin embargo, en muchos casos es más conveniente usar una distribución...</p>
+                            <a href="/python/instalar-python" className="text-indigo-500 dark:text-indigo-400 inline-flex items-center mt-3">
+                                Ir a esta lección
+                                <svg fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" className="w-4 h-4 ml-2" viewBox="0 0 24 24">
+                                    <path d="M5 12h14M12 5l7 7-7 7"></path>
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+                    <div className="xl:w-1/3 md:w-1/2 p-4">
+                        <div className="border border-gray-200 dark:border-gray-700 dark:border-opacity-75 p-6 rounded-lg">
+                            <div className="w-10 h-10 inline-flex items-center justify-center rounded-full bg-indigo-100 text-indigo-500 mb-4">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
+                                    <path strokeLinecap="round" strokeLinejoin="round" d="M12 18v-5.25m0 0a6.01 6.01 0 001.5-.189m-1.5.189a6.01 6.01 0 01-1.5-.189m3.75 7.478a12.06 12.06 0 01-4.5 0m3.75 2.383a14.406 14.406 0 01-3 0M14.25 18v-.192c0-.983.658-1.823 1.508-2.316a7.5 7.5 0 10-7.517 0c.85.493 1.509 1.333 1.509 2.316V18" />
+                                </svg>
+                            </div>
+                            <h3 className="text-lg text-gray-900 dark:text-white font-medium title-font mb-2">Conceptos iniciales</h3>
+                            <p className="leading-relaxed text-base">Cuando inicias el intérprete de Python sin ningún argumento, ingresas al llamado modo interactivo. Este modo permite a los programadores enviar...</p>
+                            <a href="/python/conceptos" className="text-indigo-500 dark:text-indigo-400 inline-flex items-center mt-3">
+                                Ir a esta lección
+                                <svg fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" className="w-4 h-4 ml-2" viewBox="0 0 24 24">
+                                    <path d="M5 12h14M12 5l7 7-7 7"></path>
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div className="flex flex-wrap w-full mt-10 flex-col items-center text-center">
+                    <p className="lg:w-4/5 xl:w-2/3 w-full leading-relaxed text-gray-500 dark:text-white">Estas son solo algunas de las lecciones del curso.</p>
+                </div>
+                <div className="flex justify-center">
+                    <a href="/python" className="inline-flex items-center mx-auto mt-12 text-white bg-indigo-500 border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg">
+                        Ir al curso de Python
+                        <svg fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" className="w-4 h-4 ml-2" viewBox="0 0 24 24">
+                            <path d="M5 12h14M12 5l7 7-7 7"></path>
+                        </svg>
+                    </a>
+                </div>
+
+            </div>
+        </section>
+
+        {/* #
+        ##########################################
+        ### Curso de Conceptos de Programación ###
+        ##########################################
+        # */}
+
+        <section id="curso-python" className="text-gray-600 dark:text-gray-400 body-font">
+            <div className="container px-5 py-24 mx-auto">
+                <div className="flex flex-wrap w-full mb-20 flex-col items-center text-center">
+                    <h2 className="sm:text-4xl text-3xl font-medium title-font mb-6 text-gray-900 dark:text-white">
+                        Curso de Conceptos de Programación
+                    </h2>
+                    <p className="lg:w-4/5 xl:w-2/3 w-full leading-relaxed text-gray-500 dark:text-white">Los lenguajes de programación tienen muchos conceptos agnósticos que no son necesarios repetir una y otra vez en el curso de cada lenguaje. En este curso ideal para principiantes, aprenderemos los conceptos básicos de programación, conceptos que se encuentran en la mayoría de los lenguajes.</p>
+                </div>
+                <div className="flex flex-wrap -m-4">
+                    <div className="xl:w-1/3 md:w-1/2 p-4">
+                        <div className="border border-gray-200 dark:border-gray-700 dark:border-opacity-75 p-6 rounded-lg">
+                            <div className="w-10 h-10 inline-flex items-center justify-center rounded-full bg-indigo-100 text-indigo-500 mb-4">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
+                                    <path strokeLinecap="round" strokeLinejoin="round" d="M4.745 3A23.933 23.933 0 003 12c0 3.183.62 6.22 1.745 9M19.5 3c.967 2.78 1.5 5.817 1.5 9s-.533 6.22-1.5 9M8.25 8.885l1.444-.89a.75.75 0 011.105.402l2.402 7.206a.75.75 0 001.104.401l1.445-.889m-8.25.75l.213.09a1.687 1.687 0 002.062-.617l4.45-6.676a1.688 1.688 0 012.062-.618l.213.09" />
+                                </svg>
+                            </div>
+                            <h3 className="text-lg text-gray-900 dark:text-white font-medium title-font mb-2">¿Qué son las variables?</h3>
+                            <p className="leading-relaxed text-base">Una variable es un espacio a nuestra disposición en la memoria RAM del dispositivo donde se ejecute nuestro código. En esta lección presentamos las variables.</p>
+                            <a href="/conceptos/variables" className="text-indigo-500 dark:text-indigo-400 inline-flex items-center mt-3">
+                                Ir a esta lección
+                                <svg fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" className="w-4 h-4 ml-2" viewBox="0 0 24 24">
+                                    <path d="M5 12h14M12 5l7 7-7 7"></path>
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+                    <div className="xl:w-1/3 md:w-1/2 p-4">
+                        <div className="border border-gray-200 dark:border-gray-700 dark:border-opacity-75 p-6 rounded-lg">
+                            <div className="w-10 h-10 inline-flex items-center justify-center rounded-full bg-indigo-100 text-indigo-500 mb-4">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
+                                    <path strokeLinecap="round" strokeLinejoin="round" d="M9 4.5v15m6-15v15m-10.875 0h15.75c.621 0 1.125-.504 1.125-1.125V5.625c0-.621-.504-1.125-1.125-1.125H4.125C3.504 4.5 3 5.004 3 5.625v12.75c0 .621.504 1.125 1.125 1.125z" />
+                                </svg>
+                            </div>
+                            <h3 className="text-lg text-gray-900 dark:text-white font-medium title-font mb-2">¿Qué son los tipos de datos?</h3>
+                            <p className="leading-relaxed text-base">En esta lección presentamos los tipos de datos más utilizados, la diferencia entre tipado estático y tipado dinámico y las ventajas de desventajas de cada uno.</p>
+                            <a href="/conceptos/tipos-de-datos" className="text-indigo-500 dark:text-indigo-400 inline-flex items-center mt-3">
+                                Ir a esta lección
+                                <svg fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" className="w-4 h-4 ml-2" viewBox="0 0 24 24">
+                                    <path d="M5 12h14M12 5l7 7-7 7"></path>
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+                    <div className="xl:w-1/3 md:w-1/2 p-4">
+                        <div className="border border-gray-200 dark:border-gray-700 dark:border-opacity-75 p-6 rounded-lg">
+                            <div className="w-10 h-10 inline-flex items-center justify-center rounded-full bg-indigo-100 text-indigo-500 mb-4">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
+                                    <path strokeLinecap="round" strokeLinejoin="round" d="M21 7.5l-2.25-1.313M21 7.5v2.25m0-2.25l-2.25 1.313M3 7.5l2.25-1.313M3 7.5l2.25 1.313M3 7.5v2.25m9 3l2.25-1.313M12 12.75l-2.25-1.313M12 12.75V15m0 6.75l2.25-1.313M12 21.75V19.5m0 2.25l-2.25-1.313m0-16.875L12 2.25l2.25 1.313M21 14.25v2.25l-2.25 1.313m-13.5 0L3 16.5v-2.25" />
+                                </svg>
+                            </div>
+                            <h3 className="text-lg text-gray-900 dark:text-white font-medium title-font mb-2">¿Qué son las funciones?</h3>
+                            <p className="leading-relaxed text-base">Una función es un bloque reutilizable de código con un nombre como identificador, una serie de parámetros de entrada y un valor de salida o retorno.</p>
+                            <a href="/conceptos/funciones" className="text-indigo-500 dark:text-indigo-400 inline-flex items-center mt-3">
+                                Ir a esta lección
+                                <svg fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" className="w-4 h-4 ml-2" viewBox="0 0 24 24">
+                                    <path d="M5 12h14M12 5l7 7-7 7"></path>
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div className="flex flex-wrap w-full mt-10 flex-col items-center text-center">
+                    <p className="lg:w-4/5 xl:w-2/3 w-full leading-relaxed text-gray-500 dark:text-white">Estas son solo algunas de las lecciones del curso.</p>
+                </div>
+                <div className="flex justify-center">
+                    <a href="/conceptos" className="inline-flex items-center mx-auto mt-12 text-white bg-indigo-500 border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg">
+                        <span className="sm:hidden">Ir al curso de Conceptos</span>
+                        <span className="hidden sm:block">Ir al curso de Conceptos de programación</span>
+                        <svg fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" className="w-4 h-4 ml-2" viewBox="0 0 24 24">
+                            <path d="M5 12h14M12 5l7 7-7 7"></path>
+                        </svg>
+                    </a>
+                </div>
+
+            </div>
+        </section>
+
+    </div>
 
 </div>

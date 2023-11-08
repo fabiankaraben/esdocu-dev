@@ -2,7 +2,6 @@
   "index": {
     "title": "Inicio",
     "type": "page",
-    "display": "hidden",
     "theme": {
       "layout": "raw"
     }
@@ -28,17 +27,14 @@
     "items": {
       "conceptos": {
         "title": "Conceptos de programación",
-        "type": "page",
         "href": "/conceptos"
       },
       "python": {
         "title": "Curso de Python",
-        "type": "page",
         "href": "/python"
       },
       "javascript": {
         "title": "Curso de JavaScript",
-        "type": "page",
         "href": "/javascript"
       }
     }

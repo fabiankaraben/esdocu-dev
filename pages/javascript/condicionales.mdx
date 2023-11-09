@@ -1,98 +1,104 @@
 # Declaraciones condicionales
 
-Hemos aprendido sobre declaraciones condicionales básicas y cómo usar la declaración if-else para ejecutar código basado en una condición. Las declaraciones condicionales se utilizan para controlar el flujo de un programa, tal como usted vive su vida diaria. Tomas decisiones basadas en tus circunstancias y ejecutas diferentes acciones en consecuencia. Por ejemplo, si tienes frío, puedes usar una chaqueta; si está lloviendo, puedes usar un impermeable; y si hace sol, puedes usar una camiseta. Puede usar la declaración básica if-else para manejar la primera condición (si hace frío), pero cuando necesite verificar múltiples condiciones, necesitará declaraciones condicionales más complejas como las declaraciones else-if y switch.
+Hemos aprendido sobre declaraciones condicionales básicas y cómo usar la declaración `if`-`else` para ejecutar código basado en una condición. Las declaraciones condicionales se utilizan para controlar el flujo de un programa, tal como vives tu vida diaria. Tomas decisiones basadas en tus circunstancias y ejecutas diferentes acciones en consecuencia. Por ejemplo, si tienes frío, puedes usar una chaqueta; si está lloviendo, puedes usar un impermeable; y si hace sol, puedes usar una camiseta. Puedes usar la declaración básica `if`-`else` para manejar la primera condición (si hace frío), pero cuando necesites verificar múltiples condiciones, necesitarás declaraciones condicionales más complejas como las declaraciones `else if` y `switch`.
 
-## Declaraciones else-if en JavaScript
+## Declaraciones `else if` en JavaScript
 
-Para comprobar varias condiciones, puede utilizar una cláusula else-if. La cláusula else-if le permite encadenar varias declaraciones condicionales de modo que si no se cumple la primera condición, se verifica la segunda condición, y así sucesivamente. A continuación se muestra un ejemplo sencillo para ilustrar cómo funciona la cláusula else-if:
+Para comprobar varias condiciones, puedes utilizar una cláusula `else if`. La cláusula `else if` te permite encadenar varias declaraciones condicionales de modo que si no se cumple la primera condición, se verifica la segunda condición, y así sucesivamente. 
 
-```javascript filename="JavaScript"
-if it's cold: wear a jacket
-else if it's raining: wear a raincoat
-else: wear a t-shirt
+A continuación se muestra un ejemplo sencillo en pseudocódigo para ilustrar cómo funciona la cláusula `else if`:
+
+```plaintext filename="Pseudocódigo"
+if hace frío: usa una chaqueta
+else, if llueve: lleva un chubasquero.
+else: usa una camiseta
 ```
 
-Veamos un ejemplo en JavaScript. Usaremos el método console.log() para mostrar texto en la consola si se cumple una condición:
+Veamos un ejemplo en JavaScript. Usaremos el método `console.log()` para mostrar texto en la consola si se cumple una condición:
 
 ```javascript filename="JavaScript"
-if (typeof 'Hello' === 'number') {
-    console.log('The first condition was met!')
+if (typeof 'Hola' === 'number') {
+    console.log('¡Se cumplió la primera condición!')
 } else if (typeof 10 === 'number') {
-    console.log('The second condition was met!')
+    console.log('¡Se cumplió la segunda condición!')
 } else {
-    console.log('None of the conditions were met.')
+    console.log('Ninguna de las condiciones se cumplió.')
 }
 
-// output: The second condition was met!
+// Salida: ¡Se cumplió la segunda condición!
 ```
 
-Dado que no se cumple la primera condición typeof('Hello') === 'number', se evalúa la siguiente declaración else-if. En nuestro ejemplo, la segunda condición (typeof(10) === 'number') es verdadera, por lo que se ejecuta el código dentro de la cláusula else-if. Si no se cumpliera la segunda condición, se ejecutaría el código dentro de la siguiente cláusula else. Una cláusula else-if solo se evalúa si no se cumple la condición anterior. Cambiemos la primera condición a typeof('Hello') === 'string' y ejecutemos el código nuevamente:
+Dado que no se cumple la primera condición `typeof('Hola') === 'number'`, se evalúa la siguiente declaración `else if`. En nuestro ejemplo, la segunda condición (typeof(10) === 'number') es verdadera, por lo que se ejecuta el código dentro de la cláusula `else if`. Si no se cumpliera la segunda condición, se ejecutaría el código dentro de la siguiente cláusula `else`. Una cláusula `else if` solo se evalúa si no se cumple la condición anterior. 
+
+Cambiemos la primera condición a `typeof('Hola') === 'string'` y ejecutemos el código nuevamente:
 
 ```javascript filename="JavaScript"
-if (typeof 'Hello' === 'string') {
-    console.log('The first condition was met!')
+if (typeof 'Hola' === 'string') {
+    console.log('¡Se cumplió la primera condición!')
 } else if (typeof 10 === 'number') {
-    console.log('The second condition was met!') 
+    console.log('¡Se cumplió la segunda condición!') 
 } else {
-    console.log('None of the conditions were met.')
+    console.log('Ninguna de las condiciones se cumplió.')
 }
 
-// output: The first condition was met!
+// Salida: ¡Se cumplió la primera condición!
 ```
 
-Cuando ejecute el código anterior en su consola, obtendrá la cadena "¡Se cumplió la primera condición!". y la siguiente cláusula else-if no será evaluada. La cláusula else-if solo se evalúa si no se cumple la condición anterior. Si desea evaluar la segunda condición independientemente del resultado de la primera, debe usar un if
-declaración en su lugar. He aquí un ejemplo:
+Cuando ejecutes el código anterior en tu consola, obtendrás la cadena `'¡Se cumplió la primera condición!'`, y la siguiente cláusula `else if` no será evaluada. La cláusula `else if` solo se evalúa si no se cumple la condición anterior. Si deseas evaluar la segunda condición independientemente del resultado de la primera, debes usar una
+declaración `if` en su lugar. He aquí un ejemplo:
 
 ```javascript filename="JavaScript"
-if (typeof 'Hello' === 'string') {
-     console.log('The first condition was met!')
+if (typeof 'Hola' === 'string') {
+     console.log('¡Se cumplió la primera condición!')
 }
 if (typeof 10 === 'number') {
-    console.log('The second condition was met!') else {
+    console.log('¡Se cumplió la segunda condición!') {
 } else {
-    console.log('None of the conditions were met.')
+    console.log('Ninguna de las condiciones se cumplió.')
 }
 
-// output: The first condition was met!
-// output: The second condition was met!
+// Salida: ¡Se cumplió la primera condición!
+// Salida: ¡Se cumplió la segunda condición!
 ```
 
-Cuando ejecute el código anterior, ambas cadenas se registrarán en la consola porque la segunda condición también es una declaración if. Sólo debe utilizar la cláusula else-if al escribir condiciones conectadas. Observe que solo tenemos una cláusula else en nuestros ejemplos. La cláusula else se ejecuta si no se cumple ninguna de las condiciones. También indica el final de la declaración condicional. Entonces, si escribe una cláusula else e intenta agregar una cláusula else-if después, obtendrá un error:
+Cuando ejecutes el código anterior, ambas cadenas se imprimirán en la consola porque la segunda condición también es una declaración `if`. Sólo debes utilizar la cláusula `else if` al escribir condiciones conectadas. 
+
+Observa que solo tenemos una cláusula `else` en nuestros ejemplos. La cláusula `else` se ejecuta si no se cumple ninguna de las condiciones. También indica el final de la declaración condicional. Entonces, si escribes una cláusula `else` e intentas agregar una cláusula `else if` después, obtendrá un error:
 
 ```javascript filename="JavaScript"
-if (typeof('Hello') === 'string') {
-    console.log('The first condition was met!') 
+if (typeof('Hola') === 'string') {
+    console.log('¡Se cumplió la primera condición!') 
 } else {
-    console.log('The condition was not met')
+    console.log('La condición no se cumplió.')
 } else if (typeof(10) === 'number') {
-    console.log('The second condition was met!')
+    console.log('¡Se cumplió la segunda condición!')
 }
 
-// output: SyntaxError: Unexpected token else
+// Salida: SyntaxError: Unexpected token else
 ```
 
-Puede tener tantas cláusulas else-if como desee en una declaración if, pero solo puede tener una cláusula else.
+Puedes tener tantas cláusulas `else if` como desees en una declaración `if`, pero solo puedes tener una cláusula `else`.
 
-## Declaraciones if anidadas
+## Declaraciones `if` anidadas
 
-A veces, necesitarás verificar varias condiciones dentro de una sola condición. Por ejemplo, si su computadora portátil funciona, pero la batería está baja, es posible que desee cargarla. Si la computadora portátil funciona y la batería está al 50% o más, es posible que desees usarla. Si la computadora portátil funciona, pero la conexión a Internet no está disponible, es posible que desees reiniciar el enrutador. Puede utilizar declaraciones if-else habituales para comprobar todas estas condiciones:
+A veces, necesitarás verificar varias condiciones dentro de una sola condición. Por ejemplo, si tu computadora portátil funciona, pero la batería está baja, es posible que desees cargarla. Si la computadora portátil funciona y la batería está al 50% o más, es posible que desees usarla. Si la computadora portátil funciona, pero la conexión a Internet no está disponible, es posible que desees reiniciar el enrutador. Puedes utilizar declaraciones `if`-`else` habituales para comprobar todas estas condiciones:
+
+```plaintext filename="Pseudocódigo"
+if la computadora portátil funciona pero la batería está baja: cárgala
+else if si la computadora portátil funciona pero no tiene Internet: reinicia el enrutador
+else si la computadora portátil funciona y la batería está al 50% o más: úsala
+```
+
+Observa cómo cada condición depende de un `"Si la computadora funciona"`. Escribir esta condición varias veces es redundante. En cambio, podemos escribirlo una vez y anidar las otras condiciones dentro de él. Así es como se vería nuestra ilustración simple usando declaraciones `if` anidadas:
 
 ```javascript filename="JavaScript"
-if laptop works but battery is low: charge it
-else if laptop works but no internet: restart the router
-else if laptop works and battery is 50% or more: use it
+if la computadora portátil funciona:
+    if la batería está baja: cárgala
+    else if si no hay Internet: reinicia el enrutador.
+    else if si la batería está al 50% o más: úsala
 ```
 
-Observe cómo cada condición depende de una; “Si el portátil funciona”. Escribir esta condición varias veces es redundante. En cambio, podemos escribirlo una vez y anidar las otras condiciones dentro de él. Así es como se vería nuestra ilustración simple usando declaraciones if anidadas:
-
-```javascript filename="JavaScript"
-if laptop works:
-    if battery is low: charge it
-    else if no internet: restart the router
-    else if battery is 50% or more: use it
-```
-
-Anidar declaraciones if es una excelente manera de simplificar su código cuando tiene múltiples condiciones que dependen de una. Las condiciones anidadas solo se evalúan si se cumple la condición principal. Aquí hay un ejemplo en JavaScript:
+Anidar declaraciones `if` es una excelente manera de simplificar tu código cuando tienes múltiples condiciones que dependen de una. Las condiciones anidadas solo se evalúan si se cumplen la condición principal. Aquí hay un ejemplo en JavaScript:
 
 ```javascript filename="JavaScript"
 let laptopWorks = true
@@ -100,70 +106,72 @@ let batteryLow = true
 let internetUnavailable = true let batteryIsCharged = false
 if (laptopWorks) {
     if (batteryLow) {
-        console.log('Charge it')
+        console.log('Cárgala')
     } else if (internetUnavailable) {
-        console.log('Restart the router')
+        console.log('Reinicia el enrutador')
     } else if (batteryIsCharged) {
-        console.log('Use it')
+        console.log('Úsala')
     }
 }
 
-// output: Charge it
+// Salida: Cárgala
 ```
 
-Since all the conditions depend on the laptop working, we only need to write it once. If the laptop works, the nested conditions are evaluated. However, if the laptop doesn’t work, none of the nested conditions are evaluated. Let’s change the value of laptopWorks to false and run the code again:
+Dado que todas las condiciones dependen del funcionamiento de la computadora portátil, solo necesitamos escribirlo una vez. Si la computadora portátil funciona, se evalúan las condiciones anidadas. Sin embargo, si la computadora portátil no funciona, no se evalúa ninguna de las condiciones anidadas. Cambiemos el valor de `laptopWorks` a `false` y ejecutemos el código nuevamente:
 
 ```javascript filename="JavaScript"
 laptopWorks = false
 if (laptopWorks) {
     if (batteryLow) {
-        console.log('Charge it')
+        console.log('Cárgala')
     }else if (internetUnavailable) {
-        console.log('Restart the router')
+        console.log('Reinicia el enrutador')
     } else if (batteryIsCharged) {
-        console.log('Use it')
+        console.log('Úsala')
     }
 }
 
-// output: (nothing)
+// Salida: (nada)
 ```
 
-Al anidar, siempre debes sangrar las condiciones anidadas para que el código sea más fácil de leer. Si desea manejar el caso en el que la computadora portátil no funciona, puede agregar una cláusula else a la condición principal:
+Al anidar, siempre debes sangrar las condiciones anidadas para que el código sea más fácil de leer. Si deseas manejar el caso en el que la computadora portátil no funciona, puedes agregar una cláusula `else` a la condición principal:
 
 ```javascript filename="JavaScript"
 if (laptopWorks) {
     if (batteryLow) {
-        console.log('Charge it')
+        console.log('Cárgala')
     } else if (internetUnavailable) {
-        console.log('Restart the router')
+        console.log('Reinicia el enrutador')
     } else if (batteryIsCharged) {
-        console.log('Use it')
+        console.log('Úsala')
     }
 } else{
-    console.log('The laptop is broken. It needs fixing')
+    console.log('La computadora está rota, necesita arreglarse')
 }
 
-// output: The laptop is broken. It needs fixing
+// Salida: La computadora está rota, necesita arreglarse
 ```
 
-Al escribir declaraciones condicionales, puede omitir las llaves si solo tiene una declaración dentro de la condición:
+Al escribir declaraciones condicionales, puedes omitir las llaves si solo tienes una declaración dentro de la condición:
 
 ```javascript filename="JavaScript"
 if (laptopWorks) {
-    if (batteryLow) console.log('Charge it')
+    if (batteryLow)
+        console.log('Cárgala')
     else if (internetUnavailable)
-        console.log('Restart the router')
-    else if (batteryIsCharged) console.log('Use it')
-}else{
-    console.log('The laptop is broken. It needs fixing')
+        console.log('Reinicia el enrutador')
+    else if (batteryIsCharged)
+        console.log('Úsala')
+} else {
+    console.log('La computadora está rota, necesita arreglarse')
 }
 ```
 
-También podríamos escribir la cláusula else sin llaves, pero usar llaves hace que sea más fácil de leer en este caso. Es importante priorizar la legibilidad sobre la brevedad al escribir código.
+También podríamos escribir la cláusula `else` sin llaves, pero usar llaves hace que sea más fácil de leer en este caso. Es importante priorizar la legibilidad sobre la brevedad al escribir código.
 
-## La declaración del cambio
+## La declaración `switch`
 
-La declaración de cambio es una forma de simplificar el proceso de escribir múltiples declaraciones if-else. Es un tipo de declaración condicional que le permite comparar un valor con varios casos. La declaración de cambio compara una expresión con una lista de valores posibles, y si la expresión coincide con uno de los valores, se ejecutará el código dentro de su caso correspondiente. Así es como se ve la sintaxis:
+La declaración switch es una forma de simplificar el proceso de escribir múltiples declaraciones if-else. Es un tipo de declaración condicional que le permite comparar un valor con varios casos. La declaración switch compara una expresión con una lista de valores posibles, y si la expresión coincide con uno de los valores, se ejecutará el código dentro de su caso correspondiente. Así es como se ve la sintaxis:
 
 ```javascript filename="JavaScript"
 switch (expression) {
@@ -182,10 +190,10 @@ En la sintaxis anterior,
 
 • La expresión es el valor que se comparará con los casos.
 • valor1 y valor2 son los valores posibles que la expresión puede coincidir.
-• La palabra clave break se utiliza para detener la ejecución de la instrucción de cambio después de ejecutar el código dentro de un caso. Si no hay una palabra clave de interrupción en un caso, la declaración de cambio continuará ejecutándose hasta que llegue a una palabra clave de interrupción o hasta que llegue al final.
+• La palabra clave break se utiliza para detener la ejecución de la instrucción switch después de ejecutar el código dentro de un caso. Si no hay una palabra clave de interrupción en un caso, la declaración switch continuará ejecutándose hasta que llegue a una palabra clave de interrupción o hasta que llegue al final.
 • El caso predeterminado se ejecuta si la expresión no coincide con ningún caso.
 
-Para ilustrar cómo funciona la declaración de cambio, veamos un ejemplo. Digamos que tenemos una variable llamada día que almacena el día de la semana y queremos registrar diferentes mensajes en la consola según el día de la semana. Podríamos usar una declaración if-else para hacer esto:
+Para ilustrar cómo funciona la declaración switch, veamos un ejemplo. Digamos que tenemos una variable llamada día que almacena el día de la semana y queremos registrar diferentes mensajes en la consola según el día de la semana. Podríamos usar una declaración if-else para hacer esto:
 
 ```javascript filename="JavaScript"
 const day = 'Monday'
@@ -208,10 +216,10 @@ if (day === 'Monday') {
     console.log('That is not a day of the week!')
 }
 
-// output: Today is Monday!
+// Salida: Today is Monday!
 ```
 
-Este código funciona, pero podemos simplificarlo usando una declaración de cambio:
+Este código funciona, pero podemos simplificarlo usando una declaración switch:
 
 ```javascript filename="JavaScript"
 const day = 'Monday'
@@ -242,14 +250,14 @@ switch (day) {
         console.log('That is not a day of the week!')
 }
 
-// output: Today is Monday!
+// Salida: Today is Monday!
 ```
 
-### declaraciones de cambio anidadas
+### Declaraciones switch anidadas
 
-Al comprobar varios casos de un valor o variable, la instrucción switch suele ser más eficiente que la instrucción if-else porque requiere menos líneas de código y es más fácil de leer. Sin embargo, este no es siempre el caso. Si trabaja con varias condiciones, la declaración de cambio puede resultar difícil de gestionar.
+Al comprobar varios casos de un valor o variable, la instrucción switch suele ser más eficiente que la instrucción if-else porque requiere menos líneas de código y es más fácil de leer. Sin embargo, este no es siempre el caso. Si trabaja con varias condiciones, la declaración switch puede resultar difícil de gestionar.
 
-Por ejemplo, si desea verificar si el día es un día laborable en enero usando dos variables, día y mes, puede escribir una declaración de cambio anidada como esta:
+Por ejemplo, si desea verificar si el día es un día laborable en enero usando dos variables, día y mes, puede escribir una declaración switch anidada como esta:
 
 ```javascript filename="JavaScript"
 const day = 'Monday'
@@ -269,14 +277,14 @@ switch (day) {
         console.log('That is not a day of the week!')
 }
 
-// output: Today is a weekday in January!
+// Salida: Today is a weekday in January!
 ```
 
 En el ejemplo anterior:
 
-El primer caso comprueba si el valor del día es "lunes"; si es así, ingresa la declaración de cambio interna, que verifica el valor de la variable mes. La declaración de cambio interna verifica si el valor del mes es "enero" y, si lo es, registra la cadena "¡Hoy es un día laborable en enero!" en la consola y usa la declaración de interrupción para salir de la declaración de cambio. Si el valor del mes no es "enero", registra la cadena "¡Hoy es día laborable!" en la consola.
+El primer caso comprueba si el valor del día es "lunes"; si es así, ingresa la declaración switch interna, que verifica el valor de la variable mes. La declaración switch interna verifica si el valor del mes es "enero" y, si lo es, registra la cadena "¡Hoy es un día laborable en enero!" en la consola y usa la declaración de interrupción para salir de la declaración switch. Si el valor del mes no es "enero", registra la cadena "¡Hoy es día laborable!" en la consola.
 
-Si bien este código funciona, no es legible. La declaración de cambio anidada es difícil de entender y es fácil cometer un error al escribirla. Por eso es mejor utilizar una declaración if-else en este caso:
+Si bien este código funciona, no es legible. La declaración switch anidada es difícil de entender y es fácil cometer un error al escribirla. Por eso es mejor utilizar una declaración if-else en este caso:
 
 ```javascript filename="JavaScript"
 const day = 'Monday'
@@ -288,12 +296,12 @@ if (day === 'Monday' && month === 'January') {
     console.log('That is not a day of the week!')
 }
 
-// output: Today is a weekday in January!
+// Salida: Today is a weekday in January!
 ```
 
-Cuando necesite anidar una declaración de cambio, es bueno considerar usar una declaración if-else en su lugar. Escribir declaraciones de cambio complejas puede provocar fácilmente errores en el código.
+Cuando necesite anidar una declaración switch, es bueno considerar usar una declaración if-else en su lugar. Escribir declaraciones switch complejas puede provocar fácilmente errores en el código.
 
-Vale la pena señalar que la declaración de cambio no se limita a verificar la igualdad. También puede usarlo para verificar otras condiciones. Por ejemplo, puede utilizar la instrucción switch para comprobar si un número es mayor o menor que un determinado valor:
+Vale la pena señalar que la declaración switch no se limita a verificar la igualdad. También puede usarlo para verificar otras condiciones. Por ejemplo, puede utilizar la instrucción switch para comprobar si un número es mayor o menor que un determinado valor:
 
 ```javascript filename="JavaScript"
 const num = 5
@@ -309,12 +317,12 @@ switch (num) {
         console.log('num is equal to 5')
 }
 
-// output: num is equal to 5
+// Salida: num is equal to 5
 ```
 
-Este método es menos común pero puede resultar útil en algunos casos. Si encuentra confusa la declaración de cambio, está bien usar una declaración if-else en su lugar.
+Este método es menos común pero puede resultar útil en algunos casos. Si encuentra confusa la declaración switch, está bien usar una declaración if-else en su lugar.
 
-Recuerde siempre incluir una palabra clave de interrupción después de cada caso. De lo contrario, su declaración de cambio continuará ejecutando los bloques de código para los casos restantes, incluso después de que se encuentre la primera coincidencia:
+Recuerde siempre incluir una palabra clave de interrupción después de cada caso. De lo contrario, su declaración switch continuará ejecutando los bloques de código para los casos restantes, incluso después de que se encuentre la primera coincidencia:
 
 ```javascript filename="JavaScript"
 const day = 'Monday'
@@ -338,17 +346,17 @@ switch (day) {
         console.log('That is not a day of the week!')
 }
 
-// output: Today is Monday!
-// output: Today is Tuesday!
-// output: Today is Wednesday!
-// output: Today is Thursday!
-// output: Today is Friday!
-// output: Today is Saturday!
-// output: Today is Sunday!
-// output: That is not a day of the week!
+// Salida: Today is Monday!
+// Salida: Today is Tuesday!
+// Salida: Today is Wednesday!
+// Salida: Today is Thursday!
+// Salida: Today is Friday!
+// Salida: Today is Saturday!
+// Salida: Today is Sunday!
+// Salida: That is not a day of the week!
 ```
 
-La declaración de cambio suele ser más estructurada y fácil de leer cuando los casos son simples y bien definidos. Sin embargo, si una declaración de cambio o una declaración if-else es más eficiente puede depender del caso de uso específico.
+La declaración switch suele ser más estructurada y fácil de leer cuando los casos son simples y bien definidos. Sin embargo, si una declaración switch o una declaración if-else es más eficiente puede depender del caso de uso específico.
 
 ## El operador ternario
 
@@ -371,7 +379,7 @@ if (age >= 18) {
     console.log("You can't vote")
 }
 
-// output: You can vote
+// Salida: You can vote
 ```
 
 Así es como podemos hacerlo usando el operador ternario:
@@ -383,7 +391,7 @@ age >= 18
     ? console.log('You can vote')
     : console.log("You can't vote")
 
-// output: You can vote
+// Salida: You can vote
 ```
 
 El operador ternario es mucho más corto que la declaración if-else pero puede resultar difícil de leer en casos como este. Se utiliza principalmente cuando se asigna un valor a una variable según una condición:
@@ -394,7 +402,7 @@ let canVote = age >= 18 ? true : false
 
 console.log(canVote)
 
-// output: true
+// Salida: true
 ```
 
 Vea que el operador ternario es mucho más fácil de leer aquí. Es una excelente manera de simplificar su código cuando trabaja con condiciones simples.
@@ -407,7 +415,7 @@ let score = 80
 letgrade=score>=90?'A':score>=70?'B':'C'
 
 console.log(grade)
-// output: B
+// Salida: B
 ```
 
 En el ejemplo anterior, el operador ternario verifica si el valor de la puntuación es mayor o igual a 90. Si lo es, asigna la cadena 'A' a la variable de calificación. Si no es así, verifica si el valor de la puntuación es mayor o igual a 70. Si es así, asigna la cadena 'B' a la variable de calificación; de lo contrario, asigna la cadena 'C' a la variable de calificación.

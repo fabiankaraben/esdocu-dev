@@ -10,6 +10,10 @@ const withNextra = require('nextra')({
 
 module.exports = withNextra({
   reactStrictMode: true,
+  i18n: {
+    locales: ["es"],
+    defaultLocale: "es",
+  },
   eslint: {
     // Eslint behaves weirdly in this monorepo.
     ignoreDuringBuilds: true

@@ -1,10 +1,13 @@
 ---
 title: Esdocu – Cursos y Tutoriales sobre Desarrollo de Software
 ---
+import Link from 'next/link'
+import Image from 'next/image'
+
 <div className="home-content">
     <section className="text-gray-600 dark:text-gray-400 body-font">
         <div className="container mx-auto flex px-5 py-24 items-center justify-center flex-col">
-            <img className="lg:w-2/6 md:w-3/6 w-5/6 mb-10 object-cover object-center rounded" alt="hero" src="/assets/home/header-programmer.jpg"/>
+            <Image width={720} height={600} className="lg:w-2/6 md:w-3/6 w-5/6 mb-10 object-cover object-center rounded" alt="hero" src="/assets/home/header-programmer.jpg"/>
             <div className="text-center lg:w-2/3 w-full">
                 <h1 className="title-font sm:text-4xl text-3xl mb-8 font-medium text-gray-900 dark:text-white">Cursos y Tutoriales sobre Desarrollo de Software</h1>
                 <h2 className="text-xs text-indigo-500 tracking-widest font-medium title-font mb-3">
@@ -12,14 +15,14 @@ title: Esdocu – Cursos y Tutoriales sobre Desarrollo de Software
                 </h2>
                 <p className="mb-12 leading-relaxed">Claramente aprender inglés es la mejor opción, pero eso puede demorar años. Para trabajar necesitamos inmediatamente una plataforma gratuita de aprendizaje en español, esa plataforma es Esdocu.dev.</p>
                 <div className="flex justify-center">
-                    <a href="/javascript" className="inline-flex text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded text-lg">
+                    <Link href="/javascript" className="inline-flex text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded text-lg">
                         <span className="sm:hidden">JavaScript</span>
                         <span className="hidden sm:block">Curso de JavaScript</span>
-                    </a>
-                    <a href="/python" className="ml-4 inline-flex text-gray-700 dark:text-gray-400 bg-gray-100 dark:bg-gray-800 border-0 py-2 px-6 focus:outline-none dark:hover:text-white hover:bg-gray-200 dark:hover:bg-gray-700 rounded text-lg">
+                    </Link>
+                    <Link href="/python" className="ml-4 inline-flex text-gray-700 dark:text-gray-400 bg-gray-100 dark:bg-gray-800 border-0 py-2 px-6 focus:outline-none dark:hover:text-white hover:bg-gray-200 dark:hover:bg-gray-700 rounded text-lg">
                         <span className="sm:hidden">Python</span>
                         <span className="hidden sm:block">Curso de Python</span>
-                    </a>
+                    </Link>
                 </div>
             </div>
         </div>
@@ -50,12 +53,12 @@ title: Esdocu – Cursos y Tutoriales sobre Desarrollo de Software
                     <div className="flex-grow pl-6">
                         <h2 className="text-gray-900 dark:text-white text-lg title-font font-medium mb-2">Conceptos básicos</h2>
                         <p className="leading-relaxed text-base">Cada uno de nuestros cursos inicia desde los conceptos básicos, sin necesidad de conocimientos previos.</p>
-                        {/* <a className="mt-3 text-indigo-500 inline-flex items-center">
+                        {/* <Link className="mt-3 text-indigo-500 inline-flex items-center">
                             Learn More
                             <svg fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" className="w-4 h-4 ml-2" viewBox="0 0 24 24">
                                 <path d="M5 12h14M12 5l7 7-7 7"></path>
                             </svg>
-                        </a> */}
+                        </Link> */}
                     </div>
                 </div>
                 <div className="p-4 md:w-1/3 flex">
@@ -68,12 +71,12 @@ title: Esdocu – Cursos y Tutoriales sobre Desarrollo de Software
                     <div className="flex-grow pl-6">
                         <h2 className="text-gray-900 dark:text-white text-lg title-font font-medium mb-2">Aprendizaje intermedio</h2>
                         <p className="leading-relaxed text-base">En este punto serás capaz de desarrollar casi cualquier tipo de software típico, con su correspondiente testing.</p>
-                        {/* <a className="mt-3 text-indigo-500 inline-flex items-center">
+                        {/* <Link className="mt-3 text-indigo-500 inline-flex items-center">
                             Learn More
                             <svg fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" className="w-4 h-4 ml-2" viewBox="0 0 24 24">
                                 <path d="M5 12h14M12 5l7 7-7 7"></path>
                             </svg>
-                        </a> */}
+                        </Link> */}
                     </div>
                 </div>
                 <div className="p-4 md:w-1/3 flex">
@@ -85,12 +88,12 @@ title: Esdocu – Cursos y Tutoriales sobre Desarrollo de Software
                     <div className="flex-grow pl-6">
                         <h2 className="text-gray-900 dark:text-white text-lg title-font font-medium mb-2">Tópicos avanzados</h2>
                         <p className="leading-relaxed text-base">Desde saber reconocer el patrón de diseño correcto hasta el desarrollo de software complejo y correctamente optimizado.</p>
-                        {/* <a className="mt-3 text-indigo-500 inline-flex items-center">
+                        {/* <Link className="mt-3 text-indigo-500 inline-flex items-center">
                             Learn More
                             <svg fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" className="w-4 h-4 ml-2" viewBox="0 0 24 24">
                                 <path d="M5 12h14M12 5l7 7-7 7"></path>
                             </svg>
-                        </a> */}
+                        </Link> */}
                     </div>
                 </div>
             </div>
@@ -124,12 +127,12 @@ title: Esdocu – Cursos y Tutoriales sobre Desarrollo de Software
                             </div>
                             <h3 className="text-lg text-gray-900 dark:text-white font-medium title-font mb-2">¿Qué es JavaScript?</h3>
                             <p className="leading-relaxed text-base">En esta lección vemos la historia de JavaScript, y conocemos también las aplicaciones reales que se le da a este lenguaje, dónde es comunmente utilizado.</p>
-                            <a href="/javascript#qué-es-javascript" className="text-indigo-500 dark:text-indigo-400 inline-flex items-center mt-3">
+                            <Link href="/javascript#qué-es-javascript" className="text-indigo-500 dark:text-indigo-400 inline-flex items-center mt-3">
                                 Ir a esta lección
                                 <svg fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" className="w-4 h-4 ml-2" viewBox="0 0 24 24">
                                     <path d="M5 12h14M12 5l7 7-7 7"></path>
                                 </svg>
-                            </a>
+                            </Link>
                         </div>
                     </div>
                     <div className="xl:w-1/3 md:w-1/2 p-4">
@@ -141,12 +144,12 @@ title: Esdocu – Cursos y Tutoriales sobre Desarrollo de Software
                             </div>
                             <h3 className="text-lg text-gray-900 dark:text-white font-medium title-font mb-2">Ejecutar código JavaScript</h3>
                             <p className="leading-relaxed text-base">En esta lección vemos las diferentes formas y lugares donde podemos ejecutar el código JavaScript de nuestras prácticas, algunas requieren instalaciones y otras no.</p>
-                            <a href="/javascript/como-escribir-y-ejecutar-codigo" className="text-indigo-500 dark:text-indigo-400 inline-flex items-center mt-3">
+                            <Link href="/javascript/como-escribir-y-ejecutar-codigo" className="text-indigo-500 dark:text-indigo-400 inline-flex items-center mt-3">
                                 Ir a esta lección
                                 <svg fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" className="w-4 h-4 ml-2" viewBox="0 0 24 24">
                                     <path d="M5 12h14M12 5l7 7-7 7"></path>
                                 </svg>
-                            </a>
+                            </Link>
                         </div>
                     </div>
                     <div className="xl:w-1/3 md:w-1/2 p-4">
@@ -158,12 +161,12 @@ title: Esdocu – Cursos y Tutoriales sobre Desarrollo de Software
                             </div>
                             <h3 className="text-lg text-gray-900 dark:text-white font-medium title-font mb-2">Variables en JavaScript</h3>
                             <p className="leading-relaxed text-base">Las variables son uno de los elementos más importantes en programación, permitiéndonos almacenar valores. En esta lección vemos cómo usar variables en JavaScript.</p>
-                            <a href="/javascript/variables" className="text-indigo-500 dark:text-indigo-400 inline-flex items-center mt-3">
+                            <Link href="/javascript/variables" className="text-indigo-500 dark:text-indigo-400 inline-flex items-center mt-3">
                                 Ir a esta lección
                                 <svg fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" className="w-4 h-4 ml-2" viewBox="0 0 24 24">
                                     <path d="M5 12h14M12 5l7 7-7 7"></path>
                                 </svg>
-                            </a>
+                            </Link>
                         </div>
                     </div>
                     <div className="xl:w-1/3 md:w-1/2 p-4">
@@ -175,12 +178,12 @@ title: Esdocu – Cursos y Tutoriales sobre Desarrollo de Software
                             </div>
                             <h3 className="text-lg text-gray-900 dark:text-white font-medium title-font mb-2">Operadores en JavaScript</h3>
                             <p className="leading-relaxed text-base">En esta lección aprenderemos sobre los operadores, símbolos que podemos utilizar para realizar operaciones matemáticas, comparaciones lógicas y más.</p>
-                            <a href="/javascript/operadores-basicos" className="text-indigo-500 dark:text-indigo-400 inline-flex items-center mt-3">
+                            <Link href="/javascript/operadores-basicos" className="text-indigo-500 dark:text-indigo-400 inline-flex items-center mt-3">
                                 Ir a esta lección
                                 <svg fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" className="w-4 h-4 ml-2" viewBox="0 0 24 24">
                                     <path d="M5 12h14M12 5l7 7-7 7"></path>
                                 </svg>
-                            </a>
+                            </Link>
                         </div>
                     </div>
                     <div className="xl:w-1/3 md:w-1/2 p-4">
@@ -192,12 +195,12 @@ title: Esdocu – Cursos y Tutoriales sobre Desarrollo de Software
                             </div>
                             <h3 className="text-lg text-gray-900 dark:text-white font-medium title-font mb-2">Funciones en JavaScript</h3>
                             <p className="leading-relaxed text-base">Las funciones nos permiten agrupar y reutilizar funcionalidades. En esta lección aprendemos qué son las funciones y cómo utilizarlas para organizar nuestros desarrollos.</p>
-                            <a href="/javascript/funciones" className="text-indigo-500 dark:text-indigo-400 inline-flex items-center mt-3">
+                            <Link href="/javascript/funciones" className="text-indigo-500 dark:text-indigo-400 inline-flex items-center mt-3">
                                 Ir a esta lección
                                 <svg fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" className="w-4 h-4 ml-2" viewBox="0 0 24 24">
                                     <path d="M5 12h14M12 5l7 7-7 7"></path>
                                 </svg>
-                            </a>
+                            </Link>
                         </div>
                     </div>
                     <div className="xl:w-1/3 md:w-1/2 p-4">
@@ -209,12 +212,12 @@ title: Esdocu – Cursos y Tutoriales sobre Desarrollo de Software
                             </div>
                             <h3 className="text-lg text-gray-900 dark:text-white font-medium title-font mb-2">Arrays en JavaScript</h3>
                             <p className="leading-relaxed text-base">Los arrays o matrices son estructuras de datos en forma de listas que nos permiten organizar valores y evitar utilizar grandes cantidades de variables.</p>
-                            <a href="/javascript/arrays" className="text-indigo-500 dark:text-indigo-400 inline-flex items-center mt-3">
+                            <Link href="/javascript/arrays" className="text-indigo-500 dark:text-indigo-400 inline-flex items-center mt-3">
                                 Ir a esta lección
                                 <svg fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" className="w-4 h-4 ml-2" viewBox="0 0 24 24">
                                     <path d="M5 12h14M12 5l7 7-7 7"></path>
                                 </svg>
-                            </a>
+                            </Link>
                         </div>
                     </div>
                 </div>
@@ -222,12 +225,12 @@ title: Esdocu – Cursos y Tutoriales sobre Desarrollo de Software
                     <p className="lg:w-4/5 xl:w-2/3 w-full leading-relaxed text-gray-500 dark:text-white">Estas son solo algunas de las lecciones del curso.</p>
                 </div>
                 <div className="flex justify-center">
-                    <a href="/javascript" className="inline-flex items-center mx-auto mt-12 text-white bg-indigo-500 border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg">
+                    <Link href="/javascript" className="inline-flex items-center mx-auto mt-12 text-white bg-indigo-500 border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg">
                         Ir al curso de JavaScript
                         <svg fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" className="w-4 h-4 ml-2" viewBox="0 0 24 24">
                             <path d="M5 12h14M12 5l7 7-7 7"></path>
                         </svg>
-                    </a>
+                    </Link>
                 </div>
 
             </div>
@@ -257,12 +260,12 @@ title: Esdocu – Cursos y Tutoriales sobre Desarrollo de Software
                             </div>
                             <h3 className="text-lg text-gray-900 dark:text-white font-medium title-font mb-2">¿Qué es Python?</h3>
                             <p className="leading-relaxed text-base">El lenguaje de programación Python fue desarrollado a principios de la década de 1990 por Guido van Rossum en Ámsterdam. Originalmente fue pensado como un...</p>
-                            <a href="/python" className="text-indigo-500 dark:text-indigo-400 inline-flex items-center mt-3">
+                            <Link href="/python" className="text-indigo-500 dark:text-indigo-400 inline-flex items-center mt-3">
                                 Ir a esta lección
                                 <svg fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" className="w-4 h-4 ml-2" viewBox="0 0 24 24">
                                     <path d="M5 12h14M12 5l7 7-7 7"></path>
                                 </svg>
-                            </a>
+                            </Link>
                         </div>
                     </div>
                     <div className="xl:w-1/3 md:w-1/2 p-4">
@@ -274,12 +277,12 @@ title: Esdocu – Cursos y Tutoriales sobre Desarrollo de Software
                             </div>
                             <h3 className="text-lg text-gray-900 dark:text-white font-medium title-font mb-2">Instalación de Python</h3>
                             <p className="leading-relaxed text-base">Puedes descargar e instalar la última versión de Python desde el sitio web oficial de Python, sin embargo, en muchos casos es más conveniente usar una distribución...</p>
-                            <a href="/python/instalar-python" className="text-indigo-500 dark:text-indigo-400 inline-flex items-center mt-3">
+                            <Link href="/python/instalar-python" className="text-indigo-500 dark:text-indigo-400 inline-flex items-center mt-3">
                                 Ir a esta lección
                                 <svg fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" className="w-4 h-4 ml-2" viewBox="0 0 24 24">
                                     <path d="M5 12h14M12 5l7 7-7 7"></path>
                                 </svg>
-                            </a>
+                            </Link>
                         </div>
                     </div>
                     <div className="xl:w-1/3 md:w-1/2 p-4">
@@ -291,12 +294,12 @@ title: Esdocu – Cursos y Tutoriales sobre Desarrollo de Software
                             </div>
                             <h3 className="text-lg text-gray-900 dark:text-white font-medium title-font mb-2">Conceptos iniciales</h3>
                             <p className="leading-relaxed text-base">Cuando inicias el intérprete de Python sin ningún argumento, ingresas al llamado modo interactivo. Este modo permite a los programadores enviar...</p>
-                            <a href="/python/conceptos" className="text-indigo-500 dark:text-indigo-400 inline-flex items-center mt-3">
+                            <Link href="/python/conceptos" className="text-indigo-500 dark:text-indigo-400 inline-flex items-center mt-3">
                                 Ir a esta lección
                                 <svg fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" className="w-4 h-4 ml-2" viewBox="0 0 24 24">
                                     <path d="M5 12h14M12 5l7 7-7 7"></path>
                                 </svg>
-                            </a>
+                            </Link>
                         </div>
                     </div>
                 </div>
@@ -304,12 +307,12 @@ title: Esdocu – Cursos y Tutoriales sobre Desarrollo de Software
                     <p className="lg:w-4/5 xl:w-2/3 w-full leading-relaxed text-gray-500 dark:text-white">Estas son solo algunas de las lecciones del curso.</p>
                 </div>
                 <div className="flex justify-center">
-                    <a href="/python" className="inline-flex items-center mx-auto mt-12 text-white bg-indigo-500 border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg">
+                    <Link href="/python" className="inline-flex items-center mx-auto mt-12 text-white bg-indigo-500 border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg">
                         Ir al curso de Python
                         <svg fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" className="w-4 h-4 ml-2" viewBox="0 0 24 24">
                             <path d="M5 12h14M12 5l7 7-7 7"></path>
                         </svg>
-                    </a>
+                    </Link>
                 </div>
 
             </div>
@@ -339,12 +342,12 @@ title: Esdocu – Cursos y Tutoriales sobre Desarrollo de Software
                             </div>
                             <h3 className="text-lg text-gray-900 dark:text-white font-medium title-font mb-2">¿Qué son las variables?</h3>
                             <p className="leading-relaxed text-base">Una variable es un espacio a nuestra disposición en la memoria RAM del dispositivo donde se ejecute nuestro código. En esta lección presentamos las variables.</p>
-                            <a href="/conceptos/variables" className="text-indigo-500 dark:text-indigo-400 inline-flex items-center mt-3">
+                            <Link href="/conceptos/variables" className="text-indigo-500 dark:text-indigo-400 inline-flex items-center mt-3">
                                 Ir a esta lección
                                 <svg fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" className="w-4 h-4 ml-2" viewBox="0 0 24 24">
                                     <path d="M5 12h14M12 5l7 7-7 7"></path>
                                 </svg>
-                            </a>
+                            </Link>
                         </div>
                     </div>
                     <div className="xl:w-1/3 md:w-1/2 p-4">
@@ -356,12 +359,12 @@ title: Esdocu – Cursos y Tutoriales sobre Desarrollo de Software
                             </div>
                             <h3 className="text-lg text-gray-900 dark:text-white font-medium title-font mb-2">¿Qué son los tipos de datos?</h3>
                             <p className="leading-relaxed text-base">En esta lección presentamos los tipos de datos más utilizados, la diferencia entre tipado estático y tipado dinámico y las ventajas de desventajas de cada uno.</p>
-                            <a href="/conceptos/tipos-de-datos" className="text-indigo-500 dark:text-indigo-400 inline-flex items-center mt-3">
+                            <Link href="/conceptos/tipos-de-datos" className="text-indigo-500 dark:text-indigo-400 inline-flex items-center mt-3">
                                 Ir a esta lección
                                 <svg fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" className="w-4 h-4 ml-2" viewBox="0 0 24 24">
                                     <path d="M5 12h14M12 5l7 7-7 7"></path>
                                 </svg>
-                            </a>
+                            </Link>
                         </div>
                     </div>
                     <div className="xl:w-1/3 md:w-1/2 p-4">
@@ -373,12 +376,12 @@ title: Esdocu – Cursos y Tutoriales sobre Desarrollo de Software
                             </div>
                             <h3 className="text-lg text-gray-900 dark:text-white font-medium title-font mb-2">¿Qué son las funciones?</h3>
                             <p className="leading-relaxed text-base">Una función es un bloque reutilizable de código con un nombre como identificador, una serie de parámetros de entrada y un valor de salida o retorno.</p>
-                            <a href="/conceptos/funciones" className="text-indigo-500 dark:text-indigo-400 inline-flex items-center mt-3">
+                            <Link href="/conceptos/funciones" className="text-indigo-500 dark:text-indigo-400 inline-flex items-center mt-3">
                                 Ir a esta lección
                                 <svg fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" className="w-4 h-4 ml-2" viewBox="0 0 24 24">
                                     <path d="M5 12h14M12 5l7 7-7 7"></path>
                                 </svg>
-                            </a>
+                            </Link>
                         </div>
                     </div>
                 </div>
@@ -386,13 +389,13 @@ title: Esdocu – Cursos y Tutoriales sobre Desarrollo de Software
                     <p className="lg:w-4/5 xl:w-2/3 w-full leading-relaxed text-gray-500 dark:text-white">Estas son solo algunas de las lecciones del curso.</p>
                 </div>
                 <div className="flex justify-center">
-                    <a href="/conceptos" className="inline-flex items-center mx-auto mt-12 text-white bg-indigo-500 border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg">
+                    <Link href="/conceptos" className="inline-flex items-center mx-auto mt-12 text-white bg-indigo-500 border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg">
                         <span className="sm:hidden">Ir al curso de Conceptos</span>
                         <span className="hidden sm:block">Ir al curso de Conceptos de programación</span>
                         <svg fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" className="w-4 h-4 ml-2" viewBox="0 0 24 24">
                             <path d="M5 12h14M12 5l7 7-7 7"></path>
                         </svg>
-                    </a>
+                    </Link>
                 </div>
 
             </div>

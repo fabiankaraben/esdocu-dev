@@ -171,233 +171,235 @@ También podríamos escribir la cláusula `else` sin llaves, pero usar llaves ha
 
 ## La declaración `switch`
 
-La declaración switch es una forma de simplificar el proceso de escribir múltiples declaraciones if-else. Es un tipo de declaración condicional que le permite comparar un valor con varios casos. La declaración switch compara una expresión con una lista de valores posibles, y si la expresión coincide con uno de los valores, se ejecutará el código dentro de su caso correspondiente. Así es como se ve la sintaxis:
+La declaración `switch` es una forma de simplificar el proceso de escribir múltiples declaraciones `if`-`else`. Es un tipo de declaración condicional que te permite comparar un valor con varios casos. La declaración `switch` compara una expresión con una lista de valores posibles, y si la expresión coincide con uno de los valores, se ejecutará el código dentro de su caso correspondiente. 
+
+Así es como se ve la sintaxis:
 
 ```javascript filename="JavaScript"
 switch (expression) {
     case value1:
-        // code to be executed if expression matches value1
+        // Código que se ejecutará si expression coincide con value1
         break
     case value2:
-        // code to be executed if expression matches value2
+        // Código que se ejecutará si expression coincide con value2
         break
     default:
-        // code to be executed if expression does not match any of the cases
+        // Código que se ejecutará si expression no coincide con ninguno de los casos
 }
 ```
 
-En la sintaxis anterior,
+En la sintaxis anterior:
 
-• La expresión es el valor que se comparará con los casos.
-• valor1 y valor2 son los valores posibles que la expresión puede coincidir.
-• La palabra clave break se utiliza para detener la ejecución de la instrucción switch después de ejecutar el código dentro de un caso. Si no hay una palabra clave de interrupción en un caso, la declaración switch continuará ejecutándose hasta que llegue a una palabra clave de interrupción o hasta que llegue al final.
-• El caso predeterminado se ejecuta si la expresión no coincide con ningún caso.
+- `expression` es el valor que se comparará con los casos.
+- `value1` y `value2` son los valores posibles con lo que `expression` puede coincidir.
+- La palabra clave `break` se utiliza para detener la ejecución de la instrucción `switch` después de ejecutar el código dentro de un caso. Si no hay una palabra clave `break` en un caso, la declaración `switch` continuará ejecutándose hasta que llegue a una palabra clave `break` o hasta que llegue al final.
+- El caso `default` se ejecuta si `expression` no coincide con ningún caso.
 
-Para ilustrar cómo funciona la declaración switch, veamos un ejemplo. Digamos que tenemos una variable llamada día que almacena el día de la semana y queremos registrar diferentes mensajes en la consola según el día de la semana. Podríamos usar una declaración if-else para hacer esto:
+Para ilustrar cómo funciona la declaración `switch`, veamos un ejemplo. Digamos que tenemos una variable llamada `day` que almacena el día de la semana y queremos imprimir diferentes mensajes en la consola según el día de la semana. Podríamos usar una declaración `if`-`else` para hacer esto:
 
 ```javascript filename="JavaScript"
-const day = 'Monday'
+const day = 'Lunes'
 
-if (day === 'Monday') {
-    console.log('Today is Monday!') 
-} else if (day === 'Tuesday') { 
-    console.log('Today is Tuesday!') 
-} else if (day === 'Wednesday') { 
-    console.log('Today is Wednesday!') 
-} else if (day === 'Thursday') { 
-    console.log('Today is Thursday!')
-} else if (day === 'Friday') {
-    console.log('Today is Friday!')
-} else if (day === 'Saturday') {
-    console.log('Today is Saturday!')
-} else if (day === 'Sunday') {
-    console.log('Today is Sunday!')
+if (day === 'Lunes') {
+    console.log('¡Hoy es Lunes!') 
+} else if (day === 'Martes') { 
+    console.log('¡Hoy es Martes!') 
+} else if (day === 'Miércoles') { 
+    console.log('¡Hoy es Miércoles!') 
+} else if (day === 'Jueves') { 
+    console.log('¡Hoy es Jueves!')
+} else if (day === 'Viernes') {
+    console.log('¡Hoy es Viernes!')
+} else if (day === 'Sábado') {
+    console.log('¡Hoy es Sábado!')
+} else if (day === 'Domingo') {
+    console.log('¡Hoy es Domingo!')
 }else {
-    console.log('That is not a day of the week!')
+    console.log('¡No es un día de la semana!')
 }
 
-// Salida: Today is Monday!
+// Salida: ¡Hoy es Lunes!
 ```
 
-Este código funciona, pero podemos simplificarlo usando una declaración switch:
+Este código funciona, pero podemos simplificarlo usando una declaración `switch`:
 
 ```javascript filename="JavaScript"
-const day = 'Monday'
+const day = 'Lunes'
 
 switch (day) {
-    case 'Monday':
-        console.log('Today is Monday!')
+    case 'Lunes':
+        console.log('¡Hoy es Lunes!')
         break
-    case 'Tuesday':
-        console.log('Today is Tuesday!')
+    case 'Martes':
+        console.log('¡Hoy es Martes!')
         break
-    case 'Wednesday':
-        console.log('Today is Wednesday!')
+    case 'Miércoles':
+        console.log('¡Hoy es Miércoles!')
         break
-    case 'Thursday':
-        console.log('Today is Thursday!')
+    case 'Jueves':
+        console.log('¡Hoy es Jueves!')
         break
-    case 'Friday':
-        console.log('Today is Friday!')
+    case 'Viernes':
+        console.log('¡Hoy es Viernes!')
         break
-    case 'Saturday':
-        console.log('Today is Saturday!')
+    case 'Sábado':
+        console.log('¡Hoy es Sábado!')
         break
-    case 'Sunday':
-        console.log('Today is Sunday!')
+    case 'Domingo':
+        console.log('¡Hoy es Domingo!')
         break
     default:
-        console.log('That is not a day of the week!')
+        console.log('¡No es un día de la semana!')
 }
 
-// Salida: Today is Monday!
+// Salida: ¡Hoy es Lunes!
 ```
 
-### Declaraciones switch anidadas
+### Declaraciones `switch` anidadas
 
-Al comprobar varios casos de un valor o variable, la instrucción switch suele ser más eficiente que la instrucción if-else porque requiere menos líneas de código y es más fácil de leer. Sin embargo, este no es siempre el caso. Si trabaja con varias condiciones, la declaración switch puede resultar difícil de gestionar.
+Al comprobar varios casos de un valor o variable, la instrucción `switch` suele ser más eficiente que la instrucción `if`-`else` porque requiere menos líneas de código y es más fácil de leer. Sin embargo, este no es siempre el caso. Si trabajas con varias condiciones, la declaración `switch` puede resultar difícil de gestionar.
 
-Por ejemplo, si desea verificar si el día es un día laborable en enero usando dos variables, día y mes, puede escribir una declaración switch anidada como esta:
+Por ejemplo, si deseas verificar si el día es un día laborable en enero usando dos variables, `day` y `month`, puedes escribir una declaración `switch` anidada como esta:
 
 ```javascript filename="JavaScript"
-const day = 'Monday'
-const month = 'January'
+const day = 'Lunes'
+const month = 'Enero'
 
 switch (day) {
-    case 'Monday':
+    case 'Lunes':
         switch (month) {
-            case 'January':
-                console.log('Today is a weekday in January!')
+            case 'Enero':
+                console.log('¡Hoy es un día laborable en Enero!')
                 break
             default:
-                console.log('Today is a weekday!')
+                console.log('¡Hoy es día laborable!')
         }
         break
     default:
-        console.log('That is not a day of the week!')
+        console.log('¡No es un día de la semana!')
 }
 
-// Salida: Today is a weekday in January!
+// Salida: ¡Hoy es un día laborable en Enero!
 ```
 
 En el ejemplo anterior:
 
-El primer caso comprueba si el valor del día es "lunes"; si es así, ingresa la declaración switch interna, que verifica el valor de la variable mes. La declaración switch interna verifica si el valor del mes es "enero" y, si lo es, registra la cadena "¡Hoy es un día laborable en enero!" en la consola y usa la declaración de interrupción para salir de la declaración switch. Si el valor del mes no es "enero", registra la cadena "¡Hoy es día laborable!" en la consola.
+El primer caso comprueba si el valor de `day` es `'Lunes'`; si es así, ingresa a la declaración `switch` interna, que verifica el valor de la variable `month`. La declaración `switch` interna verifica si el valor de `month` es `'Enero'` y, si lo es, imprime la cadena `'¡Hoy es un día laborable en Enero!'` en la consola y usa la declaración `break` para salir de la declaración `switch`. Si el valor de `month` no es `'Enero'`, imprime la cadena `'¡Hoy es día laborable!'` en la consola.
 
-Si bien este código funciona, no es legible. La declaración switch anidada es difícil de entender y es fácil cometer un error al escribirla. Por eso es mejor utilizar una declaración if-else en este caso:
+Si bien este código funciona, no es legible. La declaración `switch` anidada es difícil de entender y es fácil cometer un error al escribirla. Por eso es mejor utilizar una declaración `if`-`else` en este caso:
 
 ```javascript filename="JavaScript"
-const day = 'Monday'
-const month = 'January'
+const day = 'Lunes'
+const month = 'Enero'
 
-if (day === 'Monday' && month === 'January') {
-    console.log('Today is a weekday in January!')
+if (day === 'Lunes' && month === 'Enero') {
+    console.log('¡Hoy es un día laborable en Enero!')
 } else {
-    console.log('That is not a day of the week!')
+    console.log('¡Hoy es día laborable!')
 }
 
-// Salida: Today is a weekday in January!
+// Salida: ¡Hoy es un día laborable en Enero!
 ```
 
-Cuando necesite anidar una declaración switch, es bueno considerar usar una declaración if-else en su lugar. Escribir declaraciones switch complejas puede provocar fácilmente errores en el código.
+Cuando necesites anidar una declaración `switch`, es bueno considerar usar una declaración `if`-`else` en su lugar. Escribir declaraciones `switch` complejas puede provocar fácilmente errores en el código.
 
-Vale la pena señalar que la declaración switch no se limita a verificar la igualdad. También puede usarlo para verificar otras condiciones. Por ejemplo, puede utilizar la instrucción switch para comprobar si un número es mayor o menor que un determinado valor:
+Vale la pena señalar que la declaración `switch` no se limita a verificar la igualdad. También puedes usarla para verificar otras condiciones. Por ejemplo, puedes utilizar la instrucción `switch` para comprobar si un número es mayor o menor que un determinado valor:
 
 ```javascript filename="JavaScript"
 const num = 5
 
 switch (num) {
     case num > 5:
-        console.log('num is greater than 5')
+        console.log('num es mayor que 5')
         break
     case num < 5:
-        console.log('num is less than 5')
+        console.log('num es menor que 5')
         break
     default:
-        console.log('num is equal to 5')
+        console.log('num es igual a 5')
 }
 
-// Salida: num is equal to 5
+// Salida: num es igual a 5
 ```
 
-Este método es menos común pero puede resultar útil en algunos casos. Si encuentra confusa la declaración switch, está bien usar una declaración if-else en su lugar.
+Este método es menos común pero puede resultar útil en algunos casos. Si encuentras confusa la declaración `switch`, está bien usar una declaración `if`-`else` en su lugar.
 
-Recuerde siempre incluir una palabra clave de interrupción después de cada caso. De lo contrario, su declaración switch continuará ejecutando los bloques de código para los casos restantes, incluso después de que se encuentre la primera coincidencia:
+Recuerda siempre incluir una palabra clave `break` después de cada caso. De lo contrario, tu declaración `switch` continuará ejecutando los bloques de código para los casos restantes, incluso después de que se encuentre la primera coincidencia:
 
 ```javascript filename="JavaScript"
-const day = 'Monday'
+const day = 'Lunes'
 
 switch (day) {
-    case 'Monday':
-        console.log('Today is Monday!')
-    case 'Tuesday':
-        console.log('Today is Tuesday!')
-    case 'Wednesday':
-        console.log('Today is Wednesday!')
-    case 'Thursday':
-        console.log('Today is Thursday!')
-    case 'Friday':
-        console.log('Today is Friday!')
-    case 'Saturday':
-        console.log('Today is Saturday!')
-    case 'Sunday':
-        console.log('Today is Sunday!')
+    case 'Lunes':
+        console.log('¡Hoy es Lunes!')
+    case 'Martes':
+        console.log('¡Hoy es Martes!')
+    case 'Miércoles':
+        console.log('¡Hoy es Miércoles!')
+    case 'Jueves':
+        console.log('¡Hoy es Jueves!')
+    case 'Viernes':
+        console.log('¡Hoy es Viernes!')
+    case 'Sábado':
+        console.log('¡Hoy es Sábado!')
+    case 'Domingo':
+        console.log('¡Hoy es Domingo!')
     default:
-        console.log('That is not a day of the week!')
+        console.log('¡No es un día de la semana!')
 }
 
-// Salida: Today is Monday!
-// Salida: Today is Tuesday!
-// Salida: Today is Wednesday!
-// Salida: Today is Thursday!
-// Salida: Today is Friday!
-// Salida: Today is Saturday!
-// Salida: Today is Sunday!
-// Salida: That is not a day of the week!
+// Salida: ¡Hoy es Lunes!
+// Salida: ¡Hoy es Martes!
+// Salida: ¡Hoy es Miércoles!
+// Salida: ¡Hoy es Jueves!
+// Salida: ¡Hoy es Viernes!
+// Salida: ¡Hoy es Sábado!
+// Salida: ¡Hoy es Domingo!
+// Salida: ¡No es un día de la semana!
 ```
 
-La declaración switch suele ser más estructurada y fácil de leer cuando los casos son simples y bien definidos. Sin embargo, si una declaración switch o una declaración if-else es más eficiente puede depender del caso de uso específico.
+La declaración `switch` suele ser más estructurada y fácil de leer cuando los casos son simples y bien definidos. Sin embargo, si una declaración `switch` o una declaración `if`-`else` es más eficiente puede depender del caso de uso específico.
 
 ## El operador ternario
 
-El operador ternario es una forma abreviada de escribir una declaración if-else. Es un operador condicional que toma tres operandos: una condición, una expresión para ejecutar si la condición es verdadera y una expresión para ejecutar si la condición es falsa. Así es como se ve la sintaxis:
+El operador ternario es una forma abreviada de escribir una declaración `if`-`else`. Es un operador condicional que toma tres operandos: una **condición**, una **expresión** para ejecutar si la condición es verdadera y una **expresión** para ejecutar si la condición es falsa. Así es como se ve la sintaxis:
 
 ```javascript filename="JavaScript"
 condition ? expression1 : expression2
 ```
 
-Para utilizar un operador ternario, comience escribiendo una condición seguida de un signo de interrogación (?). Luego, escribe una expresión que se ejecutará si la condición es verdadera. Finalmente, escribes dos puntos (:) y una expresión que se ejecutará si la condición es falsa. Los dos puntos representan la cláusula else y son obligatorios en el operador ternario.
+Para utilizar un operador ternario, comienza escribiendo una condición seguida de un signo de interrogación (`?`). Luego, escribe una expresión que se ejecutará si la condición es verdadera. Finalmente, escribes dos puntos (`:`) y una expresión que se ejecutará si la condición es falsa. Los dos puntos representan la cláusula `else` y son obligatorios en el operador ternario.
 
-Veamos un ejemplo usando una variable que almacena la edad de una persona. Queremos registrar una cadena en la consola según la edad de la persona. Si la persona tiene 18 años o más, registraremos "Puedes votar"; si la persona tiene menos de 18 años, registraremos "No puedes votar". Primero, lo haremos usando una declaración if-else:
+Veamos un ejemplo usando una variable `age` que almacena la edad de una persona. Queremos imprimir una cadena en la consola según la edad de la persona. Si la persona tiene `18` años o más, imprimeremos `'Puedes votar'`; si la persona tiene menos de `18` años, imprimeremos `'No puedes votar'`. Primero, lo haremos usando una declaración `if`-`else`:
 
 ```javascript filename="JavaScript"
-letage=18
+let age = 18
 
 if (age >= 18) {
-    console.log('You can vote')
+    console.log('Puedes votar')
 } else {
-    console.log("You can't vote")
+    console.log('No puedes votar')
 }
 
-// Salida: You can vote
+// Salida: Puedes votar
 ```
 
 Así es como podemos hacerlo usando el operador ternario:
 
 ```javascript filename="JavaScript"
-letage = 18
+let age = 18
 
 age >= 18
-    ? console.log('You can vote')
-    : console.log("You can't vote")
+    ? console.log('Puedes votar')
+    : console.log('No puedes votar')
 
-// Salida: You can vote
+// Salida: Puedes votar
 ```
 
-El operador ternario es mucho más corto que la declaración if-else pero puede resultar difícil de leer en casos como este. Se utiliza principalmente cuando se asigna un valor a una variable según una condición:
+El operador ternario es mucho más corto que la declaración `if`-`else` pero puede resultar difícil de leer en casos como este. Se utiliza principalmente cuando se asigna un valor a una variable según una condición:
 
 ```javascript filename="JavaScript"
-letage=18
+let age = 18
 let canVote = age >= 18 ? true : false
 
 console.log(canVote)
@@ -405,30 +407,35 @@ console.log(canVote)
 // Salida: true
 ```
 
-Vea que el operador ternario es mucho más fácil de leer aquí. Es una excelente manera de simplificar su código cuando trabaja con condiciones simples.
+Observa que el operador ternario es mucho más fácil de leer aquí. Es una excelente manera de simplificar tu código cuando trabajas con condiciones simples.
 
 También puedes anidar operadores ternarios:
 
 ```javascript filename="JavaScript"
 let score = 80
 
-letgrade=score>=90?'A':score>=70?'B':'C'
+let grade = score >= 90 ? 'A' : score >= 70 ? 'B' : 'C'
 
 console.log(grade)
 // Salida: B
 ```
 
-En el ejemplo anterior, el operador ternario verifica si el valor de la puntuación es mayor o igual a 90. Si lo es, asigna la cadena 'A' a la variable de calificación. Si no es así, verifica si el valor de la puntuación es mayor o igual a 70. Si es así, asigna la cadena 'B' a la variable de calificación; de lo contrario, asigna la cadena 'C' a la variable de calificación.
+En el ejemplo anterior, el operador ternario verifica si el valor de la variable de puntaje `score` es mayor o igual a `90`. Si lo es, asigna la cadena `'A'` a la variable de calificación `grade`. Si no es así, verifica si el valor de `score` es mayor o igual a `70`. Si es así, asigna la cadena `'B'` a la variable `grade`; de lo contrario, asigna la cadena `'C'` a la variable `grade`.
 
-Anidar operadores ternarios puede dificultar la lectura del código, por lo que es mejor evitarlo cuando sea posible. Si se encuentra anidando operadores ternarios, debería considerar usar una declaración if-else en su lugar:
+Anidar operadores ternarios puede dificultar la lectura del código, por lo que es mejor evitarlo cuando sea posible. 
+
+Si te sorprendes anidando operadores ternarios, deberías considerar usar una declaración `if`-`else` en su lugar:
 
 ```javascript filename="JavaScript"
 let score = 80
 let grade = ''
 
-if (score >= 90) grade = 'A'
-else if (score >= 70) grade = 'B'
-else grade = 'C'
+if (score >= 90)
+    grade = 'A'
+else if (score >= 70)
+    grade = 'B'
+else
+    grade = 'C'
 ```
 
-Las declaraciones condicionales son una parte importante de cualquier lenguaje de programación. Sin ellos, no sería posible crear programas que puedan tomar decisiones y realizar diferentes acciones en función de las condiciones o las aportaciones del usuario.
+Las declaraciones condicionales son una parte importante de cualquier lenguaje de programación. Sin ellas, no sería posible crear programas que puedan tomar decisiones y realizar diferentes acciones en función de las condiciones o las aportaciones del usuario.

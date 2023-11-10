@@ -85,19 +85,21 @@ const config: DocsThemeConfig = {
   docsRepositoryBase: 'https://github.com/fabiankaraben/esdocu-dev',
   useNextSeoProps() {
     const { route } = useRouter()
+    const { frontMatter } = useConfig()
+
     let props = {}
-    if (route !== '/') {
-      props['titleTemplate'] = '%s – Esdocu'
-      props['noindex'] = route === '/aviso-legal' || route === '/politica-de-cookies' || route === '/politica-de-privacidad'
-    } else {
-      props['description'] = 'Un proyecto de cursos y tutoriales sobre desarrollo de software.'
-    }
+
+    props['titleTemplate'] = route !== '/' ? '%s – Esdocu Cursos y Tutoriales' : frontMatter.title
+
+    props['description'] = frontMatter.description ?? null
+    props['noindex'] = frontMatter.noindex ?? false
 
     return props
   },
   head: function useHead() {
     const { title } = useConfig()
     const { route } = useRouter()
+
     const socialCard =
       route === '/' || !title
         ? 'https://esdocu.dev/og.jpeg'
@@ -110,18 +112,10 @@ const config: DocsThemeConfig = {
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <meta httpEquiv="Content-Language" content="es" />
 
-        <meta
-          name="og:description"
-          content="Un proyecto de cursos y tutoriales sobre desarrollo de software."
-        />
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:image" content={socialCard} />
         <meta name="twitter:site:domain" content="esdocu.dev" />
         <meta name="twitter:url" content="https://esdocu.dev" />
-        <meta
-          name="og:title"
-          content={title ? title + ' – Esdocu' : 'Esdocu'}
-        />
         <meta name="og:image" content={socialCard} />
         <meta name="apple-mobile-web-app-title" content="Esdocu" />
         <link rel="apple-touch-icon" sizes="76x76" href="/favicons/apple-touch-icon.png" />

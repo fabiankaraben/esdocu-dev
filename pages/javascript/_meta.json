@@ -1,7 +1,11 @@
 {
-  "index": "Historia de JavaScript",
+  "-- bases": {
+    "title": "Las bases de JavaScript",
+    "type": "separator"
+  },
+  "index": "¿Qué es JavaScript?",
   "como-escribir-y-ejecutar-codigo": "Escribir y ejecutar código",
-  "sintaxis": "Sintaxis JavaScript",
+  "sintaxis": "Sintaxis de JavaScript",
   "variables": "Variables",
   "operadores-basicos": "Operadores básicos",
   "funciones": "Funciones",

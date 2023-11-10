@@ -1,12 +1,18 @@
 {
-  "index": "¿Qué es Python?",
-  "instalar-python": "Instalación de Python",
-  "-- Parte 1": {
-    "title": "El lenguaje Python",
+  "-- bases": {
+    "title": "Las bases de Python",
     "type": "separator"
   },
+  "index": "¿Qué es Python?",
+  "instalar-python": "Instalación de Python",
   "conceptos": "Conceptos iniciales",
+  "tipos-de-datos": "Tipos de datos",
+  "variables": "Variables",
+  "expresiones-logicas": "Expresiones lógicas",
+  "funciones-y-metodos": "Funciones y métodos",
   "primer-programa": "Nuestro primer programa",
-  "estructuras-de-control": "Estructuras de control",
+  "condicionales": "Condicionales",
+  "bucles": "Bucles",
+  "expresiones-asignacion": "Expresiones de asignación",
   "archivos": "Archivos"
 }

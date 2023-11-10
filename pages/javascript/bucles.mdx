@@ -3,9 +3,313 @@ description: Hacer un bucle en programación significa repetir un proceso hasta 
 ---
 # Bucles
 
-Hemos visto cómo usar métodos de matriz como forEach y map para iterar sobre los elementos de una matriz. En programación, a esto lo llamamos bucle. Hacer un bucle significa repetir un proceso hasta que se cumpla una condición. Podría ser hasta que se complete una cantidad específica de veces, se complete una acción específica o se alcance un valor. Es un concepto fundamental en programación y se utiliza de varias maneras. JavaScript tiene diferentes tipos de bucles, además de los métodos de matriz que hemos visto, que permiten un mayor control sobre el proceso de bucle. Estos son el bucle for, el bucle while y el bucle do... while. Echemos un vistazo a cada uno de estos.
+Hemos visto cómo usar métodos de array como `forEach` y `map` para iterar sobre los elementos de un array. En programación, a esto lo llamamos **bucle**. 
 
-## El bucle for
+Hacer un bucle significa repetir un proceso hasta que se cumpla una condición. Podría ser hasta que se complete una cantidad específica de veces, se complete una acción específica o se alcance un valor. Es un concepto fundamental en programación y se utiliza de varias maneras.
 
-Digamos que tenemos una matriz de números, [1, 2, 3, 4, 5] y queremos multiplicar cada elemento por 2. Podríamos usar el método del mapa para hacer esto:
+JavaScript tiene diferentes tipos de bucles, además de los métodos de array que hemos visto, que permiten un mayor control sobre el proceso de bucle. Estos son el bucle `for`, el bucle `while` y el bucle `do`-`while`. Echemos un vistazo a cada uno de estos.
 
+## El bucle `for`
+
+Digamos que tenemos un array de números, `[1, 2, 3, 4, 5]` y queremos multiplicar cada elemento por `2`. Podríamos usar el método `map` para hacer esto:
+
+```javascript filename="JavaScript"
+let numbers = [1, 2, 3, 4, 5]
+
+let doubled = numbers.map((number) => number * 2)
+
+console.log(doubled) // [2, 4, 6, 8, 10]
+```
+
+Cada vez que usamos el método `map`, el proceso es el mismo: llamamos al método en un array, pasamos una función callback y devolvemos un nuevo array.
+
+Por otro lado, un bucle `for` permite un mayor control sobre el proceso de iteración. Con el bucle `for`, podemos agregar condiciones y manipular directamente elementos en un array en lugar de devolver un nuevo array. Así es como podríamos usar un bucle `for` para multiplicar cada elemento del array de números por `2`:
+
+```javascript filename="JavaScript"
+let numbers = [1, 2, 3, 4, 5]
+
+for (let i = 0; i < numbers.length; i++) {
+     numbers[i] = numbers[i] * 2
+}
+
+console.log(numbers) // [2, 4, 6, 8, 10]
+```
+
+El bucle `for` se compone de tres partes: la inicialización, la condición y la expresión final.
+
+La **inicialización** es donde declaramos una variable y la igualamos a un valor inicial. En este caso, establecemos `i` igual a `0`. Usamos esta variable para realizar un seguimiento del índice del array y podemos nombrarla como queramos. `i` es un nombre de variable común para este propósito. La variable se declara con la palabra clave `let` porque queremos poder cambiar el valor de la variable mientras se ejecuta el bucle.
+
+La **condición** es una expresión booleana que determina la cantidad de veces que se ejecutará un bucle y cuándo se detendrá. Sin él, el bucle seguirá ejecutándose indefinidamente. En este caso, el bucle continuará ejecutándose mientras `i` sea menor que la longitud del array de números.
+
+La **expresión final** es donde incrementamos o disminuimos la variable. En nuestro ejemplo, incrementamos `i` en `1` en cada iteración del bucle. Entonces, la primera vez que se ejecuta el ciclo, `i` es `0`. La segunda vez, `i` es `1`, y así sucesivamente. Así es como podemos acceder a cada elemento del array. El bucle continuará ejecutándose hasta que ya no se cumpla la condición.
+
+Dado que el bucle `for` nos brinda más control sobre el proceso de iteración, también podemos conservar los valores del array original y crear uno nuevo con los valores duplicados si así lo deseamos. Así es como podríamos hacer eso:
+
+```javascript filename="JavaScript"
+let numbers = [1, 2, 3, 4, 5]
+let doubled = []
+
+for (let i = 0; i < numbers.length; i++) {
+    doubled.push(numbers[i] * 2)
+}
+
+console.log(doubled) // [2, 4, 6, 8, 10]
+```
+
+Aquí, primero creamos un array vacío llamado `doubled`, luego usamos el bucle `for` para iterar sobre el array `numbers`. Dentro del bucle, insertamos el valor doble de cada elemento en el array `doubled`. En la mayoría de los casos, al iterar sobre un array, es más fácil utilizar el método de `map`. Sin embargo, el bucle `for` puede ser más apropiado si necesitamos más control sobre cómo se manipula el array.
+
+### La palabra clave `continue`
+
+La palabra clave `continue` se utiliza para omitir la iteración actual de un bucle y continuar con la siguiente. Por ejemplo, si queremos imprimir todos los números del `1` al `10` excepto el `5`, podemos usar la palabra clave `continue` para omitir el número `5`:
+
+```javascript filename="JavaScript"
+for (let i = 1; i <= 10; i++){
+    if (i === 5) {
+        continue
+    }
+    console.log(i)
+}
+```
+
+Salida:
+
+```plaintext filename="Salida en consola"
+1
+2
+3
+4
+6
+7
+8
+9
+10
+```
+
+La instrucción `if` verifica si el valor actual de `i` es igual a `5`. Si es así, se ejecuta la instrucción `continue`, que omite el resto del código en el bucle y continúa con la siguiente iteración.
+
+### La palabra clave `break`
+
+La palabra clave `break` se utiliza para salir de un bucle. Entonces, si en cambio queremos detener el ciclo cuando `i` sea igual a `5`, podemos usar la palabra clave `break`:
+
+```javascript filename="JavaScript"
+for (let i = 1; i <= 10; i++) {
+    if (i === 5) {
+        break
+    }
+    console.log(i)
+}
+```
+
+Salida:
+
+```plaintext filename="Salida en consola"
+1
+2
+3
+4
+```
+
+Dado que la instrucción `break` finaliza el ciclo cuando `i` es igual a `5`, la instrucción `console.log()` no se ejecuta para esa iteración. Entonces solo obtenemos los números del `1` al `4` en la consola.
+
+## El bucle `for`-`in`
+
+El bucle `for`-`in` se utiliza para iterar sobre las propiedades enumerables de un objeto. Si tenemos un objeto con una lista de propiedades y queremos acceder a cada propiedad, podríamos usar un bucle `for` para iterar sobre las propiedades del objeto de esta manera:
+
+```javascript filename="JavaScript"
+let person = {
+    name: 'Juan',
+    age: 27,
+    city: 'Lima',
+}
+
+for (let i = 0; i < Object.keys(person).length; i++) {
+    console.log(
+        `${Object.keys(person)[i]}: ${
+            person[Object.keys(person)[i]]
+        }`
+    )
+}
+```
+
+Si bien esto funciona, no es fácil de leer. Podemos usar el bucle `for`-`in` para escribir el mismo código de una forma más concisa. Con el bucle `for`-`in`, podemos acceder directamente a las claves de un objeto sin tener que utilizar el método `Object.keys()`:
+
+```javascript filename="JavaScript"
+let person = {
+    name: 'Juan',
+    age: 27,
+    city: 'Lima',
+}
+
+for (let key in person) {
+    console.log(`${key}: ${person[key]}`)
+}
+```
+
+Salida:
+
+```plaintext filename="Salida en consola"
+name: Juan
+age: 27
+city: Lima
+```
+
+En el ejemplo anterior, declaramos una variable llamada `key` y le asignamos el valor de cada propiedad en el objeto `person` usando el operador `in`. Luego usamos la variable `key` para acceder al valor de cada propiedad en el objeto `person`.
+
+El operador `in` en JavaScript se utiliza para comprobar si una propiedad especificada está en un objeto. 
+
+También podemos usarlo fuera de un bucle:
+
+```javascript filename="JavaScript"
+let person = {
+    name: 'Juan',
+    age: 27,
+    city: 'Lima',
+}
+
+if ('name' in person) {
+    console.log('El objeto person tiene una propiedad name.')
+}
+
+// Salida: El objeto person tiene una propiedad name.
+```
+
+También podemos usarlo para comprobar si un elemento existe en un array:
+
+```javascript filename="JavaScript"
+let fruits = ['manzana', 'banana', 'naranja']
+
+if ('manzana' in fruits) {
+    console.log('El elemento manzana existe en el array fruits.')
+}
+
+// Salida: El elemento manzana existe en el array fruits.
+```
+
+Como podemos usar el operador `in` en un array, también podemos usar el bucle `for`-`in` para iterar sobre los elementos de un array:
+
+```javascript filename="JavaScript"
+let names = ['Juan', 'Mario', 'Julia']
+
+for (let index in names) {
+    console.log(names[index])
+}
+```
+
+Salida:
+
+```plaintext filename="Salida en consola"
+Juan
+Mario
+Julia
+```
+
+Cuando se utiliza el bucle `for`-`in` para iterar sobre un array, la variable asignada al operador `in` será el índice de cada elemento del array. Una forma más sencilla de iterar sobre los elementos de un array es utilizar el bucle `for`-`of`.
+
+## El bucle `for`-`of`
+
+El bucle `for`-`of` es similar al bucle `for`-`in`, pero itera sobre los valores de un array en lugar de sobre los índices. Reescribamos el ejemplo del bucle de nombres usando el bucle `for`-`of`:
+
+```javascript filename="JavaScript"
+let names = ['Juan', 'Mario', 'Julia']
+
+for (let name of names) {
+     console.log(name)
+}
+```
+
+Salida:
+
+```plaintext filename="Salida en consola"
+Juan
+Mario
+Julia
+```
+
+Al acceder a los elementos de un array usando el bucle `for`-`of`, la variable asignada al operador of será el valor de cada elemento del array. También podemos usar el bucle `for`-`of` para iterar sobre los caracteres de una cadena:
+
+```javascript filename="JavaScript"
+let name = 'Juan'
+
+for (let character of name) {
+    console.log(character)
+}
+```
+
+Salida:
+
+```plaintext filename="Salida en consola"
+J
+u
+a
+n
+```
+
+Cuando se trabaja con arrays, el bucle `for`-`of` es más fácil de leer y comprender que el bucle `for`-`in`. Sin embargo, no podemos usar el bucle `for`-`of` para acceder directamente a las propiedades de un objeto como lo hicimos con el bucle `for`-`in`.
+
+## El bucle `while`
+
+El bucle `while` es similar al bucle `for` pero no tiene una *expresión final*. Se utiliza cuando no sabemos cuántas veces se ejecutará un bucle. Por ejemplo, si tenemos un juego de dados en el que tiramos un dado hasta obtener un `6`. Podríamos obtener un `6` en la primera tirada, o podrían ser necesarias 10 tiradas. Como no sabemos cuántas veces, no podemos usar un bucle `for`. Con el bucle `while`, puedes seguir tirando el dado siempre que el valor no sea `6`.
+
+Veamos cómo podríamos escribir el bucle `while` en JavaScript. Usaremos el método `Math.random()` para generar un número aleatorio del `1` al `6`, luego el método `Math.ceil()` para redondear el número al entero más cercano. Primero, crearemos una variable llamada `dieRoll`, luego usaremos el bucle `while` para actualizar su valor hasta que nuestros métodos matemáticos devuelvan un `6`:
+
+```javascript filename="JavaScript"
+let dieRoll = 0
+
+while (dieRoll !== 6) {
+    dieRoll = Math.ceil(Math.random() * 6)
+    console.log(`Sacaste un ${dieRoll}`)
+}
+```
+
+Dependiendo de cuántas tiradas se necesiten para obtener un `6`, el código debería devolver algo como esto (pero no exactamente ya que los números son aleatorios):
+
+```plaintext filename="Salida en consola"
+Sacaste un 2
+Sacaste un 4
+Sacaste un 3
+Sacaste un 6
+```
+
+Si el primer lanzamiento es un `6`, el bucle se ejecutará solo una vez. Si se necesitan 10 lanzamientos, el bucle se ejecutará 10 veces. El bucle `while` continuará ejecutándose mientras la condición sea verdadera. En este caso, la condición es que `dieRoll` no sea igual a `6`. Entonces, una vez que el valor de `dieRoll` sea `6`, el ciclo dejará de ejecutarse. 
+
+En un bucle `while`, la condición se verifica antes de que se ejecute el bucle. Si le hubiéramos asignado a `dieRoll` un valor de `6` cuando lo declaramos, el bucle nunca se ejecutaría porque la condición sería falsa desde el principio:
+
+```javascript filename="JavaScript"
+let dieRoll = 6
+
+while (dieRoll !== 6) {
+    dieRoll = Math.ceil(Math.random() * 6)
+    console.log(`Sacaste un ${dieRoll}`)
+}
+```
+
+En un bucle `while`, debemos asegurarnos de que la condición finalmente se cumpla. De lo contrario, el bucle se ejecutará indefinidamente.
+
+Observa cómo actualizamos el valor de `dieRoll` en cada iteración. Si no hiciéramos eso, `dieRoll` siempre sería `0` en nuestro primer ejemplo, y la condición `dieRoll !== 6` siempre sería verdadera, lo que haría que el bucle se ejecutara para siempre. Cuando un bucle se ejecuta indefinidamente, se llama **bucle infinito**.
+
+Intentemos eliminar la línea que actualiza el valor de `dieRoll`. Ejecutar un bucle infinito como este hará que tu navegador se congele o bloquee, así que no lo dejes funcionar por mucho tiempo o dejará de responder:
+
+```javascript filename="JavaScript"
+let dieRoll = 0
+
+while (dieRoll !== 6) {
+    console.log(`Sacaste un ${dieRoll}`)
+}
+```
+
+¡Felicitaciones por ejecutar tu primer bucle infinito! Te encontrarás con varios bucles infinitos en tu carrera como programador en JavaScript. Cuando suceda, significa que hay una condición que siempre es cierta.
+
+## El bucle `do-while`
+
+Un bucle `do-while` es similar a un bucle `while`, pero a diferencia del bucle `while`, la condición se verifica después de que se ejecuta el bucle. Esto significa que el bucle siempre se ejecutará al menos una vez. Entonces, en nuestro segundo ejemplo con el juego de dados, donde asignamos a `dieRoll` un valor de `6` al declararla, el bucle `do-while` aún se ejecutaría una vez:
+
+```javascript filename="JavaScript"
+let dieRoll = 6
+
+do {
+    dieRoll = Math.ceil(Math.random() * 6)
+    console.log(`Sacaste un ${dieRoll}`)
+} while (dieRoll !== 6)
+```
+
+Intenta reescribir cada ejemplo tú mismo para obtener una comprensión más profunda de cómo funcionan los bucles antes de pasar a la siguiente lección.

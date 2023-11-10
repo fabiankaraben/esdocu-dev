@@ -13,5 +13,6 @@
   "funciones-orden-superior": "Funciones de orden superior",
   "objetos": "Objetos",
   "condicionales": "Declaraciones condicionales",
-  "bucles": "Bucles"
+  "bucles": "Bucles",
+  "dom": "Modelo de Objetos de Documento"
 }

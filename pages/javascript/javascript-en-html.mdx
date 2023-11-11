@@ -1,0 +1,88 @@
+---
+description: A medida que comenzamos a trabajar con páginas web y DOM, necesitaremos incluir JavaScript en nuestros archivos HTML.
+---
+# Cómo incluir JavaScript en un archivo HTML
+
+Hasta ahora, hemos practicado JavaScript ejecutándolo en la consola. Pero a medida que comenzamos a trabajar con páginas web y DOM, necesitaremos incluir JavaScript en nuestros archivos HTML. Podemos hacer esto usando la etiqueta `<script>` para escribir nuestro código JavaScript directamente en el archivo HTML, o creando un archivo JavaScript separado con la extensión `.js` y vinculándolo en el archivo HTML. Veamos ambas opciones.
+
+## Escribir JavaScript en el archivo HTML (JavaScript en línea)
+
+La forma más sencilla de incluir JavaScript en un archivo HTML es agregando el código directamente al documento HTML usando la etiqueta `<script>`. Esto suele denominarse JavaScript en línea. Podemos incluir el código JavaScript en la sección del encabezado (`<head>`) o del cuerpo del documento (`<body>`), pero generalmente es mejor colocarlo en la sección del cuerpo para que el contenido HTML se cargue antes que el código JavaScript. 
+
+Veamos un ejemplo. Crea un nuevo archivo HTML llamado `js-in-html.html` y agrega el siguiente código:
+
+```html filename="HTML"
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>JS en HTML</title>
+    </head>
+    <body>
+        <h1>JS en HTML</h1>
+        <script>
+            alert('¡Hola a todos!')
+        </script>
+    </body>
+</html>
+```
+
+En el ejemplo anterior, agregamos una llamada al método `alert()` al archivo HTML. Cuando se carga la página, el navegador ejecutará el código JavaScript y mostrará el cuadro de alerta con el mensaje `'¡Hola a todos!'`. Puedes ver esto en acción abriendo el archivo HTML en tu navegador.
+
+Si bien JavaScript en línea puede ser una solución rápida para proyectos pequeños o agregar funcionalidades simples, no es la mejor opción para proyectos más grandes. Si queremos incluir una gran cantidad de código JavaScript en nuestro archivo HTML, puede resultar difícil de leer y mantener. Tampoco es muy eficiente, ya que el navegador tendrá que analizar el código JavaScript cada vez que se carga la página. Por estos motivos, normalmente es mejor crear un archivo JavaScript independiente y vincularlo en el archivo HTML.
+
+## Crear un archivo JavaScript separado (JavaScript externo)
+
+La forma más común de incluir JavaScript en un archivo HTML es crear un archivo JavaScript separado con la extensión `.js` y vincularlo en el archivo HTML. 
+
+Veamos un ejemplo. En la misma carpeta que el archivo `js-in-html.html`, crea un nuevo archivo JavaScript llamado `js-in-html.js` y agrégale la llamada al método `alert`:
+
+```javascript filename="JavaScript"
+alert('¡Hola a todos!')
+```
+
+Ahora, abre el archivo `js-in-html.html`, elimina el elemento `<script>` existente y agrega uno nuevo que enlace al archivo `js-in-html.js`:
+
+```html filename="HTML"
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>JS en HTML</title>
+    </head>
+    <body>
+        <h1>JS en HTML</h1>
+        <script src="./js-in-html.js"></script>
+    </body>
+</html>
+```
+
+En nuestro nuevo ejemplo, agregamos un elemento `<script>` que se vincula al archivo `js-in-html.js` usando su atributo `src` y la ruta, en lugar del elemento `<script>` inicial que contenía el código JavaScript. Cuando se carga la página, el navegador ejecutará el código JavaScript en el archivo `js-in-html.js` y mostrará el cuadro de alerta con el mensaje `'¡Hola a todos!'`.
+
+Vincular a un archivo JavaScript separado mantiene el código HTML y JavaScript separados, lo que facilita su lectura y mantenimiento. También facilita la reutilización del código JavaScript en múltiples archivos HTML. Por ejemplo, si quisiéramos agregar la misma alerta a otro archivo HTML, simplemente podríamos vincularlo al mismo archivo `js-in-html.js`.
+
+La etiqueta `<script>` tiene otros atributos que podemos usar para controlar cómo se carga y ejecuta el código JavaScript. Veamos algunos de ellos.
+
+### El atributo `async`
+
+El atributo async le dice al navegador que cargue el archivo JavaScript de forma asincrónica, lo que significa que el navegador puede continuar cargando el archivo HTML mientras se carga el archivo JavaScript. Esto puede resultar útil para archivos JavaScript grandes que tardan mucho en cargarse. Sin embargo, también puede causar problemas si el código JavaScript depende de que el contenido HTML se cargue primero porque, una vez que se carga el archivo JavaScript, el navegador ejecutará el código JavaScript incluso si el contenido HTML aún no ha terminado de cargarse. 
+
+Así es como usaríamos el atributo `async` en un elemento `<script>`:
+
+```html filename="HTML"
+<script src="./js-in-html.js" async></script>
+```
+
+### El atributo `defer`
+
+El atributo `defer` le dice al navegador que cargue el archivo JavaScript de forma asincrónica, pero que ejecute el código JavaScript después de que se haya cargado el archivo HTML. A diferencia del atributo `async`, el atributo `defer` garantiza que el código JavaScript se ejecute después de cargar el contenido HTML, evitando posibles problemas con el código JavaScript dependiendo del contenido HTML que se cargue primero. 
+
+Así es como usaríamos el atributo de aplazar:
+
+```html filename="HTML"
+<script src="./js-in-html.js" defer></script>
+```
+
+Es importante tener en cuenta que los atributos `async` y `defer` no son compatibles con todos los navegadores, especialmente los más antiguos. Sin embargo, son una buena opción para controlar cómo se carga y ejecuta su código JavaScript.
+
+Hemos visto las diferentes formas de incluir código JavaScript en un archivo HTML. Cada método tiene sus ventajas y desventajas y la elección de cuál utilizar depende de varios factores como el tamaño y la complejidad del proyecto, el nivel requerido de compatibilidad con diferentes navegadores y la necesidad de optimización.
+
+Independientemente del método que utilices, es esencial mantener su código organizado y mantenible, para que puedas crear aplicaciones web confiables que brinden una excelente experiencia de usuario.

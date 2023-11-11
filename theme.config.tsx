@@ -136,11 +136,11 @@ const config: DocsThemeConfig = {
         <meta name="msapplication-TileColor" content="#000000" />
         <meta name="theme-color" content="#000000" />
 
-        <script
+        {/* <script
           async
           src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5376430835440290"
           crossOrigin="anonymous"
-        ></script>
+        ></script> */}
       </>
     )
   },

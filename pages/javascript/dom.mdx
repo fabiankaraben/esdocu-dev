@@ -179,7 +179,7 @@ document.getElementsByTagName('p')[0].textContent
 
 Hasta ahora, has visto cómo acceder a elementos con una determinada etiqueta utilizando el método `getElementsByTagName`. Sin embargo, la mayoría de las veces necesitarás acceder a elementos más específicos. Por ejemplo, si tienes varios elementos `p` que representan contenido diferente en tu página web, será difícil usar el método `getElementsByTagName` para identificar el elemento `p` que deseas, ya que devuelve un `HTMLCollection` de etiquetas `p` sin ninguna información directa sobre sus contenidos. En su lugar, puedes acceder a elementos más específicamente utilizando los atributos `id` o `class`.
 
-### El método `getElementById`
+#### El método `getElementById`
 
 El método `getElementById` del objeto `document` se utiliza para acceder a un elemento mediante su atributo `id`. Dado que el atributo HTML `id` es único, podemos usarlo para identificar directamente un elemento específico en una página web. Agreguemos otro elemento `p` a nuestra página web y demos a ambos elementos `p` un atributo `id`. 
 
@@ -496,7 +496,7 @@ document.querySelector('div.paragraph').innerHTML = '<button>¡Haz click!</butto
 
 Ahora deberías ver un botón en el `div` en lugar del texto `'Este elemento div tiene el mismo atributo class que los elementos p'`.
 
-### Creando elementos del DOM
+## Creando elementos del DOM
 
 El objeto `document` tiene un método `createElement` que podemos usar para crear nuevos elementos. El método toma un argumento, que es el nombre de la etiqueta del elemento que se creará, como `p` o `div`. Creemos un nuevo elemento `p` como ejemplo:
 
@@ -532,7 +532,7 @@ Debería ver el nuevo párrafo agregado al final de la página.
 
 Otros métodos para crear y agregar nuevos elementos al DOM son:
 
-#### `insertBefore`
+### `insertBefore`
 
 El método `insertBefore` agrega un nuevo elemento antes de un elemento especificado. El método toma dos argumentos: el elemento que se agregará y el elemento antes del cual se agregará el nuevo elemento. Por ejemplo, agreguemos un nuevo elemento `h2` antes del elemento `p` con la identificación de `'dom-example'`:
 
@@ -546,7 +546,7 @@ document.body.insertBefore(
 )
 ```
 
-#### `replaceChild`
+### `replaceChild`
 
 El método `replaceChild` reemplaza un elemento con un elemento nuevo. El método toma dos argumentos: el elemento que se agregará y el elemento que se reemplazará. Reemplacemos el elemento `#dom-example` con un nuevo elemento `div`. También crearemos un nuevo elemento `p` dentro del `div`:
 
@@ -566,7 +566,7 @@ document.body.replaceChild(
 
 Esto debería reemplazar el elemento `#dom-example` con el nuevo elemento `div`. Nuestro nuevo `div` también tiene un elemento `p` con el texto `'¡Trabajar con el DOM es divertido!'`' y una identificación de `'dom-ejemplo'`.
 
-#### `insertAdjacentHTML`
+### `insertAdjacentHTML`
 
 El método `insertAdjacentHTML` inserta contenido HTML en una posición específica relativa al elemento en el que se llama. El método toma dos argumentos: la posición y el contenido HTML. La posición puede ser una de las siguientes cadenas:
 
@@ -587,7 +587,7 @@ document
 
 Esto debería agregar un nuevo elemento `p` con el texto `'¡El DOM es increíble!'` antes del elemento `#dom-example`.
 
-#### `insertAdjacentElement`
+### `insertAdjacentElement`
 
 El método `insertAdjacentElement` es similar al método `insertAdjacentHTML`. La única diferencia es que el método `insertAdjacentElement` toma un elemento como segundo argumento en lugar de contenido HTML. Agreguemos un nuevo elemento `p` con el texto `'¡El DOM es realmente genial!'` después del elemento `#dom-example`:
 
@@ -601,7 +601,7 @@ document
 
 Esto debería agregar un nuevo elemento `p` con el texto `'¡El DOM es realmente genial!'` después del elemento `#dom-example`.
 
-#### `insertAdjacentText`
+### `insertAdjacentText`
 
 Al igual que los otros métodos `insertAdjacent`, el método `insertAdjacentText` inserta texto en una posición específica relativa al elemento en el que se llama. El método toma dos argumentos: la posición y el texto a insertar. Vamos a crear un nuevo nodo de texto con el texto `'¡JavaScript es para todos!'` dentro del elemento del cuerpo pero como su último hijo:
 
@@ -614,7 +614,7 @@ document.body.insertAdjacentText(
 
 Esto debería agregar el nuevo nodo de texto como el último hijo del elemento del cuerpo.
 
-#### `cloneNode`
+### `cloneNode`
 
 El método `cloneNode` devuelve una copia del elemento en el que se llama. Se necesita un argumento booleano que determine si la copia incluirá a los hijos del elemento. Creemos una copia del elemento `#dom-definition`:
 
@@ -634,7 +634,7 @@ document
 // Salida: <p id='dom-definition'></p>
 ```
 
-#### `createTextNode`
+### `createTextNode`
 
 El método `createTextNode` crea un nodo de texto. Se necesita un argumento, que es el texto que se agregará al nodo de texto. Creemos un nodo de texto con el texto `'Conocer el DOM requiere práctica'`. Lo agregaremos al elemento `#dom-example`:
 

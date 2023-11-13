@@ -15,5 +15,6 @@
   "condicionales": "Declaraciones condicionales",
   "bucles": "Bucles",
   "dom": "Modelo de Objetos de Documento (DOM)",
-  "javascript-en-html": "JavaScript en HTML"
+  "javascript-en-html": "JavaScript en HTML",
+  "eventos-del-navegador": "Eventos del navegador"
 }

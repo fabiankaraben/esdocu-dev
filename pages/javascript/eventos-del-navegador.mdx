@@ -1,0 +1,278 @@
+---
+description: Los eventos del navegador son acciones que ocurren en el navegador y que suelen ser iniciadas por el usuario.
+---
+# Eventos del navegador
+
+Los **eventos del navegador** son acciones que ocurren en el navegador. Estas acciones suelen ser iniciadas por el usuario, como hacer clic en un botón, desplazarse por una página web o enviar un formulario. Al utilizar JavaScript, podemos responder a estos eventos y crear páginas web dinámicas e interactivas.
+
+Cuando un usuario hace clic en un botón de su página web, es posible que desee reaccionar a esa acción mostrando un mensaje o navegando a una nueva página.
+
+El navegador proporciona una manera de escuchar estos eventos y responder a ellos. A través del DOM, podemos agregar **detectores de eventos** a elementos en nuestra página HTML para que cuando un usuario realice una acción específica, el navegador ejecute una función JavaScript en respuesta. Esta función se llama **controlador de eventos**. Los controladores de eventos a menudo se denominan detectores de eventos, pero más específicamente, el **detector de eventos** es lo que escucha el evento, mientras que el **controlador de eventos** es la función que se ejecuta cuando ocurre el evento.
+
+Los elementos DOM tienen un método `addEventListener()` que nos permite agregarles detectores de eventos. Este método toma dos argumentos: el nombre del evento y la función del controlador de eventos. Por ejemplo, si quisiéramos agregar un detector de eventos de clic a un botón, llamaríamos a su método `addEventListener()` y pasaríamos el nombre del evento y la función del controlador de eventos como argumentos:
+
+```javascript filename="JavaScript"
+const button = document.querySelector('button')
+
+button.addEventListener('click', () => {
+    console.log('¡Me hiciste clic!')
+})
+```
+
+Además del método `addEventListener()`, los elementos también tienen varias propiedades de evento que podemos configurar para funciones de controlador de eventos.
+
+Estas propiedades reciben el nombre del evento que escuchan, como `onclick` para el evento de clic o `onscroll` para el evento de desplazamiento. Por ejemplo, también podemos agregar un detector de eventos de clic al botón configurando su propiedad `onclick` en una función de controlador de eventos:
+
+```javascript filename="JavaScript"
+button.onclick = () => {
+    console.log('¡Me hiciste clic!')
+}
+```
+
+Cuando se ejecuta una función de controlador de eventos, el navegador pasa un objeto de evento como argumento a la función. Este objeto contiene información sobre el evento que ocurrió. Por ejemplo, el objeto de evento pasado a una función de evento de clic contiene información sobre el elemento en el que se hizo clic. Podemos acceder a esta información utilizando la propiedad `target` del objeto `event`. Por ejemplo, si quisiéramos imprimir el elemento en el que se hizo clic, podríamos hacer lo siguiente:
+
+```javascript filename="JavaScript"
+button.onclick = (event) => {
+    console.log(event.target)
+}
+```
+
+Trabajemos con otro archivo HTML para que puedas ver cómo funcionan los detectores de eventos en la práctica. Crea un nuevo archivo llamado `browserEvents.html` y agrega el siguiente código:
+
+```html filename="HTML"
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <title>Eventos del navegador</title>
+    </head>
+    <body>
+        <h1>Trabajando con los eventos del navegador</h1>
+        <p>
+            Haz clic en el botón a continuación para activar un evento del navegador.
+        </p>
+        <button id="click-me-btn">¡Haz clic!</button>
+    </body>
+</html>
+```
+
+A continuación, crea un nuevo archivo en el mismo directorio llamado `browserEvents.js` y agrégale el siguiente código JavaScript. Comenzaremos seleccionando el elemento del botón y agregándole un detector de eventos de clic:
+
+```javascript filename="JavaScript"
+const button = document.querySelector('#click-me-btn')
+
+button.addEventListener('click', () => {
+    alert('¡Me hiciste clic!')
+})
+```
+
+En nuestro archivo JavaScript, utilizamos el método `querySelector()` para seleccionar el elemento del botón y almacenarlo en una variable llamada `button`. Luego, agregamos un detector de eventos de clic al botón llamando a su método `addEventListener()` y pasando el nombre del evento y la función del controlador de eventos como argumentos. 
+
+La función del controlador de eventos es una función de flecha anónima que muestra un mensaje de alerta. Incluyamos nuestro archivo JavaScript en nuestro código HTML para que el navegador pueda ejecutarlo. Agrega el siguiente código al archivo `browserEvents.html`:
+
+```html filename="HTML"
+<script src="browserEvents.js"></script>
+```
+
+Ahora puedes abrir el archivo HTML en tu navegador y hacer clic en el botón. Deberías ver un mensaje de alerta que dice `'¡Hiciste clic en mí!'`.
+
+## Propiedades y métodos del objeto de evento
+
+Si queremos obtener más información sobre el evento que ocurrió o el elemento en el que se hizo clic, podemos pasar un parámetro `event` a la función del controlador de eventos. El parámetro representará el objeto de evento que el navegador pasa a la función cuando se ejecuta, que contiene información sobre el evento que ocurrió. Algunas de las propiedades y métodos comunes del objeto de evento incluyen:
+
+### La propiedad `target`
+
+La propiedad `target` devuelve el elemento en el que ocurre un evento. Por ejemplo, si queremos imprimir el elemento en el que se hizo clic en la consola, podemos editar la función del controlador de eventos de clic en el archivo `browserEvents.js` de la siguiente manera:
+
+```javascript filename="JavaScript"
+button.addEventListener('click', (event) => {
+    console.log(event.target)
+})
+```
+
+Recargar tu página y hacer clic en el botón debería imprimir el elemento del botón `<button id="click-me-btn">¡Haz clic en mí!</button>` en la consola.
+
+### La propiedad `type`
+
+La propiedad `type` devuelve el tipo de evento que ocurrió, como hacer `click` o `submit`:
+
+```javascript filename="JavaScript"
+button.addEventListener('click', (event) => {
+    console.log(event.type)
+})
+```
+
+### La propiedad `currentTarget` y la Propagación de eventos
+
+La propiedad `currentTarget` devuelve el elemento al que está asociado el detector de eventos, no necesariamente el elemento en el que ocurre el evento. La diferencia entre `target` y `currentTarget` es que `target` devuelve el elemento en el que se hizo clic, mientras que `currentTarget` devuelve el elemento al que está adjunto el detector de eventos. Por ejemplo, si eliminamos el detector de eventos de clic del botón y lo agregamos al elemento `body`, la propiedad `currentTarget` devolverá el elemento `body`, incluso si hacemos clic en el botón. Esto se llama **Propagación de eventos** (Event Bubbling). 
+
+La propagación de eventos es un mecanismo que permite que un evento se propague o "burbujee" hasta sus elementos padres. Dado que el elemento `body` es el padre del elemento del botón, el evento de clic se propagará hasta el elemento `body` donde está adjunto el detector de eventos. Reemplaza el código en tu archivo `browserEvents.js` con lo siguiente:
+
+```javascript filename="JavaScript"
+document.body.addEventListener('click', (event) => {
+    console.log(event.currentTarget)
+})
+```
+
+### El método `stopPropagation()`
+
+El método `stopPropagation()` evita que el evento se propague a los elementos padres. Por ejemplo, si queremos evitar que el evento de clic se transmita al elemento `body` cuando hacemos clic en el botón, podemos agregar un detector de eventos al botón y llamar al método `stopPropagation()` del objeto de evento en la función del controlador de eventos. Junto con el detector de eventos de `body` del ejemplo anterior, agrega el siguiente código a tu archivo `browserEvents.js` y vuelve a cargar la página:
+
+```javascript filename="JavaScript"
+const button = document.querySelector('#click-me-btn')
+button.addEventListener('click', (event) => {
+    event.stopPropagation()
+})
+```
+
+Ahora, cuando haces clic en el botón, el evento de clic no aparecerá en el elemento `body` y el detector de eventos de `body` no se ejecutará. También puedes agregar código a la función del controlador de eventos del botón que se ejecutará cuando se haga clic en el botón:
+
+```javascript filename="JavaScript"
+button.addEventListener('click', (event) => {
+    event.stopPropagation()
+    alert('¡Me hiciste clic!')
+})
+```
+
+Sin el método `stopPropagation()`, tanto el detector de eventos de `body` como el detector de eventos del botón se ejecutarían cuando se hace clic en el botón.
+
+### La propiedad `key`
+
+La propiedad `key` devuelve el valor de la tecla que se presionó o soltó cuando ocurre un evento de teclado. Por ejemplo, si queremos imprimir en la consola el valor de la tecla que se presionó, podemos editar la función del controlador de eventos de `body` en el archivo `browserEvents.js` de la siguiente manera:
+
+```javascript filename="JavaScript"
+document.body.addEventListener('keydown', (event) => {
+    console.log(event.key)
+})
+```
+
+Recargar tu página y presionar una tecla en tu teclado debería imprimir el valor de esa tecla en la consola.
+
+### El método `preventDefault()`
+
+El método `preventDefault()` evita que se ejecute el comportamiento predeterminado de un evento. Por ejemplo, el comportamiento predeterminado del botón de envío de un formulario es recargar la página cuando se hace clic en él. Si queremos evitar este comportamiento, podemos llamar al método `preventDefault()` en el objeto de evento en la función de envío del controlador de eventos. Agreguemos un formulario a nuestro archivo `browserEvents.html`. Agrega el siguiente código debajo del elemento del botón:
+
+```html filename="HTML"
+<form id="name-form">
+    <label for="name">Nombre:</label>
+    <input type="text" id="name">
+    <input type="submit" value="Enviar">
+</form>
+```
+
+Cuando haces clic en el botón *Enviar* en tu navegador, observa que la página se recarga. Agreguemos un detector de eventos al botón de envío del formulario para evitar este comportamiento. Reemplaza el código en tu archivo `browserEvents.js` con lo siguiente:
+
+```javascript filename="JavaScript"
+const form = document.querySelector('#name-form')
+
+form.addEventListener('submit', (event) => {
+    event.preventDefault()
+})
+```
+
+Ahora, hacer clic en el botón *Enviar* no debería recargar la página. También podemos agregar algo de código a la función del controlador de eventos para imprimir el valor del campo `input` en la consola:
+
+```javascript filename="JavaScript"
+form.addEventListener('submit', (event) => {
+    event.preventDefault()
+    console.log(event.target.name.value)
+})
+```
+
+Recargar tu página y enviar el formulario debería imprimir el valor del campo de entrada en la consola. La propiedad `event.target` devuelve el elemento de formulario, la propiedad `name` devuelve el elemento de entrada y la propiedad `value` devuelve el valor del campo de entrada.
+
+## Tipos de eventos del navegador y listeners
+
+Exploremos los diferentes tipos de eventos del navegador y cómo podemos utilizar los listeners para responder a ellos.
+
+### Eventos del ratón
+
+Los eventos del mouse son acciones que ocurren cuando un usuario interactúa con el mouse, como moverlo o hacer clic en un elemento.
+
+Los siguientes son algunos de los eventos del mouse más comunes:
+
+- `clic`: ocurre cuando un usuario hace clic en un elemento
+- `dblclick`: ocurre cuando un usuario hace doble clic en un elemento
+- `mousedown`: ocurre cuando un usuario presiona un botón del mouse mientras está sobre un elemento
+- `mouseup`: ocurre cuando un usuario suelta un botón del mouse mientras sobre un elemento
+- `mouseover`: ocurre cuando un usuario mueve el mouse sobre un elemento
+- `mouseout`: ocurre cuando un usuario mueve el mouse fuera de un elemento
+- `mousemove`: ocurre cuando un usuario mueve el mouse sobre un elemento
+- `wheel`: ocurre cuando los usuarios desplazan la rueda del mouse mientras están sobre un elemento
+
+### Eventos de teclado
+
+Los eventos de teclado se activan mediante acciones realizadas con el teclado, como escribir y presionar teclas. 
+
+Algunos eventos de teclado comunes incluyen:
+
+- `keydown`: se activa cuando se presiona una tecla
+- `keyup`: se activa cuando se suelta una tecla
+- `keypress`: se activa cuando se presiona y suelta una tecla
+
+### Eventos de formulario
+
+Los eventos de formulario se activan cuando un usuario interactúa con un formulario, como al enviarlo. 
+
+Algunos eventos de formulario comunes incluyen:
+
+- `submit`: se activa cuando se envía un formulario
+- `reset`: se activa cuando se restablece un formulario
+
+### Eventos de ventana
+
+Los eventos de ventana se activan cuando un usuario interactúa con la ventana del navegador, como cambiar su tamaño o desplazarse por una página. 
+
+Algunos eventos de ventana comunes incluyen:
+
+- `load`: se activa cuando se carga una página
+- `unload`: se activa cuando se descarga una página
+- `resize`: se activa cuando se cambia el tamaño de la ventana del navegador
+- `scroll`: se activa cuando el usuario se desplaza por una página
+
+Para usar estos eventos, podemos agregar detectores de eventos al objeto `window`. El objeto `window` representa la ventana del navegador y es el objeto global en un navegador. El objeto `document`, por otro lado, representa el documento HTML y es una propiedad del objeto `window`. Entonces puedes acceder al objeto del documento usando `window.document` o simplemente `document`. La función `alert()` también es una propiedad del objeto `window`, por lo que puedes acceder a ella usando `window.alert()` en lugar de solo `alert()`. 
+
+El objeto `window` tiene otras propiedades y métodos como la propiedad `load` y el método `addEventListener()`. Por ejemplo, si queremos imprimir un mensaje en la consola cuando se carga la página, podemos agregar un detector de eventos al objeto `window` que escucha el evento `load`. 
+
+Agrega el siguiente código a tu archivo `browserEvents.js` y luego vuelve a cargar la página:
+
+```javascript filename="JavaScript"
+window.addEventListener('load', () => {
+    window.alert('¡La página se ha cargado!')
+})
+```
+
+Ahora, cuando vuelvas a cargar la página, deberías ver un mensaje de alerta que diga `'¡La página se ha cargado!'`. 
+
+Probemos con otro ejemplo imprimiendo el valor de la propiedad `window.innerWidth` en la consola cuando se cambia el tamaño de la ventana. La propiedad `window.innerWidth` devuelve el ancho de la ventana del navegador en píxeles. En tu archivo `browserEvents.js`, agrega el siguiente código:
+
+```javascript filename="JavaScript"
+window.addEventListener('resize', () => {
+    console.log(window.innerWidth)
+})
+```
+
+Para cambiar el tamaño de la ventana de tu navegador, puedes abrir las herramientas de desarrollo de tu navegador y arrastrar el borde derecho de la página hacia la izquierda o hacia la derecha. Deberías ver el valor de la propiedad `window.innerWidth` en la consola a medida que cambias el tamaño de la ventana. También puedes imprimir el valor de la propiedad `window.innerHeight` en la consola para ver la altura de la ventana del navegador:
+
+```javascript filename="JavaScript"
+window.addEventListener('resize', () => {
+    console.log(window.innerHeight)
+})
+```
+
+Deberás arrastrar el borde inferior de la página hacia arriba o hacia abajo para ver el cambio de valor. El detector de eventos de cambio de tamaño `resize` es útil para hacer que tus páginas web sean responsive con JavaScript.
+
+Probemos con un ejemplo que imprima el valor de las propiedades `window.scrollY` y `window.scrollX` en la consola cuando un usuario se desplaza por la página. Estas propiedades te permiten determinar las posiciones de desplazamiento vertical y horizontal de una página web. 
+
+La propiedad `window.scrollY` devuelve la posición de desplazamiento vertical en píxeles y la propiedad `window.scrollX` devuelve la posición de desplazamiento horizontal en píxeles. 
+
+Para agregar el detector de eventos de desplazamiento, escribe el siguiente código en tu archivo `browserEvents.js`:
+
+```javascript filename="JavaScript"
+window.addEventListener('scroll', () => {
+    console.log('Posición vertical:', window.scrollY)
+    console.log('Posición horizontal:', window.scrollX)
+})
+```
+
+Dado que nuestra página web actual no es lo suficientemente larga para desplazarse, podemos cambiar el tamaño de la ventana del navegador verticalmente para que se pueda desplazar. Con las herramientas de desarrollo de tu navegador abiertas, arrastra el borde inferior de la página hacia arriba para que la página sea más larga que la ventana del navegador. Ahora, a medida que te desplazas por la página, deberías ver las posiciones de desplazamiento vertical y horizontal en la consola.

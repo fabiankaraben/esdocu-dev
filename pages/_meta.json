@@ -39,6 +39,12 @@
       }
     }
   },
+  "documentaciones": {
+    "title": "Documentaciones ↗",
+    "type": "page",
+    "href": "https://esdocu.net",
+    "newWindow": true
+  },
   "contacto": {
     "title": "Contacto ↗",
     "type": "page",

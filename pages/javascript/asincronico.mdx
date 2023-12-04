@@ -1,0 +1,507 @@
+---
+description: JavaScript asincrónico es un concepto esencial en el desarrollo web moderno, que te permite ejecutar tareas de larga duración sin bloquear el hilo principal de la UI.
+---
+# Programación Asincrónica
+
+## ¿Qué es JavaScript asincrónico?
+
+JavaScript asincrónico es un concepto esencial en el desarrollo web moderno. En JavaScript tradicional, el código se ejecuta de forma sincrónica, lo que significa que cada línea de código se ejecuta linealmente una tras otra (de arriba a abajo). Esto está bien para programas simples, pero se convierte en un problema cuando se trabaja con tareas de larga duración, como realizar solicitudes de red, realizar cálculos complejos o acceder a una base de datos o un sistema de archivos.
+
+Si ejecutaras estas tareas de forma sincrónica, el hilo principal responsable de representar la interfaz de usuario y manejar las interacciones del usuario no podría hacer nada más hasta que se complete la tarea, lo que haría que tu programa pareciera congelado o no respondiera al usuario.
+
+Aquí es donde entra en juego el **JavaScript asincrónico**, que te permite ejecutar tareas de larga duración sin bloquear el hilo principal de la UI (interfaz de usuario), para que tu aplicación pueda continuar ejecutándose y respondiendo a la entrada del usuario. El término "asíncrono" se refiere a un patrón de programación en el que se pueden ejecutar múltiples tareas simultáneamente, sin bloquearse entre sí. Esto es necesario para las aplicaciones web modernas, que a menudo necesitan realizar múltiples tareas al mismo tiempo, como realizar solicitudes de red, cargar datos en segundo plano y reproducir audio o video.
+
+## *Promesas*
+
+Una forma de administrar código asincrónico en JavaScript es mediante **Promises**. Una *Promise* es un objeto que representa la eventual finalización o falla de una operación asincrónica. Puedes considerarlo como un marcador de posición para un valor que estará disponible en el futuro.
+
+Una Promise se encuentra en uno de tres estados posibles:
+
+- **pending** (pendiente): el estado inicial de una Promise, que representa que el valor aún no está disponible.
+- **fulfilled** (cumplida): El estado de una Promise que representa una operación exitosa, lo que significa que el valor está disponible.
+- **rejected** (rechazada): el estado de una Promise que representa una operación fallida, lo que significa que ocurrió un error.
+
+Las promesas se crean utilizando el constructor `Promise`, que toma una única función como argumento. Esta función se llama función ejecutora y es responsable de iniciar la operación asincrónica. A la función ejecutora se le pasan dos funciones como argumentos: `resolve` y `reject`. La función `resolve` se llama cuando la operación asincrónica tiene éxito y la función `reject` se llama cuando la operación falla. Las funciones `resolve` y `reject` se utilizan para cambiar el estado de la *Promesa* y se pueden llamar con un valor que se pasará a cualquier controlador registrado con la Promise.
+
+A continuación se muestra un ejemplo de una *Promesa* que se resuelve con un valor de cadena de `'Datos recuperados correctamente'` después de un retraso de 5 segundos:
+
+```javascript filename="JavaScript"
+let myPromise = new Promise((resolve, reject) => {
+    setTimeout(() => {
+        resolve('Datos recuperados correctamente')
+    }, 5000)
+})
+```
+
+Cuando ejecutes este código, a la variable `myPromise` se le asignará un objeto `Promise` en estado `pending`. La *Promesa* permanecerá en estado pendiente hasta que la función ejecutora llame a la función `resolve`, que cambiará el estado de la *Promesa* a `fulfilled` y pasará el valor de la cadena a cualquier controlador registrado con la *Promesa*. En este caso, la *Promesa* se cumplirá después de un retraso de 5 segundos. Si intentas imprimir la variable `myPromise` en la consola antes de que se cumpla la *Promesa*, verás que todavía está en estado pendiente:
+
+```javascript filename="JavaScript"
+console.log(myPromise)
+
+// Salida: Promise { <pending> }
+```
+
+Si deseas manejar el resultado de la *Promesa*, puedes imprimir un controlador usando su método `then`. El método `then` toma una función como argumento, que se llama cuando se cumple la *Promesa*. La función tendrá acceso al valor pasado a la función `resolve` como primer argumento. A continuación se muestra un ejemplo de cómo imprimir un controlador con una *Promesa*:
+
+```javascript filename="JavaScript"
+myPromise.then((value) => {
+    console.log(value)
+})
+```
+
+Esto debería generar el valor de cadena `'Datos recuperados exitosamente'` a la consola después de un retraso de 5 segundos. Ten en cuenta que la *Promesa* no impedirá que se ejecuten otras tareas mientras esté pendiente. Entonces, si imprimiéramos algo más en la consola después de crear la *Promesa*, se imprimiría inmediatamente, sin esperar a que se cumpla la *Promesa*, y cuando se cumpla la *Promesa*, su valor se imprimiría en la consola. Para probar esto, ejecuta el siguiente código:
+
+```javascript filename="JavaScript"
+let myPromise = new Promise((resolve, reject) => {
+    setTimeout(() => {
+        resolve('Datos recuperados exitosamente')
+    }, 5000)
+})
+
+myPromise.then((value) => {
+    console.log(value)
+})
+
+console.log('¡Hola!')
+```
+
+Esto primero imprimirá `'¡Hola!'` en la consola a pesar de que viene después de la *Promesa* en el código, y luego, después de un retraso de 5 segundos, el valor de cadena `'Datos recuperados exitosamente'` se imprimirá en la consola. Así es como se verías el resultado:
+
+```plaintext filename="Salida en consola"
+¡Hola!
+Datos recuperados exitosamente
+```
+
+Si en lugar de la función `resolve`, llamaramos a la función `reject` en nuestra *Promesa*, sería rechazada y cualquier controlador de errores registrado con la *Promesa* recibiría el valor de error. Podemos imprimir un controlador de errores utilizando el método `catch`. El método `catch` toma una función como argumento, que se llama cuando se rechaza la *Promesa*. La función tendrá acceso al valor pasado a la función `reject` como primer argumento. Cuando se trabaja con *Promesas*, es importante manejar tanto los estados cumplidos como los rechazados, de modo que si hay un error se pueda responder adecuadamente. A continuación se muestra un ejemplo de una *Promesa* que se rechaza después de un retraso de 5 segundos y un controlador de errores que registra el error en la consola:
+
+```javascript filename="JavaScript"
+let myPromise = new Promise((resolve, reject) => {
+    setTimeout(() => {
+        reject('Ocurrió un error')
+    }, 5000)
+})
+
+myPromise
+    .then((value) => {
+        console.log(value)
+    })
+    .catch((error) => {
+        console.log(error)
+    })
+```
+
+También podemos escribir una *Promesa* como el cuerpo de una función para que pueda ejecutarse más adelante o reutilizarse:
+
+```javascript filename="JavaScript"
+const doSomeMath = (a, b) => {
+    return new Promise((resolve, reject) => {
+        const result = a + b
+        if (result > 10) {
+            resolve(result) 
+        } else {
+            reject('El resultado es demasiado pequeño.')
+        }
+    })
+}
+```
+
+En nuestro ejemplo, la función `doSomeMath` toma dos números como argumentos y devuelve una *Promesa*. La *Promesa* se cumplirá si el resultado de sumar los dos números es mayor que `10`, y se rechazará si es menor que `10`. Podemos llamar a la función `doSomeMath` así:
+
+```javascript filename="JavaScript"
+doSomeMath(5, 20)
+    .then((value) => {
+        console.log(value)
+    })
+    .catch((error) => {
+        console.log(error)
+    })
+
+// Salida: 25
+```
+
+Volvamos a llamarla, pero esta vez pasemos dos números que harán que la *Promesa* sea rechazada:
+
+```javascript filename="JavaScript"
+doSomeMath(5, 2)
+    .then((value) => {
+        console.log(value)
+    })
+    .catch((error) => {
+        console.log(error)
+    })
+
+// Salida: El resultado es demasiado pequeño.
+```
+
+## Métodos de Promise
+
+Hay algunos otros métodos que podemos usar con `Promise`. Estos métodos incluyen: `Promise.all`, `Promise.race`, `Promise.resolve`, `Promise.reject` y `finally`. Empezaremos con Promise.all.
+
+### El método `Promise.all`
+
+El método `Promise.all` toma un array de *Promesas* como argumento y devuelve una única *Promesa*. La única *Promesa* que se devuelve se cumplirá cuando se cumplan todas las *Promesas* del argumento del array. Si se rechaza alguna de las *Promesas* en el argumento del array, se rechazará la única *Promesa* que se devuelva. Aquí hay un ejemplo de cómo usar `Promise.all`:
+
+```javascript filename="JavaScript"
+let promise1 = new Promise((resolve, reject) => {
+    setTimeout(() => {
+        resolve('Promesa 1 resuelta')
+    }, 5000)
+})
+
+let promise2 = new Promise((resolve, reject) => {
+    setTimeout(() => {
+        resolve('Promesa 2 resuelta')
+    }, 3000)
+})
+
+let promise3 = new Promise((resolve, reject) => {
+    setTimeout(() => {
+        resolve('Promesa 3 resuelta')
+    }, 1000)
+})
+
+Promise.all([promise1, promise2, promise3]).then(
+    (values) => {
+        console.log(values)
+    }
+)
+
+// Salida: ["Promesa 3 resuelta", "Promesa 2 resuelta", "Promesa 1 resuelta"]
+```
+
+Si rechazáramos una de las *Promesas* en el array, la única *Promesa* que se devuelve sería rechazada. Reescribamos la promesa 2 para que se rechace en lugar de resolverse:
+
+```javascript filename="JavaScript"
+let promise2 = new Promise((resolve, reject) => {
+    setTimeout(() => {
+        reject('Promesa 2 rechazada')
+    }, 3000)
+})
+
+Promise.all([promise1, promise2, promise3])
+    .then((values) => {
+        console.log(values)
+    })
+    .catch((error) => {
+        console.log(error)
+    })
+
+// Salida: Promesa 2 rechazada
+```
+
+### El método `Promise.race`
+
+El método `Promise.race` toma una serie de *Promesas* como argumento y devuelve una única *Promesa*. La única *Promesa* que se devuelve se cumplirá o rechazará tan pronto como se cumpla o rechace una de las *Promesas* en el argumento del array. Piensa en ello como una carrera en la que gana la primera *Promesa* en terminar. Probemos un ejemplo:
+
+```javascript filename="JavaScript"
+let promise1 = new Promise((resolve, reject) => {
+    setTimeout(() => {
+        resolve('Promesa 1 resuelta')
+    }, 5000)
+})
+
+let promise2 = new Promise((resolve, reject) => {
+    setTimeout(() => {
+        resolve('Promesa 2 resuelta')
+    }, 3000)
+})
+
+let promise3 = new Promise((resolve, reject) => {
+    setTimeout(() => {
+        resolve('Promesa 3 resuelta')
+    }, 1000)
+})
+
+Promise.race([promise1, promise2, promise3]).then(
+    (value) => {
+        console.log(value)
+    }
+)
+
+// Salida: Promesa 3 resuelta
+```
+
+En nuestro ejemplo, la promesa 1 se resolverá en 5 segundos, la promesa 2 en 3 segundos y la promesa 3 en 1 segundo. Dado que la promesa 3 es la primera *Promesa* que se resuelve, la única *Promesa* que se devuelve se cumplirá con el valor "Promesa 3 resuelta".
+
+### El método `Promise.resolve`
+
+El método `Promise.resolve` toma un valor como argumento y devuelve una *Promesa* que se cumple con el valor que se le pasó. Es útil cuando necesitas convertir un valor en una *Promesa*. He aquí un ejemplo:
+
+```javascript filename="JavaScript"
+let myPromise = Promise.resolve('Promesa resuelta')
+
+myPromise.then((value) => {
+    console.log(value)
+})
+
+// Salida: Promesa resuelta
+```
+
+### El método `Promise.reject`
+
+El método `Promise.reject` toma un valor como argumento y devuelve una *Promesa* que se rechaza con el valor que se le pasó:
+
+```javascript filename="JavaScript"
+let myPromise = Promise.reject('Promesa rechazada')
+
+myPromise.catch((error) => {
+    console.log(error)
+})
+
+// Salida: Promesa rechazada
+```
+
+### El método `finally`
+
+El método `finally` toma una función como argumento y devuelve una *Promesa*. La función que se pasa a `finally` se ejecutará cuando la *Promesa* a la que finalmente se invoca se cumpla o se rechace. He aquí un ejemplo:
+
+```javascript filename="JavaScript"
+let myPromise = new Promise((resolve, reject) => { setTimeout(() => {
+    resolve('Promesa resuelta')
+  }, 5000)
+})
+myPromise
+  .then((value) => {
+    console.log(value)
+  })
+.finally(() => {
+    console.log(
+        'La promesa se ha cumplido o rechazado.'
+    )
+})
+
+// Salida: Promesa resuelta
+// Salida: La promesa se ha cumplido o rechazado.
+```
+
+## Realizar solicitudes HTTP con Promesas y la API Fetch
+
+Realizar solicitudes HTTP para recuperar datos de un servidor es una parte esencial del desarrollo web. Con la introducción de funciones de JavaScript como *Promesas* y la API Fetch, realizar solicitudes HTTP se ha vuelto mucho más simple y eficiente. 
+
+**Fetch API** es una API de JavaScript que proporciona una forma sencilla y cómoda de realizar solicitudes HTTP y es compatible con todos los navegadores modernos. Una **API** (interfaz de programación de aplicaciones) es un conjunto de instrucciones y estándares de programación para acceder a un servicio o fuente de datos específicos. Podemos utilizar la API Fetch para realizar solicitudes GET (recuperar datos), POST (crear datos), PUT (actualizar datos) y DELETE (eliminar datos). Cuando se utilizas la API Fetch para realizar una solicitud, devuelve una *Promesa* que se resuelve en un objeto `Response`, que contiene los datos que se recuperaron del servidor.
+
+Para ilustrar cómo realizar solicitudes HTTP con Fetch API, crearemos un archivo JSON que contiene los datos que queremos recuperar. **JSON** significa notación de objetos JavaScript y es un formato liviano para almacenar y transportar datos. JSON se usa a menudo cuando se envían datos desde un servidor a una página web y la estructura de datos es similar a un objeto JavaScript. Creemos un archivo JSON llamado `data.json` que contenga un array de objetos. Los archivos JSON terminan con la extensión `.json`. En nuestros datos JSON, cada objeto representará a un usuario y tendrá una propiedad de `name` (nombre) y `age` (edad):
+
+```json filename="JSON"
+[
+    {
+        "name": "Juan",
+        "age": 30
+    }, 
+    {
+        "name": "Sara",
+        "age": 22
+    },
+    {
+        "name": "Elon",
+        "age": 40
+    }
+]
+```
+
+En una aplicación del mundo real, recuperaríamos datos como este de un servidor mediante una URL de API. Sin embargo, para este ejemplo, usaremos un archivo JSON local para no tener que preocuparnos de que el servidor esté disponible cuando realicemos la solicitud.
+A diferencia de los objetos JavaScript típicos, las claves de un objeto JSON deben estar entre comillas dobles. Ahora que tenemos nuestros datos JSON, podemos usar la API Fetch para realizar una solicitud `GET` que recupere los datos del archivo JSON. En el mismo directorio que el archivo `data.json`, crea un archivo HTML llamado `fetchExample.html` y agrégale el siguiente código:
+
+```html filename="HTML"
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <title>Fetch API</title>
+    </head>
+    <body>
+        <script src="./fetchExample.js"></script>
+    </body>
+</html>
+```
+
+A continuación, crea un archivo JavaScript en el mismo directorio llamado `fetchExample.js`. En nuestro archivo JavaScript, usaremos el método `fetch()` para realizar una solicitud `GET` al archivo `data.json`. El método `fetch()` toma una URL como primer argumento y devuelve una `Promise` que se resuelve en un objeto `Response`:
+
+```javascript filename="JavaScript"
+let fetchRequest = fetch('./data.json')
+
+console.log(fetchRequest)
+```
+
+Cuando abras el archivo `fetchExample.html` en tu navegador, verás un error CORS en la consola. **CORS** significa Cross-Origin Resource Sharing y es un mecanismo que permite solicitar recursos restringidos en una página web desde otro dominio fuera del dominio desde el que se sirvió el primer recurso. Para evitar este error, necesitaremos ejecutar un servidor local. Si estás trabajando con VS Code, puedes instalar la extensión *Live Server*. Una vez que hayas instalado la extensión, haz clic derecho en el archivo `fetchExample.html` y selecciona *Abrir con Live Server*. De lo contrario, puedes utilizar cualquier otro servidor local como el paquete de servidor http de Node.js.
+
+Una vez que hayas iniciado el servidor local, verás que la variable `fetchRequest` contiene un objeto `Promise` con el estado `pending`:
+
+```javascript filename="JavaScript"
+Promise {<pending>}
+```
+
+La *Promesa* devuelta se resolverá en un objeto `Response` cuando se complete la solicitud. Usemos el método `then()` para manejar la *Promesa* cuando se resuelva. Imprimamos el objeto `Response` en la consola:
+
+```javascript filename="JavaScript"
+fetchRequest.then((response) => {
+    console.log(response)
+})
+```
+
+La respuesta resuelta debería verse así:
+
+```javascript filename="Salida en consola"
+Response {body: ReadableStream, status: 200, type: "cors" ,...}
+```
+
+El objeto `Response` contiene información sobre la respuesta, incluido el código de estado, el tipo de respuesta y el cuerpo de la respuesta. La propiedad `body` contiene un objeto `ReadableStream` que podemos usar para leer los datos devueltos por el servidor. Podemos usar el método `json()` para convertir los datos de respuesta en un objeto JavaScript. El método `json()` devuelve una *Promesa* que se resuelve en un objeto JavaScript, por lo que encadenaremos otro método `then()` para manejar la *Promesa* cuando se resuelva:
+
+```javascript filename="JavaScript"
+fetchRequest
+    .then((response) => {
+        return response.json() })
+    .then((data) => {
+        console.log(data)
+    })
+```
+
+La variable `data` contendrá el objeto JavaScript devuelto por el servidor:
+
+```javascript filename="Salida en consola"
+(3) [{...}, {...}, {...}]
+0: {name: "Juan", age: 30}
+1: {name: "Sara", age: 22}
+2: {name: "Elon", age: 40}
+length: 3
+__proto__: Array(0)
+```
+
+Usemos la variable `data` para mostrar los datos del usuario en la página. Crearemos un elemento `ul` y agregaremos un elemento `li` para cada usuario. Actualiza el archivo `fetchExample.js` para que tenga este aspecto:
+
+```javascript filename="JavaScript"
+let fetchRequest = fetch('./data.json')
+
+fetchRequest
+    .then((response) => {
+        return response.json()
+    })
+    .then((data) => {
+        let ul = document.createElement('ul')
+
+        data.forEach((user) => {
+            let li = document.createElement('li')
+            li.textContent = `${user.name} tiene ${user.age}`
+            ul.appendChild(li)
+        })
+        document.body.appendChild(ul)
+    })
+```
+
+Cuando actualices la página, deberías ver los datos del usuario mostrados en la página:
+
+```plaintext filename="Salida en el navegador web"
+Juan tiene 30
+Sara tiene 22
+Elon tiene 40
+```
+
+## Async/Await
+
+Las palabras clave `async` y `await` se introdujeron en ES2017 para facilitar el trabajo con *Promesas*. Por ejemplo, podemos simplificar la solicitud Fetch en el archivo `fetchExample.js` usando las palabras clave `async` y `await`:
+
+```javascript filename="JavaScript"
+let fetchUsers = async () => {
+    let response = await fetch('./data.json')
+    console.log(response)
+}
+
+fetchUsers()
+
+// Response {body: ReadableStream, status: 200, type: "cors",...}
+```
+
+La palabra clave `async` se usa para definir una función asincrónica, mientras que la palabra clave `await` se usa para esperar a que se resuelva una *Promesa* y solo se puede usar dentro de una función asíncrona. En nuestro ejemplo, comenzamos definiendo una función de flecha asíncrona llamada `fetchUsers()`. También podemos usar la palabra clave `async` con una declaración de función normal:
+
+```javascript filename="JavaScript"
+async function fetchUsers() {
+    // ...
+}
+```
+
+Dentro de la función `fetchUsers()`, usamos la palabra clave `await` para esperar a que se resuelva el método `fetch()`. Cuando usamos la palabra clave `await` en una declaración de variable, a la variable se le asignará el valor resuelto de la *Promesa*. En nuestro ejemplo, a la variable de respuesta se le asignará el valor resuelto de la *Promesa* de `fetch()`. Luego podemos usar la palabra clave `await` para esperar a que se resuelva el método `json()`. Crearemos una nueva variable llamada `data` y le asignaremos el valor resuelto de la *Promesa* de `json()`. Dentro de la función `fetchUsers()`, imprimiremos la variable `data` en la consola:
+
+```javascript filename="JavaScript"
+let response = await fetch('./data.json')
+let data = await response.json()
+
+console.log(data)
+```
+
+Cuando actualices la página, verás los mismos datos de usuario que vimos en el ejemplo anterior:
+
+```javascript filename="Salida en la consola"
+(3) [{...}, {...}, {...}]
+0: {name: "Juan", age: 30}
+1: {name: "Sara", age: 22}
+2: {name: "Elon", age: 40}
+length: 3
+__proto__: Array(0)
+```
+
+Ahora podemos usar la variable `data` para mostrar los datos del usuario en la página:
+
+```javascript filename="JavaScript"
+let fetchUsers = async () => {
+    let response = await fetch('./data.json')
+    let data = await response.json()
+
+    let ul = document.createElement('ul') 6
+
+    data.forEach((user) => {
+        let li = document.createElement('li')
+        li.textContent = `${user.name} tiene ${user.age}`
+        ul.appendChild(li)
+    })
+
+    document.body.appendChild(ul)
+}
+
+fetchUsers()
+```
+
+Cuando actualices la página, deberías ver los datos del usuario mostrados en la página:
+
+```plaintext filename="Salida en el navegador web"
+Juan tiene 30
+Sara tiene 22
+Elon tiene 40
+```
+
+Podemos usar las palabras clave `try` y `catch` para manejar los errores que ocurren en una función asíncrona. Actualicemos la función `fetchUsers()` para usar las palabras clave `try` y `catch`. Envolveremos el código que queremos ejecutar en un bloque `try` y luego usaremos la palabra clave `catch` para manejar cualquier error que ocurra en él:
+
+```javascript filename="JavaScript"
+let fetchUsers = async () => {
+    try {
+        let response = await fetch('./data.json')
+        let data = await response.json()
+    } catch (error) {
+        // Manejar el error.
+        console.log(error)
+    }
+}
+```
+
+Esto detectará cualquier error que ocurra en el bloque `try`, incluidos los errores que ocurran en el método `fetch()` y el método `json()`.
+
+Las palabras clave `async` y `await` nos ayudan a escribir código asincrónico que se parece más a un código sincrónico, evitando la necesidad de encadenar diferentes métodos `.then()`. Sin embargo, las palabras clave `asyn`c y `await` son simplemente azúcar sintáctico (sintaxis que se agrega para hacer que el código sea más fácil de leer) para las *Promesas*, y no cambian el mecanismo subyacente de cómo funcionan las *Promesas*.
+
+Hemos utilizado con éxito la API Fetch para recuperar datos de nuestro archivo `data.json`. También podemos realizar una solicitud HTTP a un servidor de la misma forma. Actualicemos la función `fetchUsers()` para realizar una solicitud HTTP a la API de GitHub. Podemos obtener los datos de cualquier usuario con su nombre de usuario. Probaremos un ejemplo:
+
+```javascript filename="JavaScript"
+let fetchUsers = async () => {
+    try {
+        let response = await fetch(
+            'https://api.github.com/users/esdocu`'
+        )
+        let data = await response.json()
+    } catch (error) {
+        // Manejar el error.
+        console.log(error)
+    }
+}
+```
+
+Cuando actualices la página, verás los datos del usuario de GitHub con el nombre de usuario *esdocu*. Si tienes una cuenta de GitHub, puedes usar tu nombre de usuario en su lugar para ver tus datos. Reemplaza *esdocu* con tu nombre de usuario en el método `fetch()` y deberías ver información sobre tu cuenta.
+
+Ahora ya sabes cómo trabajar con *Promesas* y la API Fetch. Practica todo lo que has aprendido creando una aplicación sencilla que recupere y muestre datos de un servidor. Puedes realizar una búsqueda en Google de "API públicas" para encontrar otra API que puedas utilizar. Recuerda que dominar JavaScript es un proceso y necesitará practicar mucho para llegar a ser bueno en ello.

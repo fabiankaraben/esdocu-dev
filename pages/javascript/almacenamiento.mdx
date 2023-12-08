@@ -1,0 +1,213 @@
+---
+description: A menudo necesitarás almacenar datos en el navegador para diversos fines, por esta razón, los navegadores modernos proporcionan varios mecanismos para el almacenamiento del lado del cliente.
+---
+# Almacenamiento del navegador
+
+Al crear aplicaciones web, a menudo necesitarás almacenar datos en el navegador para diversos fines, como el almacenamiento en caché (almacenar datos localmente para mejorar el rendimiento), almacenar las preferencias del usuario o almacenar datos del usuario para una fácil recuperación. Por esta razón, los navegadores modernos proporcionan varios mecanismos para el almacenamiento del lado del cliente, incluidas *cookies*, *LocalStorage* y *SessionStorage*.
+
+## Cookies
+
+Las **cookies** son pequeños fragmentos de datos que el navegador web almacena en la computadora de un usuario. Fueron diseñados para ser un mecanismo confiable para que los sitios web recuerden información con estado (como los artículos agregados al carrito de compras en una tienda en línea) o para imprimir la actividad de navegación del usuario y almacenar pequeñas cantidades de datos que podrían usarse para conservar información entre peticiones de páginas.
+
+Las cookies normalmente se almacenan en pares clave-valor y cada cookie está asociada con un dominio específico. Por lo tanto, un sitio web sólo puede acceder a las cookies que haya configurado. 
+
+Las cookies también tienen un tamaño limitado y solo pueden almacenar un máximo de 4 KB de datos. Se pueden configurar para que caduquen en un momento específico, después del cual el navegador las eliminará. Si una cookie no tiene fecha de caducidad, se considera una cookie de sesión y se eliminará cuando el usuario cierre el navegador. Sin embargo, no todos los navegadores eliminan automáticamente las cookies de sesión cuando se cierra el navegador, y puede haber otros factores que influyan en el comportamiento de las cookies en el navegador, como la configuración del usuario o las extensiones.
+
+Dado que las cookies están asociadas con un dominio específico, deberás ejecutar tu página web en un servidor para configurar y recuperar cookies. Si estás trabajando con *VS Code* u otro editor de código, puedes instalar la extensión *Live Server* o algo similar para ejecutar tu página web. En *VS Code*, por ejemplo, después de instalar la extensión, haz clic derecho en cualquiera de tus archivos HTML y seleccione *Abrir con Live Server*. De lo contrario, puedes utilizar cualquier otro servidor local como el paquete de servidor *http* de *Node.js*.
+
+### Almacenamiento de datos en cookies
+
+Con tu página web ejecutándose en un servidor, aprendamos a trabajar con cookies mediante la práctica. Podemos configurar una cookie usando la propiedad `document.cookie`. Esta propiedad es una cadena que contiene todas las cookies del dominio actual. 
+
+Configuremos una cookie que caduque el 23 de noviembre de 2035:
+
+```javascript filename="JavaScript"
+document.cookie = 'name=Ada Lovelace; expires=Fri, 23 Nov 2035 12:00:00 UTC; path=/'
+```
+
+En este ejemplo, el par clave-valor `name=Ada Lovelace` son los datos reales almacenados en la cookie, y los atributos `expires` y `path` son parámetros opcionales que controlan la vida útil y la accesibilidad de la cookie. El atributo `expires` especifica la fecha de expiración de la cookie y el atributo `path` especifica la ruta para la cual la cookie es válida. Si no se especifica el atributo `path`, la cookie será válida para todo el dominio.
+
+Para agregar una nueva cookie, podemos configurar nuevamente la propiedad `document.cookie`. Esto agregará la nueva cookie a la cadena de cookies existente. Agreguemos una nueva cookie con el par clave-valor `favorite_language=JavaScript`:
+
+```javascript filename="JavaScript"
+document.cookie = 'favorite_language=JavaScript'
+
+console.log(document.cookie)
+// "name=Ada Lovelace; favorite_language=JavaScript"
+```
+
+### Recuperar datos de cookies
+
+Podemos recuperar el valor de una cookie utilizando la propiedad `document.cookie`. Sin embargo, esta propiedad devuelve una cadena de todas las cookies del dominio actual, por lo que necesitaremos dividir la cadena en un array de cookies individuales usando el método `split()`. El método `split()` es un método de cadena que toma un separador como argumento y devuelve un array de subcadenas. El separador se utiliza para determinar dónde comienza y termina cada subcadena. Como las cookies están separadas por un punto y coma y un espacio, usaremos `'; '` como separador:
+
+```javascript filename="JavaScript"
+const cookies = document.cookie.split('; ')
+
+console.log(cookies)
+//["name=Ada Lovelace", "favorite_language=JavaScript"]
+```
+
+Recuperemos el valor de la cookie `name`. No siempre podemos estar seguros del orden en que se almacenan las cookies, por lo que tendremos que recorrer el array de cookies y verificar cada una para ver si comienza con `name` la cadena. Si es así, devolveremos esa cookie. Podemos usar el método `find()` para hacer esto:
+
+```javascript filename="JavaScript"
+const nameCookie = cookies.find((cookie) => cookie.startsWith('name'))
+
+console.log(nameCookie)
+// Salida: "name=Ada Lovelace"
+```
+
+Recuerda que las cookies tienen un tamaño limitado a **4 KB**, por lo que no son adecuadas para almacenar grandes cantidades de datos. Las cookies también se envían al servidor con cada solicitud, por lo que pueden ralentizar el rendimiento de tu aplicación web si hay demasiadas. Por eso, cuando se trabajas con cookies, es mejor almacenar pequeñas cantidades de datos que son necesarios para que la aplicación funcione. Si necesitas almacenar una mayor cantidad de datos, puede considerar utilizar **LocalStorage** o **SessionStorage**.
+
+## LocalStorage y SessionStorage
+
+**LocalStorage** y **SessionStorage** son incorporaciones más recientes a las opciones de almacenamiento del navegador y ofrecen varias ventajas sobre las cookies. Al igual que las cookies, permiten que las aplicaciones web almacenen datos en el cliente, pero tienen una capacidad de almacenamiento mayor (normalmente alrededor de 5 MB) y no envían los datos al servidor con cada solicitud como lo hacen las cookies.
+
+*LocalStorage* y *SessionStorage* son similares en que ambos almacenan datos en el cliente, pero difieren en cuánto tiempo se almacenan los datos. *LocalStorage* almacena datos sin fecha de vencimiento, por lo que los datos persistirán incluso después de cerrar la ventana del navegador. *SessionStorage*, por otro lado, almacena datos para una sola sesión. Esto significa que los datos se eliminan cuando el usuario cierra la ventana o pestaña del navegador.
+
+Veamos cómo podemos usar *LocalStorage* y *SessionStorage* para almacenar datos. Comenzaremos con *LocalStorage*, luego pasaremos a *SessionStorage*.
+
+### LocalStorage
+
+LocalStorage es una propiedad del objeto `window`, por lo que podemos acceder a él usando `window.localStorage`. La propiedad `localStorage` es un objeto que contiene un método `setItem()` para configurar datos y un método `getItem()` para recuperar datos. Almacenemos un nombre de usuario en LocalStorage. Usaremos el método `localStorage.setItem()` para esto. Este método toma dos argumentos: la clave y el valor. La clave es una cadena que se utilizará para recuperar el valor. El valor puede ser cualquier tipo de datos, pero se convertirá en una cadena cuando se almacene en `LocalStorage` y se puede volver a convertir a su estado original cuando se recupere.
+
+Guardemos el nombre de usuario `esdocu_dev`:
+
+```javascript filename="JavaScript"
+localStorage.setItem('username', 'esdocu_dev')
+```
+
+Para recuperar el valor de la clave `username`, podemos usar el método `localStorage.getItem()`. Este método toma una clave como argumento y devuelve el valor asociado con esa clave. Recuperemos el valor de la clave `username`:
+
+```javascript filename="JavaScript"
+const username = localStorage.getItem('username')
+
+console.log(username)
+// Salida: "esdocu_dev"
+```
+
+También podemos imprimir el objeto `localStorage` para ver todas las claves y valores almacenados en LocalStorage:
+
+```javascript filename="JavaScript"
+console.log(localStorage)
+// Salida: Storage {username: "esdocu_dev"}
+```
+
+### Almacenamiento y recuperación de arrays y objetos
+
+Los arrays se convierten automáticamente en cadenas cuando se almacenan en LocalStorage, por lo que podemos almacenar un array de nombres de usuario:
+
+```javascript filename="JavaScript"
+const allUsernames = [
+    'esdocu_dev',
+    'grace_hopper',
+    'alan_turing',
+]
+localStorage.setItem('allUsernames', allUsernames)
+
+const storedUsernames = localStorage.getItem(
+    'allUsernames'
+)
+
+console.log(storedUsernames)
+// Salida: "esdocu_dev,grace_hopper,alan_turing"
+```
+
+Para convertir la cadena nuevamente en un array, podemos usar el método `split()`:
+
+```javascript filename="JavaScript"
+const usernamesArray = storedUsernames.split(',')
+
+console.log(usernamesArray)
+// ["esdocu_dev", "grace_hopper", "alan_turing"]
+```
+
+Por otro lado, los objetos primero deben convertirse en cadenas antes de almacenarse en LocalStorage. Si intentas almacenar un objeto directamente, se convertirá automáticamente a la cadena `[object Object]` en lugar de los datos del objeto real. Esto se debe a que el método `toString()` predeterminado de JavaScript devuelve la cadena `[object Object]` cuando se llama a un objeto.
+
+Para convertir un objeto en una cadena, podemos usar el método `JSON.stringify()`. Este método toma un objeto como argumento y devuelve una representación de cadena de ese objeto. Almacenemos un objeto en LocalStorage:
+
+```javascript filename="JavaScript"
+
+const user = {
+    username: 'esdocu_dev',
+    favoriteLanguage: 'JavaScript',
+}
+
+localStorage.setItem('user', JSON.stringify(user))
+```
+
+Para recuperar el objeto de LocalStorage, podemos usar el método `localStorage.getItem()`. Sin embargo, este método devuelve una cadena, por lo que necesitaremos convertirla nuevamente en un objeto usando el método `JSON.parse()`. Este método toma una cadena como argumento y devuelve el objeto que representa la cadena:
+
+```javascript filename="JavaScript"
+const storedUser = localStorage.getItem('user') 2
+
+console.log(storedUser)
+// Salida: "{"username":"esdocu_dev", "favoriteLanguage":"JavaScript"}"
+
+const userObject = JSON.parse(storedUser) 8
+
+console.log(userObject)
+// Salida: {username: "esdocu_dev", favoriteLanguage: "JavaScript"}
+```
+
+### Eliminar elementos de LocalStorage
+
+Para eliminar un elemento de LocalStorage, podemos usar el método `localStorage.removeItem()`. Este método toma una clave como argumento y elimina el par clave-valor de LocalStorage:
+
+```javascript filename="JavaScript"
+localStorage.removeItem('username')
+
+console.log(localStorage.getItem('username')) 4
+// Salida: null
+```
+
+### Borrar el almacenamiento local
+
+Para borrar todos los elementos de LocalStorage, podemos usar el método `localStorage.clear()`:
+
+```javascript filename="JavaScript"
+localStorage.clear()
+
+console.log(localStorage)
+// Salida: Storage {}
+```
+
+Cuando trabajes con LocalStorage, recuerda que los datos se almacenan en el cliente y cualquier persona o cualquier script que tenga acceso al cliente puede acceder a ellos. Por lo tanto, debes evitar almacenar datos confidenciales en LocalStorage, como contraseñas o información de tarjetas de crédito. LocalStorage también se comparte en todas las pestañas y ventanas del navegador. Esto significa que si almacenas datos en LocalStorage en una pestaña, estarán disponibles en todas las demás pestañas y ventanas que comparten el mismo origen (el mismo dominio, protocolo y puerto). Esto puede resultar útil para mantener datos en varias pestañas o ventanas, pero también puede generar estados conflictivos o inconsistentes si no se tiene cuidado.
+
+### SessionStorage
+
+La sintaxis de SessionStorage es similar a LocalStorage. Podemos acceder a él usando la propiedad `window.sessionStorage`. Esta propiedad es un objeto que contiene un método `setItem()` para configurar datos y un método `getItem()` para recuperar datos. 
+
+Usemos el mismo ejemplo anterior para almacenar el nombre de usuario `esdocu_dev` en SessionStorage:
+
+```javascript filename="JavaScript"
+sessionStorage.setItem('username', 'esdocu_dev')
+```
+
+Para recuperar el valor de la clave `username`, podemos usar el método `sessionStorage.getItem()`:
+
+```javascript filename="JavaScript"
+const username = sessionStorage.getItem('username')
+
+console.log(username)
+// Salida: "esdocu_dev"
+```
+
+Al igual que LocalStorage, podemos eliminar elementos de SessionStorage usando su método `removeItem()`:
+
+```javascript filename="JavaScript"
+sessionStorage.removeItem('username')
+
+console.log(sessionStorage.getItem('username'))
+// Salida: null
+```
+
+También podemos borrar todos los elementos de SessionStorage usando su método `clear()`:
+
+```javascript filename="JavaScript"
+sessionStorage.clear()
+
+console.log(sessionStorage)
+// Salida: Storage {}
+```
+
+Recuerda que SessionStorage solo está disponible para la sesión actual. Entonces, si cierras la ventana o pestaña del navegador, los datos se eliminarán. A diferencia de LocalStorage, SessionStorage es específico de una única pestaña del navegador; cuando almacenas datos en SessionStorage en una pestaña, no estarán disponibles en otras pestañas o ventanas y se eliminarán cuando se cierre la pestaña.

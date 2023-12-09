@@ -1,0 +1,174 @@
+---
+description: JavaScript proporciona varias formas de trabajar con fechas y horas, lo que nos permite crearlas, manipularlas y formatearlas.
+---
+
+# Trabajar con Fechas y Horas en JavaScript
+
+JavaScript proporciona varias formas de trabajar con fechas y horas, lo que nos permite crearlas, manipularlas y formatearlas. El constructor `Date` incorporado es la forma más común de lograr esto. Proporciona una manera de crear un objeto de fecha, obtener y configurar los componentes de fecha y hora, y formatear la fecha y la hora en una cadena.
+
+## Crear un objeto de fecha
+
+Podemos crear un nuevo objeto `Date` llamando al constructor `Date` sin argumentos:
+
+```javascript filename="JavaScript"
+let currentDate = new Date()
+
+console.log(currentDate)
+// Salida: Sat May 19 2025 08:59:03 GMT+0100
+```
+
+Para crear un objeto `Date` con una fecha y hora específicas, podemos pasar una cadena al constructor `Date`:
+
+```javascript filename="JavaScript"
+let christmas = new Date('December 25, 2025')
+
+console.log(christmas)
+// Salida: Thu Dec 25 2025 00:00:00 GMT+0100
+```
+
+El constructor `Date` acepta varios formatos para la cadena de fecha y hora, incluidos los siguientes:
+
+- `December 25, 2025`
+- `December 25 2025`
+- `Dec 25 2025`
+- `12/25/2025`
+- `12-25-2025`
+- `2025-12-25`
+- `2025/12/25`
+- `2025.12.25`
+- `2025 12 25`
+- `2025 Dec 25`
+- `2025 December 25`
+
+También podemos especificar la hora en la cadena:
+
+```javascript filename="JavaScript"
+let christmas = new Date('December 25, 2025 23:15:30')
+
+console.log(christmas)
+// Thu Dec 25 2025 23:15:30 GMT+0100
+```
+
+Si no se especifica la hora, la hora predeterminada será medianoche. El formato de hora es `horas:minutos:segundos` y las horas se especifican en un reloj de 24 horas. También podemos agregar una zona horaria a la cadena:
+
+```javascript filename="JavaScript"
+let christmas = new Date('December 25, 2025 23:15:30 GMT-0500')
+
+console.log(christmas)
+// Fri Dec 26 2025 05:15:30 GMT+0100 (West Africa Standard Time)
+```
+
+El constructor `Date` también puede aceptar múltiples argumentos, que representan el año, mes, día, hora, minuto, segundo y milisegundo, respectivamente:
+
+```javascript filename="JavaScript"
+let christmas = new Date(2025, 11, 25)
+
+console.log(christmas)
+// Thu Dec 25 2025 00:00:00 GMT+0100
+```
+
+El mes se especifica como un número, donde `0` es enero, `1` es febrero, etc. El día se especifica como un número, donde `1` es el primer día del mes. La hora, minuto, segundo y milisegundo se especifican como números, donde `0` es la primera hora, minuto, segundo o milisegundo del día.
+
+## Obtener los componentes de fecha y hora
+
+Una vez que tenemos el objeto `Date`, podemos extraer varios componentes de la fecha y hora usando sus propiedades y métodos. El objeto `Date` tiene las siguientes propiedades:
+
+- `getFullYear()`: devuelve el año como un número de cuatro dígitos
+- `getMonth()`: devuelve el mes como un número
+- `getDate()`: devuelve el día del mes como un número
+- `getDay()`: devuelve el día de la semana como un número
+- `getHours()`: devuelve la hora como un número
+- `getMinutes()`: devuelve los minutos como un número
+- `getSeconds()`: devuelve los segundos como un número
+- `getMilliseconds()`: devuelve los milisegundos como un número
+- `getTime()`: devuelve el número de milisegundos desde enero 1, 1970. El 1 de enero de 1970 se utiliza como punto de referencia para el objeto `Date` en JavaScript porque fue el punto de partida de la época Unix, que es un sistema estandarizado para representar fechas y horas en sistemas informáticos.
+
+Probemos un ejemplo con el objeto `Date` que creamos anteriormente:
+
+```javascript filename="JavaScript"
+let christmas = new Date('December 25, 2025 23:15:30 GMT-0500')
+
+console.log(christmas.getFullYear())
+// Salida: 2025
+
+console.log(christmas.getMonth())
+// Salida: 11
+
+console.log(christmas.getDate())
+// Salida: 25
+
+console.log(christmas.getDay())
+// Salida: 5
+
+console.log(christmas.getHours())
+// Salida: 5
+```
+
+El método `getMonth()` devuelve el mes en el rango de `0` a `11`, donde `0` representa enero y `11` representa diciembre. De manera similar, el método `getDay()` devuelve el día de la semana en el rango de `0` a `6`, donde `0` representa el domingo y `6` representa el sábado.
+
+También podemos usar el método `toString()` para convertir el objeto `Date` en una cadena:
+
+```javascript filename="JavaScript"
+let christmas = new Date('December 25, 2025 23:15:30 GMT-0500')
+
+console.log(christmas.toString())
+// Salida: 'Fri Dec 26 2025 05:15:30 GMT+0100'
+```
+
+## Configuración de los componentes de fecha y hora
+
+Una vez que hayamos extraído los componentes de fecha y hora de un objeto `Date`, podemos manipular los componentes para obtener un nuevo objeto `Date` que represente una fecha y hora diferentes. Una forma de hacerlo es establecer los componentes individuales de la fecha y la hora utilizando los métodos y propiedades del objeto `Date`. El objeto `Date` tiene los siguientes métodos para configurar los componentes de fecha y hora:
+
+- `setFullYear(year)`: establece el año
+- `setMonth(moth):` establece el mes
+- `setDate(data):` establece el día del mes
+- `setHours(hours):` establece la hora
+- `setMinutes(minutes):` establece los minutos
+- `setSeconds(seconds):` establece los segundos
+- `setMilliseconds(miliseconds):` establece los milisegundos
+
+Probemos un ejemplo con el objeto `Date` de Navidad:
+
+```javascript filename="JavaScript"
+let christmas = new Date('December 25, 2025 23:15:30 GMT-0500')
+
+christmas.setFullYear(2026) 6
+
+console.log(christmas)
+// Salida: Sat Dec 26 2026 05:15:30 GMT+0100
+```
+
+## Formato de fechas y horas
+
+El objeto `Date` tiene varios métodos para formatear la fecha y la hora en una cadena, que incluyen:
+
+- `toDateString()`: devuelve la parte de fecha del objeto `Date` como una cadena
+- `toTimeString()`: devuelve la porción de tiempo del objeto `Date` como una cadena
+- `toLocaleDateString()`: devuelve la parte de fecha del objeto `Date` como una cadena, formateada según la configuración regional
+- `toLocaleTimeString()`: devuelve la porción de hora del objeto `Date` como una cadena, formateada según la configuración regional
+- `toUTCString()`: devuelve la parte de fecha y hora del objeto `Date` como una cadena, formateada según la zona horaria UTC
+
+Probemos con otro ejemplo con el objeto `Date` de Navidad:
+
+```javascript filename="JavaScript"
+let christmas = new Date('December 25, 2025 23:15:30 GMT-0500')
+
+console.log(christmas.toDateString())
+// Salida: Fri Dec 26 2025
+
+console.log(christmas.toTimeString())
+// Salida: 05:15:30 GMT+0100
+
+console.log(christmas.toLocaleDateString())
+// Salida: 26/12/2025
+
+console.log(christmas.toLocaleTimeString())
+// Salida: 5:15:30
+
+console.log(christmas.toUTCString())
+// Salida: Fri, 26 Dec 2025 04:15:30 GMT
+```
+
+Hay otros métodos disponibles en el objeto `Date` para una cadena, incluidos `toISOString()`, `toJSON()` y `toGMTString()`. 
+
+Puedes encontrar más información sobre estos métodos en la documentación de [MDN](https://developer.mozilla.org/es/docs/Web/JavaScript/Reference/Global_Objects/Date). Comprender cómo crear objetos de fecha, manipularlos y manejar zonas horarias es esencial para crear aplicaciones web precisas y fáciles de usar. Por ejemplo, es posible que necesites mostrar la fecha y hora actuales en una página web o la fecha de una entrada específica en una lista de tareas pendientes. Trabajar con el objeto `Date` puede ser un poco complicado, pero con práctica podrás hacerlo con facilidad.

@@ -21,6 +21,11 @@
     "type": "page",
     "display": "hidden"
   },
+  "git": {
+    "title": "Curso de Git",
+    "type": "page",
+    "display": "hidden"
+  },
   "cursos": {
     "title": "Cursos",
     "type": "menu",
@@ -36,6 +41,10 @@
       "javascript": {
         "title": "Curso de JavaScript",
         "href": "/javascript"
+      },
+      "git": {
+        "title": "Curso de Git",
+        "href": "/git"
       }
     }
   },

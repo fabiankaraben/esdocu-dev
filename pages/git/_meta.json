@@ -1,0 +1,10 @@
+{
+  "-- bases": {
+    "title": "Las bases de Git",
+    "type": "separator"
+  },
+  "index": "¿Qué es Git?",
+  "como-funciona-git": "¿Cómo funciona Git?",
+  "configuracion": "Configurando Git",
+  "repositorios": "Repositorios"
+}

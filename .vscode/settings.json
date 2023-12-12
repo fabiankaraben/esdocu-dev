@@ -8,6 +8,9 @@
     "editor.codeActionsOnSave": {
         "source.fixAll.eslint": true,
     },
+    "[mdx]": {
+        "editor.formatOnSave": false
+    },
     "cSpell.language": "en,es-ES",
     "cSpell.enabledLanguageIds": [
         "mdx"

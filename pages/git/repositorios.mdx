@@ -1,0 +1,230 @@
+---
+description: Un repositorio es una carpeta que contiene los archivos del proyecto y el historial de cambios.
+---
+import { FileTree } from 'nextra/components'
+
+# Repositorios de Git
+
+Un concepto central de Git es un repositorio. Un repositorio es una carpeta que contiene los archivos del proyecto y el historial de cambios.
+
+La diferencia entre una carpeta normal y un **repositorio Git** es que el repositorio Git contiene una carpeta `.git`.
+
+Esta carpeta se crea cuando inicializas un nuevo repositorio y contiene el historial y la configuración del proyecto.
+
+Si ejecutas comandos de Git en una carpeta normal, no sucederá nada. Primero debes convertir la carpeta en un repositorio Git.
+
+**Hay dos formas de crear un repositorio:**
+
+1. **Inicializar** un nuevo repositorio en una carpeta existente
+2. **Clonar** uno existente desde un servidor
+
+En esta lección, aprenderemos a realizar esto de ambas maneras.
+
+## Antes de que empieces
+
+Es una buena idea almacenar tus repositorios en un solo lugar.
+
+Por ejemplo, almaceno todos mis repositorios de Git en una carpeta `Proyectos` en mi directorio de *home*:
+
+```plaintext filename="Directorio de proyectos"
+/Users/esdocu/Proyectos
+```
+
+Puedes crear una carpeta similar en tu computadora. O puedes utilizar una ubicación diferente. Clonaremos e inicializaremos repositorios en esta carpeta.
+
+## Cómo clonar un repositorio
+
+Clonar un repositorio significa descargar su contenido desde un servidor remoto.
+
+Para clonar un repositorio, debes ejecutar el siguiente comando en la línea de comandos:
+
+```bash filename="Terminal"
+git clone <url>
+```
+
+El bloque `<url>` es un marcador de posición que representa la dirección del repositorio remoto. Por ejemplo, para clonar el código fuente de Git, puedes ejecutar el siguiente comando:
+
+```bash filename="Terminal"
+git clone https://github.com/git/git.git
+```
+
+Esto creará una carpeta llamada git con el contenido del repositorio. De forma predeterminada, Git usa el nombre del repositorio como nombre de la carpeta. Pero puedes especificar un nombre diferente como segundo argumento:
+
+```bash filename="Terminal"
+git clone https://github.com/git/git.git my-git
+```
+
+Aquí, la carpeta se llamará `my-git`.
+
+## Cómo inicializar un repositorio en una carpeta existente
+
+Para convertir una carpeta en un repositorio Git, debes ejecutar el siguiente comando en la línea de comando:
+
+```bash filename="Terminal"
+git init
+```
+
+Este comando generará una carpeta oculta llamada `.git` en el directorio actual. Esta carpeta contiene la configuración del proyecto y el historial de cambios.
+
+## ¿Qué hay dentro de la carpeta `.git`?
+
+Normalmente no ves ni editas el contenido de la carpeta `.git`. Está gestionada por Git. Pero para aprender, echemos un vistazo a lo que hay dentro:
+
+<FileTree>
+    <FileTree.File name="HEAD" />
+    <FileTree.File name="config" />
+    <FileTree.File name="description" />
+    <FileTree.Folder name="hooks" defaultOpen>
+        <FileTree.File name="..." />
+    </FileTree.Folder>
+    <FileTree.Folder name="info" defaultOpen>
+        <FileTree.File name="exclude" />
+    </FileTree.Folder>
+    <FileTree.Folder name="objects" defaultOpen>
+        <FileTree.File name="info" />
+        <FileTree.File name="packs" />
+    </FileTree.Folder>
+    <FileTree.Folder name="refs" defaultOpen>
+        <FileTree.File name="heads" />
+        <FileTree.File name="tags" />
+    </FileTree.Folder>
+</FileTree>
+
+Repasemos los archivos y carpetas más importantes:
+
+* **HEAD**: es un archivo de texto que contiene información sobre dónde se encuentra actualmente en el historial del proyecto. De forma predeterminada, contendrá el nombre del rama actual. Hablaremos de ramas más adelante en este curso.
+* **config**: es un archivo de texto que contiene la configuración del proyecto.
+* **description**: es un archivo de texto que contiene la descripción del proyecto. Es utilizado por el programa GitWeb. Si no estás utilizando GitWeb, puedes ignorarlo. Hoy en día, la mayoría de la gente usa GitHub o GitLab para alojar sus repositorios y mantener la descripción del proyecto en el archivo `README.md`.
+* **hooks**: es una carpeta que contiene scripts que se ejecutan cuando ocurren ciertos eventos. Por ejemplo, puedes ejecutar pruebas automáticamente antes de realizar cambios.
+* **info**: es una carpeta que tiene un archivo `exclude`. Este archivo se utiliza para excluir archivos y carpetas del proyecto en la máquina local. A diferencia de `.gitignore`, no se comparte con otras personas.
+* **objects**: es una carpeta que contiene todo el contenido del proyecto. Es un poco más complicado que eso, pero por ahora esta definición será suficiente.
+* **refs**: es una carpeta que contiene referencias a commits. Pueden ser ramas o etiquetas. Hablaremos de ramas y etiquetas más adelante en este curso.
+
+## Comprobar el estado de un repositorio
+
+Hay muchos parámetros que cambian cuando trabajas con Git.
+
+Por ejemplo, la rama actual, el commit actual, qué archivos han cambiado desde la último commit, etc. Para poder acceder rápidamente a esta información, Git proporciona el comando `git status`.
+
+El resultado de `git status` puede ser bastante complicado, pero una vez que te acostumbres, podrás obtener la información que necesitas de un vistazo.
+
+En esta lección, te mostraré la estructura de la salida de `git status` para que te resulte más fácil de entender.
+
+## Cómo utilizar el comando de estado
+
+El comando `git status` devuelve un resumen del estado actual del repositorio. Muestra la rama actual, el commit actual y el estado del directorio de trabajo. A continuación se muestra una salida típica:
+
+```bash filename="Terminal"
+git status
+```
+
+```plaintext filename="Salida en la Terminal"
+On branch main
+Your branch is up to date with 'origin/main'.
+ 
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+	modified:   README.md
+ 
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+	LICENSE
+ 
+no changes added to commit (use "git add" and/or "git commit -a")
+```
+
+Es mucha información, pero está estructurada en secciones. Notarlo facilitará mucho la lectura del resultado del comando git status. Analicemos cada sección.
+
+Primero va la **información de la rama**:
+
+```plaintext filename="Salida en la Terminal"
+On branch main
+Your branch is up to date with 'origin/main'.
+```
+
+Esta sección muestra la rama actual y si está por detrás o por delante de la versión remota de esta rama.
+
+En este caso, tenemos un commit que no se ha enviado al repositorio remoto.
+
+Luego va la sección que describe **los cambios en los archivos rastreados**:
+
+```plaintext filename="Salida en la Terminal"
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+	modified:   README.md
+```
+
+Aquí dice que el archivo `README.md` fue modificado. Significa que no preparamos los cambios en este archivo. Si queremos realizar un commit con estos cambios (comando `git commit`), primero debemos agregarlos al stage con el comando `git add`.
+
+La última sección describe **los archivos sin seguimiento**:
+
+```plaintext filename="Salida en la Terminal"
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+	LICENSE
+```
+
+Aquí tenemos un nuevo archivo que Git aún no rastrea.
+
+La última línea es un **resumen del estado actual del repositorio**:
+
+```plaintext filename="Salida en la Terminal"
+no changes added to commit (use "git add" and/or "git commit -a")
+```
+
+Dice que no tenemos ningún cambio preparado en el stage para confirmar con un commit. También sugiere que podemos usar el comando `git add` para preparar los cambios.
+
+### Estado corto
+
+La salida predeterminada del comando `git status` es bastante detallada. Si deseas obtener un resultado más conciso, puedes utilizar el comando `git status -s`. El mismo estado que el anterior se mostrará así:
+
+```bash filename="Terminal"
+git status -s
+```
+
+```plaintext filename="Salida en la Terminal"
+ M README.md
+?? LICENSE
+```
+
+Eso es todo. Los nombres de los archivos a la derecha y el estado a la izquierda. Aquí hay posibles códigos de estado:
+
+* `??`: archivo sin seguimiento
+* `A`: nuevo archivo agregado al área de preparación
+* `M`: archivo modificado
+* `D`: archivo eliminado
+* `R`: archivo renombrado
+* `C`: archivo copiado
+* `U`: archivo con conflictos de fusión
+
+## Ejercicios
+
+### Inicializar un nuevo repositorio
+
+Crea una nueva carpeta e inicialízala como un repositorio Git. Abre la terminal y ejecuta los siguientes comandos:
+
+```bash filename="Terminal"
+mkdir mi-proyecto
+cd mi-proyecto
+git init
+```
+
+Estos comandos crearán una carpeta llamada `mi-proyecto` y la inicializará como un repositorio Git.
+
+### Explora la carpeta `.git`
+
+Puedes consultar la lista de archivos y carpetas en la carpeta `.git` usando el comando `ls`:
+
+```bash filename="Terminal"
+ls .git
+```
+
+Puedes leer el contenido de los archivos usando el comando `cat`:
+
+```bash filename="Terminal"
+cat .git/HEAD
+```
+
+Revisa la lista de archivos y carpetas y lee el contenido de los archivos.
